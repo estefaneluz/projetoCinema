@@ -1,93 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="./css/styles.css" >
-        <title>CineM@il</title>
-    </head>
-    <body>
-        <header>
-            <div class="menu-container">
-               <div class="menu-logo">
-                     <a><img src="./img/3d-glasses.svg"></a>
-               </div>     
-               <div class="texto-logo">
-                <a href="#"><h1>CineM@il</h1><link href="https://fonts.googleapis.com/css?family=Nunito:200,200italic,300,300italic,regular,italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" /></a>
-               </div>                
-                
-            </div>
-            <div class="menu-nav">
-                <nav>
-                    <ul>
-                        <li><a href="#">LOGIN </a></li>
-                        <li><a href="#"><img src="./img/engrenagem.svg" alt="icone-login"></a></li>
-                    </ul>                   
-                            
-                </nav>
-            </div>
-        </header>    
-        <section >
-            <div class="cartaz-container">
-                <div class="texto"><h2>EM CARTAZ</h2></div>
-                <div class="busca-filmes">
-                    <input  type="text"> <!--ADICIONAR ÍCONE DA LUPA-->
-                    <a href="#"><img src="#" alt="icone-pesquisa"> </a>
-                </div>
-             </div>
-         </section>
-         <section class="meio">
-            <div class="meio-container-1">
-                <div></div>
-                <img src=""><!--SETA DO CARROSSEL-->
-                    <a><img src="/img/black-window.jpg" alt="black-window" width="259" height="330"></a>
-                    <a><img src="/img/home-alone.jpg" alt="home-alone" width="259" height="330"></a>
-                    <a><img src="/img/halloween-4.jpg" alt="halloween-4" width="259" height="330"> </a>
-                    <a><img src="/img/pulp-fiction.jpg" alt="pulp-fiction"width="259" height="330"></a>                   
-                  <img src=""><!--SETA DO CARROSSEL-->
-           
-                </div>
-            <div class=texto+botão>
-                <p>Confira todos os filmes</p>
-                <button>FILMES</button>
-            </div>
-         </section>
-         <section class="sobre">
-            <div class="texto">
-                <h3>SOBRE</h3>
-                <p>
-                    Lorem Ipsum is simply dummy text of the printing and<br>
-                     typesetting industry. Lorem Ipsum has been the industry's<br>
-                      standard dummy text ever since the 1500s, when an unknown<br>
-                      printer took a galley of type and scrambled it to make a <br>
-                      type specimen book. It has survived not only five centuries,<br>
-                       but also the leap into electronic typesetting, remaining <br>
-                       essentially unchanged.
-                </p>
-            </div>
-            <div class="imagens">
-                <img src="" alt="sala-1">
-                <img src="" alt="sala-2">
-            </div> 
-         </section>
-        <footer>
-            <div class="redes-sociais">
-                <h3>REDES SOCIAIS</h3>
-                <a><img src="" alt="whatsapp"></a>
-                <a><img src="" alt="instagram"></a>
-                <a><img src="" alt="twitter"></a>
-            </div>
-            <div class="contato">
-                <h3>CONTATO</h3>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+    <title>CineM@il</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="img/logo.svg" alt="Logo do CineM@ail">
+                <h1>CineM@il</h1>
+            </a>
+            <nav>
                 <ul>
-                    <li>+55 71 91111111</li>
-                    <li>cinemail@email.com</li>
-                    <li>Avenida Suburbana</li>
+                    <li><a href="#">LOGIN </a></li>
+                    <li><a href="#"><img src="./img/engrenagem.svg" alt="icone-login"></a></li>
                 </ul>
-            </div>
-            <img src="" alt="pessoas-assistindo">
-        </footer>   
-    
-    
-    </body>
+            </nav>
+        </div>
+    </header>
+
+    <section class="filmes">
+        <div class="busca-filmes">
+            <h2>Em cartaz</h2>
+            <input type="text">
+            <a href="#"><img src="img/search.svg" alt="icone-pesquisa"> </a>
+        </div>
+    </section>
+
+    <section class="sobre">
+        <div class="text-sobre">
+            <h2>Sobre</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro aliquid earum qui illo. Corporis alias quae dolor placeat pariatur tempora blanditiis aperiam. Qui sit aliquid tempore similique omnis doloribus aspernatur!</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed reprehenderit eum laboriosam repellendus iusto dolorum repellat. </p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi reiciendis aliquam quidem? Possimus exercitationem architecto aspernatur veritatis quos, quis dolore obcaecati officiis nesciunt, officia, ab ullam provident distinctio fuga reprehenderit.</p>
+        </div>
+
+        <img src="img/sobre/cinema-1.jpg" alt="">
+        <img src="img/sobre/cinema-2.jpg" alt="">
+    </section>
+
+    <footer>
+        <div class='redes-sociais'>
+            <h2>Redes Sociais</h2>
+            <ul>
+                <li>
+                    <a href="facebook.com" target="_blank"><img src="" alt="Facebook CineMail"></a>
+                </li>
+                <li>
+                    <a href="facebook.com" target="_blank"><img src="" alt="Instagram CineMail"></a>
+                </li>
+                <li>
+                    <a href="facebook.com" target="_blank"><img src="" alt="Twitter CineMail"></a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
 </html>

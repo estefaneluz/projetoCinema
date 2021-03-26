@@ -1,105 +1,165 @@
-*{
-    margin: 0;
+/* ESPECIFICAÇÕES GERAIS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
 }
 
-/*CONTAINER HEADER*/
-header{
-    background-color: rgb(24, 27, 32);
-    max-width: 1440px;
-    height: 80px;
-    display: flex;
-    flex-direction: row;
-   
-}
-h1{
-    color:rgb(255, 191 , 84);
-    
-}
-h2,ul{
-    color: rgb(255, 255, 255);
-    
-}
-.menu-container{/*CONTAINER DA DIV DO HEADER*/
-    display: flex;
-    flex-direction: row;     
-    align-items: center;
-    padding: 15px 130px 15px 100px;
-}
-.menu-logo{
-    margin-right: 16.5px ;
-}
-.menu-logo img{
-    width: 55px;
-    height: 70px;    
-}
-.texto-logo{
-    display: flex;
-    align-items: center;
-    margin-left: 16.5px;
-}
-.texto-logo a{
-    text-decoration: none;
-    font-weight: bold;
-    
-}
-.menu-nav{
-    display: flex;
-    flex-direction: row;
-    padding: 28px 69px 27px 710px;
-    align-items: center;
+body {
+  background-color: #2a2c3c;
+  font-family: Nunito, Arial, Helvetica, sans-serif;
+  color: #e1e1e1;
 }
 
-
-.menu-nav ul{
-    list-style-type: none;
-    display: inline-block;    
-}
-.menu-nav a{    
-    margin-right: 10px;
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    font-size: 18px;
-   
-}/*
-/*DIV PESQUISA DE FILMES*/
-.cartaz-container{
-    display: flex;
-    flex-direction: row;
-    max-width: 1440px;
-    height: 72px;
-    background-color: rgb(42, 44, 60);
+p {
+  font-family: "PT serif", serif;
+  font-size: 14px;
+  padding: 10px 0px;
+  font-weight: normal;
 }
 
-.busca-filmes{
-    margin:15px;
-}
-input{
-    border-style: none;
-    border-color: rgb(48, 48, 71);
-    width: 654px;
-    height: 40px;
-    border-radius: 6px;
-    background: rgb(36, 39, 50);
-    color: rgb(255, 255, 255);
-    font-family: Roboto;
-    font-size: 20px;
+.container,
+.logo,
+nav ul,
+.busca-filmes {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  list-style: none;
 }
 
-/*SECTION DOS POSTERES*/
+/* HEADER */
 
-.meio{
-    display: flex;
-    flex-direction: column;
-    background: rgb(24, 27, 32);
-    max-width: 1440px;
-    height: 516;
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #242732;
+  padding: 15px 100px;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
 }
-.meio-container-1{
-    display: flex;
-    flex-direction: row;
-    max-width: 1440px;
-    height: 371px;
-  
 
+.logo h1 {
+  color: #ffbf54;
+  font-family: "PT Serif", serif;
+  font-weight: normal;
+  font-size: 20px;
+  display: inline-block;
+  padding-left: 27px;
+  padding-top: 5px;
+}
+
+header nav {
+  margin-left: auto;
+}
+
+header nav ul li a {
+  margin-left: 25px;
+  margin-top: 20px;
+  color: #e1e1e1;
+  font-weight: bold;
+}
+
+/* SEARCH */
+
+.filmes {
+  margin-top: 100px;
+  margin-left: 167px;
+}
+
+input {
+  border-style: none;
+  border-color: rgb(48, 48, 71);
+  width: 654px;
+  height: 40px;
+  border-radius: 6px;
+  background: #242732;
+  color: rgb(255, 255, 255);
+  font-family: Roboto;
+  font-size: 20px;
+}
+
+/* .busca-filmes {
+  display: flex;
+  flex-direction: row;
+} */
+
+h2 {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: normal;
+  margin-right: 70px;
+  margin-bottom: 10px;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #ee1d1d;
+  margin-top: 7px;
+}
+
+.busca-filmes img {
+  margin-left: 20px;
+}
+
+/* SOBRE */
+
+.sobre {
+  margin: 30px 100px;
+  display: flex;
+  flex-direction: row;
+}
+
+.text-sobre {
+  width: 375px;
+  margin-right: 130px;
+  height: 300px;
+  overflow: auto;
+  padding-right: 10px;
+}
+
+.sobre img {
+  width: 314px;
+  height: 250px;
+  background: radial-gradient(
+    88.79% 88.79% at 6.76% 3.79%,
+    rgba(0, 0, 0, 0.42) 0%,
+    rgba(0, 0, 0, 0.06) 100%
+  );
+  border: 10px solid rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  backdrop-filter: blur(12px);
+  /* Nota: backdrop-filter não funciona no firefox nem no IE */
+  border-radius: 2px;
+  margin: 20px 10px;
+}
+
+.sobre h2::after {
+  width: 65px;
+}
+
+/* Footer */
+
+footer {
+  background-color: #242732;
+  padding: 30px 100px;
+}
+
+.redes-sociais h2::after {
+  width: 140px;
+}
+
+.redes-sociais ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.redes-sociais ul li a {
+  display: block;
+  border: 3px solid #ee1d1d;
+  padding: 10px;
 }
