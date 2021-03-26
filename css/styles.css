@@ -12,6 +12,13 @@ body {
   color: #e1e1e1;
 }
 
+p {
+  font-family: "PT serif", serif;
+  font-size: 14px;
+  padding: 10px 0px;
+  font-weight: normal;
+}
+
 .container,
 .logo,
 nav ul,
@@ -96,4 +103,40 @@ h2::after {
 
 .busca-filmes img {
   margin-left: 20px;
+}
+
+/* SOBRE */
+
+.sobre {
+  margin: 30px 100px;
+  display: flex;
+  flex-direction: row;
+}
+
+.text-sobre {
+  width: 375px;
+  margin-right: 130px;
+  height: 300px;
+  overflow: auto;
+  padding-right: 10px;
+}
+
+.sobre img {
+  width: 314px;
+  height: 250px;
+  background: radial-gradient(
+    88.79% 88.79% at 6.76% 3.79%,
+    rgba(0, 0, 0, 0.42) 0%,
+    rgba(0, 0, 0, 0.06) 100%
+  );
+  border: 10px solid rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  backdrop-filter: blur(12px);
+  /* Nota: backdrop-filter não funciona no firefox nem no IE */
+  border-radius: 2px;
+  margin: 20px 10px;
+}
+
+.sobre h2::after {
+  width: 65px;
 }
