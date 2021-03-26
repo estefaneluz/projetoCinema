@@ -90,6 +90,7 @@ h2 {
   font-size: 18px;
   font-weight: normal;
   margin-right: 70px;
+  margin-bottom: 10px;
 }
 
 h2::after {
@@ -139,4 +140,26 @@ h2::after {
 
 .sobre h2::after {
   width: 65px;
+}
+
+/* Footer */
+
+footer {
+  background-color: #242732;
+  padding: 30px 100px;
+}
+
+.redes-sociais h2::after {
+  width: 140px;
+}
+
+.redes-sociais ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.redes-sociais ul li a {
+  display: block;
+  border: 3px solid #ee1d1d;
+  padding: 10px;
 }
