@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+}
+
+/*CONTAINER HEADER*/
+header{
+    background-color: rgb(24, 27, 32);
+    max-width: 1440px;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+   
+}
+h1{
+    color:rgb(255, 191 , 84);
+    
+}
+h2,ul{
+    color: rgb(255, 255, 255);
+    
+}
+.menu-container{/*CONTAINER DA DIV DO HEADER*/
+    display: flex;
+    flex-direction: row;     
+    align-items: center;
+    padding: 15px 130px 15px 100px;
+}
+.menu-logo{
+    margin-right: 16.5px ;
+}
+.menu-logo img{
+    width: 55px;
+    height: 70px;    
+}
+.texto-logo{
+    display: flex;
+    align-items: center;
+    margin-left: 16.5px;
+}
+.texto-logo a{
+    text-decoration: none;
+    font-weight: bold;
+    
+}
+.menu-nav{
+    display: flex;
+    flex-direction: row;
+    padding: 28px 69px 27px 710px;
+    align-items: center;
+}
+
+
+.menu-nav ul{
+    list-style-type: none;
+    display: inline-block;    
+}
+.menu-nav a{    
+    margin-right: 10px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 18px;
+   
+}/*
+/*DIV PESQUISA DE FILMES*/
+.cartaz-container{
+    display: flex;
+    flex-direction: row;
+    max-width: 1440px;
+    height: 72px;
+    background-color: rgb(42, 44, 60);
+}
+
+.busca-filmes{
+    margin:15px;
+}
+input{
+    border-style: none;
+    border-color: rgb(48, 48, 71);
+    width: 654px;
+    height: 40px;
+    border-radius: 6px;
+    background: rgb(36, 39, 50);
+    color: rgb(255, 255, 255);
+    font-family: Roboto;
+    font-size: 20px;
+}
+
+/*SECTION DOS POSTERES*/
+
+.meio{
+    display: flex;
+    flex-direction: column;
+    background: rgb(24, 27, 32);
+    max-width: 1440px;
+    height: 516;
+}
+.meio-container-1{
+    display: flex;
+    flex-direction: row;
+    max-width: 1440px;
+    height: 371px;
+  
+
+}
