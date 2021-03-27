@@ -39,6 +39,7 @@ header {
   background-color: #242732;
   padding: 15px 100px;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+  z-index: 12;
 }
 
 .logo h1 {
@@ -87,7 +88,7 @@ h2 {
   font-size: 18px;
   font-weight: normal;
   margin-right: 70px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 h2::after {
@@ -102,33 +103,49 @@ h2::after {
 .busca-filmes img {
   margin-left: 20px;
 }
+
 /*TESTE CARROSSEL*/
-.posters-container{
+
+.posters-container {
+  margin-top: 10px;
   height: 371px;
-  }
-.posters{
+  background-color: #242732;
+}
+.posters {
   width: 80%;
   height: 331px;
-  margin:auto;
-  padding: 20px 45px ;
+  margin: 0 auto;
+  padding: 20px 33px;
 }
 
-.owl-carousel img{
+.owl-carousel img {
   width: 100%;
   height: 100%;
   display: block;
+}
+
+.owl-carousel img,
+.sobre img {
   background: radial-gradient(
     88.79% 88.79% at 6.76% 3.79%,
-    rgba(0, 0, 0, 0.42) 0%,
-    rgba(0, 0, 0, 0.06) 100%
+    rgba(0, 0, 0, 0.42) 0%
   );
   border: 10px solid rgba(0, 0, 0, 0.3);
-  box-sizing: border-box;
-  backdrop-filter: blur(12px);  
+  /* Nota: backdrop-filter não funciona no firefox nem no IE */
   border-radius: 2px;
-   
-
+  z-index: -5;
 }
+
+.legenda {
+  display: none;
+}
+
+.poster-filme:hover .legenda {
+  background: rgba(63, 61, 86, 0.6);
+  backdrop-filter: blur(4px);
+  color: white;
+}
+
 /* SOBRE */
 
 .sobre {
@@ -148,18 +165,7 @@ h2::after {
 .sobre img {
   width: 314px;
   height: 250px;
-  background: radial-gradient(
-    88.79% 88.79% at 6.76% 3.79%,
-    rgba(0, 0, 0, 0.42) 0%,
-    rgba(0, 0, 0, 0.06) 100%
-  );
-  border: 10px solid rgba(0, 0, 0, 0.3);
-  box-sizing: border-box;
-  backdrop-filter: blur(12px);
-  /* Nota: backdrop-filter não funciona no firefox nem no IE */
-  border-radius: 2px;
   margin: 20px 10px;
-  z-index: -2;
 }
 
 .sobre h2::after {
