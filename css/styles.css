@@ -103,6 +103,7 @@ h2::after {
   margin-left: 20px;
 }
 /*POSTERS EM CARROSEL DE JQuery*/
+/*Nota: o carrosel está sobrepondo a navbar quando desce a tela*/
 .posters-container{
   height: 371px;
   display: flex;
