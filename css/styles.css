@@ -4,6 +4,7 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  outline: 0;
 }
 
 body {
@@ -75,15 +76,11 @@ input {
   height: 40px;
   border-radius: 6px;
   background: #242732;
-  color: rgb(255, 255, 255);
-  font-family: Roboto;
-  font-size: 20px;
+  color: #e1e1e1;
+  font-family: Nunito, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  padding: 0 20px;
 }
-
-/* .busca-filmes {
-  display: flex;
-  flex-direction: row;
-} */
 
 h2 {
   text-transform: uppercase;
@@ -136,6 +133,7 @@ h2::after {
   /* Nota: backdrop-filter não funciona no firefox nem no IE */
   border-radius: 2px;
   margin: 20px 10px;
+  z-index: -2;
 }
 
 .sobre h2::after {
@@ -146,10 +144,15 @@ h2::after {
 
 footer {
   background-color: #242732;
-  padding: 30px 100px;
-  display:flex;
+  padding: 30px 100px 20px;
+  display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.redes-sociais h2,
+.contato h2 {
+  margin-bottom: 20px;
 }
 
 .redes-sociais h2::after {
@@ -158,28 +161,34 @@ footer {
 
 .redes-sociais ul li {
   display: inline-block;
-  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .redes-sociais ul li a {
   display: block;
   border: 3px solid #ee1d1d;
-  padding:7px 6px 6px 7px;
 }
+
+.redes-sociais ul li a img {
+  width: 25px;
+  height: 25px;
+  margin: 10px 10px 5px 10px;
+}
+
 .contato h2::after {
   width: 82px;
 }
-.contato ul li{
+.contato ul li {
   color: #e1e1e1;
   list-style-type: disc;
-  font-family:"PT Serif" , serif;
+  font-family: "PT Serif", serif;
   font-size: 14px;
 }
-.contato ul li a{
+.contato ul li a {
   text-decoration: none;
   color: #e1e1e1;
-  
 }
-footer img,.contato{
+footer img,
+.contato {
   margin-left: auto;
 }
