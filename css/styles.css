@@ -147,6 +147,9 @@ h2::after {
 footer {
   background-color: #242732;
   padding: 30px 100px;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .redes-sociais h2::after {
@@ -155,7 +158,7 @@ footer {
 
 .redes-sociais ul li {
   display: inline-block;
-  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .redes-sociais ul li a {
@@ -163,4 +166,20 @@ footer {
   border: 3px solid #ee1d1d;
   padding:7px 6px 6px 7px;
 }
-
+.contato h2::after {
+  width: 82px;
+}
+.contato ul li{
+  color: #e1e1e1;
+  list-style-type: disc;
+  font-family:"PT Serif" , serif;
+  font-size: 14px;
+}
+.contato ul li a{
+  text-decoration: none;
+  color: #e1e1e1;
+  
+}
+footer img,.contato{
+  margin: auto;
+}
