@@ -102,15 +102,18 @@ h2::after {
 .busca-filmes img {
   margin-left: 20px;
 }
-/*TESTE CARROSSEL*/
+/*POSTERS EM CARROSEL DE JQuery*/
 .posters-container{
   height: 371px;
+  display: flex;
+  flex-direction: column;
   }
 .posters{
   width: 80%;
   height: 331px;
   margin:auto;
-  padding: 20px 45px ;
+  padding: 20px 45px 18px 45px ;
+ 
 }
 
 .owl-carousel img{
@@ -129,6 +132,28 @@ h2::after {
    
 
 }
+/*CONFIRA FILMES*/
+.confira-filmes{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  
+}
+.confira-filmes p{
+  padding-bottom: 14px;
+  font-size: 16px;
+}
+.confira-filmes a{
+  border:3px solid #ee1d1d;
+  text-decoration: none;
+  color: #ee1d1d;
+  font-size: 18px;
+  font-family: Nunito, Arial, Helvetica, sans-serif;
+  padding: 4px 38px;
+}
+
+
 /* SOBRE */
 
 .sobre {
