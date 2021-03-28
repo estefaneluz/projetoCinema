@@ -103,6 +103,152 @@ h2::after {
 .busca-filmes img {
   margin-left: 20px;
 }
+/*TELA POPUP DE LOGIN*/
+.tela-popup {
+  display: none;/*inicia invisivel*/
+}
+.tela-popup:target {/*quando clicado surge a tela  */
+  display: flex;
+}
+.tela-popup {
+  text-align: center;
+  backdrop-filter: blur(2px);/*qtd de escurecimento*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 16px; 
+  z-index: 10;
+}
+.tela-popup:target {/*subir essa config*/
+  justify-content: space-around;
+  align-items: center;  
+}
+.tela-popup-area{/*configs da area da tela popup*/
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  left: 0;
+  top: 0;
+  cursor: default;  
+}
+.conteudo {/*estiliza a div da tela*/
+  width: 614px;
+  height: 430px;
+  position: relative;
+  background-color: #E1E1E1;
+  padding: 0;
+  border-radius: 5px;
+  text-transform: uppercase;
+  color:#2F2E41;
+  }
+
+.login{
+  width: 280px;
+  margin: 30px;
+}  
+.login h3{
+  font-family: "PT Serif", serif;
+  font-size: 16px;
+}
+.login input {
+  background: #2F2E41;
+  color: #e1e1e1;
+  font-family: Nunito, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  width: 250px;
+
+} 
+
+.login label{
+  text-transform: uppercase;
+  color: #2F2E41;
+  font-size: 14px;
+  margin-top: 8px;
+  font-family: Nunito, Arial, Helvetica, sans-serif;
+} 
+.label{
+  display: flex;
+  flex-direction: row;
+  margin-left: 26px;
+}  
+.label p{
+  display: none;
+}
+.login .enviar {
+  text-transform: uppercase;
+  color: #e1e1e1;
+  border-radius: 0;
+  font-size: 14px;
+  width:137px;
+  height: 35px;
+  cursor:pointer;
+}
+.login-email{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.senha {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+.senha img{
+  width: 17px;
+  height: 18px;
+  margin-right: 10px;
+}
+
+.fechar {
+  background-color:none;
+  color:#3C3C3C;
+  width: 20px;
+  height: 20px;
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  right: 0;        
+  padding: 3px ;
+  display: inline-block;
+  font-family:Nunito, Arial, Helvetica, sans-serif;
+  font-size: 16px;    
+} 
+.conteudo-container{
+  display: flex;
+  flex-direction: column;
+}
+.img-input{
+  display: flex;
+  flex-direction: row;
+}
+.img-input img{
+  width:290px;
+  height: 432px;
+}
+.login{/*posicionar titulo da popup com as divs de login e senha uma abaixo da outra*/
+  display: flex;
+  flex-direction: column ;
+  align-items: center;
+  padding: 36px 50px 77px 25px;
+  justify-content: space-between;
+}
+.login img{
+  width: 17px;
+  height: 17px;
+  margin-right: 10px;
+}
+
+.login a {
+  text-decoration: none;
+  color: #2F2E41;
+  font-size: 12.5px;
+  cursor: pointer;
+  margin-left: 150px;
+}
 
 /*TESTE CARROSSEL*/
 
@@ -134,6 +280,7 @@ h2::after {
   /* Nota: backdrop-filter não funciona no firefox nem no IE */
   border-radius: 2px;
   z-index: -5;
+  cursor: pointer;
 }
 
 .legenda {
