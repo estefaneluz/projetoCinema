@@ -144,9 +144,10 @@ h2::after {
   text-transform: uppercase;
   color:#2F2E41;
   }
+
 .login{
   width: 280px;
-  margin: 20px;
+  margin: 30px;
 }  
 .login h3{
   font-family: "PT Serif", serif;
@@ -157,14 +158,25 @@ h2::after {
   color: #e1e1e1;
   font-family: Nunito, Arial, Helvetica, sans-serif;
   font-size: 14px;
-  width: 280px;
+  width: 250px;
 
 } 
+
 .login label{
   text-transform: uppercase;
   color: #2F2E41;
   font-size: 14px;
+  margin-top: 8px;
+  font-family: Nunito, Arial, Helvetica, sans-serif;
 } 
+.label{
+  display: flex;
+  flex-direction: row;
+  margin-left: 26px;
+}  
+.label p{
+  display: none;
+}
 .login .enviar {
   text-transform: uppercase;
   color: #e1e1e1;
@@ -172,13 +184,25 @@ h2::after {
   font-size: 14px;
   width:137px;
   height: 35px;
+  cursor:pointer;
 }
-.senha a{
-  text-decoration: none;
-  color: #2F2E41;
-  font-size: 12px;
+.login-email{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.senha {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   
 }
+.senha img{
+  width: 17px;
+  height: 18px;
+  margin-right: 10px;
+}
+
 .fechar {
   background-color:none;
   color:#3C3C3C;
@@ -190,7 +214,7 @@ h2::after {
   right: 0;        
   padding: 3px ;
   display: inline-block;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family:Nunito, Arial, Helvetica, sans-serif;
   font-size: 16px;    
 } 
 .conteudo-container{
@@ -209,16 +233,23 @@ h2::after {
   display: flex;
   flex-direction: column ;
   align-items: center;
-  padding: 36px 45px 77px 27px;
+  padding: 36px 50px 77px 25px;
+  justify-content: space-between;
 }
 .login img{
-  width: 15px;
-  height: 15px;
+  width: 17px;
+  height: 17px;
+  margin-right: 10px;
 }
-.senha img{
-  width: 15px;
-  height: 16px;
+
+.login a {
+  text-decoration: none;
+  color: #2F2E41;
+  font-size: 12.5px;
+  cursor: pointer;
+  margin-left: 150px;
 }
+
 /*TESTE CARROSSEL*/
 
 .posters-container {
@@ -249,6 +280,7 @@ h2::after {
   /* Nota: backdrop-filter não funciona no firefox nem no IE */
   border-radius: 2px;
   z-index: -5;
+  cursor: pointer;
 }
 
 .legenda {
