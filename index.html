@@ -24,13 +24,43 @@
             </a>
             <nav>
                 <ul>
-                    <li><a href="#">LOGIN </a></li>
+                    <li><a href="#tela-popup">LOGIN </a></li>
                     <li><a href="index.html"><img src="./img/engrenagem.svg" alt="icone-login"></a></li>
                 </ul>
             </nav>
         </div>
     </header>
-
+    <!--JANELA MODAL/POPUP: é preciso criar uma div pra ela, que inicia invisivel(display:none) e só surge dps q clica no link onde ela está linkada, o atributo target do css faz isso-->
+    <div class="tela-popup" id="tela-popup" >
+        <a href="#" class="tela-popup-area" aria-label="Fechar"></a>
+        <div class="conteudo">
+            <a href="#" class="fechar" aria-label="Fechar">X</a>
+            <div class="conteudo-container">
+                <div class="img-input"><!--criada pra posicionar o form e a img lado a lado-->
+                    <img src="./img/img-login/imagem-login.svg" alt="">     
+                     <div class="login">
+                        <h3>Conecte-se com a <br>
+                            sua conta</h3>
+                        <form action="/action_page.php" method="POST">
+                            <label >Email</label><br>
+                            <div class="login-email">
+                                <img src="./img/img-login/login-icone.svg" alt="Icone-Login">
+                                <input type="email" id="email" required ><br>
+                            </div> 
+                            <label>Senha</label><br>
+                            
+                            <div class="senha">
+                                <img src="./img/img-login/senha-icone.svg" alt="Icone-Senha">
+                                <input type="password" id="password" required >
+                                <a href="#">Esqueci a senha</a><br><br>
+                            </div>
+                            <input class="enviar" type="submit" value="Enviar">
+                        </form> 
+                     </div>     
+                </div>
+            </div>
+        </div>
+    </div>
     <section class="filmes">
         <div class="busca-filmes">
             <h2>Em cartaz</h2>
