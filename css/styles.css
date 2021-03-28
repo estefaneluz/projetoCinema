@@ -141,9 +141,19 @@ h2::after {
 }
 
 .poster-filme:hover .legenda {
+  display: block;
+}
+
+.legenda {
+  width: 168px;
+  height: 253px;
+  padding: 10px;
   background: rgba(63, 61, 86, 0.6);
   backdrop-filter: blur(4px);
   color: white;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 /*CONFIRA FILMES*/
