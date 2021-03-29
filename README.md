@@ -17,3 +17,4 @@
 - [ ] Página para escolha dos assentos
 - [ ] Página para gerenciamento administrativo
 - [ ] Página com todos os filmes
+- [ ] Responsividade 
