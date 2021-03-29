@@ -7,8 +7,11 @@
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+
+    <!--OWL CSS-->
+    <link rel="stylesheet" href="./css/owl/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl/owl.theme.default.min.css">
     <title>CineM@il</title>
 </head>
 
@@ -21,12 +24,52 @@
             </a>
             <nav>
                 <ul>
-                    <li><a href="#">LOGIN </a></li>
-                    <li><a href="#"><img src="./img/engrenagem.svg" alt="icone-login"></a></li>
+                    <li><a href="#tela-popup">LOGIN </a></li>
+                    <li><a href="index.html"><img src="./img/engrenagem.svg" alt="icone-login"></a></li>
                 </ul>
             </nav>
         </div>
     </header>
+    <!--JANELA MODAL/POPUP: é preciso criar uma div pra ela, que inicia invisivel(display:none) e só surge dps q clica no link onde ela está linkada, o atributo target do css faz isso-->
+    <div class="tela-popup" id="tela-popup">
+        <a href="#" class="tela-popup-area" aria-label="Fechar"></a>
+        <div class="conteudo">
+            <a href="#" class="fechar" aria-label="Fechar">X</a>
+            <div class="conteudo-container">
+                <div class="img-input">
+                    <!--criada pra posicionar o form e a img lado a lado-->
+                    <img src="./img/img-login/imagem-login.svg" alt="">
+                    <div class="login">
+                        <h3>Conecte-se com a <br>
+                            sua conta</h3>
+                        <form action="/action_page.php" method="POST">
+                            <div class="label">
+                                <label>Email</label><br>
+                                <p></p>
+                            </div>
+
+                            <div class="login-email">
+                                <img src="./img/img-login/login-icone.svg" alt="Icone-Login">
+                                <input type="email" id="email" required><br>
+                            </div>
+                            <div class="label">
+                                <label>Senha</label><br>
+                                <p></p>
+                            </div>
+
+                            <div class="senha">
+                                <img src="./img/img-login/senha-icone.svg" alt="Icone-Senha">
+                                <input type="password" id="password" required>
+                            </div>
+                            <a href="#">Esqueci a senha</a><br><br>
+
+                            <input class="enviar" type="submit" value="Enviar">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section class="filmes">
         <div class="busca-filmes">
@@ -36,12 +79,125 @@
         </div>
     </section>
 
+    <section class="posters-container">
+        <div class="posters">
+            <div class="owl-carousel owl-theme">
+                <div class="poster-filme">
+                    <a href="#"><img src="./img/posters/black-window.jpg" alt="Black Window"></a>
+
+                    <div class="legenda">
+                        <p class="label-filme">Nome: <span>Black Widow</span></p>
+                        <p class="label-filme">Gênero: <span>Ação</span></p>
+                        <p class="label-filme">Class. Ind.: <span>+13 anos</span></p>
+                        <div class="bottom">
+                            <p class="label-filme">Estreia</p>
+                            <p class="data">28/03/21</p>
+                        </div>
+                        <div class="bottom">
+                            <p class="label-filme">Último dia</p>
+                            <p class="data">02/05/21</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="poster-filme">
+                    <a href=""><img src="./img/posters/home-alone.jpg" alt="HomeAlone"></a>
+                    <div class="legenda">
+                        <p class="label-filme">Nome: <span>Home Alone</span></p>
+                        <p class="label-filme">Gênero: <span>Comédia</span></p>
+                        <p class="label-filme">Class. Ind.: <span>Livre</span></p>
+                        <div class="bottom">
+                            <p class="label-filme">Estreia</p>
+                            <p class="data">28/03/21</p>
+                        </div>
+                        <div class="bottom">
+                            <p class="label-filme">Último dia</p>
+                            <p class="data">02/05/21</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="poster-filme">
+                    <a><img src="./img/posters/halloween-4-2.jpg" alt="Halloween 4"></a>
+                    <div class="legenda">
+                        <p class="label-filme">Nome: <span>Halloween 4</span></p>
+                        <p class="label-filme">Gênero: <span>Terror</span></p>
+                        <p class="label-filme">Class. Ind.: <span>+16 anos</span></p>
+                        <div class="bottom">
+                            <p class="label-filme">Estreia</p>
+                            <p class="data">28/03/21</p>
+                        </div>
+                        <div class="bottom">
+                            <p class="label-filme">Último dia</p>
+                            <p class="data">02/05/21</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="poster-filme">
+                    <a><img src="img/posters/pulp-fiction-2.jpg" alt="Pulp Fiction"></a>
+                    <div class="legenda">
+                        <p class="label-filme">Nome: <span>Pulp Fiction</span></p>
+                        <p class="label-filme">Gênero: <span>Crime/Drama</span></p>
+                        <p class="label-filme">Class. Ind.: <span>+18 anos</span></p>
+                        <div class="bottom">
+                            <p class="label-filme">Estreia</p>
+                            <p class="data">28/03/21</p>
+                        </div>
+                        <div class="bottom">
+                            <p class="label-filme">Último dia</p>
+                            <p class="data">02/05/21</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="poster-filme">
+                    <a><img src="./img/posters/raya-e-o-último-dragão.jpg" alt="Raya e Último Dragão"></a>
+                    <div class="legenda">
+                        <p class="label-filme">Nome: <span>Raya e o último dragão</span></p>
+                        <p class="label-filme">Gênero: <span>Aventura</span></p>
+                        <p class="label-filme">Class. Ind.: <span>Livre</span></p>
+                        <div class="bottom">
+                            <p class="label-filme">Estreia</p>
+                            <p class="data">28/03/21</p>
+                        </div>
+                        <div class="bottom">
+                            <p class="label-filme">Último dia</p>
+                            <p class="data">02/05/21</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="poster-filme">
+                    <a><img src="./img/posters/monter-hunter.jpg" alt="Monster Hunter"></a>
+                    <div class="legenda">
+                        <p class="label-filme">Nome: <span>Monter Hunter</span></p>
+                        <p class="label-filme">Gênero: <span>Ação</span></p>
+                        <p class="label-filme">Class. Ind.: <span>+13 anos</span></p>
+                        <div class="bottom">
+                            <p class="label-filme">Estreia</p>
+                            <p class="data">28/03/21</p>
+                        </div>
+                        <div class="bottom">
+                            <p class="label-filme">Último dia</p>
+                            <p class="data">02/05/21</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="confira-filmes">
+            <p>Confira todos os filmes</p>
+            <a href="#">FILMES</a>
+        </div>
+    </section>
+
     <section class="sobre">
         <div class="text-sobre">
             <h2>Sobre</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro aliquid earum qui illo. Corporis alias quae dolor placeat pariatur tempora blanditiis aperiam. Qui sit aliquid tempore similique omnis doloribus aspernatur!</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed reprehenderit eum laboriosam repellendus iusto dolorum repellat. </p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi reiciendis aliquam quidem? Possimus exercitationem architecto aspernatur veritatis quos, quis dolore obcaecati officiis nesciunt, officia, ab ullam provident distinctio fuga reprehenderit.</p>
+            <p>O CineMail surgiu a partir da necessidade de levar aos moradores de Dendezeiros um cinema único e inovador na exibição de seus filmes. Os filmes que ficarão em cartaz são escolhidos a partir da indicação dos moradores, ou seja, aqueles que obtiverem mais votos serão exibidos.</p>
+            <p>Foi fundado em Março de 2020 pelos sócios Isael Sobral e Estefane Luz, como uma forma de ajudar e agradecer ao bairro de Dendezeiros pelo enorme carinho que tiveram durante toda sua infância.</p>
+            <p>Além disso, o CineMail possui a mais alta tecnologia de imersão da America Latina.</p>
         </div>
 
         <img src="img/sobre/cinema-1.jpg" alt="">
@@ -68,11 +224,15 @@
             <ul>
                 <li>+55 71 911 111 111</li>
                 <li><a href="mailto:cinemail@email.com">cinemail@email.com</a></li>
-                <li>Avenida Luz Sobral, n° 2, Dendezeiros, Salvador-BA</li>
+                <li>Avenida Luz Sobral, 2 - Dendezeiros, Salvador - BA, 30032-021</li>
             </ul>
         </div>
         <img src="/img/img-footer.svg" alt="pessoas-assistindo">
     </footer>
+    <!--Linkando com arquivo JS-->
+    <script src="./js/owl/jquery.min.js"></script>
+    <script src="./js/owl/owl.carousel.min.js"></script>
+    <script src="./js/owl/setup.js"></script>
 </body>
 
 </html>
