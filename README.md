@@ -9,8 +9,6 @@
 - Estéfane Côrtes
 - Isael Sobral
 
-
-
 #### 🚩 Incrementações futuras
 - [ ] Modal com compra de ingresso 
 - [ ] Página para escolha dos assentos 
