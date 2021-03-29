@@ -374,6 +374,11 @@ h2::after {
   padding-right: 10px;
 }
 
+.text-sobre p {
+  padding-bottom: 0px;
+  text-align: justify;
+}
+
 .sobre img {
   width: 314px;
   height: 250px;
