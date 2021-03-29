@@ -59,9 +59,14 @@ header nav {
 
 header nav ul li a {
   margin-left: 25px;
-  margin-top: 20px;
   color: #e1e1e1;
-  font-weight: bold;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+header nav ul li a img {
+  margin-top: 3px;
 }
 
 /* SEARCH */
@@ -225,7 +230,7 @@ h2::after {
   font-size: 16px;
 }
 
-.img-input img {
+.img-input {
   width: 290px;
   height: 432px;
 }
@@ -265,7 +270,7 @@ h2::after {
 }
 
 .owl-carousel img,
-.sobre img {
+#sobre img {
   background: radial-gradient(
     88.79% 88.79% at 6.76% 3.79%,
     rgba(0, 0, 0, 0.42) 0%
@@ -275,6 +280,11 @@ h2::after {
   border-radius: 2px;
   z-index: -5;
   cursor: pointer;
+}
+
+.poster-filme img {
+  width: 200px;
+  height: 271px;
 }
 
 /* PARTE HOVER DO FILME */
@@ -288,15 +298,15 @@ h2::after {
 }
 
 .legenda {
-  width: 168px;
-  height: 253px;
+  width: 90%;
+  height: 93%;
   padding: 10px;
   background: rgba(63, 61, 86, 0.6);
   backdrop-filter: blur(4px);
   color: white;
   position: absolute;
   top: 10px;
-  left: 10px;
+  left: 9px;
 }
 
 .label-filme,
@@ -311,7 +321,7 @@ h2::after {
   display: flex;
   flex-direction: column;
   float: left;
-  margin-top: 30%;
+  margin-top: 25%;
 }
 
 .bottom .label-filme {
@@ -326,7 +336,7 @@ h2::after {
   height: 26.08px;
   background: #242732;
   justify-content: center;
-  margin-right: 4px;
+  margin-right: 3px;
   font-size: 11px;
   font-weight: normal;
 }
@@ -354,13 +364,12 @@ h2::after {
   text-decoration: none;
   color: #ee1d1d;
   font-size: 18px;
-  font-family: Nunito, Arial, Helvetica, sans-serif;
   padding: 4px 38px;
 }
 
 /* SOBRE */
 
-.sobre {
+#sobre {
   margin: 30px 100px;
   display: flex;
   flex-direction: row;
@@ -379,13 +388,13 @@ h2::after {
   text-align: justify;
 }
 
-.sobre img {
+#sobre img {
   width: 314px;
   height: 250px;
   margin: 20px 10px;
 }
 
-.sobre h2::after {
+#sobre h2::after {
   width: 65px;
 }
 
