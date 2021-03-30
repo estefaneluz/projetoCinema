@@ -109,6 +109,26 @@ h2::after {
 .busca-filmes img {
   margin-left: 20px;
 }
+/*CELULAR*/
+
+/*
+  ATÉ 600PX
+@media(max-width:600px){
+  .busca-filmes input{
+    width: 270px;
+  }
+}*/
+/*TABLET IPAD PRO*/
+/*
+ENTRE 601 E 1024
+@media(min-width:601px) and (max-width:1024px){
+  .busca-filmes input{
+    width: 450px;
+    word-break: normal; quebra de linha
+  }
+  
+}*/
+
 
 /*TELA POPUP DE LOGIN*/
 .tela-popup {
@@ -283,8 +303,10 @@ h2::after {
 }
 
 .poster-filme img {
-  width: 200px;
-  height: 271px;
+  max-width: 200px;
+  max-height: 271px;
+  width: auto;
+  height: auto;
 }
 
 /* PARTE HOVER DO FILME */
