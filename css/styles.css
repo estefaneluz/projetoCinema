@@ -304,6 +304,7 @@ h2::after {
 .confira-filmes p {
   padding-bottom: 14px;
   font-size: 14px;
+  
 }
 
 .confira-filmes a {
@@ -313,6 +314,7 @@ h2::after {
   font-size: 18px;
   font-family: Nunito, Arial, Helvetica, sans-serif;
   padding: 4px 38px;
+  text-transform: uppercase;
 }
 
 /* SOBRE */
