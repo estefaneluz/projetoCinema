@@ -23,7 +23,8 @@ p {
 .container,
 .logo,
 nav ul,
-.busca-filmes {
+.busca-filmes,
+.data {
   display: flex;
   text-align: center;
   align-items: center;
@@ -58,9 +59,14 @@ header nav {
 
 header nav ul li a {
   margin-left: 25px;
-  margin-top: 20px;
   color: #e1e1e1;
-  font-weight: bold;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+header nav ul li a img {
+  margin-top: 3px;
 }
 
 /* SEARCH */
@@ -103,140 +109,133 @@ h2::after {
 .busca-filmes img {
   margin-left: 20px;
 }
+
 /*TELA POPUP DE LOGIN*/
 .tela-popup {
-  display: none;/*inicia invisivel*/
+  display: none; /*inicia invisivel*/
 }
-.tela-popup:target {/*quando clicado surge a tela  */
+.tela-popup:target {
+  /*quando clicado surge a tela  */
   display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .tela-popup {
   text-align: center;
-  backdrop-filter: blur(2px);/*qtd de escurecimento*/
+  backdrop-filter: blur(2px); /*qtd de escurecimento*/
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 16px; 
+  padding: 16px;
   z-index: 10;
 }
-.tela-popup:target {/*subir essa config*/
-  justify-content: space-around;
-  align-items: center;  
-}
-.tela-popup-area{/*configs da area da tela popup*/
+
+.tela-popup-area {
+  /*configs da area da tela popup*/
   position: absolute;
   height: 100px;
   width: 100px;
   left: 0;
   top: 0;
-  cursor: default;  
+  cursor: default;
 }
-.conteudo {/*estiliza a div da tela*/
+.conteudo {
+  /*estiliza a div da tela*/
   width: 614px;
   height: 430px;
   position: relative;
-  background-color: #E1E1E1;
-  padding: 0;
+  background-color: #e1e1e1;
   border-radius: 5px;
   text-transform: uppercase;
-  color:#2F2E41;
-  }
+  color: #2f2e41;
+}
 
-.login{
+.login,
+.conteudo-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.login {
+  /*posicionar titulo da popup com as divs de login e senha uma abaixo da outra*/
   width: 280px;
   margin: 30px;
-}  
-.login h3{
+  align-items: center;
+  padding: 20px 50px 77px 25px;
+  justify-content: space-between;
+}
+
+.login h3 {
   font-family: "PT Serif", serif;
   font-size: 16px;
 }
 .login input {
-  background: #2F2E41;
-  color: #e1e1e1;
-  font-family: Nunito, Arial, Helvetica, sans-serif;
-  font-size: 14px;
   width: 250px;
+}
 
-} 
-
-.login label{
+.login label {
   text-transform: uppercase;
-  color: #2F2E41;
-  font-size: 14px;
+  color: #2f2e41;
+  font-size: 12px;
   margin-top: 8px;
-  font-family: Nunito, Arial, Helvetica, sans-serif;
-} 
-.label{
-  display: flex;
-  flex-direction: row;
+}
+.label {
   margin-left: 26px;
-}  
-.label p{
+}
+.label p {
   display: none;
 }
 .login .enviar {
   text-transform: uppercase;
-  color: #e1e1e1;
   border-radius: 0;
   font-size: 14px;
-  width:137px;
+  width: 137px;
   height: 35px;
-  cursor:pointer;
+  cursor: pointer;
 }
-.login-email{
+
+.img-input,
+.login-email,
+.senha,
+.label {
   display: flex;
   flex-direction: row;
-  align-items: center;
 }
+
+.login-email,
 .senha {
-  display: flex;
-  flex-direction: row;
   align-items: center;
-  
 }
-.senha img{
+
+.senha img {
   width: 17px;
   height: 18px;
   margin-right: 10px;
 }
 
 .fechar {
-  background-color:none;
-  color:#3C3C3C;
+  background-color: none;
+  color: #3c3c3c;
   width: 20px;
   height: 20px;
   text-decoration: none;
   position: absolute;
   top: 0;
-  right: 0;        
-  padding: 3px ;
+  right: 5px;
+  padding-top: 8px;
   display: inline-block;
-  font-family:Nunito, Arial, Helvetica, sans-serif;
-  font-size: 16px;    
-} 
-.conteudo-container{
-  display: flex;
-  flex-direction: column;
+  font-size: 16px;
 }
-.img-input{
-  display: flex;
-  flex-direction: row;
-}
-.img-input img{
-  width:290px;
+
+.img-input {
+  width: 290px;
   height: 432px;
 }
-.login{/*posicionar titulo da popup com as divs de login e senha uma abaixo da outra*/
-  display: flex;
-  flex-direction: column ;
-  align-items: center;
-  padding: 36px 50px 77px 25px;
-  justify-content: space-between;
-}
-.login img{
+
+.login img {
   width: 17px;
   height: 17px;
   margin-right: 10px;
@@ -244,8 +243,8 @@ h2::after {
 
 .login a {
   text-decoration: none;
-  color: #2F2E41;
-  font-size: 12.5px;
+  color: #2f2e41;
+  font-size: 12px;
   cursor: pointer;
   margin-left: 150px;
 }
@@ -271,7 +270,7 @@ h2::after {
 }
 
 .owl-carousel img,
-.sobre img {
+#sobre img {
   background: radial-gradient(
     88.79% 88.79% at 6.76% 3.79%,
     rgba(0, 0, 0, 0.42) 0%
@@ -283,14 +282,68 @@ h2::after {
   cursor: pointer;
 }
 
+.poster-filme img {
+  width: 200px;
+  height: 271px;
+}
+
+/* PARTE HOVER DO FILME */
+
 .legenda {
   display: none;
 }
 
 .poster-filme:hover .legenda {
+  display: block;
+}
+
+.legenda {
+  width: 90%;
+  height: 93%;
+  padding: 10px;
   background: rgba(63, 61, 86, 0.6);
   backdrop-filter: blur(4px);
   color: white;
+  position: absolute;
+  top: 10px;
+  left: 9px;
+}
+
+.label-filme,
+.data {
+  text-transform: uppercase;
+  font-family: Nunito, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  float: left;
+  margin-top: 25%;
+}
+
+.bottom .label-filme {
+  font-size: 10px;
+  padding: 3px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.data {
+  width: 70px;
+  height: 26.08px;
+  background: #242732;
+  justify-content: center;
+  margin-right: 3px;
+  font-size: 11px;
+  font-weight: normal;
+}
+
+.label-filme span {
+  text-transform: none;
+  font-weight: normal;
 }
 
 /*CONFIRA FILMES*/
@@ -312,14 +365,13 @@ h2::after {
   text-decoration: none;
   color: #ee1d1d;
   font-size: 18px;
-  font-family: Nunito, Arial, Helvetica, sans-serif;
   padding: 4px 38px;
   text-transform: uppercase;
 }
 
 /* SOBRE */
 
-.sobre {
+#sobre {
   margin: 30px 100px;
   display: flex;
   flex-direction: row;
@@ -333,13 +385,18 @@ h2::after {
   padding-right: 10px;
 }
 
-.sobre img {
+.text-sobre p {
+  padding-bottom: 0px;
+  text-align: justify;
+}
+
+#sobre img {
   width: 314px;
   height: 250px;
   margin: 20px 10px;
 }
 
-.sobre h2::after {
+#sobre h2::after {
   width: 65px;
 }
 
