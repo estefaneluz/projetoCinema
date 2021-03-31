@@ -398,7 +398,26 @@ ENTRE 601 E 1024
   display: flex;
   flex-direction: row;
 }
-
+/*alterado*/
+@media screen and (max-width:480px){
+  #sobre{
+    display:flex;
+    flex-direction:column;
+    }
+    .text-sobre{
+      width: 325px;
+      margin-right: 80px;
+      height: 250px;
+      
+      
+      
+    }
+    #sobre img{
+      width: 264px;
+      height: 200px;
+      margin: 10px 5px;
+    }
+}
 .text-sobre {
   width: 375px;
   margin-right: 130px;
@@ -424,14 +443,28 @@ ENTRE 601 E 1024
 
 /* Footer */
 
-footer {
+.contatos-container {
   background-color: #242732;
   padding: 30px 100px 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-
+/*tela de celular*/
+/*falta ajustar alinhamento dos elementos filhos*/
+@media screen and (max-width:480px){
+  
+  .contatos-container{
+    display: flex;
+    flex-direction:column;  
+    align-items: center;
+    width: 100%;     
+   
+  }
+   .redes-sociais, .contato, img{
+    margin: 10px 0;
+  }
+}
 .redes-sociais h2,
 .contato h2 {
   margin-bottom: 20px;
@@ -470,7 +503,7 @@ footer {
   text-decoration: none;
   color: #e1e1e1;
 }
-footer img,
+.contatos-container img,
 .contato {
   margin-left: auto;
 }
