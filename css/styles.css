@@ -302,13 +302,25 @@ ENTRE 601 E 1024
   height: 500px;
   background-color: #242732;
 }
+
 .posters {
   width: 80%;
   height: 331px;
   margin: 0 auto;
   padding: 20px 33px;
 }
-
+@media (max-width:480px){
+  .posters {
+    width: 80%;
+    height: 231px;
+    margin: 0 auto;
+    padding: 15px 23px;
+  }
+  .confira-filmes{
+    margin-bottom: 10px;
+  }
+  /*ajeitar a margem bottom de posters aqui*/
+}
 .owl-carousel img {
   width: 100%;
   height: 100%;
