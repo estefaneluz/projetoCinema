@@ -172,7 +172,22 @@ ENTRE 601 E 1024
   text-transform: uppercase;
   color: #2f2e41;
 }
-
+@media(max-width:480px){
+  .conteudo{/*tamanho da janela*/
+    width: 350px;
+    height:  350px;
+    margin: auto;
+  }
+  .img-input{/*tamanho da div de container da janela*/
+      width: 240px;
+      height: 392px;
+    
+  }
+  .img-input > img{
+    display: none;
+  }
+  
+}
 .login,
 .conteudo-container {
   display: flex;
