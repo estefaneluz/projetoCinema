@@ -399,25 +399,24 @@ ENTRE 601 E 1024
   flex-direction: row;
 }
 /*alterado*/
-@media screen and (max-width:480px){
+@media (max-width:480px){
   #sobre{
     display:flex;
     flex-direction:column;
-    }
-    .text-sobre{
-      width: 325px;
-      margin-right: 80px;
-      height: 250px;
-      
-      
-      
-    }
-    #sobre img{
-      width: 264px;
-      height: 200px;
-      margin: 10px 5px;
-    }
+    
 }
+  .text-sobre{/*-50px do tamanho e margem original*/
+    width: 325px; 
+    margin-right: 80px;
+    height: 250px;     
+}
+  #sobre img{
+    width: 264px;
+    height: 200px;
+    margin: 10px 5px;
+}
+   
+}/*fim do @media*/
 .text-sobre {
   width: 375px;
   margin-right: 130px;
@@ -442,27 +441,33 @@ ENTRE 601 E 1024
 }
 
 /* Footer */
-
+footer{
+  width: 100%; /*ocupar toda a tela*/
+}
 .contatos-container {
   background-color: #242732;
   padding: 30px 100px 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  width:100%;/*o container ocupar todo o footer*/
+ 
 }
 /*tela de celular*/
 /*falta ajustar alinhamento dos elementos filhos*/
-@media screen and (max-width:480px){
+@media (max-width:480px){
   
   .contatos-container{
     display: flex;
-    flex-direction:column;  
-    align-items: center;
-    width: 100%;     
-   
-  }
-   .redes-sociais, .contato, img{
-    margin: 10px 0;
+    flex-direction: column;  
+    align-items: center;    
+    width: 100%;
+    padding: 15px 50px 10px ;
+   /*adicionados*/
+  }  
+  
+   .redes-sociais, .contato, .contatos-container img{
+    margin: 10px ;
   }
 }
 .redes-sociais h2,
@@ -477,6 +482,7 @@ ENTRE 601 E 1024
 .redes-sociais ul li {
   display: inline-block;
   margin-right: 10px;
+  
 }
 
 .redes-sociais ul li a {
