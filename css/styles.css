@@ -109,6 +109,17 @@ h2::after {
 .busca-filmes img {
   margin-left: 20px;
 }
+@media(max-width:480px){
+  
+  .filmes input{
+    width: 260px;
+    margin-left: 19px;
+  }
+  .filmes {
+    margin: 100px 20px 0 50px;
+  }
+  
+}
 /*CELULAR*/
 
 /*
