@@ -6,7 +6,7 @@ $('.owl-carousel').owlCarousel({
         0:{
             items:1
         },
-        600:{ /*Até 600px na tela exibe 3 imagens*/ 
+        600:{ /* +600px na tela exibe 3 imagens*/ 
             items:3
         },
         1000:{
