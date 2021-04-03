@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <link rel="stylesheet" type="text/css" href="./css/new-style.css">
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
@@ -18,87 +19,50 @@
 
 <body>
     <header>
-        <div class="container">
-            <a href="index.html" class="logo">
-                <img src="img/logo.svg" alt="Logo do CineM@ail">
-                <h1>CineM@il</h1>
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                    <li><a href="#tela-popup">Login </a></li>
-                    <li><a href="index.html"><img src="./img/engrenagem.svg" alt="icone-login"></a></li>
-                </ul>
-            </nav>
-        </div>
+        <a href="index.html" class="logo">
+            <img src="img/logo.svg" alt="Logo do CineM@ail">
+            <h1>CineM@il</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="#tela-popup">Login </a></li>
+                <li><a href="index.html"><img src="./img/engrenagem.svg" alt="icone-login"></a></li>
+            </ul>
+        </nav>
     </header>
-    <!--JANELA MODAL/POPUP: é preciso criar uma div pra ela, que inicia invisivel(display:none) e só surge dps q clica no link onde ela está linkada, o atributo target do css faz isso-->
-    <div class="tela-popup" id="tela-popup">
-        <a href="#" class="tela-popup-area" aria-label="Fechar"></a>
-        <div class="conteudo">
-            <a href="#" class="fechar" aria-label="Fechar">X</a>
-            <div class="conteudo-container">
-                <div class="img-input">
-                    <!--criada pra posicionar o form e a img lado a lado-->
-                    <img src="./img/img-login/login.jpg" alt="Imagem de um cinema vazio">
-                    <div class="login">
-                        <h3>Conecte-se com a <br>
-                            sua conta</h3>
-                        <form action="/action_page.php" method="POST">
-                            <div class="label">
-                                <label>Email</label><br>
-                                <p></p>
-                            </div>
 
-                            <div class="login-email">
-                                <img src="./img/img-login/login-icone.svg" alt="Icone-Login">
-                                <input type="email" id="email" required><br>
-                            </div>
-                            <div class="label">
-                                <label>Senha</label><br>
-                                <p></p>
-                            </div>
-
-                            <div class="senha">
-                                <img src="./img/img-login/senha-icone.svg" alt="Icone-Senha">
-                                <input type="password" id="password" required>
-                            </div>
-                            <a href="#">Esqueci a senha</a><br><br>
-
-                            <input class="enviar" type="submit" value="Enviar">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <section class="filmes">
-        <div class="busca-filmes">
-            <h2>Em cartaz</h2>
+    <div class="busca-filmes">
+        <div id="search">
             <input type="text">
             <a href="#"><img src="img/search.svg" alt="icone-pesquisa"> </a>
         </div>
-    </section>
+    </div>
 
     <section class="posters-container">
+        <h2>Em cartaz</h2>
         <div class="posters">
             <div class="owl-carousel owl-theme">
                 <div class="poster-filme">
                     <a href="#"><img src="./img/posters/black-window.jpg" alt="Black Window"></a>
-
                     <div class="legenda">
-                        <p class="label-filme">Nome: <span>Black Widow</span></p>
-                        <p class="label-filme">Gênero: <span>Ação</span></p>
-                        <p class="label-filme">Class. Ind.: <span>+13 anos</span></p>
-                        <div class="bottom">
-                            <p class="label-filme">Estreia</p>
-                            <p class="data">28/03/21</p>
+                        <div class="descricao">
+                            <p class="label-filme">Nome: <span>Black Widow</span><br>
+                                Gênero: <span>Ação</span><br>
+                                Class. Ind.: <span>+13 anos</span>
+                            </p>
                         </div>
+
                         <div class="bottom">
-                            <p class="label-filme">Último dia</p>
-                            <p class="data">02/05/21</p>
+                            <div class="bloco">
+                                <p class="label-filme">Estreia</p>
+                                <p class="data">28/03/21</p>
+                            </div>
+                            <div class="bloco">
+                                <p class="label-filme">Último dia</p>
+                                <p class="data">02/05/21</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -106,16 +70,22 @@
                 <div class="poster-filme">
                     <a href=""><img src="./img/posters/home-alone.jpg" alt="HomeAlone"></a>
                     <div class="legenda">
-                        <p class="label-filme">Nome: <span>Home Alone</span></p>
-                        <p class="label-filme">Gênero: <span>Comédia</span></p>
-                        <p class="label-filme">Class. Ind.: <span>Livre</span></p>
-                        <div class="bottom">
-                            <p class="label-filme">Estreia</p>
-                            <p class="data">28/03/21</p>
+                        <div class="descricao">
+                            <p class="label-filme">Nome: <span>Home Alone</span><br>
+                                Gênero: <span>Comédia</span><br>
+                                Class. Ind.: <span>Livre</span>
+                            </p>
                         </div>
+
                         <div class="bottom">
-                            <p class="label-filme">Último dia</p>
-                            <p class="data">02/05/21</p>
+                            <div class="bloco">
+                                <p class="label-filme">Estreia</p>
+                                <p class="data">28/03/21</p>
+                            </div>
+                            <div class="bloco">
+                                <p class="label-filme">Último dia</p>
+                                <p class="data">02/05/21</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -123,77 +93,103 @@
                 <div class="poster-filme">
                     <a><img src="./img/posters/halloween-4-2.jpg" alt="Halloween 4"></a>
                     <div class="legenda">
-                        <p class="label-filme">Nome: <span>Halloween 4</span></p>
-                        <p class="label-filme">Gênero: <span>Terror</span></p>
-                        <p class="label-filme">Class. Ind.: <span>+16 anos</span></p>
-                        <div class="bottom">
-                            <p class="label-filme">Estreia</p>
-                            <p class="data">28/03/21</p>
+                        <div class="descricao">
+                            <p class="label-filme">Nome: <span>Halloween 4</span><br>
+                                Gênero: <span>Terror</span><br>
+                                Class. Ind.: <span>+16 anos</span>
+                            </p>
                         </div>
+
                         <div class="bottom">
-                            <p class="label-filme">Último dia</p>
-                            <p class="data">02/05/21</p>
+                            <div class="bloco">
+                                <p class="label-filme">Estreia</p>
+                                <p class="data">28/03/21</p>
+                            </div>
+                            <div class="bloco">
+                                <p class="label-filme">Último dia</p>
+                                <p class="data">02/05/21</p>
+                            </div>
                         </div>
+
                     </div>
                 </div>
 
                 <div class="poster-filme">
                     <a><img src="img/posters/pulp-fiction-2.jpg" alt="Pulp Fiction"></a>
                     <div class="legenda">
-                        <p class="label-filme">Nome: <span>Pulp Fiction</span></p>
-                        <p class="label-filme">Gênero: <span>Crime/Drama</span></p>
-                        <p class="label-filme">Class. Ind.: <span>+18 anos</span></p>
-                        <div class="bottom">
-                            <p class="label-filme">Estreia</p>
-                            <p class="data">28/03/21</p>
+                        <div class="descricao">
+                            <p class="label-filme">Nome: <span>Pulp Fiction</span><br>
+                                Gênero: <span>Crime/Drama</span><br>
+                                Class. Ind.: <span>+18 anos</span>
+                            </p>
                         </div>
+
                         <div class="bottom">
-                            <p class="label-filme">Último dia</p>
-                            <p class="data">02/05/21</p>
+                            <div class="bloco">
+                                <p class="label-filme">Estreia</p>
+                                <p class="data">28/03/21</p>
+                            </div>
+                            <div class="bloco">
+                                <p class="label-filme">Último dia</p>
+                                <p class="data">02/05/21</p>
+                            </div>
                         </div>
+
                     </div>
                 </div>
 
                 <div class="poster-filme">
                     <a><img src="./img/posters/raya-e-o-último-dragão.jpg" alt="Raya e Último Dragão"></a>
                     <div class="legenda">
-                        <p class="label-filme">Nome: <span>Raya e o último dragão</span></p>
-                        <p class="label-filme">Gênero: <span>Aventura</span></p>
-                        <p class="label-filme">Class. Ind.: <span>Livre</span></p>
-                        <div class="bottom">
-                            <p class="label-filme">Estreia</p>
-                            <p class="data">28/03/21</p>
+                        <div class="descricao">
+                            <p class="label-filme">Nome: <span>Raya e o último dragão</span><br>
+                                Gênero: <span>Aventura</span><br>
+                                Class. Ind.: <span>Livre</span>
+                            </p>
                         </div>
+
                         <div class="bottom">
-                            <p class="label-filme">Último dia</p>
-                            <p class="data">02/05/21</p>
+                            <div class="bloco">
+                                <p class="label-filme">Estreia</p>
+                                <p class="data">28/03/21</p>
+                            </div>
+                            <div class="bloco">
+                                <p class="label-filme">Último dia</p>
+                                <p class="data">02/05/21</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="poster-filme">
                     <a><img src="./img/posters/monter-hunter.jpg" alt="Monster Hunter"></a>
                     <div class="legenda">
-                        <p class="label-filme">Nome: <span>Monter Hunter</span></p>
-                        <p class="label-filme">Gênero: <span>Ação</span></p>
-                        <p class="label-filme">Class. Ind.: <span>+13 anos</span></p>
-                        <div class="bottom">
-                            <p class="label-filme">Estreia</p>
-                            <p class="data">28/03/21</p>
+                        <div class="descricao">
+                            <p class="label-filme">Nome: <span>Monter Hunter</span><br>
+                                Gênero: <span>Ação</span><br>
+                                Class. Ind.: <span>+13 anos</span>
+                            </p>
                         </div>
+
                         <div class="bottom">
-                            <p class="label-filme">Último dia</p>
-                            <p class="data">02/05/21</p>
+                            <div class="bloco">
+                                <p class="label-filme">Estreia</p>
+                                <p class="data">28/03/21</p>
+                            </div>
+                            <div class="bloco">
+                                <p class="label-filme">Último dia</p>
+                                <p class="data">02/05/21</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="confira-filmes">
             <p>Confira todos os filmes</p>
             <a href="#">Filmes</a>
         </div>
     </section>
+
 
     <section id="sobre">
         <div class="text-sobre">
@@ -207,8 +203,9 @@
         <img src="img/sobre/cinema-2.jpg" alt="Visão de trás de uma sala de cinema lotada">
     </section>
 
-    <footer id="contato">
-       <div class="contatos-container">
+
+    <footer>
+        <div class="contatos-container">
             <div class='redes-sociais'>
                 <h2>Redes Sociais</h2>
                 <ul>
@@ -228,11 +225,11 @@
                 <ul>
                     <li>+55 71 911 111 111</li>
                     <li><a href="mailto:cinemail@email.com">cinemail@email.com</a></li>
-                    <li>Avenida Luz Sobral, 2 - Dendezeiros, Salvador - BA, 30032-021</li>
+                    <li>Av. Luz Sobral, 2 - Dendezeiros, SSA - BA</li>
                 </ul>
             </div>
             <img src="./img/img-footer.svg" alt="pessoas-assistindo">
-       </div>
+        </div>
     </footer>
     <!--Linkando com arquivo JS-->
     <script src="./js/owl/jquery.min.js"></script>
