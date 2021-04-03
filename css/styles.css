@@ -64,10 +64,17 @@ header nav ul li a {
   text-transform: uppercase;
   font-size: 14px;
 }
+header nav ul li a:hover{
+  color: #ffbf54;
+}
+
 
 header nav ul li a img {
   margin-top: 3px;
 }
+header nav ul li a img:hover{
+  color: #ffbf54;
+} 
 
 /* SEARCH */
 
