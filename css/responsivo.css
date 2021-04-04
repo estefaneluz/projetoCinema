@@ -2,6 +2,27 @@
   display: none;
 }
 
+@media (min-width: 1000px) and (max-width: 1275px) {
+  .label-filme,
+  .data {
+    font-size: 0.58em;
+    line-height: 1.5em;
+  }
+
+  .bottom {
+    flex-direction: column;
+  }
+  .bloco {
+    margin-top: 0;
+    padding-top: 5px;
+  }
+
+  .poster-filme:hover .legenda {
+    top: 7px;
+    left: 7px;
+  }
+}
+
 @media (min-width: 821px) and (max-width: 1190px) {
   .text-sobre {
     width: 400px;
@@ -161,8 +182,8 @@
     height: 100%;
     padding: 0.5em;
     justify-content: flex-start;
-    background: rgba(224, 223, 230, 0.6);
-    /* background: #e1e1e1; */
+    /* background: #2a2c3cad; */
+    background: #e1e1e1ab;
     backdrop-filter: blur(4px);
   }
 
@@ -172,7 +193,7 @@
 
   .label-filme,
   .data {
-    font-size: 0.7em;
+    font-size: 0.58em;
     line-height: 1.6em;
     color: black;
   }
@@ -227,10 +248,14 @@
     min-width: 70%;
   }
 
+  /* LEGENDA FILME*/
+
   .label-filme,
   .data {
     font-size: 0.56em;
     line-height: 1.6em;
-    color: black;
+  }
+  .poster-filme:hover .legenda {
+    overflow: scroll;
   }
 }
