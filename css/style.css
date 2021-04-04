@@ -197,17 +197,15 @@ header .btn:hover {
 /* SEARCH */
 
 .busca-filmes {
-  align-self: center;
-  width: 74vw;
-  margin: 100px 5vw 0px 5vw;
+  background-color: #2a2c3c;
+  margin: 100px 5vw 10px 5vw;
   display: flex;
-  justify-content: space-between;
-  float: left;
+  justify-content: center;
 }
 
 input {
   border-style: none;
-  border-color: rgb(48, 48, 71);
+  box-shadow: inset 0px 2px 3px rgba(23, 22, 37, 0.42);
   width: 45vw;
   max-width: 60vw;
   height: 40px;
@@ -221,7 +219,6 @@ input {
 }
 
 #search {
-  margin-left: 10vw;
   display: flex;
 }
 
