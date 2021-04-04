@@ -53,7 +53,8 @@ header nav ul,
   margin-top: 5px;
 }
 
-header nav ul li a {
+header nav ul li a,
+header .btn {
   margin-left: 25px;
   color: #e1e1e1;
   font-weight: 600;
@@ -66,8 +67,131 @@ header nav ul li a img {
   fill: #e1e1e1;
 }
 
-header nav ul li a:hover {
+header nav ul li a:hover,
+header .btn:hover {
   color: #ffbf54;
+}
+
+header .btn:hover {
+  cursor: pointer;
+}
+
+/* MODAL LOGIN */
+
+.modal {
+  display: none;
+  width: 614px;
+  height: 430px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 23%);
+  z-index: 12;
+  position: fixed;
+  animation: animate;
+  animation-duration: 800ms;
+}
+
+.modal-container {
+  background-color: #e1e1e1;
+  border-radius: 0px 5px 5px 0px;
+  text-transform: uppercase;
+  color: #2f2e41;
+  width: 307px;
+  height: 430px;
+  padding: 10px 10px 10px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes animate {
+  from {
+    opacity: 1;
+  }
+  from {
+    opacity: 0;
+  }
+}
+
+#blur.active {
+  filter: blur(2px);
+  pointer-events: none;
+  user-select: none;
+  opacity: 60%;
+}
+
+.modal-bg {
+  width: 307px;
+  height: 430px;
+}
+
+.fechar {
+  width: 25px;
+  height: 25px;
+  margin-left: auto;
+}
+
+.fechar:hover {
+  cursor: pointer;
+}
+
+.modal-container h3 {
+  width: 70%;
+  text-align: center;
+  margin-left: 30px;
+  margin-top: 20px;
+  font-family: "PT Serif", serif;
+  font-size: 1.3em;
+}
+
+.input-container {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.input-container img {
+  margin-top: 15px;
+  margin-right: 10px;
+  width: 17px;
+  height: 17px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8em;
+}
+
+.input input {
+  width: 230px;
+}
+
+#forget {
+  font-size: 0.7em;
+  margin: 7px 23px 0 auto;
+  color: #2a2c3c;
+}
+
+#forget:hover {
+  color: #d83b40;
+  font-weight: bold;
+}
+
+.enviar {
+  text-transform: uppercase;
+  border-radius: 0;
+  font-size: 14px;
+  width: 137px;
+  height: 35px;
+  cursor: pointer;
+  border: none;
+  background-color: #2a2c3c;
+  color: white;
+  margin: 20px auto;
+}
+
+.enviar:hover {
+  background-color: #d83b40;
 }
 
 /* SEARCH */
@@ -196,12 +320,10 @@ h2::after {
   backdrop-filter: blur(4px);
   color: white;
   position: absolute;
-  top: 5px;
-  left: 5px;
-  right: 5px;
-  bottom: 5px;
-  margin: auto;
-  max-width: 181px;
+  top: 8px;
+  left: 9px;
+  max-width: 180px;
+  max-height: 260px;
 }
 
 .label-filme,

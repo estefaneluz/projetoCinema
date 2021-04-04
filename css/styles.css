@@ -179,6 +179,7 @@ ENTRE 601 E 1024
 }
 .conteudo {
   /*estiliza a div da tela*/
+  display: none;
   width: 614px;
   height: 430px;
   position: relative;
@@ -187,6 +188,7 @@ ENTRE 601 E 1024
   text-transform: uppercase;
   color: #2f2e41;
 }
+
 @media (max-width: 480px) {
   .conteudo {
     /*tamanho da janela*/

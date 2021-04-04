@@ -26,212 +26,241 @@
         <nav>
             <ul>
                 <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#contato">Contato</a></li>
-                <li><a href="#tela-popup">Login </a></li>
+                <li><a href="#contatos">Contato</a></li>
+                <li onclick="action()" class="btn"> Login </li>
                 <li><a href="index.html"><img src="./img/engrenagem.svg" alt="icone-login"></a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="busca-filmes">
-        <div id="search">
-            <input type="text">
-            <a href="#"><img src="img/search.svg" alt="icone-pesquisa"> </a>
+    <div class="modal">
+        <img id="modal-bg" src="./img/img-login/imagem-login.png" alt="Imagem de um cinema vazio">
+        <div class="modal-container">
+            <img onclick="fechar()" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
+            <h3>Conecte-se com a sua conta</h3>
+            <div class="input-container">
+                <img src="./img/img-login/login-icone.svg" alt="Icone-Login">
+                <div class="input">
+                    <label>Email</label>
+                    <input type="email" id="email" required>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <img src="./img/img-login/senha-icone.svg" alt="Icone-Login">
+                <div class="input">
+                    <label>Senha</label>
+                    <input type="password" id="password" required>
+                </div>
+            </div>
+            <a href="#" id="forget">Esqueci a senha</a>
+            <button class="enviar" type="submit" value="Enviar">Enviar</button>
+
         </div>
     </div>
 
-    <section class="posters-container">
-        <h2>Em cartaz</h2>
-        <div class="posters">
-            <div class="owl-carousel owl-theme">
-                <div class="poster-filme">
-                    <a href="#"><img src="./img/posters/black-window.jpg" alt="Black Window"></a>
-                    <div class="legenda">
-                        <div class="descricao">
-                            <p class="label-filme">Nome: <span>Black Widow</span><br>
-                                Gênero: <span>Ação</span><br>
-                                Class. Ind.: <span>+13 anos</span>
-                            </p>
-                        </div>
+    <div id="blur">
+        <div class="busca-filmes">
+            <div id="search">
+                <input type="text">
+                <a href="#"><img src="img/search.svg" alt="icone-pesquisa"> </a>
+            </div>
+        </div>
 
-                        <div class="bottom">
-                            <div class="bloco">
-                                <p class="label-filme">Estreia</p>
-                                <p class="data">28/03/21</p>
+        <section class="posters-container">
+            <h2>Em cartaz</h2>
+            <div class="posters">
+                <div class="owl-carousel owl-theme">
+                    <div class="poster-filme">
+                        <a href="#"><img src="./img/posters/black-window.jpg" alt="Black Window"></a>
+                        <div class="legenda">
+                            <div class="descricao">
+                                <p class="label-filme">Nome: <span>Black Widow</span><br>
+                                    Gênero: <span>Ação</span><br>
+                                    Class. Ind.: <span>+13 anos</span>
+                                </p>
                             </div>
-                            <div class="bloco">
-                                <p class="label-filme">Último dia</p>
-                                <p class="data">02/05/21</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="poster-filme">
-                    <a href=""><img src="./img/posters/home-alone.jpg" alt="HomeAlone"></a>
-                    <div class="legenda">
-                        <div class="descricao">
-                            <p class="label-filme">Nome: <span>Home Alone</span><br>
-                                Gênero: <span>Comédia</span><br>
-                                Class. Ind.: <span>Livre</span>
-                            </p>
-                        </div>
-
-                        <div class="bottom">
-                            <div class="bloco">
-                                <p class="label-filme">Estreia</p>
-                                <p class="data">28/03/21</p>
-                            </div>
-                            <div class="bloco">
-                                <p class="label-filme">Último dia</p>
-                                <p class="data">02/05/21</p>
+                            <div class="bottom">
+                                <div class="bloco">
+                                    <p class="label-filme">Estreia</p>
+                                    <p class="data">28/03/21</p>
+                                </div>
+                                <div class="bloco">
+                                    <p class="label-filme">Último dia</p>
+                                    <p class="data">02/05/21</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="poster-filme">
-                    <a><img src="./img/posters/halloween-4-2.jpg" alt="Halloween 4"></a>
-                    <div class="legenda">
-                        <div class="descricao">
-                            <p class="label-filme">Nome: <span>Halloween 4</span><br>
-                                Gênero: <span>Terror</span><br>
-                                Class. Ind.: <span>+16 anos</span>
-                            </p>
-                        </div>
-
-                        <div class="bottom">
-                            <div class="bloco">
-                                <p class="label-filme">Estreia</p>
-                                <p class="data">28/03/21</p>
+                    <div class="poster-filme">
+                        <a href=""><img src="./img/posters/home-alone.jpg" alt="HomeAlone"></a>
+                        <div class="legenda">
+                            <div class="descricao">
+                                <p class="label-filme">Nome: <span>Home Alone</span><br>
+                                    Gênero: <span>Comédia</span><br>
+                                    Class. Ind.: <span>Livre</span>
+                                </p>
                             </div>
-                            <div class="bloco">
-                                <p class="label-filme">Último dia</p>
-                                <p class="data">02/05/21</p>
-                            </div>
-                        </div>
 
-                    </div>
-                </div>
-
-                <div class="poster-filme">
-                    <a><img src="img/posters/pulp-fiction-2.jpg" alt="Pulp Fiction"></a>
-                    <div class="legenda">
-                        <div class="descricao">
-                            <p class="label-filme">Nome: <span>Pulp Fiction</span><br>
-                                Gênero: <span>Crime/Drama</span><br>
-                                Class. Ind.: <span>+18 anos</span>
-                            </p>
-                        </div>
-
-                        <div class="bottom">
-                            <div class="bloco">
-                                <p class="label-filme">Estreia</p>
-                                <p class="data">28/03/21</p>
-                            </div>
-                            <div class="bloco">
-                                <p class="label-filme">Último dia</p>
-                                <p class="data">02/05/21</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="poster-filme">
-                    <a><img src="./img/posters/raya-e-o-último-dragão.jpg" alt="Raya e Último Dragão"></a>
-                    <div class="legenda">
-                        <div class="descricao">
-                            <p class="label-filme">Nome: <span>Raya e o último dragão</span><br>
-                                Gênero: <span>Aventura</span><br>
-                                Class. Ind.: <span>Livre</span>
-                            </p>
-                        </div>
-
-                        <div class="bottom">
-                            <div class="bloco">
-                                <p class="label-filme">Estreia</p>
-                                <p class="data">28/03/21</p>
-                            </div>
-                            <div class="bloco">
-                                <p class="label-filme">Último dia</p>
-                                <p class="data">02/05/21</p>
+                            <div class="bottom">
+                                <div class="bloco">
+                                    <p class="label-filme">Estreia</p>
+                                    <p class="data">28/03/21</p>
+                                </div>
+                                <div class="bloco">
+                                    <p class="label-filme">Último dia</p>
+                                    <p class="data">02/05/21</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="poster-filme">
-                    <a><img src="./img/posters/monter-hunter.jpg" alt="Monster Hunter"></a>
-                    <div class="legenda">
-                        <div class="descricao">
-                            <p class="label-filme">Nome: <span>Monter Hunter</span><br>
-                                Gênero: <span>Ação</span><br>
-                                Class. Ind.: <span>+13 anos</span>
-                            </p>
-                        </div>
 
-                        <div class="bottom">
-                            <div class="bloco">
-                                <p class="label-filme">Estreia</p>
-                                <p class="data">28/03/21</p>
+                    <div class="poster-filme">
+                        <a><img src="./img/posters/halloween-4-2.jpg" alt="Halloween 4"></a>
+                        <div class="legenda">
+                            <div class="descricao">
+                                <p class="label-filme">Nome: <span>Halloween 4</span><br>
+                                    Gênero: <span>Terror</span><br>
+                                    Class. Ind.: <span>+16 anos</span>
+                                </p>
                             </div>
-                            <div class="bloco">
-                                <p class="label-filme">Último dia</p>
-                                <p class="data">02/05/21</p>
+
+                            <div class="bottom">
+                                <div class="bloco">
+                                    <p class="label-filme">Estreia</p>
+                                    <p class="data">28/03/21</p>
+                                </div>
+                                <div class="bloco">
+                                    <p class="label-filme">Último dia</p>
+                                    <p class="data">02/05/21</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="poster-filme">
+                        <a><img src="img/posters/pulp-fiction-2.jpg" alt="Pulp Fiction"></a>
+                        <div class="legenda">
+                            <div class="descricao">
+                                <p class="label-filme">Nome: <span>Pulp Fiction</span><br>
+                                    Gênero: <span>Crime/Drama</span><br>
+                                    Class. Ind.: <span>+18 anos</span>
+                                </p>
+                            </div>
+
+                            <div class="bottom">
+                                <div class="bloco">
+                                    <p class="label-filme">Estreia</p>
+                                    <p class="data">28/03/21</p>
+                                </div>
+                                <div class="bloco">
+                                    <p class="label-filme">Último dia</p>
+                                    <p class="data">02/05/21</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="poster-filme">
+                        <a><img src="./img/posters/raya-e-o-último-dragão.jpg" alt="Raya e Último Dragão"></a>
+                        <div class="legenda">
+                            <div class="descricao">
+                                <p class="label-filme">Nome: <span>Raya e o último dragão</span><br>
+                                    Gênero: <span>Aventura</span><br>
+                                    Class. Ind.: <span>Livre</span>
+                                </p>
+                            </div>
+
+                            <div class="bottom">
+                                <div class="bloco">
+                                    <p class="label-filme">Estreia</p>
+                                    <p class="data">28/03/21</p>
+                                </div>
+                                <div class="bloco">
+                                    <p class="label-filme">Último dia</p>
+                                    <p class="data">02/05/21</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="poster-filme">
+                        <a><img src="./img/posters/monter-hunter.jpg" alt="Monster Hunter"></a>
+                        <div class="legenda">
+                            <div class="descricao">
+                                <p class="label-filme">Nome: <span>Monter Hunter</span><br>
+                                    Gênero: <span>Ação</span><br>
+                                    Class. Ind.: <span>+13 anos</span>
+                                </p>
+                            </div>
+
+                            <div class="bottom">
+                                <div class="bloco">
+                                    <p class="label-filme">Estreia</p>
+                                    <p class="data">28/03/21</p>
+                                </div>
+                                <div class="bloco">
+                                    <p class="label-filme">Último dia</p>
+                                    <p class="data">02/05/21</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="confira-filmes">
-            <p>Confira todos os filmes</p>
-            <a href="#">Filmes</a>
-        </div>
-    </section>
-
-
-    <section id="sobre">
-        <div class="text-sobre">
-            <h2>Sobre</h2>
-            <p>O CineMail surgiu a partir da necessidade de levar aos moradores de Dendezeiros um cinema único e inovador na exibição de seus filmes. Os filmes que ficarão em cartaz são escolhidos a partir da indicação dos moradores, ou seja, aqueles que obtiverem mais votos serão exibidos.</p>
-            <p>Foi fundado em Março de 2020 pelos sócios Isael Sobral e Estefane Luz, como uma forma de ajudar e agradecer ao bairro de Dendezeiros pelo enorme carinho que tiveram durante toda sua infância.</p>
-            <p>Além disso, o CineMail possui a mais alta tecnologia de imersão da America Latina.</p>
-        </div>
-
-        <img src="img/sobre/cinema-1.jpg" alt="Visão frontal de várias pessoas em uma sala de cinema">
-        <img src="img/sobre/cinema-2.jpg" alt="Visão de trás de uma sala de cinema lotada">
-    </section>
-
-
-    <footer>
-        <div class="contatos-container">
-            <div class='redes-sociais'>
-                <h2>Redes Sociais</h2>
-                <ul>
-                    <li>
-                        <a href="facebook.com" target="_blank"><img src="./img/redes-sociais/facebook.svg" alt="Facebook CineMail"></a>
-                    </li>
-                    <li>
-                        <a href="instagram.com" target="_blank"><img src="./img/redes-sociais/instagram.svg" alt="Instagram CineMail"></a>
-                    </li>
-                    <li>
-                        <a href="twitter.com" target="_blank"><img src="./img/redes-sociais/twitter.svg" alt="Twitter CineMail"></a>
-                    </li>
-                </ul>
+            <div class="confira-filmes">
+                <p>Confira todos os filmes</p>
+                <a href="#">Filmes</a>
             </div>
-            <div class="contato">
-                <h2>Contato</h2>
-                <ul>
-                    <li>+55 71 911 111 111</li>
-                    <li><a href="mailto:cinemail@email.com">cinemail@email.com</a></li>
-                    <li>Av. Luz Sobral, 2 - Dendezeiros, SSA - BA</li>
-                </ul>
+        </section>
+
+
+        <section id="sobre">
+            <div class="text-sobre">
+                <h2>Sobre</h2>
+                <p>O CineMail surgiu a partir da necessidade de levar aos moradores de Dendezeiros um cinema único e inovador na exibição de seus filmes. Os filmes que ficarão em cartaz são escolhidos a partir da indicação dos moradores, ou seja, aqueles que obtiverem mais votos serão exibidos.</p>
+                <p>Foi fundado em Março de 2020 pelos sócios Isael Sobral e Estefane Luz, como uma forma de ajudar e agradecer ao bairro de Dendezeiros pelo enorme carinho que tiveram durante toda sua infância.</p>
+                <p>Além disso, o CineMail possui a mais alta tecnologia de imersão da America Latina.</p>
             </div>
-            <img src="./img/img-footer.svg" alt="pessoas-assistindo">
-        </div>
-    </footer>
+
+            <img src="img/sobre/cinema-1.jpg" alt="Visão frontal de várias pessoas em uma sala de cinema">
+            <img src="img/sobre/cinema-2.jpg" alt="Visão de trás de uma sala de cinema lotada">
+        </section>
+
+
+        <footer id="contatos">
+            <div class="contatos-container">
+                <div class='redes-sociais'>
+                    <h2>Redes Sociais</h2>
+                    <ul>
+                        <li>
+                            <a href="facebook.com" target="_blank"><img src="./img/redes-sociais/facebook.svg" alt="Facebook CineMail"></a>
+                        </li>
+                        <li>
+                            <a href="instagram.com" target="_blank"><img src="./img/redes-sociais/instagram.svg" alt="Instagram CineMail"></a>
+                        </li>
+                        <li>
+                            <a href="twitter.com" target="_blank"><img src="./img/redes-sociais/twitter.svg" alt="Twitter CineMail"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contato">
+                    <h2>Contato</h2>
+                    <ul>
+                        <li>+55 71 911 111 111</li>
+                        <li><a href="mailto:cinemail@email.com">cinemail@email.com</a></li>
+                        <li>Av. Luz Sobral, 2 - Dendezeiros, SSA - BA</li>
+                    </ul>
+                </div>
+                <img src="./img/img-footer.svg" alt="pessoas-assistindo">
+            </div>
+        </footer>
+    </div>
     <!--Linkando com arquivo JS-->
+    <script src="./js/script.js"></script>
     <script src="./js/owl/jquery.min.js"></script>
     <script src="./js/owl/owl.carousel.min.js"></script>
     <script src="./js/owl/setup.js"></script>
