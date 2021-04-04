@@ -2,7 +2,26 @@
   display: none;
 }
 
-@media (max-width: 700px) {
+@media (min-width: 821px) and (max-width: 1190px) {
+  .text-sobre {
+    width: 400px;
+  }
+  #sobre img {
+    width: 50%;
+  }
+
+  #img-sobre img:first-child {
+    display: none;
+  }
+
+  #img-sobre {
+    width: 40%;
+    height: 300px;
+  }
+}
+
+@media (max-width: 820px) {
+  /* MENU RESPONSIVO */
   [data-menu="button"] {
     display: flex;
     background-color: #ffbf54;
@@ -13,7 +32,6 @@
     text-transform: uppercase;
     color: white;
     cursor: pointer;
-    margin: 10px;
     align-items: center;
     position: relative;
     z-index: 300;
@@ -56,27 +74,36 @@
   #menu li {
     padding: 10px 0;
   }
+
+  /* SOBRE */
+  .text-sobre {
+    padding: 0 1%;
+  }
+  #img-sobre {
+    justify-content: center;
+  }
+
+  /* FOOTER */
+  #img-footer {
+    display: none;
+  }
 }
-@media (max-width: 480px) {
-  body {
+
+/* TELA ATÉ 700PX */
+@media (max-width: 700px) {
+  header {
+    max-width: 100%;
+  }
+  .modal {
     max-width: 480px;
   }
-  .posters {
-    width: 80%;
-    height: 231px;
-    margin: 0 auto;
-    padding: 15px 23px;
-  }
-  .confira-filmes {
-    margin-bottom: 10px;
-  }
-  /*ajeitar a margem bottom de posters aqui*/
 
+  /* SOBRE */
   #sobre {
     display: flex;
     flex-direction: column;
     width: 100vw;
-    align-items: flex-start;
+    align-items: center;
     margin: 0;
   }
   .text-sobre {
@@ -84,13 +111,97 @@
     width: 325px;
     padding: 10px;
   }
+
   #sobre img {
     width: 264px;
-    height: 200px;
-    margin-left: 5vw;
+    margin: 10px auto;
   }
 
-  /*falta ajustar alinhamento dos elementos filhos*/
+  /* busca filmes */
+
+  .busca-filmes {
+    margin: 100px 0px 0px 0px;
+  }
+
+  /* tela de login */
+  #modal-bg {
+    display: none;
+  }
+
+  .modal {
+    justify-content: center;
+  }
+
+  .modal-container {
+    border-radius: 5px;
+  }
+
+  /* footer */
+  .redes-sociais {
+    margin-right: 30px;
+  }
+
+  /* carrousel filmes */
+  .posters {
+    width: 80%;
+    padding: 15px 23px;
+  }
+  .confira-filmes {
+    margin-bottom: 10px;
+  }
+
+  .owl-carousel img {
+    border: none;
+  }
+
+  .poster-filme:hover .legenda {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0.5em;
+    justify-content: flex-start;
+    background: rgba(224, 223, 230, 0.6);
+    /* background: #e1e1e1; */
+    backdrop-filter: blur(4px);
+  }
+
+  .descricao {
+    padding: 0;
+  }
+
+  .label-filme,
+  .data {
+    font-size: 0.7em;
+    line-height: 1.6em;
+    color: black;
+  }
+
+  .data {
+    padding: 0;
+  }
+
+  .bottom {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .bloco {
+    flex-direction: column;
+    margin-top: 0;
+  }
+
+  .data {
+    background-color: transparent;
+    display: block;
+  }
+  /*ajeitar a margem bottom de posters aqui*/
+}
+
+/* TELA ATÉ 480PX */
+
+@media (max-width: 480px) {
+  /*  Footer */
   footer,
   .contatos-container {
     margin: 0;
@@ -101,12 +212,10 @@
     flex-direction: column;
     align-items: flex-start;
     width: 100vw;
-    overflow: hidden;
-    /*adicionados*/
   }
   .redes-sociais,
   .contato {
-    margin: 20px 0;
+    margin: 20px auto;
     margin-left: 20%;
   }
 
@@ -115,30 +224,13 @@
   }
 
   .contato li {
-    width: 70%;
+    min-width: 70%;
   }
 
-  /* busca filmes */
-  .filmes input {
-    width: 260px;
-    margin-left: 19px;
-  }
-  .filmes {
-    margin: 100px 20px 0 50px;
-  }
-
-  .conteudo {
-    /*tamanho da janela*/
-    width: 350px;
-    height: 350px;
-    margin: auto;
-  }
-  .img-input {
-    /*tamanho da div de container da janela*/
-    width: 240px;
-    height: 392px;
-  }
-  .img-input > img {
-    display: none;
+  .label-filme,
+  .data {
+    font-size: 0.56em;
+    line-height: 1.6em;
+    color: black;
   }
 }
