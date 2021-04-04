@@ -4,9 +4,9 @@ $('.owl-carousel').owlCarousel({
     nav:false,
     responsive:{
         0:{
-            items:1
+            items:2/*aumentei pra mostrar 2 itens */
         },
-        600:{ /*Até 600px na tela exibe 3 imagens*/ 
+        480:{ /* +480px na tela exibe 3 imagens*/ 
             items:3
         },
         1000:{
