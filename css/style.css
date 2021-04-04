@@ -29,10 +29,10 @@ header {
   align-items: center;
 }
 
-header nav ul {
+.menu ul {
   margin-right: 5vw;
 }
-header nav ul,
+.menu ul,
 .logo {
   display: flex;
   float: left;
@@ -53,7 +53,7 @@ header nav ul,
   margin-top: 5px;
 }
 
-header nav ul li a,
+.menu ul li a,
 header .btn {
   margin-left: 25px;
   color: #e1e1e1;
@@ -62,12 +62,12 @@ header .btn {
   font-size: 14px;
 }
 
-header nav ul li a img {
+.menu ul li a img {
   margin-top: 3px;
   fill: #e1e1e1;
 }
 
-header nav ul li a:hover,
+.menu ul li a:hover,
 header .btn:hover {
   color: #ffbf54;
 }
@@ -263,18 +263,7 @@ h2::after {
   margin: 0 auto;
   padding: 10px 33px;
 }
-@media (max-width: 480px) {
-  .posters {
-    width: 80%;
-    height: 231px;
-    margin: 0 auto;
-    padding: 15px 23px;
-  }
-  .confira-filmes {
-    margin-bottom: 10px;
-  }
-  /*ajeitar a margem bottom de posters aqui*/
-}
+
 .owl-carousel img {
   width: 100%;
   height: 100%;
@@ -401,18 +390,24 @@ h2::after {
 
 .text-sobre {
   max-width: 600px;
+  flex: 1 0 300px;
   padding-right: 60px;
-  flex-grow: 1;
 }
 
 .text-sobre p {
   text-align: justify;
 }
 
-#sobre img {
+#img-sobre {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#img-sobre img {
   width: 314px;
   height: 250px;
   margin: 20px 10px;
+  flex: 0 1 300px;
   max-width: 471px;
   max-height: 400px;
 }
@@ -433,7 +428,6 @@ footer {
 .contatos-container {
   width: 1285px;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   margin-left: 4vw;

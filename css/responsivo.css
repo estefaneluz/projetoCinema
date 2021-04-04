@@ -1,0 +1,144 @@
+[data-menu="button"] {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  [data-menu="button"] {
+    display: flex;
+    background-color: #ffbf54;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+    align-items: center;
+    position: relative;
+    z-index: 300;
+  }
+
+  [data-menu="button"]::before {
+    content: "";
+    margin-right: 5px;
+    display: inline-block;
+    height: 2px;
+    width: 12px;
+    background-color: white;
+    box-shadow: 0 5px #fff, 0 -5px #fff;
+    transition: transform 0.3s;
+  }
+
+  [data-menu="button"].active::before {
+    transform: rotate(90deg);
+  }
+
+  #menu {
+    /* display: none; */
+    display: none;
+    position: absolute;
+    background-color: #ee1d1d;
+    background-color: #242732;
+    width: 160px;
+    z-index: 200;
+    top: 0;
+    padding: 60px 0 20px 0;
+    box-shadow: 2px 2px 2px 0 rgba(0, 0, 0.2);
+  }
+
+  #menu.active {
+    display: block;
+    animation: animate;
+    animation-duration: 800ms;
+  }
+
+  #menu li {
+    padding: 10px 0;
+  }
+}
+@media (max-width: 480px) {
+  body {
+    max-width: 480px;
+  }
+  .posters {
+    width: 80%;
+    height: 231px;
+    margin: 0 auto;
+    padding: 15px 23px;
+  }
+  .confira-filmes {
+    margin-bottom: 10px;
+  }
+  /*ajeitar a margem bottom de posters aqui*/
+
+  #sobre {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: flex-start;
+    margin: 0;
+  }
+  .text-sobre {
+    /*-50px do tamanho e margem original*/
+    width: 325px;
+    padding: 10px;
+  }
+  #sobre img {
+    width: 264px;
+    height: 200px;
+    margin-left: 5vw;
+  }
+
+  /*falta ajustar alinhamento dos elementos filhos*/
+  footer,
+  .contatos-container {
+    margin: 0;
+    padding: 0;
+  }
+  .contatos-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100vw;
+    overflow: hidden;
+    /*adicionados*/
+  }
+  .redes-sociais,
+  .contato {
+    margin: 20px 0;
+    margin-left: 20%;
+  }
+
+  #img-footer {
+    display: none;
+  }
+
+  .contato li {
+    width: 70%;
+  }
+
+  /* busca filmes */
+  .filmes input {
+    width: 260px;
+    margin-left: 19px;
+  }
+  .filmes {
+    margin: 100px 20px 0 50px;
+  }
+
+  .conteudo {
+    /*tamanho da janela*/
+    width: 350px;
+    height: 350px;
+    margin: auto;
+  }
+  .img-input {
+    /*tamanho da div de container da janela*/
+    width: 240px;
+    height: 392px;
+  }
+  .img-input > img {
+    display: none;
+  }
+}
