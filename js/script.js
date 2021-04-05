@@ -3,7 +3,6 @@ function action() {
   modal.style.display = 'flex';
   const blur = document.getElementById('blur');
   blur.classList.toggle('active');
-  blur.classList.toggle('color');
 }
 
 function fechar() {

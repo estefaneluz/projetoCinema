@@ -14,7 +14,12 @@ body {
   color: #e1e1e1;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  height: 100vh;
+}
+
+strong {
+  text-decoration: 2px underline #12131a;
+  font-weight: normal;
 }
 
 /* HEADER */
@@ -389,6 +394,7 @@ h2::after {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  flex-grow: 1;
 }
 
 .text-sobre {
@@ -422,7 +428,7 @@ h2::after {
 /* Footer */
 
 footer {
-  max-width: 100%; /*ocupar toda a tela*/
+  min-width: 100%; /*ocupar toda a tela*/
   background-color: #242732;
   padding: 10px;
   display: flex;
