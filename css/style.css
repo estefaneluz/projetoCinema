@@ -15,6 +15,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow-x: hidden;
 }
 
 strong {
@@ -428,7 +429,7 @@ h2::after {
 /* Footer */
 
 footer {
-  min-width: 100%; /*ocupar toda a tela*/
+  width: 100%;
   background-color: #242732;
   padding: 10px;
   display: flex;
