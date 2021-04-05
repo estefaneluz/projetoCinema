@@ -1,4 +1,4 @@
-# projetoCinema : CineM@il 🎞️
+# CineM@il 🎞️
 🔗(https://estefaneluz.github.io/projetoCinema/)
 #### 🚧 Em Construção
 
