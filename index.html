@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/responsivo.css">
+
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
@@ -23,8 +25,9 @@
             <img src="img/logo.svg" alt="Logo do CineM@ail">
             <h1>CineM@il</h1>
         </a>
-        <nav>
-            <ul>
+        <nav class="menu">
+            <button onclick="openMenu()" data-menu="button" aria-expanded="false" aria-controls="menu">Menu</button>
+            <ul data-menu="list" id="menu">
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#contato">Contato</a></li>
                 <li onclick="action()" class="btn"> Login </li>
@@ -225,9 +228,11 @@
                 <p>Foi fundado em Março de 2020 pelos sócios Isael Sobral e Estefane Luz, como uma forma de ajudar e agradecer ao bairro de Dendezeiros pelo enorme carinho que tiveram durante toda sua infância.</p>
                 <p>Além disso, o CineMail possui a mais alta tecnologia de imersão da America Latina.</p>
             </div>
+            <div id="img-sobre">
+                <img src="img/sobre/cinema-1.jpg" alt="Visão frontal de várias pessoas em uma sala de cinema">
+                <img src="img/sobre/cinema-2.jpg" alt="Visão de trás de uma sala de cinema lotada">
+            </div>
 
-            <img src="img/sobre/cinema-1.jpg" alt="Visão frontal de várias pessoas em uma sala de cinema">
-            <img src="img/sobre/cinema-2.jpg" alt="Visão de trás de uma sala de cinema lotada">
         </section>
 
 
@@ -252,10 +257,11 @@
                     <ul>
                         <li>+55 71 911 111 111</li>
                         <li><a href="mailto:cinemail@email.com">cinemail@email.com</a></li>
-                        <li>Av. Luz Sobral, 2 - Dendezeiros, SSA - BA</li>
+                        <li>Av. Luz Sobral, 2 - Dendezeiros</li>
+                        <li>Salvador - BA</li>
                     </ul>
                 </div>
-                <img src="./img/img-footer.svg" alt="pessoas-assistindo">
+                <img id="img-footer" src="./img/img-footer.svg" alt="pessoas-assistindo">
             </div>
         </footer>
     </div>
