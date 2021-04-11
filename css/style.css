@@ -58,9 +58,7 @@ header {
   margin-left: 27px;
   margin-top: 5px;
 }
-.engrenagem-acesso-adm:hover path{
-  fill:#ffbf54 ;
-}
+
 .menu ul li a,
 header .btn {
   margin-left: 25px;
@@ -70,7 +68,7 @@ header .btn {
   font-size: 14px;
 }
 
-.menu ul li a svg {
+.menu ul li a img {
   margin-top: 3px;
   fill: #e1e1e1;
 }
