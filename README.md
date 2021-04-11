@@ -15,6 +15,6 @@
 
 - [ ] Modal com compra de ingresso
 - [ ] Página para escolha dos assentos
-- [ ] Página para gerenciamento administrativo
+- [ ] Página para gerenciamento administrativo - em construção
 - [ ] Página com todos os filmes
-- [ ] Responsividade 
+- [ ] Responsividade - em 33% do site
