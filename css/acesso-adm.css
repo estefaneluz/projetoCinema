@@ -1,0 +1,141 @@
+/* ESPECIFICAÇÕES GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: 0;
+    list-style: none;
+  }
+  
+  body {
+    background-color: #2a2c3c;
+    font-family: Nunito, Arial, Helvetica, sans-serif;
+    color: #e1e1e1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+header {
+    position: relative;
+    top: 0;
+    width: 100%;
+    background-color: #242732;
+    padding: 15px 20px;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+    z-index: 12;
+    display: flex;
+    align-items: center;
+  }
+  
+  .menu ul {
+    margin-right: 5vw;
+  }
+  .menu ul,
+  .logo {
+    display: flex;
+    float: left;
+    align-items: center;
+  }
+  
+  .logo {
+    margin-left: 6%;
+    margin-right: auto;
+    color: #ffbf54;
+    font-family: "PT Serif", serif;
+  }
+  
+  .logo h1 {
+    font-size: 20px;
+    font-weight: normal;
+    margin-left: 27px;
+    margin-top: 5px;
+  }
+  
+  .menu ul li a,
+  header .btn {
+    margin-left: 25px;
+    color: #e1e1e1;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+  
+  .menu ul li a img {
+    margin-top: 3px;
+    fill: #e1e1e1;
+  }
+  
+  .menu ul li a:hover,
+  header .btn:hover {
+    color: #ffbf54;
+  }
+  
+  header .btn:hover {
+    cursor: pointer;
+  }
+ /*CORPO DA PAGINA*/ 
+  .acesso-adm{
+      display: flex;
+      flex-direction: row;
+  }
+  .menu-adm{
+      height: 100vh;     
+      background-color: #242732;
+      width:330px;
+     
+  }
+  .menu-adm nav{
+    margin-top: 45px;
+    
+  }
+  .menu-adm nav ul::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #2a2c3c; /*ajustar cor*/
+    
+  }
+  .menu-adm nav ul li{
+    padding: 2px 61px 20px 90px;
+  }
+  .menu-adm nav ul li:hover{
+    background-color: #3f3d56;
+  }
+  
+  .menu-adm nav ul li a{
+    text-transform: uppercase;
+    color: #e1e1e1;
+    
+    font-size: 16px;
+    
+  } 
+  .menu-adm nav ul li a::after{/*ajustar posiçao do clearfix*/
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #e1e1e1 ; /*ajustar cor*/
+    
+  }
+  /*CADASTRO DE FILMES*/
+  .cadastro-filmes{
+      display: flex;
+      flex-direction: row;
+      text-transform: uppercase;
+      
+  }
+  .colunas{
+      display: flex;
+      flex-direction: row;
+  }
+  .colunas-1
+  {
+      display:flex;
+      flex-direction: column;
+}
+.colunas-2{
+    display: flex;
+    flex-direction:column ;
+}
