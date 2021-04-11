@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="./css/acesso-adm.css">
+        <link rel="stylesheet" type="text/css" href="./css/responsivo.css">
+    
+        <!-- FONTES DO GOOGLE  -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+    
+        <!--OWL CSS-->
+        <link rel="stylesheet" href="./css/owl/owl.carousel.min.css">
+        <link rel="stylesheet" href="./css/owl/owl.theme.default.min.css">
+        <title>Acesso Administrativo</title>
+    </head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="img/logo.svg" alt="Logo do CineM@ail">
+            <h1 alt="CineMail">CineM@il</h1>
+        </a>
+        <nav class="menu">
+           <!-- <button onclick="openMenu()" data-menu="button" aria-expanded="false" aria-controls="menu">Menu</button>-->
+            <ul data-menu="list" id="menu">              
+                <li onclick="action()" class="btn"> Logout </li>
+                <li><a href="acesso-adm.html"><img  id="engrenagem-acesso-adm" onmouseover="passaCursor();" onmouseout="retiraCursor();" src="./img/engrenagem.svg" alt="Acesso administrativo"></a></li>
+            </ul>
+        </nav>
+    </header>
+   
+    
+    <section class="acesso-adm">
+        <div class="menu-adm">
+            <nav>
+                <ul>
+                    <li><a href="#">Adicionar filmes</a></li>
+                    <li><a href="#">Gerenciar Sessões</a></li>
+                    <li><a href="#">Administrar Preços</a></li>
+                    <li><a href="#">Gerenciar Salas</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="cadastro-filmes">
+            <form action="#">
+                <label for="nome">Nome do filme</label><br>
+                <input type="text" id="nFilme"class="form-filmes" name="nFilme">
+                <div class="colunas">
+                    <div class="coluna-1">
+                        <label for="estreia">Estreia</label><br>
+                        <input type="text" id="estreiaFilme"class="form-filmes" name="estreiaFilme"><br>
+                        <label for="sala">Sala</label><br>
+                        <select class="form-seletor" id="selecaoSala">
+                            <option value="1">A</option>
+                            <option value="2">B</option>
+                            <option value="3">C</option>
+                            <option value="4">D</option>
+                        </select><br>
+                        <label for="horario">Horário</label><br>
+                        <select class="form-seletor" id="selecaoHorario">
+                            <option value="1">13:10</option>
+                            <option value="2">15:00</option>
+                            <option value="3">17:30</option>
+                            <option value="4">19:40</option>
+                            <option value="5">21:50</option>
+                        </select><br>
+                        <label for="genero">Gênero</label><br>
+                        <select class="form-seletor" id="selecaoGenero">
+                            <option value="1">Ação</option>
+                            <option value="2">Comédia</option>
+                            <option value="3">Terror</option>
+                            <option value="4">Aventura</option>
+                            <option value="5">Crime/Drama</option>
+                        </select><br>
+                        
+                    </div>
+                    <div class="coluna-2">
+                        <label for="ultimoDia">Último Dia</label><br>
+                        <input type="text" id="saidaFilme"class="form-filmes" name="saidaFilme"><br>
+                        <label for="preco">Preço</label><br>
+                        <input type="text" id="precoFilme"class="form-filmes" placeholder="R$"name="precofilme"><br>
+                        <label for="classInd">Classificação indicativa</label><br>
+                        <select class="form-seletor" id="selecaoClassInd">
+                            <option value="1">Livre</option><br>
+                            <option value="2">+10 anos</option>
+                            <option value="3">+12 anos</option>
+                            <option value="4">+14 anos</option>
+                            <option value="5">+16 anos</option>
+                            <option value="6">+18 anos</option>
+                        </select> <br>                       
+                    </div>
+                </div>                
+                <button type="submit" class="btnAdicionar" id="btnAdiciona">Adicionar</button>
+            </form>
+            <div class="filmes-cadastrados">
+                <p>Filmes já cadastrados</p>
+                <div id="filme-1"><p>Black Window</p></div>
+                <div id="filme-2"><p>Home Alone</p></div>
+                <div id="filme-3"><p>Halloween 4</p></div>
+                <div id="filme-4"><p>Pulp Fiction</p></div>
+                <div id="filme-5"><p>Monster Hunter</p></div>
+                <div id="filme-61"><p>Raya e o Último Dragão</p></div>
+                
+            </div>
+        </div>
+    </section>   
+</body>
+
+</html>
