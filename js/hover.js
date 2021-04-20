@@ -2,11 +2,9 @@
 
 function passaCursor(){
     document.getElementById("engrenagem-acesso-adm").src="./img/engrenagem-hover.svg"; 
-    //document.getElementById("facebook").src="./img/redes-sociais/facebook-hover.svg";
     
 }
 function retiraCursor(){
     document.getElementById("engrenagem-acesso-adm").src="./img/engrenagem.svg"; 
-    // document.getElementById("facebook").src="./img/redes-sociais/facebook.svg";
 
 }
