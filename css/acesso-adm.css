@@ -110,9 +110,7 @@ header {
     width:280px;
     
   } 
-  .menu-adm nav ul li a:hover{
-    color:#ffbf54;
-  }
+  
   /*CADASTRO DE FILMES*/
   .cadastro-filmes{
       display: flex;
