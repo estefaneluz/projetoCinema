@@ -86,48 +86,86 @@ header {
   }
   .menu-adm nav{
     margin-top: 45px;    
-    float: right;
+    
   }
   .menu-adm nav ul li{
     border-bottom: 1px solid black; /*ajustar cor*/
     width: 100%;   
     padding: 10px 61px 10px 90px;   
   }
-  .menu-adm nav ul li:nth-child(1){
-    border-top: 1px solid black;
-  }
+  
   .menu-adm nav ul li:hover{
-    background: #3f3d56;
-    transform: translate(2px) scale(1.1);
-    width: 310px;
-    border-top: 1px solid black;
+    background: #3f3d56;   
+    transition: 0.2s;
+    
     
   }  
   .menu-adm nav ul li a{
     text-transform: uppercase;
     color: #e1e1e1;    
-    font-size: 14px;
-    width:280px;
+    font-size: 14px;   
     
   } 
   
+
   /*CADASTRO DE FILMES*/
-  .cadastro-filmes{
-      display: flex;
-      flex-direction: row;
-      text-transform: uppercase;
-      
-  }
-  .colunas{
-      display: flex;
-      flex-direction: row;
-  }
-  .colunas-1
-  {
-      display:flex;
-      flex-direction: column;
-}
-.colunas-2{
+.cadastro-filmes{
     display: flex;
-    flex-direction:column ;
+    flex-direction: row;
+    text-transform: uppercase;
+    padding: 33px 33px 51px 113px;
+    
+  }
+.colunas{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+  form input, form select{
+    background-color: #3f3d56;
+    color:#e1e1e1;
+    font-family:  Nunito, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    border: 1px solid #232237;
+    text-transform: uppercase;
+    margin-top:8px;
+    margin-bottom: 19px;
+    /*aplicar sombra*/
+  }
+  .nFilme{
+    width: 418px;
+    height: 40px;
+  }
+  .form-seletor, .form-filmes{
+    width:201px;
+    height:40px;
+    /*margin-left: 16px;*/
+  }
+.btnAdicionar{
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #e1e1e1;
+  width: 131px; 
+  height: 35px;
+  background: none;
+  border: 3px solid #ffbf54;
+  cursor: pointer;
+  float:right;
+  
+}
+.btnAdicionar:hover{
+  color: #ffbf54;
+  transition: 0.2s;
+  
+}
+.filmes-cadastrados{
+  margin-left: 118px;/*AJUSTAR POSICIONAMENTO*/
+}
+
+.filmes-cadastrados p{
+  font-size: 14px;
+
+}.filmes-cadastrados div p{
+  font-size: 12px;
 }
