@@ -53,7 +53,7 @@
                 <div class="colunas">
                     <div class="coluna-1">
                         <label for="estreia">Estreia</label><br>
-                        <input type="date" id="estreiaFilme"class="form-filmes" name="estreiaFilme"><br>
+                        <input type="date" id="estreia"class="form-filmes" name="estreiaFilme"><br>
                         <label for="sala">Sala</label><br>
                         <select class="form-seletor" id="selecaoSala">
                             <option value="1">A</option>
@@ -62,7 +62,7 @@
                             <option value="4">D</option>
                         </select><br>
                         <label for="horario">Horário</label><br>
-                        <select class="form-seletor" id="selecaoHorario">
+                        <select class="form-seletor" id="horario">
                             <option value="1">13:10</option>
                             <option value="2">15:00</option>
                             <option value="3">17:30</option>
@@ -70,7 +70,7 @@
                             <option value="5">21:50</option>
                         </select><br>
                         <label for="genero">Gênero</label><br>
-                        <select class="form-seletor" id="selecaoGenero">
+                        <select class="form-seletor" id="genero">
                             <option value="1">Ação</option>
                             <option value="2">Comédia</option>
                             <option value="3">Terror</option>
@@ -80,19 +80,21 @@
                         
                     </div>
                     <div class="coluna-2">
-                        <label for="ultimoDia">Último Dia</label><br>
+                        <label for="saidaFilme">Último Dia</label><br>
                         <input type="date" id="saidaFilme"class="form-filmes" name="saidaFilme"><br>
-                        <label for="preco">Preço</label><br>
+                        <label for="precoFilme">Preço</label><br>
                         <input type="text" id="precoFilme"class="form-filmes" placeholder="R$"name="precofilme"><br>
                         <label for="classInd">Class. ind.</label><br>
-                        <select class="form-seletor" id="selecaoClassInd">
+                        <select class="form-seletor" id="classInd">
                             <option value="1">Livre</option><br>
                             <option value="2">+10 anos</option>
                             <option value="3">+12 anos</option>
                             <option value="4">+14 anos</option>
                             <option value="5">+16 anos</option>
                             <option value="6">+18 anos</option>
-                        </select> <br>                       
+                        </select> <br>   
+                        <label for="cartazFilme">Cartaz</label> <br> 
+                        <input type="file" id="cartazFilme" class="form-filmes" name="cartazFilme"><br>                  
                     </div>
                 </div>                
                 <button type="submit" class="btnAdicionar" id="btnAdicionar">Adicionar</button>
