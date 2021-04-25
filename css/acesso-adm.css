@@ -1,151 +1,148 @@
 /* ESPECIFICAÇÕES GERAIS */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    outline: 0;
-    list-style: none;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: 0;
+  list-style: none;
+}
   
-  body {
-    background-color: #2a2c3c;
-    font-family: Nunito, Arial, Helvetica, sans-serif;
-    color: #e1e1e1;
-    display: flex;
-    flex-direction: column;
+body {
+  background-color: #2a2c3c;
+  font-family: Nunito, Arial, Helvetica, sans-serif;
+  color: #e1e1e1;
+  display: flex;
+  flex-direction: column;
    
-  }
+}
 header {
-    position: relative;
-    top: 0;
-    width: 100%;
-    background-color: #242732;
-    padding: 15px 20px;
-    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
-    
-    display: flex;
-    align-items: center;
-  }
+  position: relative;
+  top: 0;
+  width: 100%;
+  background-color: #242732;
+  padding: 15px 20px;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+}
   
-  .menu ul {
-    margin-right: 5vw;
-  }
-  .menu ul,
-  .logo {
-    display: flex;
-    float: left;
-    align-items: center;
-  }
+.menu ul {
+  margin-right: 5vw;
+}
+.menu ul,
+.logo {
+  display: flex;
+  float: left;
+  align-items: center;
+}
   
-  .logo {
-    margin-left: 6%;
-    margin-right: auto;
-    color: #ffbf54;
-    font-family: "PT Serif", serif;
-  }
+.logo {
+  margin-left: 6%;
+  margin-right: auto;
+  color: #ffbf54;
+  font-family: "PT Serif", serif;
+}
   
-  .logo h1 {
-    font-size: 20px;
-    font-weight: normal;
-    margin-left: 27px;
-    margin-top: 5px;
-  }
+.logo h1 {
+  font-size: 20px;
+  font-weight: normal;
+  margin-left: 27px;
+  margin-top: 5px;
+}
   
-  .menu ul li a,
-  header .btn {
-    margin-left: 25px;
-    color: #e1e1e1;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 14px;
-  }
+.menu ul li a,
+header .btn {
+  margin-left: 25px;
+  color: #e1e1e1;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+}
   
-  .menu ul li a img {
-    margin-top: 3px;
-    fill: #e1e1e1;
-  }
+.menu ul li a img {
+  margin-top: 3px;
+  fill: #e1e1e1;
+}
   
-  .menu ul li a:hover,
-  header .btn:hover {
-    color: #ffbf54;
-    cursor: pointer;
-  }
+.menu ul li a:hover,
+header .btn:hover {
+  color: #ffbf54;
+  cursor: pointer;
+}
   
   
  /*CORPO DA PAGINA*/ 
-  .acesso-adm{
-      display: flex;
-      flex-direction: row;   
-      height: 87vh;        
-  }
-  .menu-adm{
-      
-    background-color: #242732;
-    width:330px;
-     
-  }
-  .menu-adm nav{
-    margin-top: 45px;    
+.acesso-adm{
+  display: flex;
+  flex-direction: row;   
+  height: 87vh;        
+}
+.menu-adm{
+  background-color: #242732;
+  width:330px;     
+}
+.menu-adm nav{
+  margin-top: 45px;    
     
-  }
-  .menu-adm nav ul li{
-    /*border-bottom: 1px solid black; /*ajustar cor*/
-    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
-    width: 100%;   
-    padding: 10px 61px 10px 90px;  
+}
+.menu-adm nav ul li{
     
-  }
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+  width: 100%;   
+  padding: 10px 61px 10px 90px;  
+    
+}
   
-  .menu-adm nav ul li:hover{
-    background: #3f3d56;   
-    transition: 0.2s;
+.menu-adm nav ul li:hover{
+  background: #3f3d56;   
+  transition: 0.2s;
     
     
-  }  
-  .menu-adm nav ul li a{
-    text-transform: uppercase;
-    color: #e1e1e1;    
-    font-size: 14px;   
+}  
+.menu-adm nav ul li a{
+  text-transform: uppercase;
+  color: #e1e1e1;    
+  font-size: 14px;   
     
-  } 
+} 
   
 
   /*CADASTRO DE FILMES*/
 .cadastro-filmes{
-    display: flex;
-    flex-direction: row;
-    text-transform: uppercase;
-    padding: 33px 33px 51px 113px;
+  display: flex;
+  flex-direction: row;
+  text-transform: uppercase;
+  padding: 33px 33px 51px 113px;
     
-  }
+}
 .colunas{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-  form input, form select{
-    background-color: #3f3d56;
-    color:#e1e1e1;
-    font-family:  Nunito, Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    border: 2px solid #232237;
+form input, form select{
+  background-color: #3f3d56;
+  color:#e1e1e1;
+  font-family:  Nunito, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  border: 2px solid #232237;   
+  text-transform: uppercase;
+  margin-top:8px;
+  margin-bottom: 19px;
    
-    text-transform: uppercase;
-    margin-top:8px;
-    margin-bottom: 19px;
-    /*aplicar sombra*/
-  }
-  .nFilme{
-    width: 418px;
-    height: 40px;
-  }
-  .form-seletor, .form-filmes{
-    width:201px;
-    height:40px;
+}
+.nFilme{
+  width: 418px;
+  height: 40px;
+}
+.form-seletor, .form-filmes{
+  width:201px;
+  height:40px;
     /*margin-left: 16px;*/
-  }
+}
+
 .btnAdicionar{
   text-transform: uppercase;
   font-size: 14px;
