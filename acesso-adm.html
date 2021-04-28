@@ -28,7 +28,7 @@
         <nav class="menu">
            <!-- <button onclick="openMenu()" data-menu="button" aria-expanded="false" aria-controls="menu">Menu</button>-->
             <ul data-menu="list" id="menu">              
-                <li onclick="action()" class="btn"> Logout </li>
+                <li><a href="index.html"> Logout</a> </li>
                 <li><a href="acesso-adm.html"><img  id="engrenagem-acesso-adm" onmouseover="passaCursor();" onmouseout="retiraCursor();" src="./img/engrenagem.svg" alt="Acesso administrativo"></a></li>
             </ul>
         </nav>
@@ -55,11 +55,11 @@
                         <label for="estreia">Estreia</label><br>
                         <input type="date" id="estreia"class="form-filmes" name="estreiaFilme"><br>
                         <label for="sala">Sala</label><br>
-                        <select class="form-seletor" id="selecaoSala">
+                        <select class="form-seletor" id="sala">
                             <option value="1">A</option>
-                            <option value="2">B</option>
-                            <option value="3">C</option>
-                            <option value="4">D</option>
+                            <option value="2">Azul</option>
+                            <option value="3">B</option>
+                            <option value="4">6D - A</option>
                         </select><br>
                         <label for="horario">Horário</label><br>
                         <select class="form-seletor" id="horario">
@@ -102,13 +102,14 @@
             </form>
             <div class="filmes-cadastrados">
                 <p>Filmes já cadastrados</p>
-                <div id="filme-1"><p>Black Window</p></div>
-                <div id="filme-2"><p>Home Alone</p></div>
-                <div id="filme-3"><p>Halloween 4</p></div>
-                <div id="filme-4"><p>Pulp Fiction</p></div>
-                <div id="filme-5"><p>Monster Hunter</p></div>
-                <div id="filme-6"><p>Raya e o Último Dragão</p></div>
-                
+                <div class="lista-filmes">
+                    <div id="filme-1"><p>Black Window</p></div>
+                    <div id="filme-2"><p>Home Alone</p></div>
+                    <div id="filme-3"><p>Halloween 4</p></div>
+                    <div id="filme-4"><p>Pulp Fiction</p></div>
+                    <div id="filme-5"><p>Monster Hunter</p></div>
+                    <div id="filme-6"><p>Raya e o Último Dragão</p></div>
+                </div> 
             </div>
         </div>
     </section>   
