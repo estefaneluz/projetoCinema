@@ -14,10 +14,11 @@ body {
   color: #e1e1e1;
   display: flex;
   flex-direction: column;
+  
    
 }
 header {
-  position: relative;
+  position: fixed;
   top: 0;
   width: 100%;
   background-color: #242732;
@@ -90,7 +91,7 @@ header .btn:hover {
     
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
   width: 100%;   
-  padding: 10px 61px 10px 90px;  
+  padding: 10px 30px 10px 90px;  
     
 }
   
@@ -103,7 +104,7 @@ header .btn:hover {
 .menu-adm nav ul li a{
   text-transform: uppercase;
   color: #e1e1e1;    
-  font-size: 14px;   
+  font-size: 16px;   
     
 } 
   
@@ -125,40 +126,41 @@ header .btn:hover {
   margin-left: 16px;
   align-items: center;
 }
-.form-seletor, .form-filmes{
+.form-seletor, .form-filmes,.cartazFilme{
   width:201px;
   height:40px;
   background-color: #3f3d56;
   color:#e1e1e1;
   font-family:  Nunito, Arial, Helvetica, sans-serif;
   font-size: 12px;
-  border: 2px solid #232237;   
+  font-weight: bold;
+  border: 1px solid #232237;
+  box-shadow: inset 0px 3px 4px rgba(0, 0, 0, 0.25);   
   text-transform: uppercase;
   margin-top:8px;
   margin-bottom: 19px;
   padding-left: 10px;
-  
+  /*padding right no seletor n funcionou*/
 }
+label{
+  line-height: 19px;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 14px;
+}
+
 #nFilme{
   width: 418px;
   height: 40px;
+
 }
 #cartazFilme[type='file'] {/*esconde o input*/
   display: none;  
 }
 
 .cartazFilme {  
-  width: 201px;
-  height: 40px;
   float: right;
-  background-color: #3f3d56;
-  color:#e1e1e1;
-  font-family:  Nunito, Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  border: 2px solid #232237;   
-  text-transform: uppercase;
-  padding: 8px; 
-  padding-left: 10px; 
+  padding: 10px 10px 10px 13px; 
   cursor:pointer;
   margin-top:30px;  
  
@@ -187,12 +189,43 @@ header .btn:hover {
   
 }
 .filmes-cadastrados{
-  margin-left: 118px;/*AJUSTAR POSICIONAMENTO*/
+  width: 350px;  
+  margin-left: 50px;
+  height: 210px;
 }
-
-.filmes-cadastrados p{
+.filmes-cadastrados > p{
+  margin-bottom: 12px;
+  font-weight: bold;
   font-size: 14px;
-
-}.filmes-cadastrados div p{
-  font-size: 12px;
+  line-height: 19px;
+  font-style: normal;
 }
+
+
+.lista-filmes div{
+  /*AJUSTAR POSICIONAMENTO*/
+  height: 40px;   
+  background: #3F3D56;
+  border: 1px solid #232237;
+  box-sizing: border-box;
+  box-shadow: inset 0px 3px 4px rgba(0, 0, 0, 0.25);
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+  text-align: left;
+  margin-bottom: 6px;
+  padding: 12px 16px;
+  
+}
+
+
+
+
+
+
+
+
+
+
