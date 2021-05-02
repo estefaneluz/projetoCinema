@@ -39,14 +39,14 @@
         <div class="menu-adm">
             <nav>
                 <ul>
-                    <li><a href="#">Adicionar filmes</a></li>
+                    <li><a href="#cadastro-filmes">Adicionar filmes</a></li>
                     <li><a href="#">Gerenciar Sessões</a></li>
                     <li><a href="#">Administrar Preços</a></li>
-                    <li><a href="#">Gerenciar Salas</a></li>
+                    <li><a href="#cadastro-salas">Gerenciar Salas</a></li>
                 </ul>
             </nav>
         </div>
-        <div class="cadastro-filmes">
+        <div class="cadastro-filmes" id="cadastro-filmes">
             <form action="#">
                 <label for="nome">Nome do filme</label><br>
                 <input type="text" id="nFilme"class="form-filmes" name="nFilme">
@@ -112,6 +112,32 @@
                 </div> 
             </div>
         </div>
+        <div class="cadastro-salas" id="cadastro-salas">
+            <form action="#">
+                <label for="nomeSala">Nome da Sala</label><br>
+                <input type="text" id="nomeSala" class="form-filmes" name="nomeSala">
+                <label for="qtdAssentos">Qtd. de Assentos</label><br>
+                <input type="number" id="qtdAssentos" class="form-filmes" name="qtdAssentos"><br>
+                <button type="submit" class="btnAdicionar" >Adicionar</button>
+            </form>
+            <div class="salas-container">
+                <p>Salas já Cadastradas</p>
+                <div>
+                    <div class="nomes-salas">
+                        <div><p>Sala A</p></div>
+                        <div><p>Sala Azul</p></div>
+                        <div><p>Sala B</p></div>
+                        <div><p>Sala 6D - A</p></div>
+                    </div>
+                    <div class="excluir-assentos">
+                        <button class="btnExcluir">X</button>
+                        <button class="btnExcluir">X</button>
+                        <button class="btnExcluir">X</button>
+                        <button class="btnExcluir">X</button>
+                    </div>
+            </div>
+            </div>
+        </div>   
     </section>   
 </body>
 
