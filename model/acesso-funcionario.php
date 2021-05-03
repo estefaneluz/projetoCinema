@@ -11,12 +11,12 @@
             $this-> conexao = $db;//conexao vai receber a função ConexaoBandoDeDados que foi armazenada dentro de $db
         }
         //Validação do acesso do Funcionario
-        public function validacao($login,$senha){
+        public function validacao($email,$senha){
             try{
-                $sql = "select * from funcionario where login = :login and senha = :senha";//:login - parametro q vai receber o valor digitado
+                $sql = "select * from funcionario where email = :email and senha = :senha";//:email - parametro q vai receber o valor digitado
                 $estado =  $this->conexao->prepare($sql);//Simular as funções do CRUD
                 //Função prepare: prepara uma instrução SQL para ser executada no BD
-                $estado->bindParam(":login", $login);//bindParam - Acrescenta os parametros
+                $estado->bindParam(":email",$email);//bindParam - Acrescenta os parametros
                 $estado->bindParam(":senha",$senha);
                  // Sintaxe de bindParam("parametro q vai receber o valor", $valorQVaiSerPassado)
                 $estado->execute();// Executa as ações do $sql,
