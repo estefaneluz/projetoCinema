@@ -41,24 +41,27 @@
         <div class="modal-container">
             <img onclick="fechar()" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
             <h3>Conecte-se com a sua conta</h3>
-            <div class="input-container">
-                <img src="./img/img-login/login-icone.svg" alt="Icone-Login">
-                <div class="input">
-                    <label>Email</label>
-                    <input type="email" id="email" required>
+            <form action="control/controle-funcionario.php" method="POST"><!--Adicionado pra enviar os dados de login pra fazer a conexão-->
+                <div class="input-container">
+                    <img src="./img/img-login/login-icone.svg" alt="Icone-Login">
+                    <div class="input">
+                        <label>Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
                 </div>
-            </div>
 
-            <div class="input-container">
-                <img src="./img/img-login/senha-icone.svg" alt="Icone-Login">
-                <div class="input">
-                    <label>Senha</label>
-                    <input type="password" id="password" required>
+                <div class="input-container">
+                    <img src="./img/img-login/senha-icone.svg" alt="Icone-Login">
+                    <div class="input">
+                        <label>Senha</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
                 </div>
-            </div>
-            <a href="not-found.html" id="forget">Esqueci a senha</a>
-            <button class="enviar" type="submit" value="Enviar">Enviar</button>
-
+                <div class="forget-enviar"><!--Criada pra alinhar os elementos abaixo-->
+                    <a href="not-found.html" id="forget">Esqueci a senha</a>
+                    <button class="enviar" type="submit" value="Enviar">Enviar</button>
+                </div>
+            </form>
         </div>
     </div>
 
