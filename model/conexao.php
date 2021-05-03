@@ -7,7 +7,7 @@
        //private: só a classe dataBase vai ver
         public $conexao; // variável p/manipular a conexao
         //public: todo mundo tem acesso
-        public function dbConnection(){
+        public function ConexaoBancoDeDados(){
             $this->conexao = null; // inicia o valor de conexão como nulo
             try{//tenta executar oq tem dentro      //dbname seta o BD a ser utilizado  //permite a concexao como login do banco
                 $this->conexao=new PDO('mysql:host=localhost; dbname=Cinemail', $this->userName, $this->senha);//drive utilizado:mysql, host> onde vai estar o banco/ localhost: a maquina local onde ta o banco
