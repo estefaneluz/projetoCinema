@@ -43,6 +43,8 @@
                     <li><a href="#">Gerenciar Sessões</a></li>
                     <li><a href="#">Administrar Preços</a></li>
                     <li><a href="#cadastro-salas">Gerenciar Salas</a></li>
+                    <li><a href="#cadastro-funcionarios">Editar Funcionários</li>
+                    <li><a href="#cadastro-clientes">Editar Clientes</a></li>
                 </ul>
             </nav>
         </div>
@@ -55,14 +57,14 @@
                         <label for="estreia">Estreia</label><br>
                         <input type="date" id="estreia"class="form-filmes" name="estreiaFilme"><br>
                         <label for="sala">Sala</label><br>
-                        <select class="form-seletor" id="sala">
+                        <select class="form-seletor" id="sala" name="sala">
                             <option value="1">A</option>
                             <option value="2">Azul</option>
                             <option value="3">B</option>
                             <option value="4">6D - A</option>
                         </select><br>
                         <label for="horario">Horário</label><br>
-                        <select class="form-seletor" id="horario">
+                        <select class="form-seletor" id="horario" name="horario">
                             <option value="1">13:10</option>
                             <option value="2">15:00</option>
                             <option value="3">17:30</option>
@@ -70,7 +72,7 @@
                             <option value="5">21:50</option>
                         </select><br>
                         <label for="genero">Gênero</label><br>
-                        <select class="form-seletor" id="genero">
+                        <select class="form-seletor" id="genero" name="genero">
                             <option value="1">Ação</option>
                             <option value="2">Comédia</option>
                             <option value="3">Terror</option>
@@ -85,7 +87,7 @@
                         <label for="precoFilme">Preço</label><br>
                         <input type="text" id="precoFilme"class="form-filmes" placeholder="R$"name="precofilme"><br>
                         <label for="classInd">Class. ind.</label><br>
-                        <select class="form-seletor" id="classInd">
+                        <select class="form-seletor" id="classInd" name="clasInd">
                             <option value="1">Livre</option><br>
                             <option value="2">+10 anos</option>
                             <option value="3">+12 anos</option>
@@ -101,7 +103,7 @@
                 <button type="submit" class="btnAdicionar" id="btnAdicionar">Adicionar</button>
             </form>
             <div class="filmes-cadastrados">
-                <p>Filmes já cadastrados</p>
+                <p>Filmes cadastrados</p>
                 <div class="lista-filmes">
                     <div id="filme-1"><p>Black Window</p></div>
                     <div id="filme-2"><p>Home Alone</p></div>
@@ -115,13 +117,13 @@
         <div class="cadastro-salas" id="cadastro-salas">
             <form action="#">
                 <label for="nomeSala">Nome da Sala</label><br>
-                <input type="text" id="nomeSala" class="form-filmes" name="nomeSala">
+                <input type="text" id="nomeSala" class="form-filmes" name="nomeSala"><br>
                 <label for="qtdAssentos">Qtd. de Assentos</label><br>
                 <input type="number" id="qtdAssentos" class="form-filmes" name="qtdAssentos"><br>
                 <button type="submit" class="btnAdicionar" >Adicionar</button>
             </form>
-            <div class="salas-container">
-                <p>Salas já Cadastradas</p>
+            <div class="salas-cadastradas">
+                <p>Salas Cadastradas</p>
                 <div>
                     <div class="nomes-salas">
                         <div><p>Sala A</p></div>
@@ -129,15 +131,80 @@
                         <div><p>Sala B</p></div>
                         <div><p>Sala 6D - A</p></div>
                     </div>
-                    <div class="excluir-assentos">
-                        <button class="btnExcluir">X</button>
-                        <button class="btnExcluir">X</button>
-                        <button class="btnExcluir">X</button>
-                        <button class="btnExcluir">X</button>
+                    <div class="excluir-sala">
+                        <button type="button" class="btnExcluir">X</button>
+                        <button type="button"class="btnExcluir">X</button>
+                        <button type="button" class="btnExcluir">X</button>
+                        <button type="button" class="btnExcluir">X</button>
                     </div>
+                </div>
             </div>
-            </div>
-        </div>   
+        </div>  
+        <div class="cadastro-funcionarios" id="cadastro-funcionarios">
+            <form action="#">
+                <label for="nomeFuncionario">Nome </label><br>
+                <input type="text" id="nomeFuncionario" class="form-filmes" name="nomeFuncionario"><br>
+                <label for="cpfFuncionario">CPF</label><br>
+                <input type="text" id="cpfFuncionario" class="form-filmes" name="cpfFuncionario"><br>
+                <label for="emailFuncionario">Email</label><br>
+                <input type="email" id="emailFuncionario" class="form-filmes" name="emailFuncionario"><br>
+                <label for="senhaFuncionario">Senha</label><br>
+                <input type="text" id="senhaFuncionario" class="form-filmes" name="senhaFuncionario"><br>
+
+                <button type="submit" class="btnAdicionar" id="btnAdicionar">Adicionar</button>          
+           </form>
+           <div class="funcionarios-cadastrados">
+
+           </div>
+        </div>
+        <div class="cadastro-clientes" id="cadastro-clientes">
+            <form action="#">
+                <label for="nomeCliente">Nome</label><br>
+                <input type="text" id="nomeCliente" class="form-filmes" name="nomeCliente"><br>
+                <div class="nascimento-sexo" >
+                    <div>
+                        <label for="dataNascimento">Data de Nascimento</label><br>
+                        <input type="date" id="dataNascimento" class="form-filmes" name="dataNascimento"><br>
+                    </div>
+                    <div>
+                        <label for="sexo">Sexo</label><br>
+                        <select class="form-seletor" id="sexo" name="sexo">
+                            <option value="M">Masculino</option>
+                            <option value="F">Feminino</option>
+                            <option value="ND">Não declarado</option>
+                        </select>
+                    </div>
+                </div> 
+                <div class="cpf-idade">
+                    <div>
+                        <label for="cpfCliente">CPF</label><br>
+                        <input type="text" id="cpfCliente" class="form-filmes" name="cpfCliente"><br>
+                    </div>
+                    <div>
+                        <label for="idadeCliente">Idade</label><br>
+                        <input type="text" id="idadeCliente" class="form-filmes" name="idadeCliente"><br>
+                    </div>                    
+                 </div>
+                <div class="email-senha">
+                    <div>
+                        <label for="emailCliente">Email</label><br>
+                        <input type="email" id="emailCliente" class="form-filmes" name="emailCliente"><br>
+                    </div>
+                    <div>
+                        <label for="senhaCliente">Senha</label><br>
+                        <input type="text" id="senhaCliente" class="form-filmes" name="senhaCliente"><br>
+                     </div>   
+                </div>   
+                <button type="submit" class="btnAdicionar" id="btnAdicionar">Adicionar</button>          
+           </form>
+           <div class="funcionarios-cadastrados">
+             <!--nome VARCHAR(100) NOT NULL,
+                idade INT NULL DEFAULT 18, 
+                sexo CHAR(1) NOT NULL,
+                dataNascimento DATE NULL,
+                cpf VARCH-->   
+           </div>
+        </div>
     </section>   
 </body>
 
