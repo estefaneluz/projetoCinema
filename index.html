@@ -30,35 +30,112 @@
             <ul data-menu="list" id="menu">
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#contato">Contato</a></li>
-                <li onclick="action()" class="btn"> Login </li>
-                <li><a href="not-found.html"><img src="./img/engrenagem.svg" alt="icone-login"></a></li>
+                <li onclick="action('#modal-login')" class="btn"> Login </li>
+                <li ><a href="acesso-adm.php"><img  id="engrenagem-acesso-adm" onmouseover="passaCursor();" onmouseout="retiraCursor();" src="./img/engrenagem.svg" alt="Acesso administrativo"></a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="modal">
+    <div class="modal" id="modal-login">
         <img id="modal-bg" src="./img/img-login/imagem-login.png" alt="Imagem de um cinema vazio">
         <div class="modal-container">
-            <img onclick="fechar()" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
+            <img onclick="fechar('#modal-login')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
             <h3>Conecte-se com a sua conta</h3>
-            <div class="input-container">
-                <img src="./img/img-login/login-icone.svg" alt="Icone-Login">
-                <div class="input">
-                    <label>Email</label>
-                    <input type="email" id="email" required>
+            <form action="control/controle-acesso-adm.php" method="POST"><!--Adicionado pra enviar os dados de login pra fazer a conexão-->
+                <div class="input-container">
+                    <img src="./img/img-login/login-icone.svg" alt="Icone-Login">
+                    <div class="input">
+                        <label>Email</label>
+                        <input type="text" id="email" name="email" required>
+                    </div>
                 </div>
-            </div>
 
-            <div class="input-container">
-                <img src="./img/img-login/senha-icone.svg" alt="Icone-Login">
-                <div class="input">
-                    <label>Senha</label>
-                    <input type="password" id="password" required>
+                <div class="input-container">
+                    <img src="./img/img-login/senha-icone.svg" alt="Icone-Login">
+                    <div class="input">
+                        <label>Senha</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
                 </div>
-            </div>
-            <a href="not-found.html" id="forget">Esqueci a senha</a>
-            <button class="enviar" type="submit" value="Enviar">Enviar</button>
+                <div class="forget-enviar"><!--Criada pra alinhar os elementos abaixo-->
+                    <a href="not-found.html" id="forget">Esqueci a senha</a>
+                    <button class="enviar" type="submit" value="Enviar">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
+    <div class="modal" id="modal-comprar">
+        <div class="modal-container">
+            <img onclick="fechar('#modal-comprar')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
+            <h3>Comprar Ingresso</h3>
+            <form action="control/controle-acesso-adm.php" method="POST"><!--Adicionado pra enviar os dados de login pra fazer a conexão-->
+                <div class="compra-left">
+                    <div class="compra-input">
+                        <label for="filme">Filme</label>
+                        <select class="form-seletor" id="filme" name="filme">
+                            <option value="1">Black Widow</option>
+                            <option value="2">Home Alone</option>
+                            <option value="3">Halloween 4</option>
+                            <option value="4">Pulp Fiction</option>
+                            <option value="4">Raya e o último dragão</option>
+                            <option value="4">Monster Hunter</option>
+                        </select>
+                    </div>
+
+                    <div class="compra-valor">
+                        <div class="compra-input">
+                            <label for="valorInteiro">Valor <span>(Inteiro)</span></label>
+                            <input type="number" name="valorInteiro" placeholder="R$ 10">
+                        </div>
+                        <div class="compra-input">
+                            <label for="valorMeia">Valor <span>(Meia)</span></label>
+                            <input type="number" name="valorMeia" placeholder="R$ 10">
+                        </div>
+                    </div>
+
+                    <div class="compra-qtd">
+                        <div class="compra-input">
+                            <label for="qtdInteiro">Qtd. ingr. <br><span>(Inteiro)</span></label>
+                            <input type="number" name="qtdInteiro" >
+                        </div>
+                        <div class="compra-input">
+                            <label for="qtdMeia">Qtd. ingr. <br><span>(Meia)</span></label>
+                            <input type="number" name="qtdMeia">
+                        </div>
+                    </div>
+
+                    <div class="compra-input">
+                        <label for="qtdInteiro">Assentos <br> Disponíveis</label>
+                        <input type="number" name="qtdAssentos" id="assentos">
+                    </div>
+                </div>
+
+                <div class="compra-right">
+                    <div class="compra-input">
+                        <label for="filme">Sessão</label>
+                        <select class="form-seletor" id="sessao" name="sessao">
+                            <option value="1">13:00 - 15:30  Sala A</option>
+                            <option value="2">16:00 - 18:30  Sala B</option>
+                            <option value="3">19:00 - 20:30  Sala C</option>
+                            <option value="4">21:00 - 22:30  Sala A</option>
+                        </select>
+                    </div>
+
+                    <div class="compra-input">
+                        <label for="funcionario">Funcionario</label>
+                        <input type="text">
+                    </div>
+
+                    <div class="compra-input">
+                        <label for="cliente">CPF <br><span>Cliente</span></label>
+                        <input type="text">
+                    </div>
+                </div>
+            </form>
+            <div class="forget-enviar"><!--Criada pra alinhar os elementos abaixo-->
+                <button class="enviar" type="submit" value="Enviar">Enviar</button>
+            </div>
         </div>
     </div>
 
@@ -214,9 +291,9 @@
                     </div>
                 </div>
             </div>
-            <div class="confira-filmes">
-                <p>Confira todos os filmes</p>
-                <a href="not-found.html">Filmes</a>
+            <div class="comprar-filmes">
+                <p>Compre o seu ingresso!</p>
+                <a onclick="action('#modal-comprar')">Comprar</a>
             </div>
         </section>
 
@@ -241,7 +318,7 @@
                 <div class='redes-sociais'>
                     <h2>Redes Sociais</h2>
                     <ul>
-                        <li>
+                        <li> <!--id="facebook" onmouseover="passaCursor();" onmouseout="retiraCursor();"-->
                             <a href="facebook.com" target="_blank"><img src="./img/redes-sociais/facebook.svg" alt="Facebook CineMail"></a>
                         </li>
                         <li>
@@ -270,6 +347,7 @@
     <script src="./js/owl/jquery.min.js"></script>
     <script src="./js/owl/owl.carousel.min.js"></script>
     <script src="./js/owl/setup.js"></script>
+    <script src="./js/hover.js"></script>
 </body>
 
 </html>
