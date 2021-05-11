@@ -3,7 +3,11 @@
     $objFuncionario = new Funcionario(); //Criando obj q recebe as funções de funcionario
 
 ?>
+<?php
+    require_once 'model/model-cliente.php';
+    $objCliente = new Cliente();
 
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -200,7 +204,7 @@
 
                 </table>
         </div>
-        
+        <!--CADASTRAR FUNCIONARIO-->
         <div class="modal" id="modal-funcionario">
             <div class="modal-container modalFuncionario">
                 <img onclick="fechar('#modal-funcionario')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
@@ -239,44 +243,78 @@
            </div>           
         </div>
         <div class="container-clientes" id="container-clientes">
-            <form action="#">
-                <label for="nomeCliente">Nome</label><br>
-                <input type="text" id="nomeCliente" class="form-cliente" name="nomeCliente"><br>
-                <div class="nascimento-sexo" >
-                    <div>
-                        <label for="dataNascimento">Data de Nascimento</label><br>
-                        <input type="date" id="dataNascimento" class="form-cliente" name="dataNascimento"><br>
-                    </div>
-                    <div>
-                        <label for="sexo">Sexo</label><br>
-                        <select class="form-seletor-cliente" id="sexo" name="sexo">
-                            <option value="M">Masculino</option>
-                            <option value="F">Feminino</option>
-                            <option value="N">Não declarado</option>
-                        </select>
-                    </div>
-                </div> 
-                <div class="cpf-idade">
-                    <div>
-                        <label for="cpfCliente">CPF</label><br>
-                        <input type="text" id="cpfCliente" class="form-cliente" name="cpfCliente"><br>
-                    </div>
-                    <div>
-                        <label for="idadeCliente">Idade</label><br>
-                        <input type="text" id="idadeCliente" class="form-cliente" name="idadeCliente"><br>
-                    </div>                    
-                 </div>                 
-                <button type="submit" class="enviar" id="btnEnviar">Enviar</button>          
-           </form>
-           
+            <table class="tabela-clientes">
+                <button onclick="action('#modal-cliente')" type="button" class="btnAdicionar">Novo</button>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Idade</th>
+                        <th>Sexo</th>
+                        <th>Data Nasc.</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                        <?php
+                            $meuBanco = "SELECT * FROM cliente";
+                            $estado = $objCliente->acessarBancoDedados($meuBanco);//Apontando função acessarBancoDeDados de funcinario e passando a var meuBanco
+                            $estado->execute();//Executa a conexão com o BD
+                            while($objCliente = $estado->fetch(PDO::FETCH_ASSOC)){//Associando a um vetor
+                                
+                        ?>
+                        <tr>
+                            <td><?php echo($objCliente['id'])?></td><!--Aqui ta pegando os dados das colunas da tabela do banco-->
+                            <td><?php echo($objCliente['nome'])?></td>
+                            <td><?php echo($objCliente['cpf'])?></td>
+                            <td><?php echo($objCliente['idade'])?></td>
+                            <td><?php echo($objCliente['sexo'])?></td><!--Aqui ta pegando os dados das colunas da tabela do banco-->
+                            <td><?php echo($objCliente['dataNascimento'])?></td>
+                            <td>Editar</td>     
+                            <td>Deletar</td>
+                        </tr>
+                        <?php
+                            }
+                        ?>
+                
+                </tbody>
+            </table>            
+        
+        </div>
+        <div class="modal" id="modal-cliente">
+            <div class="modal-container modalCliente">
+                <img onclick="fechar('#modal-cliente')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
+                <h4>Cadastrar Cliente</h4>
+                <form action="control/controle-cliente.php#container-clientes" method="POST">
+                    <input type="hidden" name="cadastrarCliente">
+                    <label for="nomeCliente">Nome</label><br>
+                    <input type="text" id="nomeCliente" class="form-cliente" name="nomeCliente"><br>
+                    <label for="cpfCliente">CPF</label><br>
+                    <input type="text" id="cpfCliente" class="form-cliente" name="cpfCliente"><br>
+                    <label for="idadeCliente">Idade</label><br>
+                    <input type="text" id="idadeeCliente" class="form-cliente" name="idadeCliente"><br>
+                    <label for="sexo">Sexo</label><br>
+                            <select class="form-seletor-cliente" id="sexo" name="sexo">
+                                <option value="M">Masculino</option>
+                                <option value="F">Feminino</option>
+                                <option value="N">Não declarado</option>
+                            </select>
+                    <label for="dataNascimento">Idade</label><br>
+                    <input type="date" id="dataNascimento" class="form-cliente" name="dataNascimento"><br>
+                    <button type="submit" class="enviar" id="btnEnviar">Enviar</button>          
+                </form>
+           </div>
         </div>
     </div> 
     <script src="./js/hover.js"></script>  
     <script src="./js/script.js"></script>
-    <!--SCRIPT PARA MANIUPULAR EDIÇÃO-->
+    <!--SCRIPT PARA MANIPULAR EDIÇÃO-->
+    <!--AQUI TÁ IGUALZINHO AO CÓDIGO DE SUA AULA, MAS ELE NÃO ESTÁ FUNCIONANDO-->
     <script>
      $('#modal-editar-funcionario').on('show.bs.modal',function(event){
-        var button = $(event.originalTarget);
+        var button = $(event.relatedTarget);
         var recipientId = button.data('id');//Pegando o valor atribuidos dentro do botão Editar e armazena
         var recipientNomeFunc = button.data('nome');
         var recipientCpfFunc = button.data('cpf');
