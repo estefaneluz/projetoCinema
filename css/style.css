@@ -462,6 +462,10 @@ h2::after {
   align-self: flex-end;
 }
 
+#modal-comprar button a {
+  color: #e1e1e1;
+}
+
 /* SOBRE */
 
 #sobre {
