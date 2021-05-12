@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    margin: 15vh 4vw;
+    margin: 15vh 4vw 5vh 4vw;
     row-gap: 10px;
     text-transform: uppercase;
 }
@@ -16,6 +16,18 @@
 .sessao-info {
     display: flex;
     column-gap: 25px;
+}
+
+.section-controle {
+    display: flex;
+    column-gap: 60px;
+    height: 70vh;
+}
+
+.section-confirmar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .btn-cinza, .btn-amarelo {
@@ -41,6 +53,7 @@
     display: flex;
     flex-direction: column;
     row-gap: 15px;
+    align-self: flex-end;
 }
 
 .botoes .btn-vermelho, .btn-cinza, .btn-amarelo {
@@ -66,4 +79,6 @@
 
 .tela {
     width: 800px;
+    align-self: flex-end;
 }
+
