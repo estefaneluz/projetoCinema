@@ -6,6 +6,11 @@
     flex-grow: 1;
     margin: 15vh 4vw;
     row-gap: 10px;
+    text-transform: uppercase;
+}
+
+.mini {
+    font-size: 9px;
 }
 
 .sessao-info {
@@ -42,5 +47,16 @@
     font-size: 1em;
     width: 140px;
     padding: 4px 0;
+    text-align: center;
+}
+
+#assentos-selecionados {
+    font-size: 14px;
+}
+
+#assentos-selecionados div {
+    padding: 5px;
+    background-color: #131314;
+    width: 80px;
     text-align: center;
 }
