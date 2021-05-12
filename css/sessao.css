@@ -54,9 +54,16 @@
     font-size: 14px;
 }
 
-#assentos-selecionados div {
+#assentos-selecionados div, .tela {
     padding: 5px;
     background-color: #131314;
-    width: 80px;
     text-align: center;
+}
+
+#assentos-selecionados div {
+    width: 80px;
+}
+
+.tela {
+    width: 800px;
 }
