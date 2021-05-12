@@ -12,3 +12,35 @@
     display: flex;
     column-gap: 25px;
 }
+
+.btn-cinza, .btn-amarelo {
+    all:unset;
+    text-decoration: none;
+    color: #C4C4C4;
+    text-transform: uppercase;
+}
+
+.btn-cinza {
+    border: 3px solid #C4C4C4;
+}
+
+.btn-amarelo {
+    border: 3px solid #FFBF54;
+}
+  
+.btn-cinza:hover, .btn-amarelo {
+    cursor: pointer;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+.botoes .btn-vermelho, .btn-cinza, .btn-amarelo {
+    font-size: 1em;
+    width: 140px;
+    padding: 4px 0;
+    text-align: center;
+}

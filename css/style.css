@@ -383,7 +383,8 @@ h2::after {
   font-size: 0.9em;
 }
 
-.comprar-filmes a {
+.btn-vermelho {
+  all:unset;
   border: 3px solid #ee1d1d;
   text-decoration: none;
   color: #ee1d1d;
@@ -392,7 +393,7 @@ h2::after {
   text-transform: uppercase;
 }
 
-.comprar-filmes a:hover {
+.btn-vermelho:hover {
   cursor: pointer;
 }
 
