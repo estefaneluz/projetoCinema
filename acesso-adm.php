@@ -29,9 +29,9 @@
         <link rel="stylesheet" href="./css/owl/owl.theme.default.min.css">
         <!--SCRIPTS jQuery PARA MANIPULAR EDIÇÃO-->
         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <title>CineMail - Acesso Administrativo</title>
     </head>
 
@@ -185,6 +185,7 @@
                             <td><?php echo($objFuncionario['cpf'])?></td>
                             <td><?php echo($objFuncionario['email'])?></td>
                             <td><button onclick="action('#modal-editar-funcionario')" type="button" class="btnEditar"
+                                    data-toggle="modal" data-target="#modal-editar-funcionario"
                                     data-id="<?php echo($objFuncionario['id'])?>"
                                     data-nome="<?php echo($objFuncionario['nome'])?>"
                                     data-cpf="<?php echo($objFuncionario['cpf'])?>"
