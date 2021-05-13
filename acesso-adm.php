@@ -54,13 +54,14 @@
     <div class="acesso-adm" >
         <div class="menu-adm">
             <nav>
+            <h3>GERENCIAR</h3>
                 <ul>
-                    <li><a href="#cadastro-filmes">Adicionar filmes</a></li>
-                    <li><a href="#">Gerenciar Sessões</a></li>
-                    <li><a href="#">Administrar Preços</a></li>
-                    <li><a href="#cadastro-salas">Gerenciar Salas</a></li>
-                    <li><a href="#container-funcionarios">Editar Funcionários</li>
-                    <li><a href="#container-clientes">Editar Clientes</a></li>
+                    <li><a href="#cadastro-filmes">Filmes</a></li>
+                    <li><a href="#">Sessões</a></li>
+                    <li><a href="#">Preços</a></li>
+                    <li><a href="#cadastro-salas">Salas</a></li>
+                    <li><a href="#container-funcionarios">Funcionários</li>
+                    <li><a href="#container-clientes">Clientes</a></li>
                 </ul>
             </nav>
         </div>
@@ -158,7 +159,7 @@
         </div>  
         <div class="container-funcionarios" id="container-funcionarios">
              <table class="tabela-funcionarios ">
-                <button onclick="action('#modal-funcionario')" type="button" class="btnAdicionar">Novo</button>
+                <button onclick="action('#modal-funcionario')" type="button" class="btnCadastrar">Novo</button>
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -193,8 +194,9 @@
                                     data-senha="<?php echo($objFuncionario['senha'])?>"                                                      
                                 >Editar
                                 </button>
-                        </td>
-                            <td><button class="btnDeletar">Deletar</button></td>
+                        </td> <!--CHAMA A MODAL DE DELETAR COM O NOME DO FUNCIONARIO-->
+                            <td><button type="button"class="btnDeletar" data-toggle="modal" data-target="#modal-deletar-funcionario" data-id="<?php print $objFuncionario['id']?>"
+                            data-nome="<?php print $objFuncionario['nome']?>">Deletar</button></td>
                         </tr>
                          <?php   
 
@@ -209,7 +211,7 @@
         <div class="modal" id="modal-funcionario">
             <div class="modal-container modalFuncionario">
                 <img onclick="fechar('#modal-funcionario')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
-                <h4>Cadastrar Funcionario<h4>
+                <h4>Cadastrar Funcionário<h4>
                 <form action="control/controle-acesso-adm.php#container-funcionarios" method="POST">
                         <input type="hidden" name="cadastrarFuncionario">
                         <label for="nomeFuncionario">Nome </label><br>
@@ -228,7 +230,7 @@
         <div class="modal" id="modal-editar-funcionario">
             <div class="modal-container modalFuncionario" >
                 <img onclick="fechar('#modal-editar-funcionario')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
-                <h4>Editar Funcionario<h4>
+                <h4>Editar Funcionário<h4>
                 <form action="control/controle-acesso-adm.php#container-funcionarios" method="POST">
                         <input id="recipient-id" type="hidden" name="editar">
                         <label for="recipient-nome">Nome </label><br>
@@ -242,6 +244,18 @@
                         <button type="submit" class="enviar" id="btnEnviar">Enviar</button>          
                 </form>
            </div>           
+        </div>
+        <div class="modal" id="modal-deletar-funcionario">
+            <div class="modal-container modalDeletarFuncionario">
+                <img onclick="fechar('#modal-deletar-funcionario')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">              
+                <h4>Deletar Funcionário</h4>
+                <form action="control/controle-acesso-adm.php#container-funcionarios" method="POST"> 
+                    <input type="hidden" name="deletarFuncionario" id="recipient-id">
+                    <label for="recipient-nome">Nome</label>
+                    <input type="text" class="form-funcionario" name="txtNome" id="recipient-nome" readonly>
+                    <button type="submit" class="enviar" id="btnEnviar">Deletar</button>
+                </form>
+            </div>        
         </div>
         <div class="container-clientes" id="container-clientes">
             <table class="tabela-clientes">
@@ -311,8 +325,23 @@
     </div> 
     <script src="./js/hover.js"></script>  
     <script src="./js/script.js"></script>
+    <!--SCRIPT PARA MANIPULAR O DELETE-->
+    
+    <script>
+        $('#modal-deletar-funcionario').on('show.bs.modal', function(event){
+            var button = $(event.relatedTarget);
+            var recipientId = button.data('id');/*Pega o valor do id do funcionario*/
+            var recipientNome = button.data('nome');
+            
+            var modal = $(this)
+            modal.find('#recipient-id').val(recipientId);
+            modal.find('#recipient-nome').val(recipientNome);
+
+        })
+
+    </script>
     <!--SCRIPT PARA MANIPULAR EDIÇÃO-->
-    <!--AQUI TÁ IGUALZINHO AO CÓDIGO DE SUA AULA, MAS ELE NÃO ESTÁ FUNCIONANDO-->
+    
     <script>
      $('#modal-editar-funcionario').on('show.bs.modal',function(event){
         var button = $(event.relatedTarget);
