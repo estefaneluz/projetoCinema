@@ -35,6 +35,13 @@
         if($objFuncionario->editarFuncionario($nome,$cpf,$email,$senha,$id)){
             $objFuncionario->redirect('../acesso-adm.php');
         }
-    }  
+    } 
 
+    /*DELETAR FUNCIONÁRIO*/ 
+    if(isset($_POST['deletarFuncionario'])){
+        $id = $_POST['deletarFuncionario'];
+        if($objFuncionario->deletarFuncionario($id)){
+            $objFuncionario->redirect('../acesso-adm.php');
+        }
+    }
 ?>
