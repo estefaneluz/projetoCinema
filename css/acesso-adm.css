@@ -31,15 +31,16 @@ header {
   width:330px;     
 }
 .menu-adm nav{
-  margin-top: 45px;    
-    
+  margin-top: 20px;     
 }
-.menu-adm nav ul li{
-    
+.menu-adm nav h3{
+  text-align: center;
+  margin-bottom:10px;  
+}
+.menu-adm nav ul li{    
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
   width: 100%;   
-  padding: 10px 30px 10px 90px;  
-    
+  padding: 10px 30px 10px 90px;    
 }
   
 .menu-adm nav ul li:hover{
@@ -224,7 +225,7 @@ label{
 .modal-container{
   padding-left:0;
 }
-.modalFuncionario,.modalCliente{
+.modalFuncionario,.modalCliente,.modalDeletarFuncionario{
   width: 400px;;
   height: 470px;
   margin:0 auto;
@@ -234,22 +235,32 @@ label{
 .modalCliente{
   height: 500px;
 }
-.modalFuncionario>h4,.modalCliente>h4{
+.modalDeletarFuncionario{
+  height: 235px;   
+  
+}
+.modalFuncionario>h4,.modalCliente>h4,.modalDeletarFuncionario>h4{
   margin:0 auto;
 }
-.modalFuncionario form,.modalCliente form{
+.modalFuncionario form,.modalCliente form,.modalDeletarFuncionario form{
   padding: 15px 30px 30px 30px;
 }
+
 .modalFuncionario input,.modalCliente input{
   width: 300px;  
   
 }
-
+.modalDeletarFuncionario input{
+  width:331px;
+}
 .enviar{
   float:right; 
   margin-top:0;
 }
-.btnEditar,.btnDeletar{
+.modalDeletarFuncionario button{  
+  margin: 30px auto;
+}
+.btnEditar,.btnDeletar,.btnCadastrar{
   width:80px;
   height: 25px;
   box-sizing: border-box;
@@ -257,13 +268,25 @@ label{
   text-align: center;
   font-size: 12px;
   font-family: Nunito, Arial, Helvetica, sans-serif;
-  background: none;
-  border:3px solid #8e72fe;
+  font-weight: bold;
+  background: none;  
   color: #e1e1e1;
   cursor: pointer;
 }
+.btnCadastrar{
+  margin-bottom:8px;
+  height: 30px;
+  border: 3px solid #ffbf54;
+}
+.btnEditar{
+  border:3px solid #8e72fe;
+}
 .btnDeletar{
   border:3px solid #d83b40;
+}
+.btnCadastrar:hover{
+  color:#ffbf54;
+  transition: 0.2s;
 }
 .btnEditar:hover{
   color:#8e72fe;
@@ -272,7 +295,7 @@ label{
 .btnDeletar:hover{
   color:#d83b40;
   transition: 0.2s;
-}
+} 
 .container-funcionarios,.container-clientes{
   margin:50px 50px ;
 }
