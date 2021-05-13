@@ -87,7 +87,7 @@
          /*DELETAR FUNCIONÁRIO*/
          public function deletarFuncionario($id){
             try{
-                $sql = "DELETE FROM funcionario where id = :id";
+                $sql = "DELETE FROM funcionario WHERE id = :id";
                 $estado = $this->conexao->prepare($sql);
                 $estado-> bindParam(":id",$id);
                 $estado->execute();
