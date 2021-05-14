@@ -225,40 +225,42 @@ label{
 .modal-container{
   padding-left:0;
 }
-.modalFuncionario,.modalCliente,.modalDeletarFuncionario{
+.modalFuncionario,.modalCliente,.modalDeletarFuncionario,.modalDeletarCliente{
   width: 400px;;
   height: 470px;
   margin:0 auto;
   border-radius: 5px;  
   
 }
-.modalCliente{
-  height: 500px;
-}
-.modalDeletarFuncionario{
-  height: 235px;   
-  
-}
-.modalFuncionario>h4,.modalCliente>h4,.modalDeletarFuncionario>h4{
+
+
+
+.modalFuncionario>h4,.modalCliente>h4,.modalDeletarFuncionario>h4,.modalDeletarCliente>h4{
   margin:0 auto;
 }
-.modalFuncionario form,.modalCliente form,.modalDeletarFuncionario form{
+.modalFuncionario form,.modalCliente form,.modalDeletarFuncionario form,.modalDeletarCliente form{
   padding: 15px 30px 30px 30px;
 }
 
-.modalFuncionario input,.modalCliente input{
-  width: 300px;  
+
+.modalFuncionario input,.modalCliente input,.modalDeletarFuncionario input,.modalDeletarCliente input{
+  width: 320px;
+}
+.modalDeletarFuncionario,.modalDeletarCliente{
+  height: 235px;
+  padding-left: 10px;   
   
 }
-.modalDeletarFuncionario input{
-  width:331px;
+.modalFuncionario,.modalCliente{
+  padding-left: 10px; 
+}
+
+.modalDeletarFuncionario button,.modalDeletarCliente button{  
+  margin: 30px auto;
 }
 .enviar{
   float:right; 
   margin-top:0;
-}
-.modalDeletarFuncionario button{  
-  margin: 30px auto;
 }
 .btnEditar,.btnDeletar,.btnCadastrar{
   width:80px;
@@ -303,14 +305,14 @@ label{
 .tabela-funcionarios,.tabela-clientes{
   border: 1px solid #e1e1e1;
 }
-.tabela-funcionarios thead,.tabela-clientes head {
+.tabela-funcionarios thead,.tabela-clientes thead {
     background-color: #242732;
     text-transform: uppercase;
     font-size: 14px;
     
 } 
 .tabela-funcionarios thead tr th,.tabela-clientes thead tr th{
-  padding: 10px 50px;
+  padding: 10px 35px;
   box-sizing:border-box;
   border-bottom: 1px solid #e1e1e1;
 }
