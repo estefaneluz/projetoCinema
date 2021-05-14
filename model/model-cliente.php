@@ -42,7 +42,7 @@
                     nome = :nome,
                     cpf = :cpf,
                     idade = :idade,
-                    dataNascimento = :dataNascimento;
+                    dataNascimento = :dataNascimento
                     WHERE id = :id";
                     $estado = $this->conexao->prepare($sql);
                     $estado-> bindParam(":nome",$nome);
