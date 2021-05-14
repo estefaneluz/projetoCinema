@@ -185,7 +185,7 @@
                             <td><?php echo($objFuncionario['nome'])?></td>
                             <td><?php echo($objFuncionario['cpf'])?></td>
                             <td><?php echo($objFuncionario['email'])?></td>
-                            <td><button onclick="action('#modal-editar-funcionario')" type="button" class="btnEditar"
+                            <td><button  type="button" class="btnEditar"
                                     data-toggle="modal" data-target="#modal-editar-funcionario"
                                     data-id="<?php echo($objFuncionario['id'])?>"
                                     data-nome="<?php echo($objFuncionario['nome'])?>"
@@ -195,8 +195,10 @@
                                 >Editar
                                 </button>
                         </td> <!--CHAMA A MODAL DE DELETAR COM O NOME DO FUNCIONARIO-->
-                            <td><button type="button"class="btnDeletar" data-toggle="modal" data-target="#modal-deletar-funcionario" data-id="<?php print $objFuncionario['id']?>"
-                            data-nome="<?php print $objFuncionario['nome']?>">Deletar</button></td>
+                            <td><button type="button"class="btnDeletar" data-toggle="modal" data-target="#modal-deletar-funcionario" 
+                            data-id="<?php print $objFuncionario['id']?>"
+                            data-nome="<?php print $objFuncionario['nome']?>"
+                            >Deletar</button></td>
                         </tr>
                          <?php   
 
@@ -259,14 +261,13 @@
         </div>
         <div class="container-clientes" id="container-clientes">
             <table class="tabela-clientes">
-                <button onclick="action('#modal-cliente')" type="button" class="btnAdicionar">Novo</button>
+                <button onclick="action('#modal-cliente')" type="button" class="btnCadastrar">Novo</button>
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
                         <th>CPF</th>
-                        <th>Idade</th>
-                        <th>Sexo</th>
+                        <th>Idade</th>                        
                         <th>Data Nasc.</th>
                         <th>Editar</th>
                         <th>Deletar</th>                        
@@ -284,11 +285,23 @@
                             <td><?php echo($objCliente['id'])?></td><!--Aqui ta pegando os dados das colunas da tabela do banco-->
                             <td><?php echo($objCliente['nome'])?></td>
                             <td><?php echo($objCliente['cpf'])?></td>
-                            <td><?php echo($objCliente['idade'])?></td>
-                            <td><?php echo($objCliente['sexo'])?></td><!--Aqui ta pegando os dados das colunas da tabela do banco-->
+                            <td><?php echo($objCliente['idade'])?></td>                            
                             <td><?php echo($objCliente['dataNascimento'])?></td>
-                            <td>Editar</td>     
-                            <td>Deletar</td>
+                            <td><button type="button" class="btnEditar"
+                                    data-toggle="modal" data-target="#modal-editar-cliente"
+                                    data-id="<?php echo($objCliente['id'])?>"
+                                    data-nome="<?php echo($objCliente['nome'])?>"
+                                    data-cpf="<?php echo($objCliente['cpf'])?>"
+                                    data-idade="<?php echo($objCliente['idade'])?>"
+                                    data-dataNascimento="<?php echo($objCliente['dataNascimento'])?>"
+                                >Editar</button>
+                            </td>     
+                            <td> <!--CHAMA A MODAL DE DELETAR COM O NOME DO CLIENTE-->
+                            <button type="button"class="btnDeletar" data-toggle="modal" data-target="#modal-deletar-cliente" 
+                            data-id="<?php print $objCliente['id']?>"
+                            data-nome="<?php print $objCliente['nome']?>"
+                            >Deletar</button>
+                        </td>
                         </tr>
                         <?php
                             }
@@ -298,6 +311,7 @@
             </table>            
         
         </div>
+        <!--CADASTRAR CLIENTE-->
         <div class="modal" id="modal-cliente">
             <div class="modal-container modalCliente">
                 <img onclick="fechar('#modal-cliente')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
@@ -305,27 +319,53 @@
                 <form action="control/controle-cliente.php#container-clientes" method="POST">
                     <input type="hidden" name="cadastrarCliente">
                     <label for="nomeCliente">Nome</label><br>
-                    <input type="text" id="nomeCliente" class="form-cliente" name="nomeCliente"><br>
+                    <input type="text" id="nomeCliente" class="form-cliente" name="nomeCliente"><br><br>
                     <label for="cpfCliente">CPF</label><br>
-                    <input type="text" id="cpfCliente" class="form-cliente" name="cpfCliente"><br>
+                    <input type="text" id="cpfCliente" class="form-cliente" name="cpfCliente"><br><br>
                     <label for="idadeCliente">Idade</label><br>
-                    <input type="text" id="idadeeCliente" class="form-cliente" name="idadeCliente"><br>
-                    <label for="sexo">Sexo</label><br>
-                            <select class="form-seletor-cliente" id="sexo" name="sexo">
-                                <option value="M">Masculino</option>
-                                <option value="F">Feminino</option>
-                                <option value="N">Não declarado</option>
-                            </select>
-                    <label for="dataNascimento">Idade</label><br>
-                    <input type="date" id="dataNascimento" class="form-cliente" name="dataNascimento"><br>
+                    <input type="text" id="idadeCliente" class="form-cliente" name="idadeCliente"><br><br>
+                    <label for="dataNascimento">Data de Nascimento</label><br>
+                    <input type="date" id="dataNascimento" class="form-cliente" name="dataNascimento"><br><br>
                     <button type="submit" class="enviar" id="btnEnviar">Enviar</button>          
                 </form>
            </div>
         </div>
+        <!--EDITAR CLIENTE-->
+        <div class="modal" id="modal-editar-cliente">
+            <div class="modal-container modalCliente">
+                <img onclick="fechar('#modal-editar-cliente')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">            
+                <h4>Editar Cliente<h4>
+                <form action="control/controle-cliente.php#container-clientes" method="POST">
+                    <input id="recipient-idCliente" type="hidden" name="editarCliente">
+                    <label for="recipient-nomeCliente">Nome</label><br>
+                    <input type="text" name="nomeCliente" id="recipient-nomeCliente"><br><br>
+                    <label for="recipient-cpfCliente">CPF</label><br>
+                    <input type="text" name="cpfCliente" id="recipient-cpfCliente"><br><br>
+                    <label for="recipient-idadeCliente">Idade</label><br>
+                    <input type="text" name="idadeCliente" id="recipient-idadeCliente"><br><br>
+                    <label for="recipient-dataNascimento">Data de Nascimento</label><br>
+                    <input type="date" name="dataNascimento" id="recipient-dataNascimento"><br><br>
+                    <button type="submit" class="enviar" id="btnEnviar">Enviar</button>                 
+                </form>           
+            </div>               
+        </div>
+        <div class="modal" id="modal-deletar-cliente">
+            <div class="modal-container modalDeletarCliente">
+                <img onclick="fechar('#modal-deletar-cliente')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">               
+                <h4>Deletar Cliente</h4>
+                <form action="control/controle-cliente.php#container-clientes" method="POST"> 
+                    <input type="hidden" name="deletarCliente" id="recipient-idCliente">
+                    <label for="recipient-nomeCliente">Nome</label>
+                    <input type="text" name="nomeCliente" id="recipient-nomeCliente" readonly>
+                    <button type="submit" class="enviar" id="btnEnviar">Deletar</button>
+                </form>           
+            
+            </div>
+        </div>
     </div> 
     <script src="./js/hover.js"></script>  
     <script src="./js/script.js"></script>
-    <!--SCRIPT PARA MANIPULAR O DELETE-->
+    <!--SCRIPT PARA MANIPULAR O DELETE DE FUNCIONARIO-->
     
     <script>
         $('#modal-deletar-funcionario').on('show.bs.modal', function(event){
@@ -340,7 +380,7 @@
         })
 
     </script>
-    <!--SCRIPT PARA MANIPULAR EDIÇÃO-->
+    <!--SCRIPT PARA MANIPULAR EDIÇÃO DO FUNCIONÁRIO-->
     
     <script>
      $('#modal-editar-funcionario').on('show.bs.modal',function(event){
@@ -357,12 +397,38 @@
         modal.find('#recipient-cpf').val(recipientCpfFunc);
         modal.find('#recipient-email').val(recipientEmailFunc);
         modal.find('#recipient-senha').val(recipientSenhaFunc);
-
 })   
-
-    </script> 
-    
-
+     </script> 
+    <!--SCRIPT PARA MANIPULAR EDIÇÃO DE CLIENTE-->
+    <script>
+        $("#modal-editar-cliente").on('show.bs.modal', function(event){
+            var buttonCliente = $(event.relatedTarget);
+            var recipientIdCliente = buttonCliente.data('id');
+            var recipientNomeCliente = buttonCliente.data('nome');
+            var recipientCpfCliente = buttonCliente.data('cpf');
+            var recipientIdadeCliente = buttonCliente.data('idade');
+            var recipientDataNascimento = buttonCliente.data('dataNascimento');
+            
+            var modalEditarCliente= $(this)
+            modalEditarCliente.find('#recipient-idCliente').val(recipientIdCliente);
+            modalEditarCliente.find('#recipient-nomeCliente').val(recipientNomeCliente);
+            modalEditarCliente.find('#recipient-cpfCliente').val(recipientCpfCliente);
+            modalEditarCliente.find('#recipient-idadeCliente').val(recipientIdadeCliente);
+            modalEditarCliente.find('#recipient-dataNascimento').val(recipientDataNascimento);
+        })
+    </script>
+    <!--SCRIPT PARA MANIPULAR REMOÇÃO DE CLIENTE-->
+    <script>
+        $("#modal-deletar-cliente").on('show.bs.modal', function(event){
+            var buttonCliente = $(event.relatedTarget);
+            var recipientIdCliente = buttonCliente.data('id');
+            var recipientNomeCliente = buttonCliente.data('nome');
+            var modalDeletarCliente = $(this)
+            modalDeletarCliente.find("#recipient-idCliente").val(recipientIdCliente);
+            modalDeletarCliente.find("#recipient-nomeCliente").val(recipientNomeCliente);
+            
+        })
+    </script>
 
 </body>
 
