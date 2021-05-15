@@ -1,12 +1,11 @@
 <?php
-    require_once 'model/acesso-funcionario.php';
+    require_once 'model/funcionario.php';
     $objFuncionario = new Funcionario(); //Criando obj q recebe as funções de funcionario
 
 ?>
 <?php
-    require_once 'model/model-cliente.php';
+    require_once 'model/cliente.php';
     $objCliente = new Cliente();
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -137,14 +136,35 @@
         <!-- CADASTRO DE SALAS -->
         <div class="cadastro-salas" id="cadastro-salas">
             <form action="#">
-                <label for="nomeSala">Nome da Sala</label><br>
-                <input type="text" id="nomeSala" class="form-filmes" name="nomeSala"><br>
-                <label for="qtdAssentos">Qtd. de Assentos</label><br>
-                <input type="number" id="qtdAssentos" class="form-filmes" name="qtdAssentos"><br>
+                <div>
+                    <label for="nomeSala">Nome da Sala</label><br>
+                    <input type="text" id="nomeSala" class="form-filmes" name="nomeSala"><br>
+                </div>
+                <div>
+                    <label for="qtdAssentos">Qtd. de Assentos</label><br>
+                    <input type="number" id="qtdAssentos" class="form-filmes" name="qtdAssentos"><br>
+                </div>
                 <button type="submit" class="btnAdicionar" >Adicionar</button>
             </form>
-            <div class="salas-cadastradas">
-                <p>Salas Cadastradas</p>
+            <table class="tabela">      
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Qtd Assentos</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Azul</td>
+                        <td>50</td>
+                        <td>Editar</td>
+                        <td>Excluir</td>
+                    </tr>
+                </tbody>
+            </table>
+                <!-- <p>Salas Cadastradas</p>
                 <div>
                     <div class="nomes-salas">
                         <div><p>Sala A</p></div>
@@ -158,9 +178,8 @@
                         <button type="button" class="btnExcluir">X</button>
                         <button type="button" class="btnExcluir">X</button>
                     </div>
-                </div>
-            </div>
-        </div> 
+                </div> -->
+        </div>  
         <!-- FIM DO GERENCIAMENTO DE SALAS -->
 
         <!--  INICIO DO GERENCIAR FUNCIONARIOS -->
@@ -169,7 +188,7 @@
                 <h2>Funcionários</h2>
                 <button onclick="action('#modal-funcionario')" type="button" class="btnAdicionar">Novo</button>
             </div>
-             <table class="tabela">
+             <table class="tabela">      
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -182,13 +201,10 @@
                 </thead>
                 <tbody>
                     <?php
-                        $meuBanco = "SELECT * FROM funcionario";
-                        $estado = $objFuncionario->acessarBancoDedados($meuBanco);//Apontando função acessarBancoDeDados de funcinario e passando a var meuBanco
-                        $estado->execute();//Executa a conexão com o BD
-                        while($objFuncionario = $estado->fetch(PDO::FETCH_ASSOC)){//Associando a um vetor
-                            //Obj funcionario vai receber o estado da conexao em  um array pra percorre cada linha,
-                            // o fetch q faz isso, apontando atraves da biblioteca PDO, pegando o resultado e atribuindo ao array
-                            //Enquanto tiver linhas na tabela ele será executado
+                        $sql = "SELECT * FROM funcionario";
+                        $stmt = $objFuncionario->runQuery($sql);
+                        $stmt->execute();
+                        while($objFuncionario = $stmt->fetch(PDO::FETCH_ASSOC)){
                     ?>
                         <tr>
                             <td><?php echo($objFuncionario['id'])?></td><!--Aqui ta pegando os dados das colunas da tabela do banco-->
@@ -210,10 +226,10 @@
                             data-nome="<?php print $objFuncionario['nome']?>"
                             >Deletar</button></td>
                         </tr>
+                    <!-- FECHAMENTO DO WHILE -->
                          <?php   
-
-                        }
-                        ?>
+                        } 
+                         ?> 
                     
                 </tbody>
                 </table>
@@ -223,36 +239,55 @@
             <div class="modal-container modalFuncionario">
                 <img onclick="fechar('#modal-funcionario')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
                 <h4>Cadastrar Funcionário<h4>
-                <form action="control/controle-acesso-adm.php#container-funcionarios" method="POST">
+                <form action="control/ctr-funcionario.php#container-funcionarios" method="POST">
                         <input type="hidden" name="cadastrarFuncionario">
-                        <label for="nomeFuncionario">Nome </label><br>
-                        <input type="text" id="nomeFuncionario" class="form-funcionario" name="nomeFuncionario" required><br>
-                        <label for="cpfFuncionario">CPF</label><br>
-                        <input type="text" id="cpfFuncionario" class="form-funcionario" name="cpfFuncionario" required><br>
-                        <label for="emailFuncionario">Email</label><br>
-                        <input type="text" id="emailFuncionario" class="form-funcionario" name="emailFuncionario" required><br>
-                        <label for="senhaFuncionario">Senha</label><br>
-                        <input type="password" id="senhaFuncionario" class="form-funcionario" name="senhaFuncionario" required><br>
-                        <button type="submit" class="enviar" id="btnEnviar">Confirmar</button>          
+                        <div>
+                            <label for="nomeFuncionario">Nome </label><br>
+                            <input type="text" id="nomeFuncionario" class="form-funcionario" name="nomeFuncionario" required><br>
+                        </div>
+                        <div>
+                            <label for="cpfFuncionario">CPF</label><br>
+                            <input type="text" id="cpfFuncionario" class="form-funcionario" name="cpfFuncionario" required><br>
+                        </div>
+                        <div>
+                            <label for="emailFuncionario">Email</label><br>
+                            <input type="email" id="emailFuncionario" class="form-funcionario" name="emailFuncionario" required><br>
+                        </div>
+                        <div>
+                            <label for="senhaFuncionario">Senha</label><br>
+                            <input type="password" id="senhaFuncionario" class="form-funcionario" name="senhaFuncionario" required><br>
+                        </div>
+                        <button type="submit" class="enviar">Enviar</button>          
                 </form>
            </div>
         </div>
         <!--EDITAR FUNCIONARIO-->
         <div class="modal" id="modal-editar-funcionario">
-            <div class="modal-container modalFuncionario" >
+            <div class="modal-container" >
                 <img onclick="fechar('#modal-editar-funcionario')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
                 <h4>Editar Funcionário<h4>
-                <form action="control/controle-acesso-adm.php#container-funcionarios" method="POST">
+                <form action="control/ctr-funcionario.php#container-funcionarios" method="POST">
                         <input id="recipient-id" type="hidden" name="editar">
-                        <label for="recipient-nome">Nome </label><br>
-                        <input type="text" class="form-funcionario" name="txtNome" id="recipient-nome"  ><br>
-                        <label for="recipient-cpf">CPF</label><br>
-                        <input type="text"  class="form-funcionario" name="txtCpf" id="recipient-cpf"><br>
-                        <label for="recipient-email">Email</label><br>
-                        <input type="text"  class="form-funcionario" name="txtEmail" id="recipient-email"><br>
-                        <label for="recipient-senha">Senha</label><br>
-                        <input type="password"  class="form-funcionario" name="txtSenha" id="recipient-senha"><br>
-                        <button type="submit" class="enviar" id="btnEnviar">Confirmar</button>          
+                        <div>
+                            <label for="recipient-nome">Nome </label><br>
+                            <input type="text" class="form-funcionario" name="txtNome" id="recipient-nome"  ><br>
+                        </div>
+                        
+                        <div>
+                            <label for="recipient-cpf">CPF</label><br>
+                            <input type="text"  class="form-funcionario" name="txtCpf" id="recipient-cpf"><br>
+
+                        </div>
+
+                        <div>
+                            <label for="recipient-email">Email</label><br>
+                            <input type="text"  class="form-funcionario" name="txtEmail" id="recipient-email"><br>
+                        </div>
+                        <div>
+                            <label for="recipient-senha">Senha</label><br>
+                            <input type="password"  class="form-funcionario" name="txtSenha" id="recipient-senha"><br>
+                        </div>
+                        <button type="submit" class="enviar">Enviar</button>          
                 </form>
            </div>           
         </div>
@@ -260,11 +295,11 @@
             <div class="modal-container modalDeletarFuncionario">
                 <img onclick="fechar('#modal-deletar-funcionario')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">              
                 <h4>Deletar Funcionário</h4>
-                <form action="control/controle-acesso-adm.php#container-funcionarios" method="POST"> 
+                <form action="control/ctr-funcionario.php#container-funcionarios" method="POST"> 
                     <input type="hidden" name="deletarFuncionario" id="recipient-id">
-                    <label for="recipient-nome">Nome</label><br>
-                    <input type="text" class="form-funcionario" name="txtNome" id="recipient-nome" readonly><br>
-                    <button type="submit" class="enviar" id="btnEnviar">Confirmar</button>
+                    <label for="recipient-nome">Nome</label>
+                    <input type="text" class="form-funcionario" name="txtNome" id="recipient-nome" readonly>
+                    <button type="submit" class="enviar">Deletar</button>
                 </form>
             </div>        
         </div>
@@ -280,17 +315,17 @@
                         <th>ID</th>
                         <th>Nome</th>
                         <th>CPF</th>
-                        <th>Idade</th>                      
+                        <th>Idade</th>
                         <th>Editar</th>
                         <th>Deletar</th>                        
                     </tr>
                 </thead>
                 <tbody>
                         <?php
-                            $meuBanco = "SELECT * FROM cliente";
-                            $estado = $objCliente->acessarBancoDedados($meuBanco);//Apontando função acessarBancoDeDados de funcinario e passando a var meuBanco
-                            $estado->execute();//Executa a conexão com o BD
-                            while($objCliente = $estado->fetch(PDO::FETCH_ASSOC)){//Associando a um vetor
+                            $sql = "SELECT * FROM cliente";
+                            $stmt = $objCliente->runQuery($sql);//Apontando função acessarBancoDeDados de funcinario e passando a var meuBanco
+                            $stmt->execute();//Executa a conexão com o BD
+                            while($objCliente = $stmt->fetch(PDO::FETCH_ASSOC)){//Associando a um vetor
                                 
                         ?>
                         <tr>
@@ -327,36 +362,44 @@
             <div class="modal-container modalCliente">
                 <img onclick="fechar('#modal-cliente')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
                 <h4>Cadastrar Cliente</h4>
-                <form action="control/controle-cliente.php#container-clientes" method="POST">
+                <form action="control/ctr-cliente.php#container-clientes" method="POST">
                     <input type="hidden" name="cadastrarCliente">
-                    <label for="nomeCliente">Nome</label><br>
-                    <input type="text" id="nomeCliente" class="form-cliente" name="nomeCliente"><br>
-                    <label for="cpfCliente">CPF</label><br>
-                    <input type="text" id="cpfCliente" class="form-cliente" name="cpfCliente"><br>
-                    <label for="idadeCliente">Idade</label><br>
-                    <input type="text" id="idadeCliente" class="form-cliente" name="idadeCliente"><br>
-                    <label for="dataNascimento">Data de Nascimento</label><br>
-                    <input type="date" id="dataNascimento" class="form-cliente" name="dataNascimento"><br>
-                    <button type="submit" class="enviar" id="btnEnviar">Confirmar</button>          
+                    <div>
+                        <label for="nomeCliente">Nome</label><br>
+                        <input type="text" id="nomeCliente" class="form-cliente" name="nomeCliente"><br>
+                    </div>
+                    <div>
+                        <label for="cpfCliente">CPF</label><br>
+                        <input type="text" id="cpfCliente" class="form-cliente" name="cpfCliente"><br>
+                    </div>
+                    <div>                        
+                        <label for="idadeCliente">Idade</label><br>
+                        <input type="text" id="idadeeCliente" class="form-cliente" name="idadeCliente"><br>
+                    </div>
+                    <div>
+                        <label for="dataNascimento">Data de Nascimento</label><br>
+                        <input type="date" id="dataNascimento" class="form-cliente" name="dataNascimento"><br>
+                    </div>
+                    <button type="submit" class="enviar">Enviar</button>          
                 </form>
            </div>
         </div>
         <!--EDITAR CLIENTE-->
         <div class="modal" id="modal-editar-cliente">
-            <div class="modal-container modalCliente">
+            <div class="modal-container">
                 <img onclick="fechar('#modal-editar-cliente')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">            
                 <h4>Editar Cliente<h4>
-                <form action="control/controle-cliente.php#container-clientes" method="POST">
+                <form action="control/ctr-cliente.php#container-clientes" method="POST">
                     <input id="recipient-idCliente" type="hidden" name="editarCliente">
-                    <label for="recipient-nomeCliente">Nome</label><br>
-                    <input type="text" name="nomeCliente" id="recipient-nomeCliente"><br>
-                    <label for="recipient-cpfCliente">CPF</label><br>
-                    <input type="text" name="cpfCliente" id="recipient-cpfCliente"><br>
-                    <label for="recipient-idadeCliente">Idade</label><br>
-                    <input type="text" name="idadeCliente" id="recipient-idadeCliente"><br>
-                    <label for="recipient-dataNascimento">Data de Nascimento</label><br>
-                    <input type="date" name="dataNascimento" id="recipient-dataNascimento"><br>
-                    <button type="submit" class="enviar" id="btnEnviar">Confirmar</button>                 
+                    <label for="recipient-nomeCliente">Nome</label>
+                    <input type="text" name="nomeCliente" id="recipient-nomeCliente">
+                    <label for="recipient-cpfCliente">CPF</label>
+                    <input type="text" name="cpfCliente" id="recipient-cpfCliente">
+                    <label for="recipient-idadeCliente">Idade</label>
+                    <input type="text" name="idadeCliente" id="recipient-idadeCliente">
+                    <label for="recipient-dataNascimento">Data de Nascimento</label>
+                    <input type="date" name="dataNascimento" id="recipient-dataNascimento">
+                    <button type="submit" class="enviar">Enviar</button>                 
                 </form>           
             </div>               
         </div>
@@ -364,11 +407,11 @@
             <div class="modal-container modalDeletarCliente">
                 <img onclick="fechar('#modal-deletar-cliente')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">               
                 <h4>Deletar Cliente</h4>
-                <form action="control/controle-cliente.php#container-clientes" method="POST"> 
+                <form action="control/ctr-cliente.php#container-clientes" method="POST"> 
                     <input type="hidden" name="deletarCliente" id="recipient-idCliente">
-                    <label for="recipient-nomeCliente">Nome</label><br>
-                    <input type="text" name="nomeCliente" id="recipient-nomeCliente" readonly><br>
-                    <button type="submit" class="enviar" id="btnEnviar">Confirmar</button>
+                    <label for="recipient-nomeCliente">Nome</label>
+                    <input type="text" name="nomeCliente" id="recipient-nomeCliente" readonly>
+                    <button type="submit" class="enviar">Deletar</button>
                 </form>           
             
             </div>

@@ -95,7 +95,7 @@ label{
   font-size: 14px;
 }
 
-#nFilme, #nomeSala{
+#nFilme {
   width: 418px;  
 
 }
@@ -220,9 +220,6 @@ label{
   border-radius: 5px; 
 }
 
-.modalFuncionario,.modalCliente{/*no meu ajuste as modais de cadastar cliente e funcionario estavam menores que  as de editar*/
-  height: 600px;
-}
 .modal-container h4{
   margin: 0 auto 7px auto;
 }
@@ -236,10 +233,8 @@ label{
   width: 300px;  
   margin-bottom: 10px;
 }
-.modalDeletarFuncionario,.modalDeletarCliente{
-  height: 250px;   
-  
-}
+
+
 .modalDeletarFuncionario button,.modalDeletarCliente button{  
   margin: auto;
 }
@@ -249,7 +244,8 @@ label{
   background-color: #d83b40;
   margin-top: 15px;
 }
-.btnEditar,.btnDeletar,.btnCadastrar{
+
+.btnEditar,.btnDeletar{
   width:80px;
   height: 25px;
   box-sizing: border-box;
@@ -284,7 +280,7 @@ label{
 .btnDeletar:hover{
   color:#d83b40;
   transition: 0.2s;
-} 
+}
 
 .tabela{
   border: 1px solid #e1e1e1;
@@ -308,19 +304,19 @@ label{
 }
 
 .tabela thead {
-  background-color: #242732;
-  text-transform: uppercase;
-  font-size: 14px;
-  
+    background-color: #242732;
+    text-transform: uppercase;
+    font-size: 14px;
+    
 } 
 .tabela thead tr th{
-padding: 10px 50px;
-box-sizing:border-box;
-border-bottom: 1px solid #e1e1e1;
+  padding: 10px 50px;
+  box-sizing:border-box;
+  border-bottom: 1px solid #e1e1e1;
 }
 .tabela tbody tr td {
-padding: 8px ;
-box-sizing:border-box;
-font-size: 14px;
-text-align: center;
+  padding: 8px;
+  box-sizing:border-box;
+  font-size: 14px;
+  text-align: center;
 }
