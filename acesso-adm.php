@@ -237,7 +237,7 @@
                             <label for="senhaFuncionario">Senha</label><br>
                             <input type="password" id="senhaFuncionario" class="form-funcionario" name="senhaFuncionario" required><br>
                         </div>
-                        <button type="submit" class="enviar" id="btnEnviar">Enviar</button>          
+                        <button type="submit" class="enviar">Enviar</button>          
                 </form>
            </div>
         </div>
@@ -267,7 +267,7 @@
                             <label for="recipient-senha">Senha</label><br>
                             <input type="password"  class="form-funcionario" name="txtSenha" id="recipient-senha"><br>
                         </div>
-                        <button type="submit" class="enviar" id="btnEnviar">Enviar</button>          
+                        <button type="submit" class="enviar">Enviar</button>          
                 </form>
            </div>           
         </div>
@@ -279,7 +279,7 @@
                     <input type="hidden" name="deletarFuncionario" id="recipient-id">
                     <label for="recipient-nome">Nome</label>
                     <input type="text" class="form-funcionario" name="txtNome" id="recipient-nome" readonly>
-                    <button type="submit" class="enviar" id="btnEnviar">Deletar</button>
+                    <button type="submit" class="enviar">Deletar</button>
                 </form>
             </div>        
         </div>
@@ -360,7 +360,7 @@
                         <label for="dataNascimento">Data de Nascimento</label><br>
                         <input type="date" id="dataNascimento" class="form-cliente" name="dataNascimento"><br>
                     </div>
-                    <button type="submit" class="enviar" id="btnEnviar">Enviar</button>          
+                    <button type="submit" class="enviar">Enviar</button>          
                 </form>
            </div>
         </div>
@@ -379,7 +379,7 @@
                     <input type="text" name="idadeCliente" id="recipient-idadeCliente">
                     <label for="recipient-dataNascimento">Data de Nascimento</label>
                     <input type="date" name="dataNascimento" id="recipient-dataNascimento">
-                    <button type="submit" class="enviar" id="btnEnviar">Enviar</button>                 
+                    <button type="submit" class="enviar">Enviar</button>                 
                 </form>           
             </div>               
         </div>
@@ -391,7 +391,7 @@
                     <input type="hidden" name="deletarCliente" id="recipient-idCliente">
                     <label for="recipient-nomeCliente">Nome</label>
                     <input type="text" name="nomeCliente" id="recipient-nomeCliente" readonly>
-                    <button type="submit" class="enviar" id="btnEnviar">Deletar</button>
+                    <button type="submit" class="enviar">Deletar</button>
                 </form>           
             
             </div>
