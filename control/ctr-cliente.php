@@ -1,6 +1,6 @@
 <?php
     //Pega as informações e envia para a camada modelo
-    require_once '../model/model-cliente.php';
+    require_once '../model/cliente.php';
     $objCliente = new Cliente();
 
      /*CADASTRAR CLIENTE*/   

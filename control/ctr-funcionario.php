@@ -1,6 +1,6 @@
 <?php
     //Pega as informações e envia para a camada modelo
-    require_once '../model/acesso-funcionario.php';
+    require_once '../model/funcionario.php';
     $objFuncionario = new Funcionario();
     if(isset($_POST['email'])){ //isset verifica se no html tem algum tag com o atributo: email
         $email = $_POST['email']; //Para pegar valor do input e usar no php: $_GET/POST['ATRIBUTO']

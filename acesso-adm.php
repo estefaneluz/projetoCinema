@@ -1,12 +1,11 @@
 <?php
-    require_once 'model/acesso-funcionario.php';
+    require_once 'model/funcionario.php';
     $objFuncionario = new Funcionario(); //Criando obj q recebe as funções de funcionario
 
 ?>
 <?php
-    require_once 'model/model-cliente.php';
+    require_once 'model/cliente.php';
     $objCliente = new Cliente();
-
 ?>
 
 <!DOCTYPE html>
@@ -182,13 +181,10 @@
                 </thead>
                 <tbody>
                     <?php
-                        $meuBanco = "SELECT * FROM funcionario";
-                        $estado = $objFuncionario->acessarBancoDedados($meuBanco);//Apontando função acessarBancoDeDados de funcinario e passando a var meuBanco
-                        $estado->execute();//Executa a conexão com o BD
-                        while($objFuncionario = $estado->fetch(PDO::FETCH_ASSOC)){//Associando a um vetor
-                            //Obj funcionario vai receber o estado da conexao em  um array pra percorre cada linha,
-                            // o fetch q faz isso, apontando atraves da biblioteca PDO, pegando o resultado e atribuindo ao array
-                            //Enquanto tiver linhas na tabela ele será executado
+                        $sql = "SELECT * FROM funcionario";
+                        $stmt = $objFuncionario->runQuery($sql);
+                        $stmt->execute();
+                        while($objFuncionario = $stmt->fetch(PDO::FETCH_ASSOC)){
                     ?>
                         <tr>
                             <td><?php echo($objFuncionario['id'])?></td><!--Aqui ta pegando os dados das colunas da tabela do banco-->
@@ -210,10 +206,10 @@
                             data-nome="<?php print $objFuncionario['nome']?>"
                             >Deletar</button></td>
                         </tr>
+                    <!-- FECHAMENTO DO WHILE -->
                          <?php   
-
-                        }
-                        ?>
+                        } 
+                         ?> 
                     
                 </tbody>
                 </table>
@@ -223,7 +219,7 @@
             <div class="modal-container">
                 <img onclick="fechar('#modal-funcionario')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
                 <h4>Cadastrar Funcionário<h4>
-                <form action="control/controle-acesso-adm.php#container-funcionarios" method="POST">
+                <form action="control/ctr-funcionario.php#container-funcionarios" method="POST">
                         <input type="hidden" name="cadastrarFuncionario">
                         <div>
                             <label for="nomeFuncionario">Nome </label><br>
@@ -235,7 +231,7 @@
                         </div>
                         <div>
                             <label for="emailFuncionario">Email</label><br>
-                            <input type="text" id="emailFuncionario" class="form-funcionario" name="emailFuncionario" required><br>
+                            <input type="email" id="emailFuncionario" class="form-funcionario" name="emailFuncionario" required><br>
                         </div>
                         <div>
                             <label for="senhaFuncionario">Senha</label><br>
@@ -250,7 +246,7 @@
             <div class="modal-container modalFuncionario" >
                 <img onclick="fechar('#modal-editar-funcionario')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
                 <h4>Editar Funcionário<h4>
-                <form action="control/controle-acesso-adm.php#container-funcionarios" method="POST">
+                <form action="control/ctr-funcionario.php#container-funcionarios" method="POST">
                         <input id="recipient-id" type="hidden" name="editar">
                         <div>
                             <label for="recipient-nome">Nome </label><br>
@@ -279,7 +275,7 @@
             <div class="modal-container modalDeletarFuncionario">
                 <img onclick="fechar('#modal-deletar-funcionario')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">              
                 <h4>Deletar Funcionário</h4>
-                <form action="control/controle-acesso-adm.php#container-funcionarios" method="POST"> 
+                <form action="control/ctr-funcionario.php#container-funcionarios" method="POST"> 
                     <input type="hidden" name="deletarFuncionario" id="recipient-id">
                     <label for="recipient-nome">Nome</label>
                     <input type="text" class="form-funcionario" name="txtNome" id="recipient-nome" readonly>
@@ -306,10 +302,10 @@
                 </thead>
                 <tbody>
                         <?php
-                            $meuBanco = "SELECT * FROM cliente";
-                            $estado = $objCliente->acessarBancoDedados($meuBanco);//Apontando função acessarBancoDeDados de funcinario e passando a var meuBanco
-                            $estado->execute();//Executa a conexão com o BD
-                            while($objCliente = $estado->fetch(PDO::FETCH_ASSOC)){//Associando a um vetor
+                            $sql = "SELECT * FROM cliente";
+                            $stmt = $objCliente->runQuery($sql);//Apontando função acessarBancoDeDados de funcinario e passando a var meuBanco
+                            $stmt->execute();//Executa a conexão com o BD
+                            while($objCliente = $stmt->fetch(PDO::FETCH_ASSOC)){//Associando a um vetor
                                 
                         ?>
                         <tr>
@@ -346,7 +342,7 @@
             <div class="modal-container">
                 <img onclick="fechar('#modal-cliente')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
                 <h4>Cadastrar Cliente</h4>
-                <form action="control/controle-cliente.php#container-clientes" method="POST">
+                <form action="control/ctr-cliente.php#container-clientes" method="POST">
                     <input type="hidden" name="cadastrarCliente">
                     <div>
                         <label for="nomeCliente">Nome</label><br>
@@ -373,7 +369,7 @@
             <div class="modal-container modalCliente">
                 <img onclick="fechar('#modal-editar-cliente')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">            
                 <h4>Editar Cliente<h4>
-                <form action="control/controle-cliente.php#container-clientes" method="POST">
+                <form action="control/ctr-cliente.php#container-clientes" method="POST">
                     <input id="recipient-idCliente" type="hidden" name="editarCliente">
                     <label for="recipient-nomeCliente">Nome</label>
                     <input type="text" name="nomeCliente" id="recipient-nomeCliente">
@@ -391,7 +387,7 @@
             <div class="modal-container modalDeletarCliente">
                 <img onclick="fechar('#modal-deletar-cliente')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">               
                 <h4>Deletar Cliente</h4>
-                <form action="control/controle-cliente.php#container-clientes" method="POST"> 
+                <form action="control/ctr-cliente.php#container-clientes" method="POST"> 
                     <input type="hidden" name="deletarCliente" id="recipient-idCliente">
                     <label for="recipient-nomeCliente">Nome</label>
                     <input type="text" name="nomeCliente" id="recipient-nomeCliente" readonly>
