@@ -49,17 +49,17 @@ nav h3 {
 
 /*CADASTRO DE FILMES*/
 
-.cadastro-filmes,.cadastro-salas,.container-funcionarios,.container-clientes{
+.cadastro-filmes,.cadastro-salas,.container-funcionarios,.container-clientes,#container-precos{
   display:none;
 }
 
-.cadastro-filmes:target, .cadastro-salas:target{
+.cadastro-salas:target{
   display:flex;
   flex-direction: row;
   text-transform: uppercase;
   /* padding: 33px 33px 51px 113px; */
 }
-.container-funcionarios:target,.container-clientes:target{
+.container-funcionarios:target,.container-clientes:target,.cadastro-filmes:target,#container-precos:target{
   display:flex;
   flex-direction: column;
 }
@@ -72,50 +72,6 @@ nav h3 {
   align-items: center;
 }
 
-.form-seletor, .form-filmes,.cartazFilme{
-  width:201px;
-  height:40px;
-  background-color: #3f3d56;
-  color:#e1e1e1;
-  font-family:  Nunito, Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  font-weight: bold;
-  border: 1px solid #232237;
-  box-shadow: inset 0px 3px 4px rgba(0, 0, 0, 0.25);   
-  text-transform: uppercase;
-  margin-top:8px;
-  margin-bottom: 19px;
-  padding-left: 10px;
-} 
-
-label{
-  line-height: 19px;
-  font-weight: bold;
-  font-style: normal;
-  font-size: 14px;
-}
-
-#nFilme {
-  width: 418px;  
-
-}
-#cartazFilme[type='file'] {/*esconde o input*/
-  display: none;  
-}
-
-.cartazFilme {  
-  float: right;
-  padding: 10px 10px 10px 13px; 
-  cursor:pointer;
-  margin-top:30px;  
- 
-}
-.cartazFilme:hover{
-  background-color: #e1e1e1;
-  color:#3f3d56;
-  transition: 0.2s;
-  
-}
 .btnAdicionar{
   text-transform: uppercase;
   font-size: 14px;
@@ -134,13 +90,13 @@ label{
   transition: 0.2s;
   
 }
-.filmes-cadastrados,.salas-cadastradas{
+.salas-cadastradas{
   
   width: 350px;  
   margin-left: 50px;
   height: 210px;
 }
-.filmes-cadastrados > p,.salas-cadastradas >p{
+.salas-cadastradas >p{
   margin-bottom: 12px;
   font-weight: bold;
   font-size: 14px;
@@ -150,7 +106,7 @@ label{
 }
 
 
-.lista-filmes div,.nomes-salas div{
+.nomes-salas div{
   /*AJUSTAR POSICIONAMENTO*/
   height: 40px;   
   background: #3F3D56;
@@ -237,6 +193,10 @@ label{
 
 .modalDeletarFuncionario button,.modalDeletarCliente button{  
   margin: auto;
+}
+/*AJUSTANDO ALTURA DE MODAL DE FILME*/
+.modalFilme{
+  height:570px;
 }
 .enviar{
   justify-self: end;
