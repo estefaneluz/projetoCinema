@@ -29,11 +29,12 @@
     <link rel="stylesheet" href="./css/owl/owl.theme.default.min.css">
     <!--SCRIPTS jQuery PARA MANIPULAR EDIÇÃO-->
         
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>CineMail - Acesso Administrativo</title>
-</head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <title>CineMail - Acesso Administrativo</title>
+    </head>
+
 <body>
     <header>
         <a href="index.html" class="logo">
@@ -194,7 +195,8 @@
                             <td><?php echo($objFuncionario['nome'])?></td>
                             <td><?php echo($objFuncionario['cpf'])?></td>
                             <td><?php echo($objFuncionario['email'])?></td>
-                            <td><button onclick="action('#modal-editar-funcionario')" type="button" class="btnEditar"
+                            <td><button  type="button" class="btnEditar"
+                                    data-toggle="modal" data-target="#modal-editar-funcionario"
                                     data-id="<?php echo($objFuncionario['id'])?>"
                                     data-nome="<?php echo($objFuncionario['nome'])?>"
                                     data-cpf="<?php echo($objFuncionario['cpf'])?>"
@@ -202,8 +204,11 @@
                                     data-senha="<?php echo($objFuncionario['senha'])?>"                                                      
                                 >Editar
                                 </button>
-                        </td>
-                            <td><button class="btnDeletar">Deletar</button></td>
+                        </td> <!--CHAMA A MODAL DE DELETAR COM O NOME DO FUNCIONARIO-->
+                            <td><button type="button"class="btnDeletar" data-toggle="modal" data-target="#modal-deletar-funcionario" 
+                            data-id="<?php print $objFuncionario['id']?>"
+                            data-nome="<?php print $objFuncionario['nome']?>"
+                            >Deletar</button></td>
                         </tr>
                          <?php   
 
@@ -217,7 +222,7 @@
         <div class="modal" id="modal-funcionario">
             <div class="modal-container">
                 <img onclick="fechar('#modal-funcionario')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
-                <h4>Cadastrar Funcionario<h4>
+                <h4>Cadastrar Funcionário<h4>
                 <form action="control/controle-acesso-adm.php#container-funcionarios" method="POST">
                         <input type="hidden" name="cadastrarFuncionario">
                         <div>
@@ -244,7 +249,7 @@
         <div class="modal" id="modal-editar-funcionario">
             <div class="modal-container modalFuncionario" >
                 <img onclick="fechar('#modal-editar-funcionario')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
-                <h4>Editar Funcionario<h4>
+                <h4>Editar Funcionário<h4>
                 <form action="control/controle-acesso-adm.php#container-funcionarios" method="POST">
                         <input id="recipient-id" type="hidden" name="editar">
                         <div>
@@ -269,6 +274,18 @@
                         <button type="submit" class="enviar" id="btnEnviar">Enviar</button>          
                 </form>
            </div>           
+        </div>
+        <div class="modal" id="modal-deletar-funcionario">
+            <div class="modal-container modalDeletarFuncionario">
+                <img onclick="fechar('#modal-deletar-funcionario')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">              
+                <h4>Deletar Funcionário</h4>
+                <form action="control/controle-acesso-adm.php#container-funcionarios" method="POST"> 
+                    <input type="hidden" name="deletarFuncionario" id="recipient-id">
+                    <label for="recipient-nome">Nome</label>
+                    <input type="text" class="form-funcionario" name="txtNome" id="recipient-nome" readonly>
+                    <button type="submit" class="enviar" id="btnEnviar">Deletar</button>
+                </form>
+            </div>        
         </div>
         <div class="container-clientes" id="container-clientes">
             <div class="header-gerenciar">
@@ -299,11 +316,22 @@
                             <td><?php echo($objCliente['id'])?></td><!--Aqui ta pegando os dados das colunas da tabela do banco-->
                             <td><?php echo($objCliente['nome'])?></td>
                             <td><?php echo($objCliente['cpf'])?></td>
-                            <td><?php echo($objCliente['idade'])?></td>
-                            <td><?php echo($objCliente['sexo'])?></td><!--Aqui ta pegando os dados das colunas da tabela do banco-->
-                            <td><?php echo($objCliente['dataNascimento'])?></td>
-                            <td>Editar</td>     
-                            <td>Deletar</td>
+                            <td><?php echo($objCliente['idade'])?></td>                            
+                            <td><button type="button" class="btnEditar"
+                                    data-toggle="modal" data-target="#modal-editar-cliente"
+                                    data-id="<?php echo($objCliente['id'])?>"
+                                    data-nome="<?php echo($objCliente['nome'])?>"
+                                    data-cpf="<?php echo($objCliente['cpf'])?>"
+                                    data-idade="<?php echo($objCliente['idade'])?>"
+                                    data-dataNascimento="<?php echo($objCliente['dataNascimento'])?>"
+                                >Editar</button>
+                            </td>     
+                            <td> <!--CHAMA A MODAL DE DELETAR COM O NOME DO CLIENTE-->
+                            <button type="button"class="btnDeletar" data-toggle="modal" data-target="#modal-deletar-cliente" 
+                            data-id="<?php print $objCliente['id']?>"
+                            data-nome="<?php print $objCliente['nome']?>"
+                            >Deletar</button>
+                        </td>
                         </tr>
                         <?php
                             }
@@ -313,6 +341,7 @@
             </table>            
         
         </div>
+        <!--CADASTRAR CLIENTE-->
         <div class="modal" id="modal-cliente">
             <div class="modal-container">
                 <img onclick="fechar('#modal-cliente')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
@@ -339,6 +368,38 @@
                 </form>
            </div>
         </div>
+        <!--EDITAR CLIENTE-->
+        <div class="modal" id="modal-editar-cliente">
+            <div class="modal-container modalCliente">
+                <img onclick="fechar('#modal-editar-cliente')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">            
+                <h4>Editar Cliente<h4>
+                <form action="control/controle-cliente.php#container-clientes" method="POST">
+                    <input id="recipient-idCliente" type="hidden" name="editarCliente">
+                    <label for="recipient-nomeCliente">Nome</label>
+                    <input type="text" name="nomeCliente" id="recipient-nomeCliente">
+                    <label for="recipient-cpfCliente">CPF</label>
+                    <input type="text" name="cpfCliente" id="recipient-cpfCliente">
+                    <label for="recipient-idadeCliente">Idade</label>
+                    <input type="text" name="idadeCliente" id="recipient-idadeCliente">
+                    <label for="recipient-dataNascimento">Data de Nascimento</label>
+                    <input type="date" name="dataNascimento" id="recipient-dataNascimento">
+                    <button type="submit" class="enviar" id="btnEnviar">Enviar</button>                 
+                </form>           
+            </div>               
+        </div>
+        <div class="modal" id="modal-deletar-cliente">
+            <div class="modal-container modalDeletarCliente">
+                <img onclick="fechar('#modal-deletar-cliente')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">               
+                <h4>Deletar Cliente</h4>
+                <form action="control/controle-cliente.php#container-clientes" method="POST"> 
+                    <input type="hidden" name="deletarCliente" id="recipient-idCliente">
+                    <label for="recipient-nomeCliente">Nome</label>
+                    <input type="text" name="nomeCliente" id="recipient-nomeCliente" readonly>
+                    <button type="submit" class="enviar" id="btnEnviar">Deletar</button>
+                </form>           
+            
+            </div>
+        </div>
     </div> 
 
     </section>
@@ -349,8 +410,23 @@
 
     <script src="./js/hover.js"></script>  
     <script src="./js/script.js"></script>
-    <!--SCRIPT PARA MANIPULAR EDIÇÃO-->
-    <!--AQUI TÁ IGUALZINHO AO CÓDIGO DE SUA AULA, MAS ELE NÃO ESTÁ FUNCIONANDO-->
+    <!--SCRIPT PARA MANIPULAR O DELETE DE FUNCIONARIO-->
+    
+    <script>
+        $('#modal-deletar-funcionario').on('show.bs.modal', function(event){
+            var button = $(event.relatedTarget);
+            var recipientId = button.data('id');/*Pega o valor do id do funcionario*/
+            var recipientNome = button.data('nome');
+            
+            var modal = $(this)
+            modal.find('#recipient-id').val(recipientId);
+            modal.find('#recipient-nome').val(recipientNome);
+
+        })
+
+    </script>
+    <!--SCRIPT PARA MANIPULAR EDIÇÃO DO FUNCIONÁRIO-->
+    
     <script>
      $('#modal-editar-funcionario').on('show.bs.modal',function(event){
         var button = $(event.relatedTarget);
@@ -366,12 +442,38 @@
         modal.find('#recipient-cpf').val(recipientCpfFunc);
         modal.find('#recipient-email').val(recipientEmailFunc);
         modal.find('#recipient-senha').val(recipientSenhaFunc);
-
 })   
-
-    </script> 
-    
-
+     </script> 
+    <!--SCRIPT PARA MANIPULAR EDIÇÃO DE CLIENTE-->
+    <script>
+        $("#modal-editar-cliente").on('show.bs.modal', function(event){
+            var buttonCliente = $(event.relatedTarget);
+            var recipientIdCliente = buttonCliente.data('id');
+            var recipientNomeCliente = buttonCliente.data('nome');
+            var recipientCpfCliente = buttonCliente.data('cpf');
+            var recipientIdadeCliente = buttonCliente.data('idade');
+            var recipientDataNascimento = buttonCliente.data('dataNascimento');
+            
+            var modalEditarCliente= $(this)
+            modalEditarCliente.find('#recipient-idCliente').val(recipientIdCliente);
+            modalEditarCliente.find('#recipient-nomeCliente').val(recipientNomeCliente);
+            modalEditarCliente.find('#recipient-cpfCliente').val(recipientCpfCliente);
+            modalEditarCliente.find('#recipient-idadeCliente').val(recipientIdadeCliente);
+            modalEditarCliente.find('#recipient-dataNascimento').val(recipientDataNascimento);
+        })
+    </script>
+    <!--SCRIPT PARA MANIPULAR REMOÇÃO DE CLIENTE-->
+    <script>
+        $("#modal-deletar-cliente").on('show.bs.modal', function(event){
+            var buttonCliente = $(event.relatedTarget);
+            var recipientIdCliente = buttonCliente.data('id');
+            var recipientNomeCliente = buttonCliente.data('nome');
+            var modalDeletarCliente = $(this)
+            modalDeletarCliente.find("#recipient-idCliente").val(recipientIdCliente);
+            modalDeletarCliente.find("#recipient-nomeCliente").val(recipientNomeCliente);
+            
+        })
+    </script>
 
 </body>
 

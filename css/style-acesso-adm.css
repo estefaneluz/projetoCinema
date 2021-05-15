@@ -234,7 +234,13 @@ label{
   width: 300px;  
   margin-bottom: 10px;
 }
+.modalFuncionario,.modalCliente{
+  padding-left: 10px; 
+}
 
+.modalDeletarFuncionario button,.modalDeletarCliente button{  
+  margin: 30px auto;
+}
 .enviar{
   justify-self: end;
   margin: 0;
@@ -250,13 +256,25 @@ label{
   text-align: center;
   font-size: 12px;
   font-family: Nunito, Arial, Helvetica, sans-serif;
-  background: none;
-  border:3px solid #8e72fe;
+  font-weight: bold;
+  background: none;  
   color: #e1e1e1;
   cursor: pointer;
 }
+.btnCadastrar{
+  margin-bottom:8px;
+  height: 30px;
+  border: 3px solid #ffbf54;
+}
+.btnEditar{
+  border:3px solid #8e72fe;
+}
 .btnDeletar{
   border:3px solid #d83b40;
+}
+.btnCadastrar:hover{
+  color:#ffbf54;
+  transition: 0.2s;
 }
 .btnEditar:hover{
   color:#8e72fe;
@@ -300,7 +318,7 @@ label{
   border-bottom: 1px solid #e1e1e1;
 }
 .tabela tbody tr td {
-  padding: 8px ;
+  padding: 8px;
   box-sizing:border-box;
   font-size: 14px;
   text-align: center;

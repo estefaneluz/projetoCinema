@@ -84,6 +84,20 @@
                 $this->conexao = null;
             }
         }
+         /*DELETAR FUNCIONÁRIO*/
+         public function deletarFuncionario($id){
+            try{
+                $sql = "DELETE FROM funcionario WHERE id = :id";
+                $estado = $this->conexao->prepare($sql);
+                $estado-> bindParam(":id",$id);
+                $estado->execute();
+                return $estado;   
+            }catch(PDOException $excecao){
+            echo("Erro: ".$excecao->getMessage());
+            }finally{
+                $this->conexao=null;
+            }
+        }
         public function redirect($url){
             header("Location: $url"); //header redireciona os links da pagina
         }

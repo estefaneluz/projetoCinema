@@ -16,15 +16,14 @@
             return $estado; //Retorna a preparacao pra exceutar no banco
         }
          /*CADASTRAR CLIENTE*/
-         public function cadastrarCliente($nome,$cpf,$idade,$sexo,$dataNascimento){
+         public function cadastrarCliente($nome,$cpf,$idade,$dataNascimento){
             try{
-                $sql= "INSERT INTO cliente(nome, cpf, idade, sexo, dataNascimento)
-                VALUES (:nome, :cpf, :idade, :sexo, :dataNascimento)";
+                $sql= "INSERT INTO cliente(nome, cpf, idade, dataNascimento)
+                VALUES (:nome, :cpf, :idade, :dataNascimento)";
                 $estado=$this->conexao->prepare($sql);
                 $estado->bindParam(":nome",$nome);
                 $estado->bindParam(":cpf",$cpf);
-                $estado->bindParam(":idade",$idade);
-                $estado->bindParam(":sexo",$sexo);
+                $estado->bindParam(":idade",$idade);                
                 $estado->bindParam(":dataNascimento",$dataNascimento);
                 $estado->execute();
                 return $estado;
@@ -32,6 +31,45 @@
                 echo("Error: ".$excecao->getMessage());
             }finally{
                 $this->conexao = null;
+            }
+        }
+
+        /*EDITAR CLIENTE*/
+        public function editarCliente($nome,$cpf,$idade,$dataNascimento,$id){
+            try{
+                $sql = "UPDATE cliente
+                SET 
+                    nome = :nome,
+                    cpf = :cpf,
+                    idade = :idade,
+                    dataNascimento = :dataNascimento
+                    WHERE id = :id";
+                    $estado = $this->conexao->prepare($sql);
+                    $estado-> bindParam(":nome",$nome);
+                    $estado-> bindParam(":cpf",$cpf);
+                    $estado-> bindParam(":idade",$idade);
+                    $estado-> bindParam(":dataNascimento",$dataNascimento);
+                    $estado-> bindParam(":id",$id);
+                    $estado->execute();
+             
+                    return $estado;
+         }catch(PDOException $excecao){
+             echo ("Error: ".$excecao->getMessage());
+         }finally{
+             $this->conexao = null;
+         }
+    }
+        public function deletarCliente($idCliente){
+            try{
+                $sql = "DELETE FROM cliente WHERE id = :id";
+                $estado = $this->conexao->prepare($sql);
+                $estado-> bindParam(":id",$idCliente);
+                $estado->execute();
+                return $estado;   
+            }catch(PDOException $excecao){
+                echo("Erro: ".$excecao->getMessage());
+            }finally{
+                $this->conexao=null;
             }
         }
         public function redirect($url){
