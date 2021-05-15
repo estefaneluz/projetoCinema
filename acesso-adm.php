@@ -146,7 +146,11 @@
                 </div>
                 <button type="submit" class="btnAdicionar" >Adicionar</button>
             </form>
-            <table class="tabela">      
+            <div>
+            <div class="header-gerenciar">
+                <h2>Salas</h2>
+            </div>
+            <table class="tabela">   
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -159,27 +163,57 @@
                     <tr>
                         <td>Azul</td>
                         <td>50</td>
-                        <td>Editar</td>
-                        <td>Excluir</td>
+                        <td><button type="button" class="btnEditar"
+                                    data-toggle="modal" data-target="#modal-editar-salas"
+                                    >
+                                    Editar
+                            </button>
+                        </td>
+                        <td><button type="button" class="btnDeletar"
+                                    data-toggle="modal" data-target="#modal-deletar-salas"
+                                    >
+                                    Deletar
+                            </button></td>
                     </tr>
                 </tbody>
             </table>
-                <!-- <p>Salas Cadastradas</p>
-                <div>
-                    <div class="nomes-salas">
-                        <div><p>Sala A</p></div>
-                        <div><p>Sala Azul</p></div>
-                        <div><p>Sala B</p></div>
-                        <div><p>Sala 6D - A</p></div>
-                    </div>
-                    <div class="excluir-sala">
-                        <button type="button" class="btnExcluir">X</button>
-                        <button type="button"class="btnExcluir">X</button>
-                        <button type="button" class="btnExcluir">X</button>
-                        <button type="button" class="btnExcluir">X</button>
-                    </div>
-                </div> -->
+            </div>
         </div>  
+        <!-- MODAL EDITAR SALAS -->
+
+        <div class="modal" id="modal-editar-salas">
+            <div class="modal-container" >
+                <img onclick="fechar('#modal-editar-salas')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
+                <h4>Editar Sala<h4>
+                <form action="control/ctr-salas.php#cadastro-salas" method="POST">
+                        <input id="recipient-id" type="hidden" name="editarSala">
+                        <div>
+                            <label for="recipient-nome">Nome da Sala</label><br>
+                            <input type="text" class="form-salas" name="txtNome" id="recipient-nome-sala"  ><br>
+                        </div>
+                        
+                        <div>
+                            <label for="recipient-cpf">Quantidade de Assentos</label><br>
+                            <input type="number"  class="form-salas" name="txtQtdAssentos" id="recipient-qtd-assentos"><br>
+                        </div>
+                        <button type="submit" class="enviar">Enviar</button>          
+                </form>
+           </div>           
+        </div> <!-- FIM DO MODAL EDITAR SALA -->
+        <!-- MODAL DELETAR SALA  -->
+        <div class="modal" id="modal-deletar-salas">
+            <div class="modal-container">
+                <img onclick="fechar('#modal-deletar-salas')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">               
+                <h4>Deletar Sala</h4>
+                <form action="control/ctr-salas.php#cadastrar-salas" method="POST"> 
+                    <input type="hidden" name="deletarSala" id="recipient-idSala">
+                    <label for="recipient-nomeSala">Nome</label>
+                    <input type="text" name="nomeSala" id="recipient-nomeSala" readonly>
+                    <button type="submit" class="enviar">Deletar</button>
+                </form>           
+            
+            </div>
+        </div> <!-- FIM DO MODAL DELETAR SALA -->
         <!-- FIM DO GERENCIAMENTO DE SALAS -->
 
         <!--  INICIO DO GERENCIAR FUNCIONARIOS -->

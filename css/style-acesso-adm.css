@@ -64,6 +64,10 @@ nav h3 {
   flex-direction: column;
 }
 
+.cadastro-salas form {
+margin-right: 5vw;
+}
+
 .colunas{
   display: flex;  
 }
