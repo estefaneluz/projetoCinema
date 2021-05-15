@@ -7,6 +7,10 @@
     require_once 'model/cliente.php';
     $objCliente = new Cliente();
 ?>
+<?php
+    require_once 'model/filme.php';
+    $objFilme = new Filme();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -56,7 +60,7 @@
                 <ul>
                     <li><a href="#cadastro-filmes">filmes</a></li>
                     <li><a href="#">Sessões</a></li>
-                    <li><a href="#">Preços</a></li>
+                    <li><a href="#container-precos">Preços</a></li>
                     <li><a href="#cadastro-salas">Salas</a></li>
                     <li><a href="#container-funcionarios">Funcionários</li>
                     <li><a href="#container-clientes">Clientes</a></li>
@@ -66,73 +70,101 @@
 
         <!-- SEÇÃO EM QUE FICARÁ TODOS OS GERENCIAR -->
         <section class="container-gerenciar">
+        <!--INÍCIO DE GERENCIAR FILMES-->
         <div class="cadastro-filmes" id="cadastro-filmes">
-            <form action="#">
-                <label for="nome">Nome do filme</label><br>
-                <input type="text" id="nFilme"class="form-filmes" name="nFilme">
-                <div class="colunas">
-                    <div class="coluna-1">
-                        <label for="estreia">Estreia</label><br>
-                        <input type="date" id="estreia"class="form-filmes" name="estreiaFilme"><br>
-                        <label for="sala">Sala</label><br>
-                        <select class="form-seletor" id="sala" name="sala">
-                            <option value="1">A</option>
-                            <option value="2">Azul</option>
-                            <option value="3">B</option>
-                            <option value="4">6D - A</option>
-                        </select><br>
-                        <label for="duracao">Duração</label><br>
-                        <select class="form-seletor" id="duracao" name="duracao">
-                            <option value="1:00">1h:00min</option>
-                            <option value="1:30">1h:30min</option>
-                            <option value="2:00">2h:00min</option>
-                            <option value="2:30">2h:30min</option>
-                            <option value="3:00">3h:00min</option>
-                        </select><br>
-                        <label for="genero">Gênero</label><br>
-                        <select class="form-seletor" id="genero" name="genero">
-                            <option value="1">Ação</option>
-                            <option value="2">Comédia</option>
-                            <option value="3">Terror</option>
-                            <option value="4">Aventura</option>
-                            <option value="5">Crime/Drama</option>
-                        </select><br>
-                        
-                    </div>
-                    <div class="coluna-2">
-                        <label for="saidaFilme">Último Dia</label><br>
-                        <input type="date" id="saidaFilme"class="form-filmes" name="saidaFilme"><br>
-                        <label for="precoFilme">Preço</label><br>
-                        <input type="text" id="precoFilme"class="form-filmes" placeholder="R$"name="precofilme"><br>
-                        <label for="classInd">Class. ind.</label><br>
-                        <select class="form-seletor" id="classInd" name="clasInd">
-                            <option value="1">Livre</option><br>
-                            <option value="2">+10 anos</option>
-                            <option value="3">+12 anos</option>
-                            <option value="4">+14 anos</option>
-                            <option value="5">+16 anos</option>
-                            <option value="6">+18 anos</option>
-                        </select> <br>   
-                        <label for="cartazFilme" class="cartazFilme">Anexar Cartaz</label> <br> 
-                        <input type="file" id="cartazFilme" class="cartazFilme" name="cartazFilme"><br>                  
-                        
-                    </div>
-                </div>                
-                <button type="submit" class="btnAdicionar" id="btnAdicionar">Adicionar</button>
-            </form>
-            <div class="filmes-cadastrados">
-                <p>Filmes cadastrados</p>
-                <div class="lista-filmes">
-                    <div id="filme-1"><p>Black Window</p></div>
-                    <div id="filme-2"><p>Home Alone</p></div>
-                    <div id="filme-3"><p>Halloween 4</p></div>
-                    <div id="filme-4"><p>Pulp Fiction</p></div>
-                    <div id="filme-5"><p>Monster Hunter</p></div>
-                    <div id="filme-6"><p>Raya e o Último Dragão</p></div>
-                </div> 
+            <div class="header-gerenciar">
+                    <h2>Filmes</h2>
+                    <button onclick="action('#modal-filme')" type="button" class="btnAdicionar">Novo</button>
+            </div>
+            <table class="tabela">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Estreia</th>
+                        <th>Último Dia</th> 
+                        <th>Class. Ind.</th>                       
+                        <th>Editar</th>
+                        <th>Deletar</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <?php
+                        $sql = "SELECT * FROM filme";
+                        $stmt = $objFilme->runQuery($sql);
+                        $stmt->execute();
+                        while($objFilme = $stmt->fetch(PDO::FETCH_ASSOC)){
+
+                     ?>       
+                    <tr>
+                        <td><?php echo ($objFilme['nome'])?></td>
+                        <td><?php echo ($objFilme['estreia'])?></td> 
+                        <td><?php echo ($objFilme['ultimoDia'])?></td>                        
+                        <td><?php echo ($objFilme['classIndicativa'])?></td>                                      
+                        <td>Editar</td>
+                        <td>Deletar</td>
+                    </tr>
+                    
+                    <?php   
+                     }
+                    ?>
+                
+                
+                    
+            </tbody>  
+            </table>
+                      
+            
+        </div>
+        <!--CADASTRAR FILME-->
+        <div class="modal" id="modal-filme">
+            <div class="modal-container modalFilme">
+                <img onclick="fechar('#modal-filme')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
+                <h4>Cadastrar Filme<h4>
+                <form action="control/ctr-filme.php#cadastro-filmes" method="POST">
+                        <input type="hidden" name="cadastrarFilme">
+                        <div>
+                            <label for="nome">Nome</label><br>
+                            <input type="text" id="nome" name="nome" required><br>
+                        </div>
+                        <div>
+                            <label for="estreia">Estreia</label><br>
+                            <input type="date" id="estreia" name=estreia required><br> 
+                        </div>
+                        <div>
+                            <label for="ultimoDia">Último dia</label><br>
+                            <input type="date" id="ultimoDia" name="ultimoDia" required><br>                        
+                        </div>
+                        <div>
+                            <label for="duracao">Duração</label><br>
+                            <select id="duracao" name="duracao">
+                                    <option value="1:00">1h:00min</option>
+                                    <option value="1:30">1h:30min</option>
+                                    <option value="2:00">2h:00min</option>
+                                    <option value="2:30">2h:30min</option>
+                                    <option value="3:00">3h:00min</option>
+                            </select><br>
+                        </div>
+                        <div>
+                            <label for="classIndicativa">Classificação Indicativa</label><br>
+                            <select id="classIndicativa" name="classIndicativa">
+                                    <option value="1">Livre</option><
+                                    <option value="2">+10 anos</option>
+                                    <option value="3">+12 anos</option>
+                                    <option value="4">+14 anos</option>
+                                    <option value="5">+16 anos</option>
+                                    <option value="6">+18 anos</option>
+                            </select><br>
+                        </div>
+                        <div>
+                            <label for="genero">Gênero</label><br>
+                            <input type="text" id="genero" name="genero" required><br>
+                        </div>
+                        <button type="submit" class="enviar">Enviar</button>                
+                </form>
             </div>
         </div>
-
+        <!--FIM DO GERENCIAMENTO DE FILMES-->
         <!-- CADASTRO DE SALAS -->
         <div class="cadastro-salas" id="cadastro-salas">
             <form action="#">
@@ -236,7 +268,7 @@
         </div>
         <!--CADASTRAR FUNCIONARIO-->
         <div class="modal" id="modal-funcionario">
-            <div class="modal-container modalFuncionario">
+            <div class="modal-container">
                 <img onclick="fechar('#modal-funcionario')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
                 <h4>Cadastrar Funcionário<h4>
                 <form action="control/ctr-funcionario.php#container-funcionarios" method="POST">
@@ -260,6 +292,10 @@
                         <button type="submit" class="enviar">Enviar</button>          
                 </form>
            </div>
+        </div>
+        <div class="container-precos" id="container-precos">
+                        <h3>TEste</h3>
+
         </div>
         <!--EDITAR FUNCIONARIO-->
         <div class="modal" id="modal-editar-funcionario">
@@ -359,7 +395,7 @@
         </div>
         <!--CADASTRAR CLIENTE-->
         <div class="modal" id="modal-cliente">
-            <div class="modal-container modalCliente">
+            <div class="modal-container">
                 <img onclick="fechar('#modal-cliente')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
                 <h4>Cadastrar Cliente</h4>
                 <form action="control/ctr-cliente.php#container-clientes" method="POST">
