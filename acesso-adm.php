@@ -8,6 +8,11 @@
     $objCliente = new Cliente();
 ?>
 
+<?php
+    require_once 'model/sala.php';
+    $objSala = new Sala();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -135,7 +140,8 @@
         
         <!-- CADASTRO DE SALAS -->
         <div class="cadastro-salas" id="cadastro-salas">
-            <form action="#">
+            <form action="control/ctr-sala.php#cadastro-salas" method="POST">
+                <input id="recipient-id" type="hidden" name="cadastrarSala">
                 <div>
                     <label for="nomeSala">Nome da Sala</label><br>
                     <input type="text" id="nomeSala" class="form-filmes" name="nomeSala"><br>
@@ -160,21 +166,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Azul</td>
-                        <td>50</td>
-                        <td><button type="button" class="btnEditar"
+                <?php
+                        $sql = "SELECT * FROM sala";
+                        $stmt = $objSala->runQuery($sql);
+                        $stmt->execute();
+                        while($objSala = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    ?>
+                        <tr>
+                            <td><?php echo($objSala['nome'])?></td>
+                            <td><?php echo($objSala['qtdAssentos'])?></td>
+                            <td><button type="button" class="btnEditar"
                                     data-toggle="modal" data-target="#modal-editar-salas"
                                     >
                                     Editar
                             </button>
-                        </td>
-                        <td><button type="button" class="btnDeletar"
+                            </td>
+                            <td><button type="button" class="btnDeletar"
                                     data-toggle="modal" data-target="#modal-deletar-salas"
                                     >
                                     Deletar
-                            </button></td>
-                    </tr>
+                            </button>
+                            </td>
+                        </tr>
+                    <!-- FECHAMENTO DO WHILE -->
+                         <?php   
+                        } 
+                         ?> 
                 </tbody>
             </table>
             </div>
