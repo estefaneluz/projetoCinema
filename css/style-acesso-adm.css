@@ -57,7 +57,7 @@ nav h3 {
   display:flex;
   flex-direction: row;
   text-transform: uppercase;
-  /* padding: 33px 33px 51px 113px; */
+  
 }
 .container-funcionarios:target,.container-clientes:target,.cadastro-filmes:target,#container-precos:target{
   display:flex;
