@@ -49,8 +49,12 @@ nav h3 {
 
 /*CADASTRO DE FILMES*/
 
-.cadastro-filmes,.cadastro-salas,.container-funcionarios,.container-clientes{
+.cadastro-filmes,.cadastro-salas,.container-funcionarios,.container-clientes {
   display:none;
+}
+
+.container-precos {
+  display: none;
 }
 
 .cadastro-filmes:target, .cadastro-salas:target{
@@ -59,7 +63,8 @@ nav h3 {
   text-transform: uppercase;
   /* padding: 33px 33px 51px 113px; */
 }
-.container-funcionarios:target,.container-clientes:target{
+
+.container-funcionarios:target,.container-clientes:target {
   display:flex;
   flex-direction: column;
 }

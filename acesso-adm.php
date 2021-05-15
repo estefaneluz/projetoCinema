@@ -61,7 +61,7 @@
                 <ul>
                     <li><a href="#cadastro-filmes">filmes</a></li>
                     <li><a href="#">Sessões</a></li>
-                    <li><a href="#">Preços</a></li>
+                    <li><a href="#container-precos">Preços</a></li>
                     <li><a href="#cadastro-salas">Salas</a></li>
                     <li><a href="#container-funcionarios">Funcionários</li>
                     <li><a href="#container-clientes">Clientes</a></li>
