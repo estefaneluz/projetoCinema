@@ -439,6 +439,7 @@
     </script>
     <!--SCRIPT PARA MANIPULAR EDIÇÃO DO FUNCIONÁRIO-->
     
+    
     <script>
      $('#modal-editar-funcionario').on('show.bs.modal',function(event){
         var button = $(event.relatedTarget);
