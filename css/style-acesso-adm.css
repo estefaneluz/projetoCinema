@@ -1,62 +1,53 @@
-/* ESPECIFICAÇÕES GERAIS */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  outline: 0;
-  list-style: none;
-}
-  
-body {
-  background-color: #2a2c3c;
-  font-family: Nunito, Arial, Helvetica, sans-serif;
-  color: #e1e1e1;
-  display: flex;
-  flex-direction: column; 
-   
-}
 header {
   position: relative;
   
 }  
- /*CORPO DA PAGINA*/ 
+
+/* MENU LATERAL */
 .acesso-adm{
-  display: flex;
-  flex-direction: row;   
-  height: 87vh;        
+  display: flex;      
+  height: 100%;
 }
+
 .menu-adm{
   background-color: #242732;
-  width:330px;     
+  min-width: max-content;  
 }
-.menu-adm nav{
-  margin-top: 45px;    
-    
+
+.menu-adm nav, .container-gerenciar{
+  margin-top: 30px;
 }
+
+nav h3 {
+  padding: 20px 30px 20px 30px; 
+  text-transform: uppercase;
+}
+
 .menu-adm nav ul li{
-    
-  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
-  width: 100%;   
-  padding: 10px 30px 10px 90px;  
-    
+  border-bottom: 1px solid #191B22; 
+  padding: 20px 30px 20px 30px;  
 }
   
 .menu-adm nav ul li:hover{
   background: #3f3d56;   
   transition: 0.2s;
-    
-    
+  cursor: pointer;
 }  
+
 .menu-adm nav ul li a{
   text-transform: uppercase;
   color: #e1e1e1;    
   font-size: 16px;   
-    
 } 
-  
 
-  /*CADASTRO DE FILMES*/
+/* CORPO DA PÁGINA */
+
+.container-gerenciar {
+  padding-top: 2vh;
+  margin-left: 5vw;
+}
+
+/*CADASTRO DE FILMES*/
 
 .cadastro-filmes,.cadastro-salas,.container-funcionarios,.container-clientes{
   display:none;
@@ -66,21 +57,21 @@ header {
   display:flex;
   flex-direction: row;
   text-transform: uppercase;
-  padding: 33px 33px 51px 113px;
+  /* padding: 33px 33px 51px 113px; */
 }
 .container-funcionarios:target,.container-clientes:target{
   display:flex;
   flex-direction: column;
 }
+
 .colunas{
-  display: flex;
-  flex-direction: row;   
-  
+  display: flex;  
 }
 .coluna-2{
   margin-left: 16px;
   align-items: center;
 }
+
 .form-seletor, .form-filmes,.cartazFilme{
   width:201px;
   height:40px;
@@ -131,7 +122,7 @@ label{
   color: #e1e1e1;
   width: 90px; 
   height: 35px;
-  margin: 6px;
+  margin-bottom: 6px;
   background: none;
   border: 3px solid #ffbf54;
   cursor: pointer;
@@ -216,39 +207,41 @@ label{
 /*CADASTRO DE FUNCIONÁRIOS*/
 
 .modal{
-  left:60%;
+  left:50%;
   top:50%;
   transform: translate(-50%,-50%);
  
 }
 .modal-container{
   padding-left:0;
-}
-.modalFuncionario,.modalCliente{
   width: 400px;;
-  height: 470px;
+  height: auto;
   margin:0 auto;
   border-radius: 5px;  
-  
 }
-.modalCliente{
-  height: 500px;
+
+
+.modal-container h4{
+  margin: 0 auto 7px auto;
 }
-.modalFuncionario>h4,.modalCliente>h4{
-  margin:0 auto;
+
+.modal-container form {
+  display: grid;
+  justify-content: center;
+  /* padding: 15px 30px 30px 30px; */
 }
-.modalFuncionario form,.modalCliente form{
-  padding: 15px 30px 30px 30px;
-}
-.modalFuncionario input,.modalCliente input{
+.modal-container input, .modal-container select {
   width: 300px;  
-  
+  margin-bottom: 10px;
 }
 
 .enviar{
-  float:right; 
-  margin-top:0;
+  justify-self: end;
+  margin: 0;
+  background-color: #d83b40;
+  margin-top: 15px;
 }
+
 .btnEditar,.btnDeletar{
   width:80px;
   height: 25px;
@@ -273,27 +266,42 @@ label{
   color:#d83b40;
   transition: 0.2s;
 }
-.container-funcionarios,.container-clientes{
-  margin:50px 50px ;
-}
 
-.tabela-funcionarios,.tabela-clientes{
+.tabela{
   border: 1px solid #e1e1e1;
 }
-.tabela-funcionarios thead,.tabela-clientes head {
+
+.header-gerenciar {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #e1e1e1;
+  margin-bottom: 10px;
+  padding: 5px 0;
+}
+
+.header-gerenciar h2{
+  position: relative;
+  top: 10px;
+}
+
+.header-gerenciar h2::after {
+  content: none;
+}
+
+.tabela thead {
     background-color: #242732;
     text-transform: uppercase;
     font-size: 14px;
     
 } 
-.tabela-funcionarios thead tr th,.tabela-clientes thead tr th{
+.tabela thead tr th{
   padding: 10px 50px;
   box-sizing:border-box;
   border-bottom: 1px solid #e1e1e1;
 }
-.tabela-funcionarios tbody tr td,.tabela-clientes tbody tr td{
+.tabela tbody tr td {
   padding: 8px ;
   box-sizing:border-box;
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
 }
