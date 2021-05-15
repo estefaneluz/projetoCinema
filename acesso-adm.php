@@ -8,26 +8,26 @@
     $objCliente = new Cliente();
 
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/style-acesso-adm.css">
+    <link rel="stylesheet" type="text/css" href="./css/responsivo.css">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
-        <link rel="stylesheet" type="text/css" href="./css/style.css">
-        <link rel="stylesheet" type="text/css" href="./css/acesso-adm.css">
-        <link rel="stylesheet" type="text/css" href="./css/responsivo.css">
-
-        <!-- FONTES DO GOOGLE  -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+    <!-- FONTES DO GOOGLE  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
     
-        <!--OWL CSS-->
-        <link rel="stylesheet" href="./css/owl/owl.carousel.min.css">
-        <link rel="stylesheet" href="./css/owl/owl.theme.default.min.css">
-        <!--SCRIPTS jQuery PARA MANIPULAR EDIÇÃO-->
+    <!--OWL CSS-->
+    <link rel="stylesheet" href="./css/owl/owl.carousel.min.css">
+    <link rel="stylesheet" href="./css/owl/owl.theme.default.min.css">
+    <!--SCRIPTS jQuery PARA MANIPULAR EDIÇÃO-->
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -49,14 +49,13 @@
             </ul>
         </nav>
     </header>
-   
-    
-    <div class="acesso-adm" >
-        <div class="menu-adm">
+
+    <main class="acesso-adm">
+        <aside class="menu-adm">
             <nav>
-            <h3>GERENCIAR</h3>
+                <h3>Gerenciar</h3>
                 <ul>
-                    <li><a href="#cadastro-filmes">Filmes</a></li>
+                    <li><a href="#cadastro-filmes">filmes</a></li>
                     <li><a href="#">Sessões</a></li>
                     <li><a href="#">Preços</a></li>
                     <li><a href="#cadastro-salas">Salas</a></li>
@@ -64,7 +63,10 @@
                     <li><a href="#container-clientes">Clientes</a></li>
                 </ul>
             </nav>
-        </div>
+        </aside>
+        
+        <!-- SEÇÃO EM QUE FICARÁ TODOS OS GERENCIAR -->
+        <section class="container-gerenciar">
         <div class="cadastro-filmes" id="cadastro-filmes">
             <form action="#">
                 <label for="nome">Nome do filme</label><br>
@@ -131,6 +133,8 @@
                 </div> 
             </div>
         </div>
+        
+        <!-- CADASTRO DE SALAS -->
         <div class="cadastro-salas" id="cadastro-salas">
             <form action="#">
                 <label for="nomeSala">Nome da Sala</label><br>
@@ -157,9 +161,15 @@
                 </div>
             </div>
         </div>  
+        <!-- FIM DO GERENCIAMENTO DE SALAS -->
+
+        <!--  INICIO DO GERENCIAR FUNCIONARIOS -->
         <div class="container-funcionarios" id="container-funcionarios">
-             <table class="tabela-funcionarios ">
-                <button onclick="action('#modal-funcionario')" type="button" class="btnCadastrar">Novo</button>
+            <div class="header-gerenciar">
+                <h2>Funcionários</h2>
+                <button onclick="action('#modal-funcionario')" type="button" class="btnAdicionar">Novo</button>
+            </div>
+             <table class="tabela">      
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -206,24 +216,31 @@
                         ?>
                     
                 </tbody>
-
                 </table>
         </div>
         <!--CADASTRAR FUNCIONARIO-->
         <div class="modal" id="modal-funcionario">
-            <div class="modal-container modalFuncionario">
+            <div class="modal-container">
                 <img onclick="fechar('#modal-funcionario')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
                 <h4>Cadastrar Funcionário<h4>
                 <form action="control/controle-acesso-adm.php#container-funcionarios" method="POST">
                         <input type="hidden" name="cadastrarFuncionario">
-                        <label for="nomeFuncionario">Nome </label><br>
-                        <input type="text" id="nomeFuncionario" class="form-funcionario" name="nomeFuncionario" required><br><br>
-                        <label for="cpfFuncionario">CPF</label><br>
-                        <input type="text" id="cpfFuncionario" class="form-funcionario" name="cpfFuncionario" required><br><br>
-                        <label for="emailFuncionario">Email</label><br>
-                        <input type="text" id="emailFuncionario" class="form-funcionario" name="emailFuncionario" required><br><br>
-                        <label for="senhaFuncionario">Senha</label><br>
-                        <input type="password" id="senhaFuncionario" class="form-funcionario" name="senhaFuncionario" required><br><br>
+                        <div>
+                            <label for="nomeFuncionario">Nome </label><br>
+                            <input type="text" id="nomeFuncionario" class="form-funcionario" name="nomeFuncionario" required><br>
+                        </div>
+                        <div>
+                            <label for="cpfFuncionario">CPF</label><br>
+                            <input type="text" id="cpfFuncionario" class="form-funcionario" name="cpfFuncionario" required><br>
+                        </div>
+                        <div>
+                            <label for="emailFuncionario">Email</label><br>
+                            <input type="text" id="emailFuncionario" class="form-funcionario" name="emailFuncionario" required><br>
+                        </div>
+                        <div>
+                            <label for="senhaFuncionario">Senha</label><br>
+                            <input type="password" id="senhaFuncionario" class="form-funcionario" name="senhaFuncionario" required><br>
+                        </div>
                         <button type="submit" class="enviar" id="btnEnviar">Enviar</button>          
                 </form>
            </div>
@@ -235,14 +252,25 @@
                 <h4>Editar Funcionário<h4>
                 <form action="control/controle-acesso-adm.php#container-funcionarios" method="POST">
                         <input id="recipient-id" type="hidden" name="editar">
-                        <label for="recipient-nome">Nome </label><br>
-                        <input type="text" class="form-funcionario" name="txtNome" id="recipient-nome"  ><br><br>
-                        <label for="recipient-cpf">CPF</label><br>
-                        <input type="text"  class="form-funcionario" name="txtCpf" id="recipient-cpf"><br><br>
-                        <label for="recipient-email">Email</label><br>
-                        <input type="text"  class="form-funcionario" name="txtEmail" id="recipient-email"><br><br>
-                        <label for="recipient-senha">Senha</label><br>
-                        <input type="password"  class="form-funcionario" name="txtSenha" id="recipient-senha"><br><br>
+                        <div>
+                            <label for="recipient-nome">Nome </label><br>
+                            <input type="text" class="form-funcionario" name="txtNome" id="recipient-nome"  ><br>
+                        </div>
+                        
+                        <div>
+                            <label for="recipient-cpf">CPF</label><br>
+                            <input type="text"  class="form-funcionario" name="txtCpf" id="recipient-cpf"><br>
+
+                        </div>
+
+                        <div>
+                            <label for="recipient-email">Email</label><br>
+                            <input type="text"  class="form-funcionario" name="txtEmail" id="recipient-email"><br>
+                        </div>
+                        <div>
+                            <label for="recipient-senha">Senha</label><br>
+                            <input type="password"  class="form-funcionario" name="txtSenha" id="recipient-senha"><br>
+                        </div>
                         <button type="submit" class="enviar" id="btnEnviar">Enviar</button>          
                 </form>
            </div>           
@@ -260,15 +288,18 @@
             </div>        
         </div>
         <div class="container-clientes" id="container-clientes">
-            <table class="tabela-clientes">
-                <button onclick="action('#modal-cliente')" type="button" class="btnCadastrar">Novo</button>
+            <div class="header-gerenciar">
+                <h2>Clientes</h2>
+                <button onclick="action('#modal-cliente')" type="button" class="btnAdicionar">Novo</button>
+            </div>
+
+            <table class="tabela">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
                         <th>CPF</th>
-                        <th>Idade</th>                        
-                        <th>Data Nasc.</th>
+                        <th>Idade</th>
                         <th>Editar</th>
                         <th>Deletar</th>                        
                     </tr>
@@ -313,7 +344,7 @@
         </div>
         <!--CADASTRAR CLIENTE-->
         <div class="modal" id="modal-cliente">
-            <div class="modal-container modalCliente">
+            <div class="modal-container">
                 <img onclick="fechar('#modal-cliente')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
                 <h4>Cadastrar Cliente</h4>
                 <form action="control/controle-cliente.php#container-clientes" method="POST">
@@ -363,6 +394,13 @@
             </div>
         </div>
     </div> 
+
+    </section>
+        <!-- FIM DA SEÇÃO EM QUE FICARÁ TODOS OS GERENCIAR -->
+    </main> 
+    <!-- FIM DO MAIN -->
+
+
     <script src="./js/hover.js"></script>  
     <script src="./js/script.js"></script>
     <!--SCRIPT PARA MANIPULAR O DELETE DE FUNCIONARIO-->
