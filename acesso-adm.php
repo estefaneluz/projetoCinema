@@ -136,18 +136,21 @@
         <!-- CADASTRO DE SALAS -->
         <div class="cadastro-salas" id="cadastro-salas">
             <form action="#">
-                <label for="nomeSala">Nome da Sala</label><br>
-                <input type="text" id="nomeSala" class="form-filmes" name="nomeSala"><br>
-                <label for="qtdAssentos">Qtd. de Assentos</label><br>
-                <input type="number" id="qtdAssentos" class="form-filmes" name="qtdAssentos"><br>
+                <div>
+                    <label for="nomeSala">Nome da Sala</label><br>
+                    <input type="text" id="nomeSala" class="form-filmes" name="nomeSala"><br>
+                </div>
+                <div>
+                    <label for="qtdAssentos">Qtd. de Assentos</label><br>
+                    <input type="number" id="qtdAssentos" class="form-filmes" name="qtdAssentos"><br>
+                </div>
                 <button type="submit" class="btnAdicionar" >Adicionar</button>
             </form>
-            <div class="salas-cadastradas">
             <table class="tabela">      
                 <thead>
                     <tr>
-                        <th>Sala</th>
-                        <th>Qtd. Assentos</th>
+                        <th>Nome</th>
+                        <th>Qtd Assentos</th>
                         <th>Editar</th>
                         <th>Deletar</th>
                     </tr>
@@ -176,7 +179,6 @@
                         <button type="button" class="btnExcluir">X</button>
                     </div>
                 </div> -->
-            </div>
         </div>  
         <!-- FIM DO GERENCIAMENTO DE SALAS -->
 

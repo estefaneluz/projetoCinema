@@ -95,7 +95,7 @@ label{
   font-size: 14px;
 }
 
-#nFilme, #nomeSala{
+#nFilme {
   width: 418px;  
 
 }
@@ -215,6 +215,7 @@ label{
 .modal-container{
   padding-left:10px;
   width: 400px;;
+  height: auto;
   margin:0 auto;
   border-radius: 5px;  
 }
