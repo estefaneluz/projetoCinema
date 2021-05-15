@@ -8,26 +8,26 @@
     $objCliente = new Cliente();
 
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <link rel="stylesheet" type="text/css" href="./css/style-acesso-adm.css">
-    <link rel="stylesheet" type="text/css" href="./css/responsivo.css">
 
-    <!-- FONTES DO GOOGLE  -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <link rel="stylesheet" type="text/css" href="./css/style-acesso-adm.css">
+        <link rel="stylesheet" type="text/css" href="./css/responsivo.css">
+
+        <!-- FONTES DO GOOGLE  -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
     
-    <!--OWL CSS-->
-    <link rel="stylesheet" href="./css/owl/owl.carousel.min.css">
-    <link rel="stylesheet" href="./css/owl/owl.theme.default.min.css">
-    <!--SCRIPTS jQuery PARA MANIPULAR EDIÇÃO-->
+        <!--OWL CSS-->
+        <link rel="stylesheet" href="./css/owl/owl.carousel.min.css">
+        <link rel="stylesheet" href="./css/owl/owl.theme.default.min.css">
+        <!--SCRIPTS jQuery PARA MANIPULAR EDIÇÃO-->
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -49,9 +49,9 @@
             </ul>
         </nav>
     </header>
-
-    <main class="acesso-adm">
-        <aside class="menu-adm">
+       
+    <main class="acesso-adm" >
+    <aside class="menu-adm">
             <nav>
                 <h3>Gerenciar</h3>
                 <ul>
@@ -64,7 +64,7 @@
                 </ul>
             </nav>
         </aside>
-        
+
         <!-- SEÇÃO EM QUE FICARÁ TODOS OS GERENCIAR -->
         <section class="container-gerenciar">
         <div class="cadastro-filmes" id="cadastro-filmes">
@@ -133,7 +133,7 @@
                 </div> 
             </div>
         </div>
-        
+
         <!-- CADASTRO DE SALAS -->
         <div class="cadastro-salas" id="cadastro-salas">
             <form action="#">
@@ -160,7 +160,7 @@
                     </div>
                 </div>
             </div>
-        </div>  
+        </div> 
         <!-- FIM DO GERENCIAMENTO DE SALAS -->
 
         <!--  INICIO DO GERENCIAR FUNCIONARIOS -->
@@ -169,7 +169,7 @@
                 <h2>Funcionários</h2>
                 <button onclick="action('#modal-funcionario')" type="button" class="btnAdicionar">Novo</button>
             </div>
-             <table class="tabela">      
+             <table class="tabela">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -220,28 +220,20 @@
         </div>
         <!--CADASTRAR FUNCIONARIO-->
         <div class="modal" id="modal-funcionario">
-            <div class="modal-container">
+            <div class="modal-container modalFuncionario">
                 <img onclick="fechar('#modal-funcionario')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
                 <h4>Cadastrar Funcionário<h4>
                 <form action="control/controle-acesso-adm.php#container-funcionarios" method="POST">
                         <input type="hidden" name="cadastrarFuncionario">
-                        <div>
-                            <label for="nomeFuncionario">Nome </label><br>
-                            <input type="text" id="nomeFuncionario" class="form-funcionario" name="nomeFuncionario" required><br>
-                        </div>
-                        <div>
-                            <label for="cpfFuncionario">CPF</label><br>
-                            <input type="text" id="cpfFuncionario" class="form-funcionario" name="cpfFuncionario" required><br>
-                        </div>
-                        <div>
-                            <label for="emailFuncionario">Email</label><br>
-                            <input type="text" id="emailFuncionario" class="form-funcionario" name="emailFuncionario" required><br>
-                        </div>
-                        <div>
-                            <label for="senhaFuncionario">Senha</label><br>
-                            <input type="password" id="senhaFuncionario" class="form-funcionario" name="senhaFuncionario" required><br>
-                        </div>
-                        <button type="submit" class="enviar" id="btnEnviar">Enviar</button>          
+                        <label for="nomeFuncionario">Nome </label><br>
+                        <input type="text" id="nomeFuncionario" class="form-funcionario" name="nomeFuncionario" required><br>
+                        <label for="cpfFuncionario">CPF</label><br>
+                        <input type="text" id="cpfFuncionario" class="form-funcionario" name="cpfFuncionario" required><br>
+                        <label for="emailFuncionario">Email</label><br>
+                        <input type="text" id="emailFuncionario" class="form-funcionario" name="emailFuncionario" required><br>
+                        <label for="senhaFuncionario">Senha</label><br>
+                        <input type="password" id="senhaFuncionario" class="form-funcionario" name="senhaFuncionario" required><br>
+                        <button type="submit" class="enviar" id="btnEnviar">Confirmar</button>          
                 </form>
            </div>
         </div>
@@ -252,26 +244,15 @@
                 <h4>Editar Funcionário<h4>
                 <form action="control/controle-acesso-adm.php#container-funcionarios" method="POST">
                         <input id="recipient-id" type="hidden" name="editar">
-                        <div>
-                            <label for="recipient-nome">Nome </label><br>
-                            <input type="text" class="form-funcionario" name="txtNome" id="recipient-nome"  ><br>
-                        </div>
-                        
-                        <div>
-                            <label for="recipient-cpf">CPF</label><br>
-                            <input type="text"  class="form-funcionario" name="txtCpf" id="recipient-cpf"><br>
-
-                        </div>
-
-                        <div>
-                            <label for="recipient-email">Email</label><br>
-                            <input type="text"  class="form-funcionario" name="txtEmail" id="recipient-email"><br>
-                        </div>
-                        <div>
-                            <label for="recipient-senha">Senha</label><br>
-                            <input type="password"  class="form-funcionario" name="txtSenha" id="recipient-senha"><br>
-                        </div>
-                        <button type="submit" class="enviar" id="btnEnviar">Enviar</button>          
+                        <label for="recipient-nome">Nome </label><br>
+                        <input type="text" class="form-funcionario" name="txtNome" id="recipient-nome"  ><br>
+                        <label for="recipient-cpf">CPF</label><br>
+                        <input type="text"  class="form-funcionario" name="txtCpf" id="recipient-cpf"><br>
+                        <label for="recipient-email">Email</label><br>
+                        <input type="text"  class="form-funcionario" name="txtEmail" id="recipient-email"><br>
+                        <label for="recipient-senha">Senha</label><br>
+                        <input type="password"  class="form-funcionario" name="txtSenha" id="recipient-senha"><br>
+                        <button type="submit" class="enviar" id="btnEnviar">Confirmar</button>          
                 </form>
            </div>           
         </div>
@@ -281,9 +262,9 @@
                 <h4>Deletar Funcionário</h4>
                 <form action="control/controle-acesso-adm.php#container-funcionarios" method="POST"> 
                     <input type="hidden" name="deletarFuncionario" id="recipient-id">
-                    <label for="recipient-nome">Nome</label>
-                    <input type="text" class="form-funcionario" name="txtNome" id="recipient-nome" readonly>
-                    <button type="submit" class="enviar" id="btnEnviar">Deletar</button>
+                    <label for="recipient-nome">Nome</label><br>
+                    <input type="text" class="form-funcionario" name="txtNome" id="recipient-nome" readonly><br>
+                    <button type="submit" class="enviar" id="btnEnviar">Confirmar</button>
                 </form>
             </div>        
         </div>
@@ -299,7 +280,7 @@
                         <th>ID</th>
                         <th>Nome</th>
                         <th>CPF</th>
-                        <th>Idade</th>
+                        <th>Idade</th>                      
                         <th>Editar</th>
                         <th>Deletar</th>                        
                     </tr>
@@ -317,7 +298,6 @@
                             <td><?php echo($objCliente['nome'])?></td>
                             <td><?php echo($objCliente['cpf'])?></td>
                             <td><?php echo($objCliente['idade'])?></td>                            
-                            <td><?php echo($objCliente['dataNascimento'])?></td>
                             <td><button type="button" class="btnEditar"
                                     data-toggle="modal" data-target="#modal-editar-cliente"
                                     data-id="<?php echo($objCliente['id'])?>"
@@ -344,20 +324,20 @@
         </div>
         <!--CADASTRAR CLIENTE-->
         <div class="modal" id="modal-cliente">
-            <div class="modal-container">
+            <div class="modal-container modalCliente">
                 <img onclick="fechar('#modal-cliente')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
                 <h4>Cadastrar Cliente</h4>
                 <form action="control/controle-cliente.php#container-clientes" method="POST">
                     <input type="hidden" name="cadastrarCliente">
                     <label for="nomeCliente">Nome</label><br>
-                    <input type="text" id="nomeCliente" class="form-cliente" name="nomeCliente"><br><br>
+                    <input type="text" id="nomeCliente" class="form-cliente" name="nomeCliente"><br>
                     <label for="cpfCliente">CPF</label><br>
-                    <input type="text" id="cpfCliente" class="form-cliente" name="cpfCliente"><br><br>
+                    <input type="text" id="cpfCliente" class="form-cliente" name="cpfCliente"><br>
                     <label for="idadeCliente">Idade</label><br>
-                    <input type="text" id="idadeCliente" class="form-cliente" name="idadeCliente"><br><br>
+                    <input type="text" id="idadeCliente" class="form-cliente" name="idadeCliente"><br>
                     <label for="dataNascimento">Data de Nascimento</label><br>
-                    <input type="date" id="dataNascimento" class="form-cliente" name="dataNascimento"><br><br>
-                    <button type="submit" class="enviar" id="btnEnviar">Enviar</button>          
+                    <input type="date" id="dataNascimento" class="form-cliente" name="dataNascimento"><br>
+                    <button type="submit" class="enviar" id="btnEnviar">Confirmar</button>          
                 </form>
            </div>
         </div>
@@ -369,14 +349,14 @@
                 <form action="control/controle-cliente.php#container-clientes" method="POST">
                     <input id="recipient-idCliente" type="hidden" name="editarCliente">
                     <label for="recipient-nomeCliente">Nome</label><br>
-                    <input type="text" name="nomeCliente" id="recipient-nomeCliente"><br><br>
+                    <input type="text" name="nomeCliente" id="recipient-nomeCliente"><br>
                     <label for="recipient-cpfCliente">CPF</label><br>
-                    <input type="text" name="cpfCliente" id="recipient-cpfCliente"><br><br>
+                    <input type="text" name="cpfCliente" id="recipient-cpfCliente"><br>
                     <label for="recipient-idadeCliente">Idade</label><br>
-                    <input type="text" name="idadeCliente" id="recipient-idadeCliente"><br><br>
+                    <input type="text" name="idadeCliente" id="recipient-idadeCliente"><br>
                     <label for="recipient-dataNascimento">Data de Nascimento</label><br>
-                    <input type="date" name="dataNascimento" id="recipient-dataNascimento"><br><br>
-                    <button type="submit" class="enviar" id="btnEnviar">Enviar</button>                 
+                    <input type="date" name="dataNascimento" id="recipient-dataNascimento"><br>
+                    <button type="submit" class="enviar" id="btnEnviar">Confirmar</button>                 
                 </form>           
             </div>               
         </div>
@@ -386,21 +366,17 @@
                 <h4>Deletar Cliente</h4>
                 <form action="control/controle-cliente.php#container-clientes" method="POST"> 
                     <input type="hidden" name="deletarCliente" id="recipient-idCliente">
-                    <label for="recipient-nomeCliente">Nome</label>
-                    <input type="text" name="nomeCliente" id="recipient-nomeCliente" readonly>
-                    <button type="submit" class="enviar" id="btnEnviar">Deletar</button>
+                    <label for="recipient-nomeCliente">Nome</label><br>
+                    <input type="text" name="nomeCliente" id="recipient-nomeCliente" readonly><br>
+                    <button type="submit" class="enviar" id="btnEnviar">Confirmar</button>
                 </form>           
             
             </div>
         </div>
-    </div> 
-
     </section>
         <!-- FIM DA SEÇÃO EM QUE FICARÁ TODOS OS GERENCIAR -->
+   
     </main> 
-    <!-- FIM DO MAIN -->
-
-
     <script src="./js/hover.js"></script>  
     <script src="./js/script.js"></script>
     <!--SCRIPT PARA MANIPULAR O DELETE DE FUNCIONARIO-->

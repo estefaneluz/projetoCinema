@@ -1,7 +1,7 @@
 header {
   position: relative;
   
-}  
+} 
 
 /* MENU LATERAL */
 .acesso-adm{
@@ -40,7 +40,7 @@ nav h3 {
   font-size: 16px;   
 } 
 
-/* CORPO DA PÁGINA */
+ /*CORPO DA PAGINA*/ 
 
 .container-gerenciar {
   padding-top: 2vh;
@@ -65,7 +65,7 @@ nav h3 {
 }
 
 .colunas{
-  display: flex;  
+  display: flex; 
 }
 .coluna-2{
   margin-left: 16px;
@@ -122,7 +122,7 @@ label{
   color: #e1e1e1;
   width: 90px; 
   height: 35px;
-  margin-bottom: 6px;
+  margin: 6px;
   background: none;
   border: 3px solid #ffbf54;
   cursor: pointer;
@@ -213,14 +213,16 @@ label{
  
 }
 .modal-container{
-  padding-left:0;
+  padding-left:10px;
   width: 400px;;
   height: auto;
   margin:0 auto;
-  border-radius: 5px;  
+  border-radius: 5px; 
 }
 
-
+.modalFuncionario,.modalCliente{/*no meu ajuste as modais de cadastar cliente e funcionario estavam menores que  as de editar*/
+  height: 600px;
+}
 .modal-container h4{
   margin: 0 auto 7px auto;
 }
@@ -234,12 +236,12 @@ label{
   width: 300px;  
   margin-bottom: 10px;
 }
-.modalFuncionario,.modalCliente{
-  padding-left: 10px; 
+.modalDeletarFuncionario,.modalDeletarCliente{
+  height: 250px;   
+  
 }
-
 .modalDeletarFuncionario button,.modalDeletarCliente button{  
-  margin: 30px auto;
+  margin: auto;
 }
 .enviar{
   justify-self: end;
@@ -282,7 +284,7 @@ label{
 .btnDeletar:hover{
   color:#d83b40;
   transition: 0.2s;
-}
+} 
 
 .tabela{
   border: 1px solid #e1e1e1;
@@ -306,19 +308,19 @@ label{
 }
 
 .tabela thead {
-    background-color: #242732;
-    text-transform: uppercase;
-    font-size: 14px;
-    
+  background-color: #242732;
+  text-transform: uppercase;
+  font-size: 14px;
+  
 } 
 .tabela thead tr th{
-  padding: 10px 50px;
-  box-sizing:border-box;
-  border-bottom: 1px solid #e1e1e1;
+padding: 10px 50px;
+box-sizing:border-box;
+border-bottom: 1px solid #e1e1e1;
 }
 .tabela tbody tr td {
-  padding: 8px ;
-  box-sizing:border-box;
-  font-size: 14px;
-  text-align: center;
+padding: 8px ;
+box-sizing:border-box;
+font-size: 14px;
+text-align: center;
 }
