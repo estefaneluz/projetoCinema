@@ -177,13 +177,16 @@
                             <td><?php echo($objSala['qtdAssentos'])?></td>
                             <td><button type="button" class="btnEditar"
                                     data-toggle="modal" data-target="#modal-editar-salas"
-                                    >
+                                    data-id="<?php echo($objSala['id'])?>"
+                                    data-nome="<?php echo($objSala['nome'])?>"
+                                    data-assentos="<?php echo($objSala['qtdAssentos'])?>">
                                     Editar
                             </button>
                             </td>
                             <td><button type="button" class="btnDeletar"
                                     data-toggle="modal" data-target="#modal-deletar-salas"
-                                    >
+                                    data-id="<?php print $objSala['id']?>"
+                                    data-nome="<?php print $objSala['nome']?>">
                                     Deletar
                             </button>
                             </td>
@@ -197,21 +200,20 @@
             </div>
         </div>  
         <!-- MODAL EDITAR SALAS -->
-
         <div class="modal" id="modal-editar-salas">
             <div class="modal-container" >
                 <img onclick="fechar('#modal-editar-salas')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
                 <h4>Editar Sala<h4>
-                <form action="control/ctr-salas.php#cadastro-salas" method="POST">
-                        <input id="recipient-id" type="hidden" name="editarSala">
+                <form action="control/ctr-sala.php#cadastro-salas" method="POST">
+                        <input id="recipient-idSala" type="hidden" name="editarSala">
                         <div>
-                            <label for="recipient-nome">Nome da Sala</label><br>
+                            <label for="txtNome">Nome da Sala</label><br>
                             <input type="text" class="form-salas" name="txtNome" id="recipient-nome-sala"  ><br>
                         </div>
                         
                         <div>
-                            <label for="recipient-cpf">Quantidade de Assentos</label><br>
-                            <input type="number"  class="form-salas" name="txtQtdAssentos" id="recipient-qtd-assentos"><br>
+                            <label for="txtQtdAssentos">Quantidade de Assentos</label><br>
+                            <input type="number"  class="form-salas" name="txtQtdAssentos" id="recipient-qtdAssentos"><br>
                         </div>
                         <button type="submit" class="enviar">Enviar</button>          
                 </form>
@@ -222,10 +224,10 @@
             <div class="modal-container">
                 <img onclick="fechar('#modal-deletar-salas')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">               
                 <h4>Deletar Sala</h4>
-                <form action="control/ctr-salas.php#cadastrar-salas" method="POST"> 
+                <form action="control/ctr-sala.php#cadastrar-salas" method="POST"> 
                     <input type="hidden" name="deletarSala" id="recipient-idSala">
-                    <label for="recipient-nomeSala">Nome</label>
-                    <input type="text" name="nomeSala" id="recipient-nomeSala" readonly>
+                    <label for="recipient-nome-sala">Nome</label>
+                    <input type="text" name="nomeSala" id="recipient-nome-sala" readonly>
                     <button type="submit" class="enviar">Deletar</button>
                 </form>           
             
@@ -327,7 +329,6 @@
                         <div>
                             <label for="recipient-cpf">CPF</label><br>
                             <input type="text"  class="form-funcionario" name="txtCpf" id="recipient-cpf"><br>
-
                         </div>
 
                         <div>
@@ -477,8 +478,35 @@
 
     <script src="./js/hover.js"></script>  
     <script src="./js/script.js"></script>
+
+    <!-- SCRIPT PARA EDITAR SALA -->
+    <script>
+        $("#modal-editar-salas").on('show.bs.modal', function(event){
+            var buttonSala = $(event.relatedTarget);
+            var recipientIdSala = buttonSala.data('id');
+            var recipientNomeSala = buttonSala.data('nome');
+            var recipientQtdAssentos = buttonSala.data('assentos');
+            
+            var modalEditarSala = $(this)
+            modalEditarSala.find('#recipient-idSala').val(recipientIdSala);
+            modalEditarSala.find('#recipient-nome-sala').val(recipientNomeSala);
+            modalEditarSala.find('#recipient-qtdAssentos').val(recipientQtdAssentos);
+        })
+    </script>
+
+    <!--DELETAR SALA-->
+    <script>
+        $("#modal-deletar-salas").on('show.bs.modal', function(event){
+            var buttonSala = $(event.relatedTarget);
+            var recipientIdSala = buttonSala.data('id');
+            var recipientNomeSala = buttonSala.data('nome');
+            var modalDeletarSala = $(this)
+            modalDeletarSala.find("#recipient-idSala").val(recipientIdSala);
+            modalDeletarSala.find("#recipient-nome-sala").val(recipientNomeSala);  
+        })
+    </script>
+
     <!--SCRIPT PARA MANIPULAR O DELETE DE FUNCIONARIO-->
-    
     <script>
         $('#modal-deletar-funcionario').on('show.bs.modal', function(event){
             var button = $(event.relatedTarget);

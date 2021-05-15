@@ -9,10 +9,10 @@
             $db = $dataBase->dbConnection();
             $this-> conn = $db;
         }
-        //EXIBIÇÃO DOS DADOS DO BD
+
         public function runQuery($sql){
-            $stmt = $this->conn->prepare($sql);//Abre a conexao com o BD e prepara para ser usado
-            return $stmt; //Retorna a preparacao pra exceutar no banco
+            $stmt = $this->conn->prepare($sql);
+            return $stmt; 
         }
 
         public function cadastrarSala($nome,$qtdAssentos){
@@ -31,44 +31,41 @@
             }
         }
 
-    //     /*EDITAR CLIENTE*/
-    //     public function editarCliente($nome,$cpf,$idade,$dataNascimento,$id){
-    //         try{
-    //             $sql = "UPDATE cliente
-    //             SET 
-    //                 nome = :nome,
-    //                 cpf = :cpf,
-    //                 idade = :idade,
-    //                 dataNascimento = :dataNascimento
-    //                 WHERE id = :id";
-    //                 $stmt = $this->conn->prepare($sql);
-    //                 $stmt-> bindParam(":nome",$nome);
-    //                 $stmt-> bindParam(":cpf",$cpf);
-    //                 $stmt-> bindParam(":idade",$idade);
-    //                 $stmt-> bindParam(":dataNascimento",$dataNascimento);
-    //                 $stmt-> bindParam(":id",$id);
-    //                 $stmt->execute();
+        public function editarSala($nome,$qtdAssentos,$id){
+            try{
+                $sql = "UPDATE sala
+                SET 
+                    nome = :nome,
+                    qtdAssentos = :qtdAssentos
+                    WHERE id = :id";
+                    $stmt = $this->conn->prepare($sql);
+                    $stmt-> bindParam(":nome",$nome);
+                    $stmt-> bindParam(":qtdAssentos",$qtdAssentos);
+                    $stmt-> bindParam(":id",$id);
+                    $stmt->execute();
              
-    //                 return $stmt;
-    //      }catch(PDOException $e){
-    //          echo ("Error: ".$e->getMessage());
-    //      }finally{
-    //          $this->conn = null;
-    //      }
-    // }
-    //     public function deletarCliente($idCliente){
-    //         try{
-    //             $sql = "DELETE FROM cliente WHERE id = :id";
-    //             $stmt = $this->conn->prepare($sql);
-    //             $stmt-> bindParam(":id",$idCliente);
-    //             $stmt->execute();
-    //             return $stmt;   
-    //         }catch(PDOException $e){
-    //             echo("Erro: ".$e->getMessage());
-    //         }finally{
-    //             $this->conn=null;
-    //         }
-    //     }
+                    return $stmt;
+            } catch(PDOException $e) {
+             echo ("Error: ".$e->getMessage());
+            } finally {
+             $this->conn = null;
+            }
+        }
+
+        public function deletarSala($idSala){
+            try{
+                $sql = "DELETE FROM sala WHERE id = :id";
+                $stmt = $this->conn->prepare($sql);
+                $stmt-> bindParam(":id",$idSala);
+                $stmt->execute();
+                return $stmt;   
+            }catch(PDOException $e){
+                echo("Erro: ".$e->getMessage());
+            }finally{
+                $this->conn=null;
+            }
+        }
+
          public function redirect($url){
              header("Location: $url"); //header redireciona os links da pagina
          }
