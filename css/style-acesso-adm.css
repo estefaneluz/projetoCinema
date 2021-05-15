@@ -213,9 +213,8 @@ label{
  
 }
 .modal-container{
-  padding-left:0;
+  padding-left:10px;
   width: 400px;;
-  height: auto;
   margin:0 auto;
   border-radius: 5px;  
 }
@@ -234,9 +233,7 @@ label{
   width: 300px;  
   margin-bottom: 10px;
 }
-.modalFuncionario,.modalCliente{
-  padding-left: 10px; 
-}
+
 
 .modalDeletarFuncionario button,.modalDeletarCliente button{  
   margin: 30px auto;

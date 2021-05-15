@@ -143,7 +143,25 @@
                 <button type="submit" class="btnAdicionar" >Adicionar</button>
             </form>
             <div class="salas-cadastradas">
-                <p>Salas Cadastradas</p>
+            <table class="tabela">      
+                <thead>
+                    <tr>
+                        <th>Sala</th>
+                        <th>Qtd. Assentos</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Azul</td>
+                        <td>50</td>
+                        <td>Editar</td>
+                        <td>Excluir</td>
+                    </tr>
+                </tbody>
+            </table>
+                <!-- <p>Salas Cadastradas</p>
                 <div>
                     <div class="nomes-salas">
                         <div><p>Sala A</p></div>
@@ -157,7 +175,7 @@
                         <button type="button" class="btnExcluir">X</button>
                         <button type="button" class="btnExcluir">X</button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>  
         <!-- FIM DO GERENCIAMENTO DE SALAS -->
@@ -243,7 +261,7 @@
         </div>
         <!--EDITAR FUNCIONARIO-->
         <div class="modal" id="modal-editar-funcionario">
-            <div class="modal-container modalFuncionario" >
+            <div class="modal-container" >
                 <img onclick="fechar('#modal-editar-funcionario')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
                 <h4>Editar Funcionário<h4>
                 <form action="control/ctr-funcionario.php#container-funcionarios" method="POST">
@@ -366,7 +384,7 @@
         </div>
         <!--EDITAR CLIENTE-->
         <div class="modal" id="modal-editar-cliente">
-            <div class="modal-container modalCliente">
+            <div class="modal-container">
                 <img onclick="fechar('#modal-editar-cliente')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">            
                 <h4>Editar Cliente<h4>
                 <form action="control/ctr-cliente.php#container-clientes" method="POST">
