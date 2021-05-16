@@ -101,17 +101,30 @@
                         <td><?php echo ($objFilme['estreia'])?></td> 
                         <td><?php echo ($objFilme['ultimoDia'])?></td>                        
                         <td><?php echo ($objFilme['classIndicativa'])?></td>                                      
-                        <td>Editar</td>
-                        <td>Deletar</td>
-                    </tr>
-                    
+                        <td><button  type="button" class="btnEditar"
+                                    data-toggle="modal" data-target="#modal-editar-filmes"
+                                    data-id="<?php echo($objFilme['id'])?>"
+                                    data-nome="<?php echo($objFilme['nome'])?>"
+                                    data-estreia="<?php echo($objFilme['estreia'])?>"
+                                    data-ultimoDia="<?php echo($objFilme['ultimoDia'])?>"
+                                    data-duracao="<?php echo($objFilme['duracao'])?>"
+                                    data-classIndicativa="<?php echo($objFilme['classIndicativa'])?>"
+                                    data-genero="<?php echo($objFilme['genero'])?>"                                                      
+                                >Editar
+                                </button>
+                        </td>
+                        <td><button type="button" class="btnDeletar"
+                        data-toggle="modal"
+                        data-target="#modal-deletar-filmes"
+                        data-id="<?php print $objFilme['id']?>"
+                        data-nome="<?php print $objFilme['nome']?>"
+                        >
+                        Deletar</button></td>
+                    </tr>                    
                     <?php   
                      }
                     ?>
-                
-                
-                    
-            </tbody>  
+                </tbody>  
             </table>
                       
             
@@ -149,11 +162,11 @@
                             <label for="classIndicativa">Classificação Indicativa</label><br>
                             <select id="classIndicativa" name="classIndicativa">
                                     <option value="1">Livre</option><
-                                    <option value="2">+10 anos</option>
-                                    <option value="3">+12 anos</option>
-                                    <option value="4">+14 anos</option>
-                                    <option value="5">+16 anos</option>
-                                    <option value="6">+18 anos</option>
+                                    <option value="10">+10 anos</option>
+                                    <option value="12">+12 anos</option>
+                                    <option value="14">+14 anos</option>
+                                    <option value="16">+16 anos</option>
+                                    <option value="18">+18 anos</option>
                             </select><br>
                         </div>
                         <div>
@@ -163,6 +176,69 @@
                         <button type="submit" class="enviar">Enviar</button>                
                 </form>
             </div>
+        </div>
+        <div class="modal" id="modal-deletar-filmes">
+            <div class="modal-container modalDeletarFilme">
+                <img onclick="fechar('#modal-deletar-filmes')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">              
+                <h4>Deletar Filme</h4>
+                <form action="control/ctr-filme.php#cadastro-filmes" method="POST"> 
+                    <input type="hidden" name="deletarFilme" id="recipient-deletarFilme">
+                    <label for="recipient-deletar-nomeFilme">Nome</label>
+                    <input type="text" name="txtNome" id="recipient-deletar-nomeFilme" readonly>
+                    <button type="submit" class="enviar">Confirmar</button>
+                </form>
+            </div>        
+        </div>
+        <!--EDITAR FILME-->
+        <div class="modal" id="modal-editar-filmes">
+             <div class="modal-container modalFilme">
+                 <img onclick="fechar('#modal-editar-filmes')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
+                 <h4>Editar Filme<h4>         
+                 <form action="control/ctr-filme.php#cadastro-filmes" method="POST" >
+                     <input id="recipient-idFilme" type="hidden" name="editarFilme">
+                     <div>
+                        <label for="recipient-nome-filme">Nome</label><br>
+                        <input type="text" name="nomeFilme" id="recipient-nome-filme"><br>
+                    </div>
+                     <div>
+                        <label for="recipient-estreia">Estreia</label><br>
+                        <input type="date" name="estreiaFilme" id="recipient-estreia"><br> 
+                     </div>
+                     <div>
+                        <label for="recipient-ultimo-dia">Último Dia</label><br>
+                        <input type="date" name="ultimoDia" id="recipient-ultimo-dia"><br>
+                     </div>
+                     <div>
+                     <label for="recipient-duracao">Duração</label><br>
+                            <select name="duracao" id="recipiente-duracao">
+                                    <option value="1:00">1h:00min</option>
+                                    <option value="1:30">1h:30min</option>
+                                    <option value="2:00">2h:00min</option>
+                                    <option value="2:30">2h:30min</option>
+                                    <option value="3:00">3h:00min</option>
+                            </select><br>
+                     </div>
+                     <div>
+                        <label for="recipient-class-indicativa">Classificação Indicativa</label><br>
+                        <select name="classIndicativa" id="recipient-class-indicativa" >
+                                    <option value="Livre">Livre</option>
+                                    <option value="10">+10 anos</option>
+                                    <option value="12">+12 anos</option>
+                                    <option value="14">+14 anos</option>
+                                    <option value="16">+16 anos</option>
+                                    <option value="18">+18 anos</option>
+                        </select><br>
+                     </div>
+                     <div>
+                        <label for="recipient-genero">Gênero</label><br>
+                        <input type="text" name="genero" id="recipient-genero"><br>
+                     </div>
+                     <button type="submit" class="enviar">Confirmar</button> 
+                 </form>   
+            </div>
+        <!--DELETAR FILME-->
+        
+
         </div>
         <!--FIM DO GERENCIAMENTO DE FILMES-->
         <!-- CADASTRO DE SALAS -->
@@ -289,7 +365,7 @@
                             <label for="senhaFuncionario">Senha</label><br>
                             <input type="password" id="senhaFuncionario" class="form-funcionario" name="senhaFuncionario" required><br>
                         </div>
-                        <button type="submit" class="enviar">Enviar</button>          
+                        <button type="submit" class="enviar">Confirmar</button>          
                 </form>
            </div>
         </div>
@@ -323,7 +399,7 @@
                             <label for="recipient-senha">Senha</label><br>
                             <input type="password"  class="form-funcionario" name="txtSenha" id="recipient-senha"><br>
                         </div>
-                        <button type="submit" class="enviar">Enviar</button>          
+                        <button type="submit" class="enviar">Confirmar</button>          
                 </form>
            </div>           
         </div>
@@ -335,7 +411,7 @@
                     <input type="hidden" name="deletarFuncionario" id="recipient-id">
                     <label for="recipient-nome">Nome</label>
                     <input type="text" class="form-funcionario" name="txtNome" id="recipient-nome" readonly>
-                    <button type="submit" class="enviar">Deletar</button>
+                    <button type="submit" class="enviar">Confirmar</button>
                 </form>
             </div>        
         </div>
@@ -416,7 +492,7 @@
                         <label for="dataNascimento">Data de Nascimento</label><br>
                         <input type="date" id="dataNascimento" class="form-cliente" name="dataNascimento"><br>
                     </div>
-                    <button type="submit" class="enviar">Enviar</button>          
+                    <button type="submit" class="enviar">Confirmar</button>          
                 </form>
            </div>
         </div>
@@ -435,7 +511,7 @@
                     <input type="text" name="idadeCliente" id="recipient-idadeCliente">
                     <label for="recipient-dataNascimento">Data de Nascimento</label>
                     <input type="date" name="dataNascimento" id="recipient-dataNascimento">
-                    <button type="submit" class="enviar">Enviar</button>                 
+                    <button type="submit" class="enviar">Confirmar</button>                 
                 </form>           
             </div>               
         </div>
@@ -447,7 +523,7 @@
                     <input type="hidden" name="deletarCliente" id="recipient-idCliente">
                     <label for="recipient-nomeCliente">Nome</label>
                     <input type="text" name="nomeCliente" id="recipient-nomeCliente" readonly>
-                    <button type="submit" class="enviar">Deletar</button>
+                    <button type="submit" class="enviar">Confirmar</button>
                 </form>           
             
             </div>
@@ -522,7 +598,40 @@
             
         })
     </script>
-
+    <!--SCRIPT PARA EDITAR FILMES-->
+    <script>
+        $("#modal-editar-filmes").on('show.bs.modal', function(event){
+            var buttonFilme = $(event.relatedTarget);
+            var recipientIdFilme = buttonFilme.data('id');
+            var recipientNomeCliente = buttonFilme.data('nome');
+            var recipientEstreiaFilme = buttonFilme.data('estreia');
+            var recipientUltimoDia = buttonFilme.data('ultimoDia');
+            var recipientDuracao = buttonFilme.data('duracao');
+            var recipientClassIndicativa = buttonFilme.data('classIndicativa');            
+            var recipientGenero = buttonFilme.data('genero');
+            
+            var modalEditarFilme= $(this)
+            modalEditarFilme.find('#recipient-idFilme').val(recipientIdFilme);
+            modalEditarFilme.find('#recipient-nome-filme').val(recipientNomeCliente);
+            modalEditarFilme.find('#recipient-estreia').val(recipientEstreiaFilme);
+            modalEditarFilme.find('#recipient-ultimo-dia').val(recipientUltimoDia);
+            modalEditarFilme.find('#recipient-duracao').val(recipientDuracao);
+            modalEditarFilme.find('#recipient-class-indicativa').val(recipientClassIndicativa);            
+            modalEditarFilme.find('#recipient-genero').val(recipientGenero);
+        })
+    </script>
+    <!--SCRIPT PRA REMOÇÃO DE FILME-->
+    <script>
+        $("#modal-deletar-filmes").on('show.bs.modal', function(event){
+            var buttonDeletarFilme = $(event.relatedTarget);
+            var recipientIdFilme = buttonDeletarFilme.data('id');
+            var recipientNomeFilme = buttonDeletarFilme.data('nome');
+            var modalDeletarFilme = $(this);
+            modalDeletarFilme.find("#recipient-deletarFilme").val(recipientIdFilme);
+            modalDeletarFilme.find("#recipient-deletar-nomeFilme").val(recipientNomeFilme);
+            
+        })
+    </script>
 </body>
 
 </html>
