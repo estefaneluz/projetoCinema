@@ -76,7 +76,7 @@
                 <h3>Gerenciar</h3>
                 <ul>
                     <li><a href="#cadastro-filmes">filmes</a></li>
-                    <li><a href="#">Sessões</a></li>
+                    <li><a href="#container-sessoes">Sessões</a></li>
                     <li><a href="#container-precos">Preços</a></li>
                     <li><a href="#cadastro-salas">Salas</a></li>
                     <li><a href="#container-funcionarios">Funcionários</li>
@@ -254,10 +254,37 @@
                  </form>   
             </div>
         <!--DELETAR FILME-->
-        
-
+    
         </div>
         <!--FIM DO GERENCIAMENTO DE FILMES-->
+
+        <!-- INICIO DO GERENCIAR SESSÕES -->
+
+        <div class="container-sessoes" id="container-sessoes">
+            <div class="header-gerenciar">
+                    <h2>Sessões</h2>
+                    <button onclick="action('#modal-sessao')" type="button" class="btnAdicionar">Novo</button>
+            </div>
+            <table class="tabela">
+                <thead>
+                    <tr>
+                        <th>Filme</th>
+                        <th>Sala</th>
+                        <th>Data</th> 
+                        <th>Horário</th>      
+                        <th>Status</th>                                        
+                        <th>Edit.</th>
+                        <th>Del.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                </table>
+        </div>
+
+        <!-- FIM DO GERENCIAR SESSÕES -->
+        
+        
         <!-- INICIO GERENCIAMENTO DE PRECOS -->
         <div id='container-precos'>
         <div class="header-gerenciar">
