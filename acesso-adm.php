@@ -16,16 +16,23 @@
 <?php
     require_once 'model/sala.php';
     $objSala = new Sala();
+    $objSessaoSala = new Sala();
 ?>
 
 <?php
     require_once 'model/filme.php';
     $objFilme = new Filme();
+    $objSessaoFilme = new Filme();
 ?>
 
 <?php
     require_once 'model/preco.php';
     $objPreco = new Preco();
+?>
+
+<?php
+    require_once 'model/sessao.php';
+    $objSessao = new Sessao();
 ?>
 
 <!DOCTYPE html>
@@ -105,13 +112,11 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     <?php
                         $sql = "SELECT * FROM filme";
                         $stmt = $objFilme->runQuery($sql);
                         $stmt->execute();
                         while($objFilme = $stmt->fetch(PDO::FETCH_ASSOC)){
-
                      ?>       
                     <tr>
                         <td><?php echo ($objFilme['nome'])?></td>
@@ -278,10 +283,94 @@
                     </tr>
                 </thead>
                 <tbody>
+                <?php
+                        $sql = "SELECT * FROM sessao";
+                        $stmt = $objSessao->runQuery($sql);
+                        $stmt->execute();
+                        while($objSessao = $stmt->fetch(PDO::FETCH_ASSOC)){
+                     ?>       
+                    <tr>
+                        <td><?php 
+                        echo ($objSessao['id_filme'])?>
+                        </td>
+                        <td><?php echo ($objSessao['id_sala'])?></td> 
+                        <td><?php echo ($objSessao['data'])?></td>                        
+                        <td><?php echo ($objSessao['horarioInicio'])?>
+                        <span> | </span>
+                        <?php echo ($objSessao['horarioFim'])?>
+                        </td>  
+                        <td><?php echo ($objSessao['ingressosVendidos'])?></td>                                    
+                        <td><button  type="button" class="btnEditar"
+                                    data-toggle="modal" data-target="#modal-editar-sessao"
+                                    >                                                      
+                                Editar
+                                </button>
+                        </td>
+                        <td><button type="button" class="btnDeletar"
+                        data-toggle="modal"
+                        data-target="#modal-deletar-sessao"
+                        >
+                        Deletar</button></td>
+                    </tr>                    
+                    <?php   
+                     }
+                    ?>
                 </tbody>
                 </table>
         </div>
 
+        <!-- CADASTRAR SESSAO -->
+        <div class="modal" id="modal-sessao">
+            <div class="modal-container">
+                <img onclick="fechar('#modal-sessao')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
+                <h4>Cadastrar Sessão<h4>
+                <form action="control/ctr-sessao.php#container-sessoes" method="POST">
+                        <input type="hidden" name="cadastrarSessao">
+                        <div>
+                            <label for="filme">Filme</label><br>
+                            <select id="filme" name="filme">
+                            <?php
+                            $sql = "SELECT * FROM filme";
+                            $stmt = $objSessaoFilme->runQuery($sql);
+                            $stmt->execute();
+                            while($objSessaoFilme = $stmt->fetch(PDO::FETCH_ASSOC)){
+                            ?>  
+                                <option value="<?php echo($objSessaoFilme['id'])?>">
+                                <?php echo ($objSessaoFilme['nome'])?></option>
+                            <?php   
+                            }
+                            ?>
+                            </select><br>
+                        </div>
+                        <div>
+                            <label for="sala">Sala</label><br>
+                            <select id="sala" name="sala">
+                            <?php
+                            $sql = "SELECT * FROM sala";
+                            $stmt = $objSessaoSala->runQuery($sql);
+                            $stmt->execute();
+                            while($objSessaoSala = $stmt->fetch(PDO::FETCH_ASSOC)){
+                            ?>  
+                                <option value="<?php echo($objSessaoSala['id'])?>">
+                                <?php echo ($objSessaoSala['nome'])?></option>
+                            <?php   
+                            }
+                            ?>
+                            </select><br>
+                        </div>
+                        <div>
+                            <label for="data">Data:</label><br>
+                            <input type="date" id="data" name="data" required><br>                        
+                        </div>
+                        <div>
+                            <label for="horarioInicio">Horário de Inicio</label><br>
+                            <input type="time" id="horarioInicio" name="horarioInicio" required><br>
+                        </div>
+                        <button type="submit" class="enviar">Enviar</button>                
+                </form>
+            </div>
+        </div>
+        <!-- FIM CADASTRAR SESSAO -->
         <!--DELETAR SESSÃO-->
         <div class="modal" id="modal-deletar-sessao">
             <div class="modal-container">
@@ -290,19 +379,19 @@
                 <form action="control/ctr-sessao.php#container-sessoes" method="POST"> 
                     <input type="hidden" name="deletarSessao" id="recipient-deletar">
                     <div>
-                        <label for="txtFilme">Filme</label>
+                        <label for="txtFilme">Filme</label><br>
                         <input type="text" name="txtFilme" id="recipient-deletar-filme" readonly>
                     </div>
                     <div>
-                        <label for="txtSala">Data</label>
+                        <label for="txtSala">Data</label><br>
                         <input type="text" name="txtData" id="recipient-deletar-data" readonly>
                     </div>
                     <div>
-                        <label for="txtSala">Sala</label>
+                        <label for="txtSala">Sala</label><br>
                         <input type="text" name="txtSala" id="recipient-deletar-sala" readonly>
                     </div>
                     <div>
-                        <label for="txtSala">Horário</label>
+                        <label for="txtSala">Horário</label><br>
                         <input type="text" name="txtHorario" id="recipient-deletar-horario" readonly>
                     </div>
                     <button type="submit" class="enviar">Confirmar</button>
@@ -331,40 +420,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php
-                        $sql = "SELECT * FROM ingresso";
-                        $stmt = $objPreco->runQuery($sql);
-                        $stmt->execute();
-                        while($objPreco = $stmt->fetch(PDO::FETCH_ASSOC)){
-                    ?>
-                        <tr>
-                            <td><?php echo($objPreco['id'])?></td>
-                            <td><?php echo($objPreco['nome'])?></td>
-                            <td>R$ <?php echo($objPreco['valor'])?></td>
-                            <td>R$ <?php echo($objPreco['meia'])?></td>
-                            <td><button type="button" class="btnEditar"
-                                    data-toggle="modal" 
-                                    data-target="#modal-editar-precos"
-                                    data-id="<?php echo($objPreco['id'])?>"
-                                    data-nome="<?php echo($objPreco['nome'])?>"
-                                    data-valor="<?php echo($objPreco['valor'])?>"
-                                    data-meia="<?php echo($objPreco['meia'])?>">
-                                    Editar
-                            </button>
-                            </td>
-                            <td><button type="button" class="btnDeletar"
-                                    data-toggle="modal" 
-                                    data-target="#modal-deletar-precos"
-                                    data-id="<?php print $objPreco['id']?>"
-                                    data-nome="<?php print $objPreco['nome']?>">
-                                    Deletar
-                            </button>
-                            </td>
-                        </tr>
-                    <!-- FECHAMENTO DO WHILE -->
-                         <?php   
-                        } 
-                         ?> 
+                
                 </tbody>
                 </table>
         </div>
