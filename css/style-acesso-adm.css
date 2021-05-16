@@ -1,7 +1,7 @@
 header {
   position: relative;
   
-}  
+} 
 
 /* MENU LATERAL */
 .acesso-adm{
@@ -40,7 +40,7 @@ nav h3 {
   font-size: 16px;   
 } 
 
-/* CORPO DA PÁGINA */
+ /*CORPO DA PAGINA*/ 
 
 .container-gerenciar {
   padding-top: 2vh;
@@ -49,24 +49,29 @@ nav h3 {
 
 /*CADASTRO DE FILMES*/
 
-.cadastro-filmes,.cadastro-salas,.container-funcionarios,.container-clientes {
+.cadastro-filmes,.cadastro-salas,.container-funcionarios,.container-clientes,#container-precos{
   display:none;
 }
 
-.container-precos {
-  display: none;
-}
-
-.cadastro-filmes:target, .cadastro-salas:target{
+.cadastro-salas:target{
   display:flex;
   flex-direction: row;
   text-transform: uppercase;
-  /* padding: 33px 33px 51px 113px; */
+  
 }
-
-.container-funcionarios:target,.container-clientes:target {
+.container-funcionarios:target,.container-clientes:target,.cadastro-filmes:target,#container-precos:target{
   display:flex;
   flex-direction: column;
+}
+
+.cadastro-salas form {
+  margin-top: 10px;
+}
+
+.cadastro-salas input {
+  width: auto;
+  background-color: #3f3d56;
+  margin-bottom: 15px;
 }
 
 .cadastro-salas form {
@@ -74,64 +79,20 @@ margin-right: 5vw;
 }
 
 .colunas{
-  display: flex;  
+  display: flex; 
 }
 .coluna-2{
   margin-left: 16px;
   align-items: center;
 }
 
-.form-seletor, .form-filmes,.cartazFilme{
-  width:201px;
-  height:40px;
-  background-color: #3f3d56;
-  color:#e1e1e1;
-  font-family:  Nunito, Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  font-weight: bold;
-  border: 1px solid #232237;
-  box-shadow: inset 0px 3px 4px rgba(0, 0, 0, 0.25);   
-  text-transform: uppercase;
-  margin-top:8px;
-  margin-bottom: 19px;
-  padding-left: 10px;
-} 
-
-label{
-  line-height: 19px;
-  font-weight: bold;
-  font-style: normal;
-  font-size: 14px;
-}
-
-#nFilme {
-  width: 418px;  
-
-}
-#cartazFilme[type='file'] {/*esconde o input*/
-  display: none;  
-}
-
-.cartazFilme {  
-  float: right;
-  padding: 10px 10px 10px 13px; 
-  cursor:pointer;
-  margin-top:30px;  
- 
-}
-.cartazFilme:hover{
-  background-color: #e1e1e1;
-  color:#3f3d56;
-  transition: 0.2s;
-  
-}
 .btnAdicionar{
   text-transform: uppercase;
   font-size: 14px;
   color: #e1e1e1;
   width: 90px; 
   height: 35px;
-  margin-bottom: 6px;
+  margin: 6px;
   background: none;
   border: 3px solid #ffbf54;
   cursor: pointer;
@@ -143,13 +104,13 @@ label{
   transition: 0.2s;
   
 }
-.filmes-cadastrados,.salas-cadastradas{
+.salas-cadastradas{
   
   width: 350px;  
   margin-left: 50px;
   height: 210px;
 }
-.filmes-cadastrados > p,.salas-cadastradas >p{
+.salas-cadastradas >p{
   margin-bottom: 12px;
   font-weight: bold;
   font-size: 14px;
@@ -159,7 +120,7 @@ label{
 }
 
 
-.lista-filmes div,.nomes-salas div{
+.nomes-salas div{
   /*AJUSTAR POSICIONAMENTO*/
   height: 40px;   
   background: #3F3D56;
@@ -177,25 +138,9 @@ label{
   
 }
 
-
-
 /*CADASTRO DE SALAS*/
-.salas-cadastradas{
-  display: flex;
-  flex-direction: column;
-}
 
-.salas-cadastradas >div{
-  display: flex;
-  flex-direction: row;
-}
-.nomes-salas div{
-  width: 320px;
-}
-.excluir-sala{
-  display: flex;
-  flex-direction: column;
-}
+
 .btnExcluir{
   /* Rectangle 31 */
   width: 40px;
@@ -226,9 +171,8 @@ label{
   width: 400px;;
   height: auto;
   margin:0 auto;
-  border-radius: 5px;  
+  border-radius: 5px; 
 }
-
 
 .modal-container h4{
   margin: 0 auto 7px auto;
@@ -246,7 +190,11 @@ label{
 
 
 .modalDeletarFuncionario button,.modalDeletarCliente button{  
-  margin: 30px auto;
+  margin: auto;
+}
+/*AJUSTANDO ALTURA DE MODAL DE FILME*/
+.modalFilme{
+  height:570px;
 }
 .enviar{
   justify-self: end;
