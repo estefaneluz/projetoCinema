@@ -1,19 +1,25 @@
 <?php
-    //Pega as informações e envia para a camada modelo
+
     require_once '../model/funcionario.php';
     $objFuncionario = new Funcionario();
-    if(isset($_POST['email'])){ //isset verifica se no html tem algum tag com o atributo: email
-        $email = $_POST['email']; //Para pegar valor do input e usar no php: $_GET/POST['ATRIBUTO']
+    if(isset($_POST['email'])){ 
+        $email = $_POST['email']; 
         $senha = $_POST['password'];
-        //echo $login;exit;
-        if($objFuncionario->validacao($email,$senha)){//Verificar se o valor da função é vdd
-            $objFuncionario->redirect('../acesso-adm.php'); //Se sim permite acesso a page acesso admnistrativo
+
+        if($objFuncionario->validacao($email,$senha)){
+            if(isset($_SESSION['idFuncionario'])==true){
+                //header("Location: ../acesso-adm.php");
+                $objFuncionario->redirect('../acesso-adm.php'); 
+            } else {
+                // header("Location: ../index.html");
+                $objFuncionario->redirect('../index.html');
+            }
         }else{
-            $objFuncionario->redirect('../index.html');//Senão retorna pra page inicial
+            // header("Location: ../index.html");
+            $objFuncionario->redirect('../index.html');
         }
-    
-     
     }
+    
     /*CADASTRAR FUNCIONARIO*/   
     if(isset($_POST['cadastrarFuncionario'])){//seta
         $nome = $_POST['nomeFuncionario'];

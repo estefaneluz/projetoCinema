@@ -19,12 +19,14 @@
         public function validacao($email,$senha){
             try{
                 $sql = "SELECT * FROM funcionario WHERE email = :email AND senha = :senha";
-                $stmt =  $this->conn->prepare($sql);
+                $stmt = $this->conn->prepare($sql);
                 $stmt->bindParam(":email",$email);
                 $stmt->bindParam(":senha",$senha);
                 $stmt->execute();
-                if($stmt->rowCount()>0){ //rowCount vai pegar a qtd de linhas afetadas na execução
-                    return true; //Se for maior q 0 significa q achou o funcionario no banco
+                if($stmt->rowCount()>0){ 
+                    $dado = $stmt->fetch();
+                    $_SESSION['idFuncionario'] = $dado['id'];
+                    return true; 
                 } else{
                     return false;
                 }  
