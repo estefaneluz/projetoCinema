@@ -13,14 +13,15 @@
         }
     }
 
-    // if(isset($_POST['editarSala'])){
-    //     $id =$_POST['editarSala'];
-    //     $nome = $_POST['txtNome'];
-    //     $qtdAssentos = $_POST['txtQtdAssentos'];
-    //     if ($objSala->editarSala($nome,$qtdAssentos,$id)){
-    //         $objSala->redirect('../acesso-adm.php#cadastro-salas');
-    //     }
-    // }
+    if(isset($_POST['editarPreco'])){
+        $id =$_POST['editarPreco'];
+        $nome = $_POST['nome'];
+        $valor = $_POST['valor'];
+        $meia = $_POST['meia'];
+        if ($objPreco->editarPreco($nome,$valor,$meia, $id)){
+            $objPreco->redirect('../acesso-adm.php#container-precos');
+        }
+    }
 
     if(isset($_POST['deletarPreco'])){
         $idPreco = $_POST['deletarPreco'];

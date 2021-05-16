@@ -207,7 +207,12 @@
                             <td>R$ <?php echo($objPreco['valor'])?></td>
                             <td>R$ <?php echo($objPreco['meia'])?></td>
                             <td><button type="button" class="btnEditar"
-                                    data-toggle="modal" data-target="#modal-editar-precos">
+                                    data-toggle="modal" 
+                                    data-target="#modal-editar-precos"
+                                    data-id="<?php echo($objPreco['id'])?>"
+                                    data-nome="<?php echo($objPreco['nome'])?>"
+                                    data-valor="<?php echo($objPreco['valor'])?>"
+                                    data-meia="<?php echo($objPreco['meia'])?>">
                                     Editar
                             </button>
                             </td>
@@ -240,6 +245,31 @@
                     </form>           
                 </div>
             </div> <!-- FIM DO MODAL DELETAR PRECOS -->
+
+            <!-- INICIO MODAL EDITAR PRECOS  -->
+            <div class="modal" id="modal-editar-precos">
+                <div class="modal-container" >
+                    <img onclick="fechar('#modal-editar-precos')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
+                    <h4>Editar Preços<h4>
+                    <form action="control/ctr-preco.php#container-precos" method="POST">
+                            <input id="recipient-idPreco" type="hidden" name="editarPreco">
+                            <div>
+                                <label for="nome">Nome</label><br>
+                                <input type="text" name="nome" id="recipient-nome-preco"  ><br>
+                            </div>
+                            
+                            <div>
+                                <label for="valor">Valor Inteiro</label><br>
+                                <input type="text"  name="valor" id="recipient-valor"><br>
+                            </div>
+                            <div>
+                                <label for="valor">Valor Meia</label><br>
+                                <input type="text"  name="meia" id="recipient-meia"><br>
+                            </div>
+                            <button type="submit" class="enviar">Enviar</button>          
+                    </form>
+            </div>           
+            </div> <!-- FIM DO MODAL EDITAR PRECOS -->
 
             <!-- MODAL CADASTRAR PRECOS -->
             <div class="modal" id="modal-precos">
@@ -606,6 +636,24 @@
     </main> 
     <script src="./js/hover.js"></script>  
     <script src="./js/script.js"></script>
+
+    <!-- SCRIPT PARA EDITAR PREÇOS -->
+    <script>
+        $("#modal-editar-precos").on('show.bs.modal', function(event){
+            var buttonPrecos = $(event.relatedTarget);
+            var recipientIdPrecos = buttonPrecos.data('id');
+            var recipientNomePrecos = buttonPrecos.data('nome');
+            var recipientValor = buttonPrecos.data('valor');
+            var recipientMeia = buttonPrecos.data('meia');
+            
+            var modalEditarPrecos = $(this)
+            modalEditarPrecos.find('#recipient-idPreco').val(recipientIdPrecos);
+            modalEditarPrecos.find('#recipient-nome-preco').val(recipientNomePrecos);
+            modalEditarPrecos.find('#recipient-valor').val(recipientValor);
+            modalEditarPrecos.find('#recipient-meia').val(recipientMeia);
+
+        })
+    </script>
 
     <!--DELETAR PRECO-->
     <script>
