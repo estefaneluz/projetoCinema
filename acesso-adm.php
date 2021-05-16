@@ -194,6 +194,7 @@
                 </form>
             </div>
         </div>
+        <!--DELETAR FILME-->
         <div class="modal" id="modal-deletar-filmes">
             <div class="modal-container modalDeletarFilme">
                 <img onclick="fechar('#modal-deletar-filmes')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">              
@@ -253,7 +254,6 @@
                      <button type="submit" class="enviar">Confirmar</button> 
                  </form>   
             </div>
-        <!--DELETAR FILME-->
     
         </div>
         <!--FIM DO GERENCIAMENTO DE FILMES-->
@@ -280,6 +280,34 @@
                 <tbody>
                 </tbody>
                 </table>
+        </div>
+
+        <!--DELETAR SESSÃO-->
+        <div class="modal" id="modal-deletar-sessao">
+            <div class="modal-container">
+                <img onclick="fechar('#modal-deletar-sessao')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">              
+                <h4>Deletar Sessão</h4>
+                <form action="control/ctr-sessao.php#container-sessoes" method="POST"> 
+                    <input type="hidden" name="deletarSessao" id="recipient-deletar">
+                    <div>
+                        <label for="txtFilme">Filme</label>
+                        <input type="text" name="txtFilme" id="recipient-deletar-filme" readonly>
+                    </div>
+                    <div>
+                        <label for="txtSala">Data</label>
+                        <input type="text" name="txtData" id="recipient-deletar-data" readonly>
+                    </div>
+                    <div>
+                        <label for="txtSala">Sala</label>
+                        <input type="text" name="txtSala" id="recipient-deletar-sala" readonly>
+                    </div>
+                    <div>
+                        <label for="txtSala">Horário</label>
+                        <input type="text" name="txtHorario" id="recipient-deletar-horario" readonly>
+                    </div>
+                    <button type="submit" class="enviar">Confirmar</button>
+                </form>
+            </div>        
         </div>
 
         <!-- FIM DO GERENCIAR SESSÕES -->
