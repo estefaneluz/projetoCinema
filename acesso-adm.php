@@ -212,7 +212,10 @@
                             </button>
                             </td>
                             <td><button type="button" class="btnDeletar"
-                                    data-toggle="modal" data-target="#modal-deletar-precos">
+                                    data-toggle="modal" 
+                                    data-target="#modal-deletar-precos"
+                                    data-id="<?php print $objPreco['id']?>"
+                                    data-nome="<?php print $objPreco['nome']?>">
                                     Deletar
                             </button>
                             </td>
@@ -224,6 +227,20 @@
                 </tbody>
                 </table>
         </div>
+            <!-- MODAL DELETAR PRECOS -->
+            <div class="modal" id="modal-deletar-precos">
+                <div class="modal-container">
+                    <img onclick="fechar('#modal-deletar-precos')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">               
+                    <h4>Deletar Preço</h4>
+                    <form action="control/ctr-preco.php#cadastrar-precos" method="POST"> 
+                        <input type="hidden" name="deletarPreco" id="recipient-idPreco">
+                        <label for="recipient-nome-preco">Nome</label>
+                        <input type="text" name="nomePreco" id="recipient-nome-preco" readonly>
+                        <button type="submit" class="enviar">Deletar</button>
+                    </form>           
+                </div>
+            </div> <!-- FIM DO MODAL DELETAR PRECOS -->
+
             <!-- MODAL CADASTRAR PRECOS -->
             <div class="modal" id="modal-precos">
             <div class="modal-container">
@@ -589,6 +606,18 @@
     </main> 
     <script src="./js/hover.js"></script>  
     <script src="./js/script.js"></script>
+
+    <!--DELETAR PRECO-->
+    <script>
+        $("#modal-deletar-precos").on('show.bs.modal', function(event){
+            var buttonPreco = $(event.relatedTarget);
+            var recipientIdPreco = buttonPreco.data('id');
+            var recipientNomePreco = buttonPreco.data('nome');
+            var modalDeletarPreco = $(this)
+            modalDeletarPreco.find("#recipient-idPreco").val(recipientIdPreco);
+            modalDeletarPreco.find("#recipient-nome-preco").val(recipientNomePreco);  
+        })
+    </script>
 
     <!-- SCRIPT PARA EDITAR SALA -->
     <script>

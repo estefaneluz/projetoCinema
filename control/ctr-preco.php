@@ -22,11 +22,11 @@
     //     }
     // }
 
-    // if(isset($_POST['deletarSala'])){
-    //     $idSala = $_POST['deletarSala'];
-    //     if($objSala->deletarSala($idSala)){
-    //         $objSala->redirect('../acesso-adm.php#cadastro-salas');
-    //     }
-    // }
+    if(isset($_POST['deletarPreco'])){
+        $idPreco = $_POST['deletarPreco'];
+        if($objPreco->deletarPreco($idPreco)){
+            $objPreco->redirect('../acesso-adm.php#container-precos');
+        }
+    }
 
 ?>
