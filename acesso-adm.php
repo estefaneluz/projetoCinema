@@ -647,7 +647,7 @@
             var recipientMeia = buttonPrecos.data('meia');
             
             var modalEditarPrecos = $(this)
-            modalEditarPrecos.find('#recipient-idPreco').val(recipientIdPrecos);
+            modalEditarPrecos.find('#recipient-idPreco ').val(recipientIdPrecos);
             modalEditarPrecos.find('#recipient-nome-preco').val(recipientNomePrecos);
             modalEditarPrecos.find('#recipient-valor').val(recipientValor);
             modalEditarPrecos.find('#recipient-meia').val(recipientMeia);
