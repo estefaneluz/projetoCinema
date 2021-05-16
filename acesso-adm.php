@@ -204,8 +204,8 @@
                         <tr>
                             <td><?php echo($objPreco['id'])?></td>
                             <td><?php echo($objPreco['nome'])?></td>
-                            <td><?php echo($objPreco['valor'])?></td>
-                            <td><?php echo($objPreco['meia'])?></td>
+                            <td>R$ <?php echo($objPreco['valor'])?></td>
+                            <td>R$ <?php echo($objPreco['meia'])?></td>
                             <td><button type="button" class="btnEditar"
                                     data-toggle="modal" data-target="#modal-editar-precos">
                                     Editar
