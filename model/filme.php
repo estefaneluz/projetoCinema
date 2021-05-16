@@ -35,6 +35,49 @@
                 $this->conn = null;
             }
         }
+        public function editarFilme($nome,$estreia,$ultimoDia,$duracao,$classIndicativa,$genero,$id){
+            try{
+                $sql = "UPDATE filme
+                SET 
+                    nome = :nome,
+                    estreia = :estreia,
+                    ultimoDia = :ultimoDia,
+                    duracao = :duracao,
+                    classIndicativa = :classIndicativa,
+                    genero = :genero
+                    WHERE id = :id";
+                    $stmt = $this->conn->prepare($sql);
+                    $stmt-> bindParam(":nome",$nome);
+                    $stmt-> bindParam(":estreia",$estreia);
+                    $stmt-> bindParam(":ultimoDia",$ultimoDia);
+                    $stmt-> bindParam(":duracao",$duracao);
+                    $stmt-> bindParam(":classIndicativa",$classIndicativa);
+                    $stmt-> bindParam(":genero",$genero);
+                    $stmt-> bindParam(":id",$id);
+                    $stmt->execute();
+             
+                    return $stmt;
+         }catch(PDOException $e){
+             echo ("Error: ".$e->getMessage());
+         }finally{
+             $this->conn = null;
+         } 
+        }
+        /*DELETAR FILME*/
+        public function deletarFilme($idFilme){
+            try{
+                $sql = "DELETE FROM filme WHERE id = :id";
+                $stmt = $this->conn->prepare($sql);
+                $stmt-> bindParam(":id",$idFilme);
+                $stmt->execute();
+                return $stmt;   
+            }catch(PDOException $e){
+                echo("Erro: ".$e->getMessage());
+            }finally{
+                $this->conn=null;
+            }
+        }
+
         public function redirect($url){
             header("Location: $url"); //header redireciona os links da pagina
         }
