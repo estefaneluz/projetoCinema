@@ -286,28 +286,44 @@
                 </thead>
                 <tbody>
                 <?php
-                        $sql = "SELECT * FROM sessao";
-                        $stmt = $objSessao->runQuery($sql);
-                        $stmt->execute();
-                        while($objSessao = $stmt->fetch(PDO::FETCH_ASSOC)){
-                     ?>       
+                    $sql = "SELECT * FROM sessao";
+                    $stmt = $objSessao->runQuery($sql);
+                    $stmt->execute();
+                    while($objSessao = $stmt->fetch(PDO::FETCH_ASSOC)){
+                ?>       
                     <tr>
-                        <td><?php 
-                        echo ($objSessao['id_filme'])?>
+                        <td>
+                            <?php
+                                $id = $objSessao['id_filme'];
+                                $sqlFilme = "SELECT nome FROM filme WHERE id = $id";
+                                $stmtFilme = $objSessaoFilme->runQuery($sqlFilme);
+                                $stmtFilme->execute();
+                                $resultado = $stmtFilme->fetch(PDO::FETCH_ASSOC);
+                                echo ($resultado['nome']);
+                            ?>
                         </td>
-                        <td><?php echo ($objSessao['id_sala'])?></td> 
+                        <td>
+                        <?php 
+                            $id = $objSessao['id_sala'];
+                            $sqlSala = "SELECT nome FROM sala WHERE id = $id";
+                            $stmtSala = $objSessaoSala->runQuery($sqlSala);
+                            $stmtSala->execute();
+                            $resultado = $stmtSala->fetch(PDO::FETCH_ASSOC);
+                            echo ($resultado['nome']);
+                        ?>
+                        </td> 
                         <td><?php echo ($objSessao['data'])?></td>                        
                         <td><?php echo ($objSessao['horarioInicio'])?>
                         <span> | </span>
                         <?php echo ($objSessao['horarioFim'])?>
                         </td>  
                         <td><?php echo ($objSessao['ingressosVendidos'])?></td>                                    
-                        <td><button  type="button" class="btnEditar"
+                        <td><button  type="button" class="btnEditar" id="btnEditarSessao"
                         data-toggle="modal" data-target="#modal-editar-sessao"
                         data-id="<?php print $objSessao['id']?>"
-                        data-filme="<?php print $objSessao['id_filme']?>"
+                        data-id-filme="<?php echo($objSessao['id_filme']);?>"
                         data-data="<?php print $objSessao['data']?>"
-                        data-sala="<?php print $objSessao['id_sala']?>"
+                        data-id-sala="<?php echo($objSessao['id_sala']);?>"
                         data-horario="<?php print $objSessao['horarioInicio']?>">                                                      
                                 Editar
                                 </button>
@@ -316,15 +332,32 @@
                         data-toggle="modal"
                         data-target="#modal-deletar-sessao"
                         data-id="<?php print $objSessao['id']?>"
-                        data-filme="<?php print $objSessao['id_filme']?>"
+                        data-id-filme="<?php print $objSessao['id_filme']?>"
+                        data-filme="
+                        <?php 
+                            $id = $objSessao['id_filme'];
+                            $sqlFilme = "SELECT nome FROM filme WHERE id = $id";
+                            $stmtFilme = $objSessaoFilme->runQuery($sqlFilme);
+                            $stmtFilme->execute();
+                            $resultado = $stmtFilme->fetch(PDO::FETCH_ASSOC);
+                            echo ($resultado['nome']);
+                        ?>"
                         data-data="<?php print $objSessao['data']?>"
-                        data-sala="<?php print $objSessao['id_sala']?>"
+                        data-id-sala="<?php print $objSessao['id_sala']?>"
+                        data-sala="<?php 
+                            $id = $objSessao['id_sala'];
+                            $sqlSala = "SELECT nome FROM sala WHERE id = $id";
+                            $stmtSala = $objSessaoSala->runQuery($sqlSala);
+                            $stmtSala->execute();
+                            $resultado = $stmtSala->fetch(PDO::FETCH_ASSOC);
+                            echo ($resultado['nome']);
+                        ?>"
                         data-horario="<?php print $objSessao['horarioInicio']?>"
                         >
                         Deletar</button></td>
                     </tr>                    
                     <?php   
-                     }
+                    }
                     ?>
                 </tbody>
                 </table>
@@ -391,7 +424,8 @@
                     <input type="hidden" name="deletarSessao" id="recipient-deletar">
                     <div>
                         <label for="txtFilme">Filme</label><br>
-                        <input type="text" name="txtFilme" id="recipient-deletar-filme" readonly>
+                        <input type="hidden" name="txtFilme" id="recipient-deletar-filme">
+                        <input type="text" name="txtFilme" id="recipient-filme" readonly>
                     </div>
                     <div>
                         <label for="txtSala">Data</label><br>
@@ -399,7 +433,8 @@
                     </div>
                     <div>
                         <label for="txtSala">Sala</label><br>
-                        <input type="text" name="txtSala" id="recipient-deletar-sala" readonly>
+                        <input type="hidden" name="txtFilme" id="recipient-deletar-sala">
+                        <input type="text" name="txtSala" id="recipient-sala" readonly>
                     </div>
                     <div>
                         <label for="txtSala">Horário</label><br>
@@ -419,11 +454,38 @@
                      <input id="recipient-id" type="hidden" name="editarSessao">
                      <div>
                         <label for="filme">Filme</label><br>
-                        <input type="text" name="filme" id="recipient-filme"><br>
+                        <select name="filme">
+                            <option id="recipient-filme" selected></option>
+                            <?php
+                            $sql = "SELECT * FROM filme";
+                            $stmt = $objSessaoEditarFilme->runQuery($sql);
+                            $stmt->execute();
+                            while($objSessaoEditarFilme = $stmt->fetch(PDO::FETCH_ASSOC)){
+                            ?>  
+                                <option value="<?php echo($objSessaoEditarFilme['id'])?>">
+                                <?php echo ($objSessaoEditarFilme['nome'])?></option>
+                            <?php   
+                            }
+                            ?>
+                        </select><br>
                     </div>
                      <div>
                         <label for="sala">Sala</label><br>
-                        <input type="text" name="sala" id="recipient-sala"><br> 
+                        <select id="sala" name="sala">
+                            <option id="recipient-sala" selected></option>
+                            <?php
+                            $sql = "SELECT * FROM sala";
+                            $stmt = $objSessaoEditarSala->runQuery($sql);
+                            $stmt->execute();
+                            while($objSessaoEditarSala = $stmt->fetch(PDO::FETCH_ASSOC)){
+                            ?>  
+                                <option value="<?php echo($objSessaoEditarSala['id'])?>">
+                                <?php echo ($objSessaoEditarSala['nome'])?></option>
+                            <?php   
+                            }
+                            ?>
+                        </select><br>
+                        <!-- <input type="text" name="sala" id="recipient-sala"><br>  -->
                      </div>
                      <div>
                         <label for="data">Data</label><br>
@@ -870,41 +932,44 @@
     <!--EDITAR SESSAO-->
     <script>
         $("#modal-editar-sessao").on('show.bs.modal', function(event){
-            var buttonSessao = $(event.relatedTarget);
-            var recipientIdSessao = buttonSessao.data('id');
-            var recipientFilmeSessao = buttonSessao.data('filme');
-            var recipientSalaSessao = buttonSessao.data('sala');
-            var recipientDataSessao = buttonSessao.data('data');
-            var recipientHorarioSessao = buttonSessao.data('horario');
+            var button = $(event.relatedTarget);
+            var recipientId = button.data('id');
+            var recipientData = button.data('data');
+            var recipientHorario = button.data('horario');
+            var idSala = button.data('id-sala');
+            var idFilme = button.data('id-filme');
 
             var modal = $(this)
-            modal.find("#recipient-id").val(recipientIdSessao);
-            modal.find("#recipient-filme").val(recipientFilmeSessao); 
-            modal.find("#recipient-sala").val(recipientSalaSessao);
-            modal.find("#recipient-data").val(recipientDataSessao);  
-            modal.find("#recipient-horario").val(recipientHorarioSessao);
-
-            document.getElementById('recipient-sala').innerText = recipientSalaSessao;
-            // modalEditarSessao.find("#recipient-sala").innerText = recipientSalaSessao;
+            modal.find("#recipient-id").val(recipientId);
+            modal.find("#recipient-filme").val(idFilme);
+            modal.find("#recipient-sala").val(idSala);
+            modal.find("#recipient-data").val(recipientData);  
+            modal.find("#recipient-horario").val(recipientHorario);
         })
     </script>
+
 
     <!--DELETAR SESSAO-->
     <script>
         $("#modal-deletar-sessao").on('show.bs.modal', function(event){
-            var buttonSessao = $(event.relatedTarget);
-            var recipientIdSessao = buttonSessao.data('id');
-            var recipientFilmeSessao = buttonSessao.data('filme');
-            var recipientDataSessao = buttonSessao.data('data');
-            var recipientSalaSessao = buttonSessao.data('sala');
-            var recipientHorarioSessao = buttonSessao.data('horario');
+            var button = $(event.relatedTarget);
+            var recipientId = button.data('id');
+            var recipientFilme = button.data('filme');
+            var recipientData = button.data('data');
+            var recipientSala = button.data('sala');
+            var recipientHorario = button.data('horario');
+            var idSala = button.data('id-sala');
+            var idFilme = button.data('id-filme');
+            
 
             var modal = $(this)
-            modal.find("#recipient-deletar").val(recipientIdSessao);
-            modal.find("#recipient-deletar-filme").val(recipientFilmeSessao); 
-            modal.find("#recipient-deletar-data").val(recipientDataSessao);  
-            modal.find("#recipient-deletar-sala").val(recipientSalaSessao);
-            modal.find("#recipient-deletar-horario").val(recipientHorarioSessao);
+            modal.find("#recipient-deletar").val(recipientId);
+            modal.find("#recipient-deletar-filme").val(idFilme); 
+            modal.find("#recipient-deletar-data").val(recipientData);  
+            modal.find("#recipient-deletar-sala").val(idSala);
+            modal.find("#recipient-deletar-horario").val(recipientHorario);
+            modal.find('#recipient-filme').val(recipientFilme.trim());
+            modal.find('#recipient-sala').val(recipientSala);
         })
     </script>
 

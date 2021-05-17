@@ -14,6 +14,7 @@
             $stmt = $this->conn->prepare($sql);
             return $stmt; 
         }  
+
         /*CADASTRAR FILME*/
         public function cadastrarFilme($nome,$estreia,$ultimoDia,$duracao,$classIndicativa,$genero){
             try{
