@@ -17,12 +17,14 @@
     require_once 'model/sala.php';
     $objSala = new Sala();
     $objSessaoSala = new Sala();
+    $objSessaoEditarSala = new Sala();
 ?>
 
 <?php
     require_once 'model/filme.php';
     $objFilme = new Filme();
     $objSessaoFilme = new Filme();
+    $objSessaoEditarFilme = new Filme();
 ?>
 
 <?php
@@ -408,7 +410,7 @@
             </div>        
         </div>
         <!-- FIM DE DELETTAR SESSAO -->
-        <!--EDITAR FILME-->
+        <!--EDITAR SESSAO-->
         <div class="modal" id="modal-editar-sessao">
              <div class="modal-container">
                  <img onclick="fechar('#modal-editar-sessao')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
@@ -875,12 +877,15 @@
             var recipientDataSessao = buttonSessao.data('data');
             var recipientHorarioSessao = buttonSessao.data('horario');
 
-            var modalDeletarSessao = $(this)
-            modalDeletarSessao.find("#recipient-id").val(recipientIdSessao);
-            modalDeletarSessao.find("#recipient-filme").val(recipientFilmeSessao); 
-            modalDeletarSessao.find("#recipient-sala").val(recipientSalaSessao);
-            modalDeletarSessao.find("#recipient-data").val(recipientDataSessao);  
-            modalDeletarSessao.find("#recipient-horario").val(recipientHorarioSessao);
+            var modal = $(this)
+            modal.find("#recipient-id").val(recipientIdSessao);
+            modal.find("#recipient-filme").val(recipientFilmeSessao); 
+            modal.find("#recipient-sala").val(recipientSalaSessao);
+            modal.find("#recipient-data").val(recipientDataSessao);  
+            modal.find("#recipient-horario").val(recipientHorarioSessao);
+
+            document.getElementById('recipient-sala').innerText = recipientSalaSessao;
+            // modalEditarSessao.find("#recipient-sala").innerText = recipientSalaSessao;
         })
     </script>
 
@@ -894,12 +899,12 @@
             var recipientSalaSessao = buttonSessao.data('sala');
             var recipientHorarioSessao = buttonSessao.data('horario');
 
-            var modalDeletarSessao = $(this)
-            modalDeletarSessao.find("#recipient-deletar").val(recipientIdSessao);
-            modalDeletarSessao.find("#recipient-deletar-filme").val(recipientFilmeSessao); 
-            modalDeletarSessao.find("#recipient-deletar-data").val(recipientDataSessao);  
-            modalDeletarSessao.find("#recipient-deletar-sala").val(recipientSalaSessao);
-            modalDeletarSessao.find("#recipient-deletar-horario").val(recipientHorarioSessao);
+            var modal = $(this)
+            modal.find("#recipient-deletar").val(recipientIdSessao);
+            modal.find("#recipient-deletar-filme").val(recipientFilmeSessao); 
+            modal.find("#recipient-deletar-data").val(recipientDataSessao);  
+            modal.find("#recipient-deletar-sala").val(recipientSalaSessao);
+            modal.find("#recipient-deletar-horario").val(recipientHorarioSessao);
         })
     </script>
 
@@ -912,11 +917,11 @@
             var recipientValor = buttonPrecos.data('valor');
             var recipientMeia = buttonPrecos.data('meia');
             
-            var modalEditarPrecos = $(this)
-            modalEditarPrecos.find('#recipient-idPreco ').val(recipientIdPrecos);
-            modalEditarPrecos.find('#recipient-nome-preco').val(recipientNomePrecos);
-            modalEditarPrecos.find('#recipient-valor').val(recipientValor);
-            modalEditarPrecos.find('#recipient-meia').val(recipientMeia);
+            var modal = $(this)
+            modal.find('#recipient-idPreco ').val(recipientIdPrecos);
+            modal.find('#recipient-nome-preco').val(recipientNomePrecos);
+            modal.find('#recipient-valor').val(recipientValor);
+            modal.find('#recipient-meia').val(recipientMeia);
 
         })
     </script>
@@ -927,9 +932,9 @@
             var buttonPreco = $(event.relatedTarget);
             var recipientIdPreco = buttonPreco.data('id');
             var recipientNomePreco = buttonPreco.data('nome');
-            var modalDeletarPreco = $(this)
-            modalDeletarPreco.find("#recipient-idPreco").val(recipientIdPreco);
-            modalDeletarPreco.find("#recipient-nome-preco").val(recipientNomePreco);  
+            var modal = $(this)
+            modal.find("#recipient-idPreco").val(recipientIdPreco);
+            modal.find("#recipient-nome-preco").val(recipientNomePreco);  
         })
     </script>
 
@@ -941,10 +946,10 @@
             var recipientNomeSala = buttonSala.data('nome');
             var recipientQtdAssentos = buttonSala.data('assentos');
             
-            var modalEditarSala = $(this)
-            modalEditarSala.find('#recipient-idSala').val(recipientIdSala);
-            modalEditarSala.find('#recipient-nome-sala').val(recipientNomeSala);
-            modalEditarSala.find('#recipient-qtdAssentos').val(recipientQtdAssentos);
+            var modal = $(this)
+            modal.find('#recipient-idSala').val(recipientIdSala);
+            modal.find('#recipient-nome-sala').val(recipientNomeSala);
+            modal.find('#recipient-qtdAssentos').val(recipientQtdAssentos);
         })
     </script>
 
@@ -954,9 +959,9 @@
             var buttonSala = $(event.relatedTarget);
             var recipientIdSala = buttonSala.data('id');
             var recipientNomeSala = buttonSala.data('nome');
-            var modalDeletarSala = $(this)
-            modalDeletarSala.find("#recipient-idSala").val(recipientIdSala);
-            modalDeletarSala.find("#recipient-nome-sala").val(recipientNomeSala);  
+            var modal = $(this)
+            modal.find("#recipient-idSala").val(recipientIdSala);
+            modal.find("#recipient-nome-sala").val(recipientNomeSala);  
         })
     </script>
 
@@ -1003,12 +1008,12 @@
             var recipientIdadeCliente = buttonCliente.data('idade');
             var recipientDataNascimento = buttonCliente.data('dataNascimento');
             
-            var modalEditarCliente= $(this)
-            modalEditarCliente.find('#recipient-idCliente').val(recipientIdCliente);
-            modalEditarCliente.find('#recipient-nomeCliente').val(recipientNomeCliente);
-            modalEditarCliente.find('#recipient-cpfCliente').val(recipientCpfCliente);
-            modalEditarCliente.find('#recipient-idadeCliente').val(recipientIdadeCliente);
-            modalEditarCliente.find('#recipient-dataNascimento').val(recipientDataNascimento);
+            var modal= $(this)
+            modal.find('#recipient-idCliente').val(recipientIdCliente);
+            modal.find('#recipient-nomeCliente').val(recipientNomeCliente);
+            modal.find('#recipient-cpfCliente').val(recipientCpfCliente);
+            modal.find('#recipient-idadeCliente').val(recipientIdadeCliente);
+            modal.find('#recipient-dataNascimento').val(recipientDataNascimento);
         })
     </script>
     <!--SCRIPT PARA MANIPULAR REMOÇÃO DE CLIENTE-->
@@ -1017,9 +1022,9 @@
             var buttonCliente = $(event.relatedTarget);
             var recipientIdCliente = buttonCliente.data('id');
             var recipientNomeCliente = buttonCliente.data('nome');
-            var modalDeletarCliente = $(this)
-            modalDeletarCliente.find("#recipient-idCliente").val(recipientIdCliente);
-            modalDeletarCliente.find("#recipient-nomeCliente").val(recipientNomeCliente);
+            var modal = $(this)
+            modal.find("#recipient-idCliente").val(recipientIdCliente);
+            modal.find("#recipient-nomeCliente").val(recipientNomeCliente);
             
         })
     </script>
@@ -1035,14 +1040,14 @@
             var recipientClassIndicativa = buttonFilme.data('classIndicativa');            
             var recipientGenero = buttonFilme.data('genero');
             
-            var modalEditarFilme= $(this)
-            modalEditarFilme.find('#recipient-idFilme').val(recipientIdFilme);
-            modalEditarFilme.find('#recipient-nome-filme').val(recipientNomeCliente);
-            modalEditarFilme.find('#recipient-estreia').val(recipientEstreiaFilme);
-            modalEditarFilme.find('#recipient-ultimo-dia').val(recipientUltimoDia);
-            modalEditarFilme.find('#recipient-duracao').val(recipientDuracao);
-            modalEditarFilme.find('#recipient-class-indicativa').val(recipientClassIndicativa);            
-            modalEditarFilme.find('#recipient-genero').val(recipientGenero);
+            var modal= $(this)
+            modal.find('#recipient-idFilme').val(recipientIdFilme);
+            modal.find('#recipient-nome-filme').val(recipientNomeCliente);
+            modal.find('#recipient-estreia').val(recipientEstreiaFilme);
+            modal.find('#recipient-ultimo-dia').val(recipientUltimoDia);
+            modal.find('#recipient-duracao').val(recipientDuracao);
+            modal.find('#recipient-class-indicativa').val(recipientClassIndicativa);            
+            modal.find('#recipient-genero').val(recipientGenero);
         })
     </script>
     <!--SCRIPT PRA REMOÇÃO DE FILME-->
@@ -1051,9 +1056,9 @@
             var buttonDeletarFilme = $(event.relatedTarget);
             var recipientIdFilme = buttonDeletarFilme.data('id');
             var recipientNomeFilme = buttonDeletarFilme.data('nome');
-            var modalDeletarFilme = $(this);
-            modalDeletarFilme.find("#recipient-deletarFilme").val(recipientIdFilme);
-            modalDeletarFilme.find("#recipient-deletar-nomeFilme").val(recipientNomeFilme);
+            var modal = $(this);
+            modal.find("#recipient-deletarFilme").val(recipientIdFilme);
+            modal.find("#recipient-deletar-nomeFilme").val(recipientNomeFilme);
             
         })
     </script>
