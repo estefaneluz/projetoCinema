@@ -318,9 +318,10 @@
                         <?php echo ($objSessao['horarioFim'])?>
                         </td>  
                         <td><?php echo ($objSessao['ingressosVendidos'])?></td>                                    
-                        <td><button  type="button" class="btnEditar"
+                        <td><button  type="button" class="btnEditar" id="btnEditarSessao"
                         data-toggle="modal" data-target="#modal-editar-sessao"
                         data-id="<?php print $objSessao['id']?>"
+                        data-id-filme="<?php echo($objSessao['id_filme']);?>"
                         data-filme="
                         <?php 
                             $id = $objSessao['id_filme'];
@@ -339,6 +340,7 @@
                             $resultado = $stmtSala->fetch(PDO::FETCH_ASSOC);
                             echo ($resultado['nome']);
                         ?>"
+                        data-id-sala="<?php echo($objSessao['id_sala']);?>"
                         data-horario="<?php print $objSessao['horarioInicio']?>">                                                      
                                 Editar
                                 </button>
@@ -450,11 +452,11 @@
                      <input id="recipient-id" type="hidden" name="editarSessao">
                      <div>
                         <label for="filme">Filme</label><br>
-                        <input type="text" name="filme" id="recipient-filme"><br>
+                        <input type="text" name="filme" id="recipient-filme" readonly><br>
                     </div>
                      <div>
                         <label for="sala">Sala</label><br>
-                        <input type="text" name="sala" id="recipient-sala"><br> 
+                        <input type="text" name="sala" id="recipient-sala" readonly><br> 
                      </div>
                      <div>
                         <label for="data">Data</label><br>
@@ -901,24 +903,27 @@
     <!--EDITAR SESSAO-->
     <script>
         $("#modal-editar-sessao").on('show.bs.modal', function(event){
-            var buttonSessao = $(event.relatedTarget);
-            var recipientIdSessao = buttonSessao.data('id');
-            var recipientFilmeSessao = buttonSessao.data('filme');
-            var recipientSalaSessao = buttonSessao.data('sala');
-            var recipientDataSessao = buttonSessao.data('data');
-            var recipientHorarioSessao = buttonSessao.data('horario');
+            var button = $(event.relatedTarget);
+            var recipientId = button.data('id');
+            var recipientFilme = button.data('filme');
+            var recipientSala = button.data('sala');
+            var recipientData = button.data('data');
+            var recipientHorario = button.data('horario');
             
-            var modal = $(this)
-            modal.find("#recipient-id").val(recipientIdSessao);
-            modal.find("#recipient-filme").val(recipientFilmeSessao); 
-            modal.find("#recipient-sala").val(recipientSalaSessao);
-            modal.find("#recipient-data").val(recipientDataSessao);  
-            modal.find("#recipient-horario").val(recipientHorarioSessao);
+            var idSala = button.data('id-sala');
+            var idFilme = button.data('id-filme');
 
-            document.getElementById('recipient-sala').innerText = recipientSalaSessao;
+            var modal = $(this)
+            modal.find("#recipient-id").val(recipientId);
+            modal.find("#recipient-filme").val(idFilme); 
+            modal.find("#recipient-sala").val(idSala);
+            modal.find("#recipient-data").val(recipientData);  
+            modal.find("#recipient-horario").val(recipientHorario);
+            //modal.find('#recipient-filme').append(recipientFilme);
             // modalEditarSessao.find("#recipient-sala").innerText = recipientSalaSessao;
         })
     </script>
+
 
     <!--DELETAR SESSAO-->
     <script>
