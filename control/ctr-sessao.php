@@ -2,8 +2,6 @@
     require_once '../model/sessao.php';
     $objSessao = new Sessao();
     
-    /*CADASTRAR SESSAO*/
-
     if(isset($_POST['cadastrarSessao'])){
         $filme = $_POST['filme'];
         $sala = $_POST['sala'];
@@ -16,19 +14,16 @@
         }
     }
 
-    /*EDITAR FILMES*/
-    // if(isset($_POST['editarFilme'])){//seta
-    //     $id = $_POST['editarFilme'];
-    //     $nome = $_POST['nomeFilme'];
-    //     $estreia = $_POST['estreiaFilme'];
-    //     $ultimoDia = $_POST['ultimoDia'];        
-    //     $duracao = $_POST['duracao'];
-    //     $classIndicativa = $_POST['classIndicativa'];
-    //     $genero = $_POST ['genero'];
-    //     if($objFilme->editarFilme($nome,$estreia,$ultimoDia,$duracao,$classIndicativa,$genero,$id)){
-    //         $objFilme->redirect('../acesso-adm.php');
-    //     }
-    // }
+    if(isset($_POST['editarSessao'])){
+        $id = $_POST['editarSessao'];
+        $filme = $_POST['filme'];
+        $sala = $_POST['sala'];
+        $data = $_POST['data'];        
+        $horario = $_POST['horario'];
+        if($objSessao->editarSessao($filme,$sala, $data, $horario, $id)){
+            $objSessao->redirect('../acesso-adm.php');
+        }
+    }
 
 
     if(isset($_POST['deletarSessao'])){
@@ -37,8 +32,5 @@
             $objSessao->redirect('../acesso-adm.php');
         }
     }
-
-
-
 
 ?>

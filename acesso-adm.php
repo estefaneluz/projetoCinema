@@ -301,8 +301,12 @@
                         </td>  
                         <td><?php echo ($objSessao['ingressosVendidos'])?></td>                                    
                         <td><button  type="button" class="btnEditar"
-                                    data-toggle="modal" data-target="#modal-editar-sessao"
-                                    >                                                      
+                        data-toggle="modal" data-target="#modal-editar-sessao"
+                        data-id="<?php print $objSessao['id']?>"
+                        data-filme="<?php print $objSessao['id_filme']?>"
+                        data-data="<?php print $objSessao['data']?>"
+                        data-sala="<?php print $objSessao['id_sala']?>"
+                        data-horario="<?php print $objSessao['horarioInicio']?>">                                                      
                                 Editar
                                 </button>
                         </td>
@@ -403,7 +407,33 @@
                 </form>
             </div>        
         </div>
-
+        <!-- FIM DE DELETTAR SESSAO -->
+        <!--EDITAR FILME-->
+        <div class="modal" id="modal-editar-sessao">
+             <div class="modal-container">
+                 <img onclick="fechar('#modal-editar-sessao')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
+                 <h4>Editar Sessão<h4> 
+                 <form action="control/ctr-sessao.php#container-sessoes" method="POST" >
+                     <input id="recipient-id" type="hidden" name="editarSessao">
+                     <div>
+                        <label for="filme">Filme</label><br>
+                        <input type="text" name="filme" id="recipient-filme"><br>
+                    </div>
+                     <div>
+                        <label for="sala">Sala</label><br>
+                        <input type="text" name="sala" id="recipient-sala"><br> 
+                     </div>
+                     <div>
+                        <label for="data">Data</label><br>
+                        <input type="date" name="data" id="recipient-data"><br>
+                     </div>
+                     <div>
+                        <label for="horario">Horário de Inicio</label><br>
+                        <input type="time" name="horario" id="recipient-horario"><br>
+                     </div>
+                     <button type="submit" class="enviar">Confirmar</button> 
+                 </form>   
+            </div>
         <!-- FIM DO GERENCIAR SESSÕES -->
         
         
@@ -833,6 +863,25 @@
     </main> 
     <script src="./js/hover.js"></script>  
     <script src="./js/script.js"></script>
+
+    <!--EDITAR SESSAO-->
+    <script>
+        $("#modal-editar-sessao").on('show.bs.modal', function(event){
+            var buttonSessao = $(event.relatedTarget);
+            var recipientIdSessao = buttonSessao.data('id');
+            var recipientFilmeSessao = buttonSessao.data('filme');
+            var recipientSalaSessao = buttonSessao.data('sala');
+            var recipientDataSessao = buttonSessao.data('data');
+            var recipientHorarioSessao = buttonSessao.data('horario');
+
+            var modalDeletarSessao = $(this)
+            modalDeletarSessao.find("#recipient-id").val(recipientIdSessao);
+            modalDeletarSessao.find("#recipient-filme").val(recipientFilmeSessao); 
+            modalDeletarSessao.find("#recipient-sala").val(recipientSalaSessao);
+            modalDeletarSessao.find("#recipient-data").val(recipientDataSessao);  
+            modalDeletarSessao.find("#recipient-horario").val(recipientHorarioSessao);
+        })
+    </script>
 
     <!--DELETAR SESSAO-->
     <script>

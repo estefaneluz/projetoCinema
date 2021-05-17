@@ -36,36 +36,31 @@
             }
         }
 
-        // public function editarFilme($nome,$estreia,$ultimoDia,$duracao,$classIndicativa,$genero,$id){
-        //     try{
-        //         $sql = "UPDATE filme
-        //         SET 
-        //             nome = :nome,
-        //             estreia = :estreia,
-        //             ultimoDia = :ultimoDia,
-        //             duracao = :duracao,
-        //             classIndicativa = :classIndicativa,
-        //             genero = :genero
-        //             WHERE id = :id";
-        //             $stmt = $this->conn->prepare($sql);
-        //             $stmt-> bindParam(":nome",$nome);
-        //             $stmt-> bindParam(":estreia",$estreia);
-        //             $stmt-> bindParam(":ultimoDia",$ultimoDia);
-        //             $stmt-> bindParam(":duracao",$duracao);
-        //             $stmt-> bindParam(":classIndicativa",$classIndicativa);
-        //             $stmt-> bindParam(":genero",$genero);
-        //             $stmt-> bindParam(":id",$id);
-        //             $stmt->execute();
+        public function editarSessao($filme,$sala, $data, $horario, $id){
+            try{
+                $sql = "UPDATE sessao
+                SET 
+                    id_filme = :id_filme,
+                    id_sala = :id_sala,
+                    data = :data,
+                    horarioInicio = :horarioInicio
+                    WHERE id = :id";
+                    $stmt = $this->conn->prepare($sql);
+                    $stmt-> bindParam(":id_filme",$filme);
+                    $stmt-> bindParam(":id_sala",$sala);
+                    $stmt-> bindParam(":data",$data);
+                    $stmt-> bindParam(":horarioInicio",$horario);
+                    $stmt-> bindParam(":id",$id);
+                    $stmt->execute();
              
-        //             return $stmt;
-        //  }catch(PDOException $e){
-        //      echo ("Error: ".$e->getMessage());
-        //  }finally{
-        //      $this->conn = null;
-        //  } 
-        // }
+                    return $stmt;
+         }catch(PDOException $e){
+             echo ("Error: ".$e->getMessage());
+         }finally{
+             $this->conn = null;
+         } 
+        }
 
-        /*DELETAR FILME*/
         public function deletarSessao($idSessao){
             try{
                 $sql = "DELETE FROM sessao WHERE id = :id";
