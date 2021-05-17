@@ -322,24 +322,7 @@
                         data-toggle="modal" data-target="#modal-editar-sessao"
                         data-id="<?php print $objSessao['id']?>"
                         data-id-filme="<?php echo($objSessao['id_filme']);?>"
-                        data-filme="
-                        <?php 
-                            $id = $objSessao['id_filme'];
-                            $sqlFilme = "SELECT nome FROM filme WHERE id = $id";
-                            $stmtFilme = $objSessaoFilme->runQuery($sqlFilme);
-                            $stmtFilme->execute();
-                            $resultado = $stmtFilme->fetch(PDO::FETCH_ASSOC);
-                            echo ($resultado['nome']);
-                        ?>"
                         data-data="<?php print $objSessao['data']?>"
-                        data-sala="<?php 
-                            $id = $objSessao['id_sala'];
-                            $sqlSala = "SELECT nome FROM sala WHERE id = $id";
-                            $stmtSala = $objSessaoSala->runQuery($sqlSala);
-                            $stmtSala->execute();
-                            $resultado = $stmtSala->fetch(PDO::FETCH_ASSOC);
-                            echo ($resultado['nome']);
-                        ?>"
                         data-id-sala="<?php echo($objSessao['id_sala']);?>"
                         data-horario="<?php print $objSessao['horarioInicio']?>">                                                      
                                 Editar
@@ -452,11 +435,38 @@
                      <input id="recipient-id" type="hidden" name="editarSessao">
                      <div>
                         <label for="filme">Filme</label><br>
-                        <input type="text" name="filme" id="recipient-filme" readonly><br>
+                        <select name="filme">
+                            <option id="recipient-filme" selected></option>
+                            <?php
+                            $sql = "SELECT * FROM filme";
+                            $stmt = $objSessaoEditarFilme->runQuery($sql);
+                            $stmt->execute();
+                            while($objSessaoEditarFilme = $stmt->fetch(PDO::FETCH_ASSOC)){
+                            ?>  
+                                <option value="<?php echo($objSessaoEditarFilme['id'])?>">
+                                <?php echo ($objSessaoEditarFilme['nome'])?></option>
+                            <?php   
+                            }
+                            ?>
+                        </select><br>
                     </div>
                      <div>
                         <label for="sala">Sala</label><br>
-                        <input type="text" name="sala" id="recipient-sala" readonly><br> 
+                        <select id="sala" name="sala">
+                            <option id="recipient-sala" selected></option>
+                            <?php
+                            $sql = "SELECT * FROM sala";
+                            $stmt = $objSessaoEditarSala->runQuery($sql);
+                            $stmt->execute();
+                            while($objSessaoEditarSala = $stmt->fetch(PDO::FETCH_ASSOC)){
+                            ?>  
+                                <option value="<?php echo($objSessaoEditarSala['id'])?>">
+                                <?php echo ($objSessaoEditarSala['nome'])?></option>
+                            <?php   
+                            }
+                            ?>
+                        </select><br>
+                        <!-- <input type="text" name="sala" id="recipient-sala"><br>  -->
                      </div>
                      <div>
                         <label for="data">Data</label><br>
@@ -905,22 +915,17 @@
         $("#modal-editar-sessao").on('show.bs.modal', function(event){
             var button = $(event.relatedTarget);
             var recipientId = button.data('id');
-            var recipientFilme = button.data('filme');
-            var recipientSala = button.data('sala');
             var recipientData = button.data('data');
             var recipientHorario = button.data('horario');
-            
             var idSala = button.data('id-sala');
             var idFilme = button.data('id-filme');
 
             var modal = $(this)
             modal.find("#recipient-id").val(recipientId);
-            modal.find("#recipient-filme").val(idFilme); 
+            modal.find("#recipient-filme").val(idFilme);
             modal.find("#recipient-sala").val(idSala);
             modal.find("#recipient-data").val(recipientData);  
             modal.find("#recipient-horario").val(recipientHorario);
-            //modal.find('#recipient-filme').append(recipientFilme);
-            // modalEditarSessao.find("#recipient-sala").innerText = recipientSalaSessao;
         })
     </script>
 
@@ -928,19 +933,24 @@
     <!--DELETAR SESSAO-->
     <script>
         $("#modal-deletar-sessao").on('show.bs.modal', function(event){
-            var buttonSessao = $(event.relatedTarget);
-            var recipientIdSessao = buttonSessao.data('id');
-            var recipientFilmeSessao = buttonSessao.data('filme');
-            var recipientDataSessao = buttonSessao.data('data');
-            var recipientSalaSessao = buttonSessao.data('sala');
-            var recipientHorarioSessao = buttonSessao.data('horario');
+            var button = $(event.relatedTarget);
+            var recipientId = button.data('id');
+            var recipientFilme = button.data('filme');
+            var recipientData = button.data('data');
+            var recipientSala = button.data('sala');
+            var recipientHorario = button.data('horario');
+
+            
 
             var modal = $(this)
-            modal.find("#recipient-deletar").val(recipientIdSessao);
-            modal.find("#recipient-deletar-filme").val(recipientFilmeSessao); 
-            modal.find("#recipient-deletar-data").val(recipientDataSessao);  
-            modal.find("#recipient-deletar-sala").val(recipientSalaSessao);
-            modal.find("#recipient-deletar-horario").val(recipientHorarioSessao);
+            modal.find("#recipient-deletar").val(recipientId);
+            modal.find("#recipient-deletar-filme").val(recipientFilme); 
+            modal.find("#recipient-deletar-data").val(recipientData);  
+            modal.find("#recipient-deletar-sala").val(recipientSala);
+            modal.find("#recipient-deletar-horario").val(recipientHorario);
+
+            modal.find('#recipient-filme').text(recipientFilme);
+            modal.find('#recipient-sala').text(recipientSala);
         })
     </script>
 
