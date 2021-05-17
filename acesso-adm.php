@@ -434,6 +434,7 @@
                      <button type="submit" class="enviar">Confirmar</button> 
                  </form>   
             </div>
+        </div>
         <!-- FIM DO GERENCIAR SESSÕES -->
         
         
