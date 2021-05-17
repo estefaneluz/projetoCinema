@@ -29,12 +29,14 @@
     //         $objFilme->redirect('../acesso-adm.php');
     //     }
     // }
-    // if(isset($_POST['deletarFilme'])){
-    //     $idFilme = $_POST['deletarFilme'];
-    //     if($objFilme->deletarFilme($idFilme)){
-    //         $objFilme->redirect('../acesso-adm.php');
-    //     }
-    // }
+
+
+    if(isset($_POST['deletarSessao'])){
+        $idSessao = $_POST['deletarSessao'];
+        if($objSessao->deletarSessao($idSessao)){
+            $objSessao->redirect('../acesso-adm.php');
+        }
+    }
 
 
 

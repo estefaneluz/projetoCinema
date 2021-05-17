@@ -65,20 +65,20 @@
         //  } 
         // }
 
-    //     /*DELETAR FILME*/
-    //     public function deletarFilme($idFilme){
-    //         try{
-    //             $sql = "DELETE FROM filme WHERE id = :id";
-    //             $stmt = $this->conn->prepare($sql);
-    //             $stmt-> bindParam(":id",$idFilme);
-    //             $stmt->execute();
-    //             return $stmt;   
-    //         }catch(PDOException $e){
-    //             echo("Erro: ".$e->getMessage());
-    //         }finally{
-    //             $this->conn=null;
-    //         }
-    //     }
+        /*DELETAR FILME*/
+        public function deletarSessao($idSessao){
+            try{
+                $sql = "DELETE FROM sessao WHERE id = :id";
+                $stmt = $this->conn->prepare($sql);
+                $stmt-> bindParam(":id",$idSessao);
+                $stmt->execute();
+                return $stmt;   
+            }catch(PDOException $e){
+                echo("Erro: ".$e->getMessage());
+            }finally{
+                $this->conn=null;
+            }
+        }
 
          public function redirect($url){
              header("Location: $url"); //header redireciona os links da pagina

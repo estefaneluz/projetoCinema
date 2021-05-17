@@ -309,6 +309,11 @@
                         <td><button type="button" class="btnDeletar"
                         data-toggle="modal"
                         data-target="#modal-deletar-sessao"
+                        data-id="<?php print $objSessao['id']?>"
+                        data-filme="<?php print $objSessao['id_filme']?>"
+                        data-data="<?php print $objSessao['data']?>"
+                        data-sala="<?php print $objSessao['id_sala']?>"
+                        data-horario="<?php print $objSessao['horarioInicio']?>"
                         >
                         Deletar</button></td>
                     </tr>                    
@@ -828,6 +833,25 @@
     </main> 
     <script src="./js/hover.js"></script>  
     <script src="./js/script.js"></script>
+
+    <!--DELETAR SESSAO-->
+    <script>
+        $("#modal-deletar-sessao").on('show.bs.modal', function(event){
+            var buttonSessao = $(event.relatedTarget);
+            var recipientIdSessao = buttonSessao.data('id');
+            var recipientFilmeSessao = buttonSessao.data('filme');
+            var recipientDataSessao = buttonSessao.data('data');
+            var recipientSalaSessao = buttonSessao.data('sala');
+            var recipientHorarioSessao = buttonSessao.data('horario');
+
+            var modalDeletarSessao = $(this)
+            modalDeletarSessao.find("#recipient-deletar").val(recipientIdSessao);
+            modalDeletarSessao.find("#recipient-deletar-filme").val(recipientFilmeSessao); 
+            modalDeletarSessao.find("#recipient-deletar-data").val(recipientDataSessao);  
+            modalDeletarSessao.find("#recipient-deletar-sala").val(recipientSalaSessao);
+            modalDeletarSessao.find("#recipient-deletar-horario").val(recipientHorarioSessao);
+        })
+    </script>
 
     <!-- SCRIPT PARA EDITAR PREÇOS -->
     <script>
