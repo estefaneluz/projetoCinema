@@ -332,9 +332,26 @@
                         data-toggle="modal"
                         data-target="#modal-deletar-sessao"
                         data-id="<?php print $objSessao['id']?>"
-                        data-filme="<?php print $objSessao['id_filme']?>"
+                        data-id-filme="<?php print $objSessao['id_filme']?>"
+                        data-filme="
+                        <?php 
+                            $id = $objSessao['id_filme'];
+                            $sqlFilme = "SELECT nome FROM filme WHERE id = $id";
+                            $stmtFilme = $objSessaoFilme->runQuery($sqlFilme);
+                            $stmtFilme->execute();
+                            $resultado = $stmtFilme->fetch(PDO::FETCH_ASSOC);
+                            echo ($resultado['nome']);
+                        ?>"
                         data-data="<?php print $objSessao['data']?>"
-                        data-sala="<?php print $objSessao['id_sala']?>"
+                        data-id-sala="<?php print $objSessao['id_sala']?>"
+                        data-sala="<?php 
+                            $id = $objSessao['id_sala'];
+                            $sqlSala = "SELECT nome FROM sala WHERE id = $id";
+                            $stmtSala = $objSessaoSala->runQuery($sqlSala);
+                            $stmtSala->execute();
+                            $resultado = $stmtSala->fetch(PDO::FETCH_ASSOC);
+                            echo ($resultado['nome']);
+                        ?>"
                         data-horario="<?php print $objSessao['horarioInicio']?>"
                         >
                         Deletar</button></td>
@@ -407,7 +424,8 @@
                     <input type="hidden" name="deletarSessao" id="recipient-deletar">
                     <div>
                         <label for="txtFilme">Filme</label><br>
-                        <input type="text" name="txtFilme" id="recipient-deletar-filme" readonly>
+                        <input type="hidden" name="txtFilme" id="recipient-deletar-filme">
+                        <input type="text" name="txtFilme" id="recipient-filme" readonly>
                     </div>
                     <div>
                         <label for="txtSala">Data</label><br>
@@ -415,7 +433,8 @@
                     </div>
                     <div>
                         <label for="txtSala">Sala</label><br>
-                        <input type="text" name="txtSala" id="recipient-deletar-sala" readonly>
+                        <input type="hidden" name="txtFilme" id="recipient-deletar-sala">
+                        <input type="text" name="txtSala" id="recipient-sala" readonly>
                     </div>
                     <div>
                         <label for="txtSala">Horário</label><br>
@@ -939,18 +958,18 @@
             var recipientData = button.data('data');
             var recipientSala = button.data('sala');
             var recipientHorario = button.data('horario');
-
+            var idSala = button.data('id-sala');
+            var idFilme = button.data('id-filme');
             
 
             var modal = $(this)
             modal.find("#recipient-deletar").val(recipientId);
-            modal.find("#recipient-deletar-filme").val(recipientFilme); 
+            modal.find("#recipient-deletar-filme").val(idFilme); 
             modal.find("#recipient-deletar-data").val(recipientData);  
-            modal.find("#recipient-deletar-sala").val(recipientSala);
+            modal.find("#recipient-deletar-sala").val(idSala);
             modal.find("#recipient-deletar-horario").val(recipientHorario);
-
-            modal.find('#recipient-filme').text(recipientFilme);
-            modal.find('#recipient-sala').text(recipientSala);
+            modal.find('#recipient-filme').val(recipientFilme.trim());
+            modal.find('#recipient-sala').val(recipientSala);
         })
     </script>
 
