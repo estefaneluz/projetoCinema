@@ -166,7 +166,7 @@
                         </div>
                         <div>
                             <label for="estreia">Estreia</label><br>
-                            <input type="date" id="estreia" name=estreia required><br> 
+                            <input type="date" id="estreia" name="estreia" required><br> 
                         </div>
                         <div>
                             <label for="ultimoDia">Último dia</label><br>
@@ -185,7 +185,7 @@
                         <div>
                             <label for="classIndicativa">Classificação Indicativa</label><br>
                             <select id="classIndicativa" name="classIndicativa">
-                                    <option value="1">Livre</option><
+                                    <option value="Livre">Livre</option><
                                     <option value="10">+10 anos</option>
                                     <option value="12">+12 anos</option>
                                     <option value="14">+14 anos</option>
