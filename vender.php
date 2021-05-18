@@ -11,6 +11,8 @@
     $objSessaoIngresso = new Preco();
     require_once 'model/sala.php';
     $objSessaoSala = new Sala();
+    require_once 'model/funcionario.php';
+    $objFuncionario = new Funcionario();
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +47,7 @@
         <nav class="menu">
             <button onclick="openMenu()" data-menu="button" aria-expanded="false" aria-controls="menu">Menu</button>
             <ul data-menu="list" id="menu">
-                <li class="btn"> Logout </li>
+                <li class="btn"> <a href="./control/ctr-logout.php">Logout</a> </li>
                 <li ><a href="acesso-adm.php"><img  id="engrenagem-acesso-adm" onmouseover="passaCursor();" onmouseout="retiraCursor();" src="./img/engrenagem.svg" alt="Acesso administrativo"></a></li>
             </ul>
         </nav>
@@ -64,7 +66,7 @@
                     <th>Data</th> 
                     <th>Horário</th>                       
                     <th>Preço</th>
-                    <th>Comprar</th>
+                    <th>Vender</th>
                 </tr>
             </thead>
             <tbody>
@@ -100,11 +102,23 @@
                         <span> | </span>
                         <?php echo ($objSessao['horarioFim'])?>
                         </td>  
-                        <td><?php echo ($objSessao['ingressosVendidos'])?></td>
+                        <td>
+                        <?php 
+                            $id = $objSessao['id_ingresso'];
+                            $sqlIngresso = "SELECT valor FROM ingresso WHERE id = $id";
+                            $stmtIngresso = $objSessaoIngresso->runQuery($sqlIngresso);
+                            $stmtIngresso->execute();
+                            $resultado = $stmtIngresso->fetch(PDO::FETCH_ASSOC);
+                            echo ("R$ ".$resultado['valor']);
+                        ?>
+                        </td>
                         <td><button 
                         type="button" class="btnDeletar"
-                        data-toggle="modal" onclick="action('#modal-comprar')">
-                        Comprar</button>
+                        data-toggle="modal" 
+                        onclick="action('#modal-vender')"
+                        data-id-func="<?php echo($_SESSION['idFuncionario'])?>"
+                        >
+                        Vender</button>
                         </td> 
                 </tr>                    
                 <?php   
@@ -116,38 +130,48 @@
 
         <!-- MODAL VENDER/COMPRAR -->
 
-        <div class="modal" id="modal-comprar">
+        <div class="modal" id="modal-vender">
         <div class="modal-container">
-            <img onclick="fechar('#modal-comprar')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
-            <h3>Comprar Ingresso</h3>
+            <img onclick="fechar('#modal-vender')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
+            <h3>Vender Ingresso</h3>
             <form action="control/ctr-funcionario.php" method="POST"><!--Adicionado pra enviar os dados de login pra fazer a conexão-->
                 <div class="compra-left">
                     <div class="compra-input">
                         <label for="filme">Filme</label>
-                        <select class="form-seletor" id="filme" name="filme">
-                            <option value="1">Black Widow</option>
-                            <option value="2">Home Alone</option>
-                            <option value="3">Halloween 4</option>
-                            <option value="4">Pulp Fiction</option>
-                            <option value="4">Raya e o último dragão</option>
-                            <option value="4">Monster Hunter</option>
-                        </select>
+                        <input type="text" name="filme" id="recipient-filme" readonly>
                     </div>
 
                     <div class="compra-valor">
                         <div class="compra-input">
-                            <label for="valorInteiro">Valor <span>(Inteiro)</span></label>
-                            <input type="number" name="valorInteiro" placeholder="R$ 10">
+                            <label for="valorInteiro">Valor <br><span>(Inteiro)</span></label>
+                            <input type="number" name="valorInteiro" placeholder="R$ 10" readonly>
                         </div>
                         <div class="compra-input">
-                            <label for="valorMeia">Valor <span>(Meia)</span></label>
-                            <input type="number" name="valorMeia" placeholder="R$ 10">
+                            <label for="valorMeia">Valor <br><span>(Meia)</span></label>
+                            <input type="number" name="valorMeia" placeholder="R$ 10" readonly>
                         </div>
+                    </div>
+
+                    <div class="compra-input">
+                        <label for="funcionario">Funcionario</label>
+                        <input type="text" id="recipient-funcionario" readonly>
+                    </div>
+
+                    <div class="compra-input">
+                        <label for="qtdInteiro">Assentos <br> Disponíveis</label>
+                        <input type="number" name="qtdAssentos" id="assentos" readonly>
+                    </div>
+                </div>
+
+                <div class="compra-right">
+                    <div class="compra-input">
+                        <label for="filme">Sessão</label>
+                        <input type="text" name="sessao" id="recipient-sessao" readonly>
                     </div>
 
                     <div class="compra-qtd">
                         <div class="compra-input">
-                            <label for="qtdInteiro">Qtd. ingr. <br><span>(Inteiro)</span></label>
+                            <label for="qtdInteiro">Qtd. ingr. <span>(Inteiro)</span></label>
                             <input type="number" name="qtdInteiro" >
                         </div>
                         <div class="compra-input">
@@ -157,29 +181,7 @@
                     </div>
 
                     <div class="compra-input">
-                        <label for="qtdInteiro">Assentos <br> Disponíveis</label>
-                        <input type="number" name="qtdAssentos" id="assentos">
-                    </div>
-                </div>
-
-                <div class="compra-right">
-                    <div class="compra-input">
-                        <label for="filme">Sessão</label>
-                        <select class="form-seletor" id="sessao" name="sessao">
-                            <option value="1">13:00 - 15:30  Sala A</option>
-                            <option value="2">16:00 - 18:30  Sala B</option>
-                            <option value="3">19:00 - 20:30  Sala C</option>
-                            <option value="4">21:00 - 22:30  Sala A</option>
-                        </select>
-                    </div>
-
-                    <div class="compra-input">
-                        <label for="funcionario">Funcionario</label>
-                        <input type="text">
-                    </div>
-
-                    <div class="compra-input">
-                        <label for="cliente">CPF <br><span>Cliente</span></label>
+                        <label for="cliente">CPF <span>Cliente</span></label>
                         <input type="text">
                     </div>
                 </div>
@@ -225,6 +227,20 @@
     <script src="./js/owl/owl.carousel.min.js"></script>
     <script src="./js/owl/setup.js"></script>
     <script src="./js/hover.js"></script>
+
+    <!-- SCRIPT PARA EDITAR SALA -->
+    <script>
+        $("#modal-vender").on('show.bs.modal', function(event){
+            var button = $(event.relatedTarget);
+            // var recipientId = button.data('id');
+            //var recipiendIdFunc = button.data('id-func');
+            var recipientFuncionario = button.data('id-func');
+            
+            var modal = $(this)
+            // modal.find('#recipient-id').val(recipientId);
+            modal.find('#recipient-funcionario').val(recipientFuncionario);
+        })
+    </script>
 </body>
 
 </html>

@@ -397,24 +397,24 @@ h2::after {
   cursor: pointer;
 }
 
-#modal-comprar {
+#modal-vender {
   transform: translate(-50%, 17%);
 }
 
-#modal-comprar .modal-container {
+#modal-vender .modal-container {
   border-radius: 5px;
   width: 607px;
   height: 500px;
   padding: 15px 20px 10px 40px;
 }
 
-#modal-comprar .modal-container form {
+#modal-vender .modal-container form {
   display: flex;
   flex-direction: row;
   column-gap: 40px;
 }
 
-#modal-comprar h3 {
+#modal-vender h3 {
   width: auto;
   margin: 0 20px 20px 0;
 }
@@ -453,7 +453,7 @@ h2::after {
   display: flex;
 }
 
-#modal-comprar button {
+#modal-vender button {
   border-radius: 5px;
   position: relative;
   top: -10px;
@@ -462,7 +462,7 @@ h2::after {
   align-self: flex-end;
 }
 
-#modal-comprar button a {
+#modal-vender button a {
   color: #e1e1e1;
 }
 
