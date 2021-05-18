@@ -30,6 +30,7 @@
 <?php
     require_once 'model/preco.php';
     $objPreco = new Preco();
+    $objSessaoIngresso = new Preco();
 ?>
 
 <?php
@@ -72,7 +73,8 @@
         </a>
         <nav class="menu">
             <button onclick="openMenu()" data-menu="button" aria-expanded="false" aria-controls="menu">Menu</button>
-            <ul data-menu="list" id="menu">              
+            <ul data-menu="list" id="menu">   
+                <li><a href="./vender.php">Vender</a> </li>           
                 <li><a href="./control/ctr-logout.php">Logout</a> </li>
                 <li><a href="acesso-adm.php"><img  id="engrenagem-acesso-adm" onmouseover="passaCursor();" onmouseout="retiraCursor();" src="./img/engrenagem.svg" alt="Acesso administrativo"></a></li>
             </ul>
@@ -90,6 +92,7 @@
                     <li><a href="#cadastro-salas">Salas</a></li>
                     <li><a href="#container-funcionarios">Funcionários</li>
                     <li><a href="#container-clientes">Clientes</a></li>
+                    <!-- <li><a href="#cadastro-filmes">Vendas</a></li> -->
                 </ul>
             </nav>
         </aside>
@@ -369,9 +372,9 @@
 
         <!-- CADASTRAR SESSAO -->
         <div class="modal" id="modal-sessao">
-            <div class="modal-container">
+            <div class="modal-container modalFilme">
                 <img onclick="fechar('#modal-sessao')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
-                <h4>Cadastrar Sessão<h4>
+                <h4>Cadastrar Sessão<h4><br>
                 <form action="control/ctr-sessao.php#container-sessoes" method="POST">
                         <input type="hidden" name="cadastrarSessao">
                         <div>
@@ -401,6 +404,22 @@
                             ?>  
                                 <option value="<?php echo($objSessaoSala['id'])?>">
                                 <?php echo ($objSessaoSala['nome'])?></option>
+                            <?php   
+                            }
+                            ?>
+                            </select><br>
+                        </div>
+                        <div>
+                            <label for="ingresso">Preço</label><br>
+                            <select id="ingresso" name="ingresso">
+                            <?php
+                            $sql = "SELECT * FROM ingresso";
+                            $stmt = $objSessaoIngresso->runQuery($sql);
+                            $stmt->execute();
+                            while($objSessaoIngresso = $stmt->fetch(PDO::FETCH_ASSOC)){
+                            ?>  
+                                <option value="<?php echo($objSessaoIngresso['id'])?>">
+                                <?php echo ($objSessaoIngresso['nome'])?></option>
                             <?php   
                             }
                             ?>
@@ -524,7 +543,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php
+                    <?php
                         $sql = "SELECT * FROM ingresso";
                         $stmt = $objPreco->runQuery($sql);
                         $stmt->execute();
@@ -533,11 +552,10 @@
                         <tr>
                             <td><?php echo($objPreco['id'])?></td>
                             <td><?php echo($objPreco['nome'])?></td>
-                            <td>R$ <?php echo($objPreco['valor'])?></td>
-                            <td>R$ <?php echo($objPreco['meia'])?></td>
+                            <td><?php echo($objPreco['valor'])?></td>
+                            <td><?php echo($objPreco['meia'])?></td>
                             <td><button type="button" class="btnEditar"
-                                    data-toggle="modal" 
-                                    data-target="#modal-editar-precos"
+                                    data-toggle="modal" data-target="#modal-editar-precos"
                                     data-id="<?php echo($objPreco['id'])?>"
                                     data-nome="<?php echo($objPreco['nome'])?>"
                                     data-valor="<?php echo($objPreco['valor'])?>"
@@ -546,8 +564,7 @@
                             </button>
                             </td>
                             <td><button type="button" class="btnDeletar"
-                                    data-toggle="modal" 
-                                    data-target="#modal-deletar-precos"
+                                    data-toggle="modal" data-target="#modal-deletar-precos"
                                     data-id="<?php print $objPreco['id']?>"
                                     data-nome="<?php print $objPreco['nome']?>">
                                     Deletar

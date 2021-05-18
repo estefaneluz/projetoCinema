@@ -1,4 +1,4 @@
-/* PÁGINA SESSÕES */
+/* PÁGINA SESSÕES - ESCOLHA DE ASSENTOS */
 
 .sessao-container {
     display: flex;
@@ -81,4 +81,3 @@
     width: 800px;
     align-self: flex-end;
 }
-
