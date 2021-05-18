@@ -524,7 +524,40 @@
                     </tr>
                 </thead>
                 <tbody>
-                
+                <?php
+                        $sql = "SELECT * FROM ingresso";
+                        $stmt = $objPreco->runQuery($sql);
+                        $stmt->execute();
+                        while($objPreco = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    ?>
+                        <tr>
+                            <td><?php echo($objPreco['id'])?></td>
+                            <td><?php echo($objPreco['nome'])?></td>
+                            <td>R$ <?php echo($objPreco['valor'])?></td>
+                            <td>R$ <?php echo($objPreco['meia'])?></td>
+                            <td><button type="button" class="btnEditar"
+                                    data-toggle="modal" 
+                                    data-target="#modal-editar-precos"
+                                    data-id="<?php echo($objPreco['id'])?>"
+                                    data-nome="<?php echo($objPreco['nome'])?>"
+                                    data-valor="<?php echo($objPreco['valor'])?>"
+                                    data-meia="<?php echo($objPreco['meia'])?>">
+                                    Editar
+                            </button>
+                            </td>
+                            <td><button type="button" class="btnDeletar"
+                                    data-toggle="modal" 
+                                    data-target="#modal-deletar-precos"
+                                    data-id="<?php print $objPreco['id']?>"
+                                    data-nome="<?php print $objPreco['nome']?>">
+                                    Deletar
+                            </button>
+                            </td>
+                        </tr>
+                    <!-- FECHAMENTO DO WHILE -->
+                         <?php   
+                        } 
+                         ?> 
                 </tbody>
                 </table>
         </div>
