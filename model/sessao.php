@@ -17,13 +17,14 @@
         }  
 
         /*CADASTRAR SESSAO*/
-        public function cadastrarSessao($filme, $sala, $data, $horarioInicio){
+        public function cadastrarSessao($filme, $sala, $ingresso, $data, $horarioInicio){
             try{
-                $sql= "INSERT INTO sessao(id_filme, id_sala, data, horarioInicio, horarioFim)
-                VALUES (:id_filme, :id_sala, :data, :horarioInicio, :horarioFim)";
+                $sql= "INSERT INTO sessao(id_filme, id_sala, id_ingresso, data, horarioInicio, horarioFim)
+                VALUES (:id_filme, :id_sala, :id_ingresso, :data, :horarioInicio, :horarioFim)";
                 $stmt=$this->conn->prepare($sql);
                 $stmt->bindParam(":id_filme",$filme);
-                $stmt->bindParam(":id_sala",$sala);                
+                $stmt->bindParam(":id_sala",$sala);   
+                $stmt->bindParam(":id_ingresso",$ingresso);                             
                 $stmt->bindParam(":data",$data);
                 $stmt->bindParam(":horarioInicio",$horarioInicio);
                 $stmt->bindParam(":horarioFim",$horarioInicio);                

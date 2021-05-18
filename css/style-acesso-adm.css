@@ -189,16 +189,15 @@ margin-right: 5vw;
   margin-bottom: 10px;
 }
 
-
 .modalDeletarFuncionario button,.modalDeletarCliente button,.modalDeletarFilme button{  
   margin: auto;
 }
+
 /*AJUSTANDO ALTURA DE MODAL DE FILME*/
 .modal-container.modalFilme{
   transform: translateY(-12%);
   height:570px;
 }
-
 
 .enviar{
   justify-self: end;

@@ -5,11 +5,12 @@
     if(isset($_POST['cadastrarSessao'])){
         $filme = $_POST['filme'];
         $sala = $_POST['sala'];
+        $ingresso = $_POST['ingresso'];
         $data = $_POST['data'];        
         $horarioInicio = $_POST['horarioInicio'];
         $horarioFim = $_POST['horarioInicio'];
 
-        if($objSessao->cadastrarSessao($filme, $sala, $data, $horarioInicio)){
+        if($objSessao->cadastrarSessao($filme, $sala, $ingresso, $data, $horarioInicio)){
             $objSessao->redirect('../acesso-adm.php');
         }
     }
