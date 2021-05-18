@@ -1,4 +1,12 @@
-/* PÁGINA SESSÕES */
+/* PAGINA DE VENDAS */
+
+main .sessao-container h2 { 
+    margin-left: 3.2vw;
+    padding-top: 10px;
+    color: #131314;
+}
+
+/* PÁGINA SESSÕES - ESCOLHA DE ASSENTOS */
 
 .sessao-container {
     display: flex;
@@ -81,4 +89,3 @@
     width: 800px;
     align-self: flex-end;
 }
-

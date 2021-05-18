@@ -73,7 +73,8 @@
         </a>
         <nav class="menu">
             <button onclick="openMenu()" data-menu="button" aria-expanded="false" aria-controls="menu">Menu</button>
-            <ul data-menu="list" id="menu">              
+            <ul data-menu="list" id="menu">   
+                <li><a href="./vender.php">Vender</a> </li>           
                 <li><a href="./control/ctr-logout.php">Logout</a> </li>
                 <li><a href="acesso-adm.php"><img  id="engrenagem-acesso-adm" onmouseover="passaCursor();" onmouseout="retiraCursor();" src="./img/engrenagem.svg" alt="Acesso administrativo"></a></li>
             </ul>
@@ -91,6 +92,7 @@
                     <li><a href="#cadastro-salas">Salas</a></li>
                     <li><a href="#container-funcionarios">Funcionários</li>
                     <li><a href="#container-clientes">Clientes</a></li>
+                    <!-- <li><a href="#cadastro-filmes">Vendas</a></li> -->
                 </ul>
             </nav>
         </aside>
