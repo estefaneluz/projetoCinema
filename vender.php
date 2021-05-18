@@ -1,3 +1,18 @@
+<?php
+    require './model/conexao.php';
+    if(isset($_SESSION['idFuncionario']) && !empty($_SESSION['idFuncionario'])):
+    require_once 'model/venda.php';
+    $objVenda = new Venda();
+    require_once 'model/sessao.php';
+    $objSessao = new Sessao();
+    require_once 'model/filme.php';
+    $objSessaoFilme = new Filme();
+    require_once 'model/preco.php';
+    $objSessaoIngresso = new Preco();
+    require_once 'model/sala.php';
+    $objSessaoSala = new Sala();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -39,7 +54,7 @@
     <main class="sessao-container">
             <div class="header-gerenciar">
                 <h2>Realizar Venda</h2>
-                <button onclick="action('#modal-filme')" type="button" class="btnAdicionar" style="width: 150px;">Gerenciar</button>
+                <button onclick="action('#')" type="button" class="btnAdicionar" style="width: 150px;">Gerenciar</button>
         </div>
         <table class="tabela">
             <thead>
@@ -53,26 +68,44 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                    $sql = "SELECT * FROM filme";
-                    $stmt = $objFilme->runQuery($sql);
-                    $stmt->execute();
-                    while($objFilme = $stmt->fetch(PDO::FETCH_ASSOC)){
-                 ?>       
+            <?php
+                $sql = "SELECT * FROM sessao";
+                $stmt = $objSessao->runQuery($sql);
+                $stmt->execute();
+                while($objSessao = $stmt->fetch(PDO::FETCH_ASSOC)){
+                ?>       
                 <tr>
-                    <td><?php echo ($objFilme['nome'])?></td>
-                    <td><?php echo ($objFilme['estreia'])?></td> 
-                    <td><?php echo ($objFilme['ultimoDia'])?></td>                        
-                    <td><?php echo ($objFilme['classIndicativa'])?></td>                                      
                     <td>
-                    </td>
-                    <td><button type="button" class="btnDeletar"
-                    data-toggle="modal"
-                    data-target="#modal-comprar"
-                    data-id="<?php print $objFilme['id']?>"
-                    data-nome="<?php print $objFilme['nome']?>"
-                    >
-                    Comprar</button></td>
+                        <?php
+                            $id = $objSessao['id_filme'];
+                            $sqlFilme = "SELECT nome FROM filme WHERE id = $id";
+                            $stmtFilme = $objSessaoFilme->runQuery($sqlFilme);
+                            $stmtFilme->execute();
+                            $resultado = $stmtFilme->fetch(PDO::FETCH_ASSOC);
+                            echo ($resultado['nome']);
+                            ?>
+                        </td>
+                        <td>
+                        <?php 
+                            $id = $objSessao['id_sala'];
+                            $sqlSala = "SELECT nome FROM sala WHERE id = $id";
+                            $stmtSala = $objSessaoSala->runQuery($sqlSala);
+                            $stmtSala->execute();
+                            $resultado = $stmtSala->fetch(PDO::FETCH_ASSOC);
+                            echo ($resultado['nome']);
+                        ?>
+                        </td> 
+                        <td><?php echo ($objSessao['data'])?></td>                        
+                        <td><?php echo ($objSessao['horarioInicio'])?>
+                        <span> | </span>
+                        <?php echo ($objSessao['horarioFim'])?>
+                        </td>  
+                        <td><?php echo ($objSessao['ingressosVendidos'])?></td>
+                        <td><button 
+                        type="button" class="btnDeletar"
+                        data-toggle="modal" onclick="action('#modal-comprar')">
+                        Comprar</button>
+                        </td> 
                 </tr>                    
                 <?php   
                  }
@@ -81,38 +114,9 @@
         </table>
     </main>
 
-    <footer id="contato">
-        <div class="contatos-container">
-            <div class='redes-sociais'>
-                <h2>Redes Sociais</h2>
-                <ul>
-                    <li> <!--id="facebook" onmouseover="passaCursor();" onmouseout="retiraCursor();"-->
-                        <a href="facebook.com" target="_blank"><img src="./img/redes-sociais/facebook.svg" alt="Facebook CineMail"></a>
-                    </li>
-                    <li>
-                        <a href="instagram.com" target="_blank"><img src="./img/redes-sociais/instagram.svg" alt="Instagram CineMail"></a>
-                    </li>
-                    <li>
-                        <a href="twitter.com" target="_blank"><img src="./img/redes-sociais/twitter.svg" alt="Twitter CineMail"></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="contato">
-                <h2>Contato</h2>
-                <ul>
-                    <li>+55 71 911 111 111</li>
-                    <li><a href="mailto:cinemail@email.com">cinemail@email.com</a></li>
-                    <li>Av. Luz Sobral, 2 - Dendezeiros</li>
-                    <li>Salvador - BA</li>
-                </ul>
-            </div>
-            <img id="img-footer" src="./img/img-footer.svg" alt="pessoas-assistindo">
-        </div>
-    </footer>
+        <!-- MODAL VENDER/COMPRAR -->
 
-    <!-- MODAL VENDER/COMPRAR -->
-
-    <div class="modal" id="modal-comprar">
+        <div class="modal" id="modal-comprar">
         <div class="modal-container">
             <img onclick="fechar('#modal-comprar')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
             <h3>Comprar Ingresso</h3>
@@ -186,6 +190,35 @@
         </div>
     </div>
 
+    <footer id="contato">
+        <div class="contatos-container">
+            <div class='redes-sociais'>
+                <h2>Redes Sociais</h2>
+                <ul>
+                    <li> <!--id="facebook" onmouseover="passaCursor();" onmouseout="retiraCursor();"-->
+                        <a href="facebook.com" target="_blank"><img src="./img/redes-sociais/facebook.svg" alt="Facebook CineMail"></a>
+                    </li>
+                    <li>
+                        <a href="instagram.com" target="_blank"><img src="./img/redes-sociais/instagram.svg" alt="Instagram CineMail"></a>
+                    </li>
+                    <li>
+                        <a href="twitter.com" target="_blank"><img src="./img/redes-sociais/twitter.svg" alt="Twitter CineMail"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="contato">
+                <h2>Contato</h2>
+                <ul>
+                    <li>+55 71 911 111 111</li>
+                    <li><a href="mailto:cinemail@email.com">cinemail@email.com</a></li>
+                    <li>Av. Luz Sobral, 2 - Dendezeiros</li>
+                    <li>Salvador - BA</li>
+                </ul>
+            </div>
+            <img id="img-footer" src="./img/img-footer.svg" alt="pessoas-assistindo">
+        </div>
+    </footer>
+
     <!--Linkando com arquivo JS-->
     <script src="./js/script.js"></script>
     <script src="./js/owl/jquery.min.js"></script>
@@ -195,3 +228,7 @@
 </body>
 
 </html>
+
+<?php
+    else: header("Location: ../projetoCinema/index.html"); endif;
+?>

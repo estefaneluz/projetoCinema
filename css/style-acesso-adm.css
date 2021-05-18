@@ -161,13 +161,13 @@ margin-right: 5vw;
 
 /*CADASTRO DE FUNCIONÁRIOS*/
 
-.modal{
+.acesso-adm .modal{
   left:50%;
   top:50%;
   transform: translate(-50%,-50%);
  
 }
-.modal-container{
+.acesso-adm .modal-container{
   padding-left:10px;
   width: 400px;;
   height: auto;
@@ -175,16 +175,16 @@ margin-right: 5vw;
   border-radius: 5px; 
 }
 
-.modal-container h4{
+.acesso-adm .modal-container h4{
   margin: 0 auto 7px auto;
 }
 
-.modal-container form {
+.acesso-adm .modal-container form {
   display: grid;
   justify-content: center;
   /* padding: 15px 30px 30px 30px; */
 }
-.modal-container input, .modal-container select {
+.acesso-adm .modal-container input, .acesso-adm .modal-container select {
   width: 300px;  
   margin-bottom: 10px;
 }
