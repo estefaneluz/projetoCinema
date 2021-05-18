@@ -129,11 +129,11 @@
                                     data-toggle="modal" data-target="#modal-editar-filmes"
                                     data-id="<?php echo($objFilme['id'])?>"
                                     data-nome="<?php echo($objFilme['nome'])?>"
-                                    data-estreia="<?php echo($objFilme['estreia'])?>"
-                                    data-ultimoDia="<?php echo($objFilme['ultimoDia'])?>"
+                                    data-genero="<?php echo($objFilme['genero'])?>"
+                                    data-classIndicativa="<?php echo($objFilme['classIndicativa'])?>" 
                                     data-duracao="<?php echo($objFilme['duracao'])?>"
-                                    data-classIndicativa="<?php echo($objFilme['classIndicativa'])?>"
-                                    data-genero="<?php echo($objFilme['genero'])?>"                                                      
+                                    data-estreia="<?php echo($objFilme['estreia'])?>"
+                                    data-ultimoDia="<?php echo($objFilme['ultimoDia'])?>"                                 
                                 >Editar
                                 </button>
                         </td>
@@ -165,16 +165,25 @@
                             <input type="text" id="nome" name="nome" required><br>
                         </div>
                         <div>
-                            <label for="estreia">Estreia</label><br>
-                            <input type="date" id="estreia" name="estreia" required><br> 
+                            <label for="genero">Gênero</label><br>
+                            <input type="text" id="genero" name="genero" required><br>
                         </div>
                         <div>
-                            <label for="ultimoDia">Último dia</label><br>
-                            <input type="date" id="ultimoDia" name="ultimoDia" required><br>                        
+                            <label for="classIndicativa">Classificação Indicativa</label><br>
+                            <select id="classIndicativa" name="classIndicativa">
+                                    <option value=""></option>
+                                    <option value="Livre">Livre</option>
+                                    <option value="10">10 anos</option>
+                                    <option value="12">12 anos</option>
+                                    <option value="14">14 anos</option>
+                                    <option value="16">16 anos</option>
+                                    <option value="18">18 anos</option>
+                            </select><br>
                         </div>
                         <div>
                             <label for="duracao">Duração</label><br>
                             <select id="duracao" name="duracao">
+                                    <option value=""></option>
                                     <option value="1:00">1h:00min</option>
                                     <option value="1:30">1h:30min</option>
                                     <option value="2:00">2h:00min</option>
@@ -183,19 +192,12 @@
                             </select><br>
                         </div>
                         <div>
-                            <label for="classIndicativa">Classificação Indicativa</label><br>
-                            <select id="classIndicativa" name="classIndicativa">
-                                    <option value="Livre">Livre</option><
-                                    <option value="10">+10 anos</option>
-                                    <option value="12">+12 anos</option>
-                                    <option value="14">+14 anos</option>
-                                    <option value="16">+16 anos</option>
-                                    <option value="18">+18 anos</option>
-                            </select><br>
+                            <label for="estreia">Estreia</label><br>
+                            <input type="date" id="estreia" name="estreia" required><br> 
                         </div>
                         <div>
-                            <label for="genero">Gênero</label><br>
-                            <input type="text" id="genero" name="genero" required><br>
+                            <label for="ultimoDia">Último dia</label><br>
+                            <input type="date" id="ultimoDia" name="ultimoDia" required><br>                        
                         </div>
                         <button type="submit" class="enviar">Enviar</button>                
                 </form>
@@ -208,7 +210,7 @@
                 <h4>Deletar Filme</h4>
                 <form action="control/ctr-filme.php#cadastro-filmes" method="POST"> 
                     <input type="hidden" name="deletarFilme" id="recipient-deletarFilme">
-                    <label for="recipient-deletar-nomeFilme">Nome</label>
+                    <label for="txtNome">Nome</label>
                     <input type="text" name="txtNome" id="recipient-deletar-nomeFilme" readonly>
                     <button type="submit" class="enviar">Confirmar</button>
                 </form>
@@ -222,20 +224,29 @@
                  <form action="control/ctr-filme.php#cadastro-filmes" method="POST" >
                      <input id="recipient-idFilme" type="hidden" name="editarFilme">
                      <div>
-                        <label for="recipient-nome-filme">Nome</label><br>
-                        <input type="text" name="nomeFilme" id="recipient-nome-filme"><br>
+                        <label for="nomeFilme">Nome</label><br>
+                        <input type="text" name="nomeFilme" id="recipient-nome-filme" ><br>
                     </div>
-                     <div>
-                        <label for="recipient-estreia">Estreia</label><br>
-                        <input type="date" name="estreiaFilme" id="recipient-estreia"><br> 
+                    <div>
+                        <label for="genero">Gênero</label><br>
+                        <input type="text" name="genero" id="recipient-genero"><br>
                      </div>
                      <div>
-                        <label for="recipient-ultimo-dia">Último Dia</label><br>
-                        <input type="date" name="ultimoDia" id="recipient-ultimo-dia"><br>
+                        <label for="classIndicativa">Classificação Indicativa</label><br>
+                        <select name="classIndicativa" id="recipient-class-indicativa" >
+                                    <option value=""></option>
+                                    <option value="Livre">Livre</option>
+                                    <option value="10">10 anos</option>
+                                    <option value="12">12 anos</option>
+                                    <option value="14">14 anos</option>
+                                    <option value="16">16 anos</option>
+                                    <option value="18">18 anos</option>
+                        </select><br>
                      </div>
                      <div>
-                     <label for="recipient-duracao">Duração</label><br>
-                            <select name="duracao" id="recipiente-duracao">
+                        <label for="duracao">Duração</label><br>
+                            <select name="duracao" id="recipient-duracao">
+                                    <option value=""></option>
                                     <option value="1:00">1h:00min</option>
                                     <option value="1:30">1h:30min</option>
                                     <option value="2:00">2h:00min</option>
@@ -244,20 +255,13 @@
                             </select><br>
                      </div>
                      <div>
-                        <label for="recipient-class-indicativa">Classificação Indicativa</label><br>
-                        <select name="classIndicativa" id="recipient-class-indicativa" >
-                                    <option value="Livre">Livre</option>
-                                    <option value="10">+10 anos</option>
-                                    <option value="12">+12 anos</option>
-                                    <option value="14">+14 anos</option>
-                                    <option value="16">+16 anos</option>
-                                    <option value="18">+18 anos</option>
-                        </select><br>
+                        <label for="estreia">Estreia</label><br>
+                        <input type="date" name="estreia" id="recipient-estreia"><br> 
                      </div>
                      <div>
-                        <label for="recipient-genero">Gênero</label><br>
-                        <input type="text" name="genero" id="recipient-genero"><br>
-                     </div>
+                        <label for="ultimoDia">Último Dia</label><br>
+                        <input type="date" name="ultimoDia" id="recipient-ultimoDia"><br>
+                     </div> 
                      <button type="submit" class="enviar">Confirmar</button> 
                  </form>   
             </div>
@@ -764,10 +768,7 @@
                 </form>
            </div>
         </div>
-        <div class="container-precos" id="container-precos">
-                        <h3>TEste</h3>
-
-        </div>
+        
         <!--EDITAR FUNCIONARIO-->
         <div class="modal" id="modal-editar-funcionario">
             <div class="modal-container" >
@@ -1098,21 +1099,23 @@
         $("#modal-editar-filmes").on('show.bs.modal', function(event){
             var buttonFilme = $(event.relatedTarget);
             var recipientIdFilme = buttonFilme.data('id');
-            var recipientNomeCliente = buttonFilme.data('nome');
-            var recipientEstreiaFilme = buttonFilme.data('estreia');
-            var recipientUltimoDia = buttonFilme.data('ultimoDia');
-            var recipientDuracao = buttonFilme.data('duracao');
-            var recipientClassIndicativa = buttonFilme.data('classIndicativa');            
+            var recipientNomeFilme = buttonFilme.data('nome');
             var recipientGenero = buttonFilme.data('genero');
-            
+            var recipientClassIndicativa = buttonFilme.data('classIndicativa'); 
+            var recipientDuracao = buttonFilme.data('duracao'); 
+            var recipientEstreia = buttonFilme.data('estreia');
+            var recipientultimoDia = buttonFilme.data('ultimoDia');         
+                      
             var modal= $(this)
             modal.find('#recipient-idFilme').val(recipientIdFilme);
-            modal.find('#recipient-nome-filme').val(recipientNomeCliente);
-            modal.find('#recipient-estreia').val(recipientEstreiaFilme);
-            modal.find('#recipient-ultimo-dia').val(recipientUltimoDia);
-            modal.find('#recipient-duracao').val(recipientDuracao);
-            modal.find('#recipient-class-indicativa').val(recipientClassIndicativa);            
+            modal.find('#recipient-nome-filme').val(recipientNomeFilme);
             modal.find('#recipient-genero').val(recipientGenero);
+            modal.find('#recipient-class-indicativa').val(recipientClassIndicativa);            
+            modal.find('#recipient-duracao').val(recipientDuracao);
+            modal.find('#recipient-estreia').val(recipientEstreia);
+            modal.find('#recipient-ultimoDia').val(recipientultimoDia);
+            
+            
         })
     </script>
     <!--SCRIPT PRA REMOÇÃO DE FILME-->

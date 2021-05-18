@@ -16,18 +16,18 @@
         }  
 
         /*CADASTRAR FILME*/
-        public function cadastrarFilme($nome,$estreia,$ultimoDia,$duracao,$classIndicativa,$genero){
+        public function cadastrarFilme($nome,$genero,$classIndicativa,$duracao,$estreia,$ultimoDia){
             try{
-                $sql= "INSERT INTO filme(nome, estreia, ultimoDia, duracao, classIndicativa, genero)
-                VALUES (:nome, :estreia, :ultimoDia, :duracao, :classIndicativa, :genero)";
+                $sql= "INSERT INTO filme(nome, genero, classIndicativa, duracao, estreia, ultimoDia)
+                VALUES (:nome, :genero,:classIndicativa, :duracao, :estreia, :ultimoDia )";
                 $stmt=$this->conn->prepare($sql);
                 $stmt->bindParam(":nome",$nome);
+                $stmt->bindParam(":genero",$genero);
+                $stmt->bindParam(":classIndicativa",$classIndicativa);  
+                $stmt->bindParam(":duracao",$duracao);
                 $stmt->bindParam(":estreia",$estreia);                
                 $stmt->bindParam(":ultimoDia",$ultimoDia);
-                $stmt->bindParam(":duracao",$duracao);
-                $stmt->bindParam(":classIndicativa",$classIndicativa);                
-                $stmt->bindParam(":genero",$genero);
-
+                                             
                 $stmt->execute();
                 return $stmt;
             }catch(PDOException $e){
@@ -36,24 +36,25 @@
                 $this->conn = null;
             }
         }
-        public function editarFilme($nome,$estreia,$ultimoDia,$duracao,$classIndicativa,$genero,$id){
+        public function editarFilme($nome,$genero,$classIndicativa,$duracao,$estreia,$ultimoDia,$id){
             try{
                 $sql = "UPDATE filme
                 SET 
                     nome = :nome,
-                    estreia = :estreia,
-                    ultimoDia = :ultimoDia,
-                    duracao = :duracao,
+                    genero = :genero,
                     classIndicativa = :classIndicativa,
-                    genero = :genero
+                    duracao = :duracao,
+                    estreia = :estreia,
+                    ultimoDia = :ultimoDia                  
+                    
                     WHERE id = :id";
                     $stmt = $this->conn->prepare($sql);
                     $stmt-> bindParam(":nome",$nome);
-                    $stmt-> bindParam(":estreia",$estreia);
-                    $stmt-> bindParam(":ultimoDia",$ultimoDia);
-                    $stmt-> bindParam(":duracao",$duracao);
-                    $stmt-> bindParam(":classIndicativa",$classIndicativa);
                     $stmt-> bindParam(":genero",$genero);
+                    $stmt-> bindParam(":classIndicativa",$classIndicativa);
+                    $stmt-> bindParam(":duracao",$duracao);
+                    $stmt-> bindParam(":estreia",$estreia);
+                    $stmt-> bindParam(":ultimoDia",$ultimoDia);                   
                     $stmt-> bindParam(":id",$id);
                     $stmt->execute();
              
