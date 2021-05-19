@@ -3,12 +3,12 @@
     $objVenda = new Venda();
     
     if(isset($_POST['cadastrarVenda'])){
-        $cliente = $_POST['filme'];
-        $funcionario = $_POST['sala'];
-        $sessao = $_POST['ingresso'];
+        $cliente = $_POST['cpfCliente'];
+        $funcionario = $_POST['funcionario'];
+        $sessao = $_POST['sessao'];
         $data = $_POST['data'];        
-        $qtdIngressoInt = $_POST['horarioInicio'];
-        $qtdIngressoMeia = $_POST['horarioInicio'];
+        $qtdIngressoInt = $_POST['qtdInteiro'];
+        $qtdIngressoMeia = $_POST['qtdMeia'];
 
         if($objVenda->cadastrarVenda($cliente, $funcionario, $sessao, $data, $qtdIngressoInt, $qtdIngressoMeia)){
             $objVenda->redirect('../vender.php');
