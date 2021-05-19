@@ -12,7 +12,7 @@
     require_once 'model/sala.php';
     $objSessaoSala = new Sala();
     require_once 'model/funcionario.php';
-    $objFuncionario = new Funcionario();
+    $objFunc = new Funcionario();
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +35,11 @@
     <!--OWL CSS-->
     <link rel="stylesheet" href="./css/owl/owl.carousel.min.css">
     <link rel="stylesheet" href="./css/owl/owl.theme.default.min.css">
+    <!--SCRIPTS jQuery PARA MANIPULAR EDIÇÃO-->
+        
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <title>CineMail - Realizar Venda</title>
 </head>
 
@@ -112,18 +117,62 @@
                             echo ("R$ ".$resultado['valor']);
                         ?>
                         </td>
-                        <td><button 
-                        type="button" class="btnDeletar"
-                        data-toggle="modal" 
-                        onclick="action('#modal-vender')"
-                        data-id-func="<?php echo($_SESSION['idFuncionario'])?>"
+                        <td>
+                        <button type="button" class="btnDeletar"
+                        data-toggle="modal"
+                        data-target="#modal-vender"
+                        data-sessao="<?php print $objSessao['id']?>"
+                        data-id-filme="<?php print $objSessao['id_filme']?>"
+                        data-filme="
+                        <?php 
+                            $id = $objSessao['id_filme'];
+                            $sqlFilme = "SELECT nome FROM filme WHERE id = $id";
+                            $stmtFilme = $objSessaoFilme->runQuery($sqlFilme);
+                            $stmtFilme->execute();
+                            $resultado = $stmtFilme->fetch(PDO::FETCH_ASSOC);
+                            echo ($resultado['nome']);
+                        ?>"
+                        data-func="<?php
+                            $id = $_SESSION['idFuncionario'];
+                            $sqlFunc = "SELECT nome FROM funcionario WHERE id = $id";
+                            $stmtFunc = $objFunc->runQuery($sqlFunc);
+                            $stmtFunc->execute();
+                            $resultado = $stmtFunc->fetch(PDO::FETCH_ASSOC);
+                            echo ($resultado['nome']);
+                        ?>"
+                        data-valor="<?php
+                            $id = $objSessao['id_ingresso'];
+                            $sqlValor = "SELECT valor FROM ingresso WHERE id = $id";
+                            $stmtValor = $objSessaoIngresso->runQuery($sqlValor);
+                            $stmtValor->execute();
+                            $resultado = $stmtValor->fetch(PDO::FETCH_ASSOC);
+                            echo ($resultado['valor']);
+                        ?>"
+                        data-meia="<?php
+                            $id = $objSessao['id_ingresso'];
+                            $sqlValor = "SELECT meia FROM ingresso WHERE id = $id";
+                            $stmtValor = $objSessaoIngresso->runQuery($sqlValor);
+                            $stmtValor->execute();
+                            $resultado = $stmtValor->fetch(PDO::FETCH_ASSOC);
+                            echo ($resultado['meia']);
+                        ?>"
+                        data-sala="<?php
+                            $id = $objSessao['id_sala'];
+                            $sqlSala = "SELECT nome FROM sala WHERE id = $id";
+                            $stmtSala = $objSessaoSala->runQuery($sqlSala);
+                            $stmtSala->execute();
+                            $resultado = $stmtSala->fetch(PDO::FETCH_ASSOC);
+                            echo ($resultado['nome']);
+                        ?>"
+                        data-hr-inicio="<?php echo($objSessao['horarioInicio']);?>"
+                        data-hr-fim="<?php echo($objSessao['horarioFim']);?>"
                         >
                         Vender</button>
                         </td> 
-                </tr>                    
-                <?php   
-                 }
-                ?>
+                    </tr>                    
+                    <?php   
+                    }
+                    ?>
             </tbody>  
         </table>
     </main>
@@ -134,8 +183,8 @@
         <div class="modal-container">
             <img onclick="fechar('#modal-vender')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
             <h3>Vender Ingresso</h3>
-            <form action="control/ctr-funcionario.php" method="POST"><!--Adicionado pra enviar os dados de login pra fazer a conexão-->
-                <input type="hidden" name="cadastrarVenda">
+            <form action="control/ctr-venda.php" method="POST"><!--Adicionado pra enviar os dados de login pra fazer a conexão-->
+                <input type="hidden" name="id-sessao" id="recipient-sessao">
                 <div class="compra-left">
                     <div class="compra-input">
                         <label for="filme">Filme</label>
@@ -145,17 +194,17 @@
                     <div class="compra-valor">
                         <div class="compra-input">
                             <label for="valorInteiro">Valor <br><span>(Inteiro)</span></label>
-                            <input type="number" name="valorInteiro" placeholder="R$ 10" readonly>
+                            <input type="text" name="valorInteiro" id="valorInteiro" readonly>
                         </div>
                         <div class="compra-input">
                             <label for="valorMeia">Valor <br><span>(Meia)</span></label>
-                            <input type="number" name="valorMeia" placeholder="R$ 10" readonly>
+                            <input type="text" name="valorMeia" id="valorMeia" readonly>
                         </div>
                     </div>
 
                     <div class="compra-input">
                         <label for="funcionario">Funcionario</label>
-                        <input type="text" id="recipient-funcionario" name="funcionario" readonly>
+                        <input type="text" id="nome-funcionario" name="funcionario" readonly>
                     </div>
 
                     <div class="compra-input">
@@ -166,8 +215,8 @@
 
                 <div class="compra-right">
                     <div class="compra-input">
-                        <label for="filme">Sessão</label>
-                        <input type="text" name="sessao" id="recipient-sessao" readonly>
+                        <label for="filme">Sala e Horário</label>
+                        <input type="text" name="sessao" id="recipient-sala-hr" readonly>
                     </div>
 
                     <div class="compra-qtd">
@@ -185,7 +234,12 @@
                         <label for="cliente">CPF <span>Cliente</span></label>
                         <input type="text" name="cpfCliente">
                     </div>
+                    <div class="compra-input">
+                        <label for="cliente">Data atual</span></label>
+                        <input type="text" name="dataAtual" id="dataAtual">
+                    </div>
                 </div>
+
             </form>
             <div class="forget-enviar"><!--Criada pra alinhar os elementos abaixo-->
                 <button class="enviar" type="submit" value="Enviar"><a href="./sessao.html">Próximo</a></button>
@@ -224,22 +278,37 @@
 
     <!--Linkando com arquivo JS-->
     <script src="./js/script.js"></script>
-    <script src="./js/owl/jquery.min.js"></script>
-    <script src="./js/owl/owl.carousel.min.js"></script>
-    <script src="./js/owl/setup.js"></script>
     <script src="./js/hover.js"></script>
 
-    <!-- SCRIPT PARA EDITAR SALA -->
     <script>
         $("#modal-vender").on('show.bs.modal', function(event){
             var button = $(event.relatedTarget);
-            // var recipientId = button.data('id');
-            //var recipiendIdFunc = button.data('id-func');
-            var recipientFuncionario = button.data('id-func');
-            
+            var recipientIdSessao = button.data('sessao');
+            var recipientFilme = button.data('filme');
+            var recipientFuncionario = button.data('func');
+            var recipientValor = button.data('valor');
+            var recipientMeia = button.data('meia');
+            var recipientSala = button.data('sala');
+            var hrInicio = button.data('hr-inicio').split(":");
+            hrInicio = hrInicio[0]+":"+hrInicio[1];
+            var hrFim = button.data('hr-fim').split(":");
+            hrFim = hrFim[0]+":"+hrFim[1];
+            var d = new Date();
+            dataHora = (d.toLocaleString()); 
+
+
             var modal = $(this)
-            // modal.find('#recipient-id').val(recipientId);
-            modal.find('#recipient-funcionario').val(recipientFuncionario);
+            modal.find('#recipient-sessao').val(recipientIdSessao);
+            modal.find('#nome-funcionario').val(recipientFuncionario);
+            modal.find('#recipient-filme').val(recipientFilme.trim());
+            modal.find('#valorInteiro').val("R$ "+recipientValor);
+            modal.find('#valorMeia').val("R$ "+recipientMeia);
+            modal.find('#recipient-sala-hr').val(
+                recipientSala+" das "
+                +hrInicio+" às "+hrFim);
+            modal.find('#dataAtual').val(dataHora);
+
+
         })
     </script>
 </body>

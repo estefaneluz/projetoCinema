@@ -288,7 +288,6 @@
                         <th>Data</th> 
                         <th>Horário</th>      
                         <th>Status</th>
-                        <th>Ingr. Vendidos</th>                                        
                         <th>Edit.</th>
                         <th>Del.</th>
                     </tr>
@@ -326,8 +325,7 @@
                         <span> | </span>
                         <?php echo ($objSessao['horarioFim'])?>
                         </td>
-                        <td><?php echo($objSessao['status']) ?></td>
-                        <td><?php echo ($objSessao['ingressosVendidos'])?></td>                                    
+                        <td><?php echo($objSessao['status']) ?></td>                                  
                         <td><button  type="button" class="btnEditar" id="btnEditarSessao"
                         data-toggle="modal" data-target="#modal-editar-sessao"
                         data-id="<?php print $objSessao['id']?>"
@@ -375,9 +373,9 @@
 
         <!-- CADASTRAR SESSAO -->
         <div class="modal" id="modal-sessao">
-            <div class="modal-container modalFilme">
+            <div class="modal-container modalSessao">
                 <img onclick="fechar('#modal-sessao')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
-                <h4>Cadastrar Sessão<h4><br>
+                <h4>Cadastrar Sessão<h4>
                 <form action="control/ctr-sessao.php#container-sessoes" method="POST">
                         <input type="hidden" name="cadastrarSessao">
                         <div>

@@ -184,6 +184,10 @@ margin-right: 5vw;
   height:570px;
 }
 
+.modal-container.modalSessao {
+  height: 500px;
+}
+
 .enviar{
   justify-self: end;
   margin: 0;

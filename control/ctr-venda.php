@@ -11,7 +11,7 @@
         $qtdIngressoMeia = $_POST['qtdMeia'];
 
         if($objVenda->cadastrarVenda($cliente, $funcionario, $sessao, $data, $qtdIngressoInt, $qtdIngressoMeia)){
-            $objVenda->redirect('../vender.php');
+            $objVenda->redirect('../sessao.php');
         }
     }
 
