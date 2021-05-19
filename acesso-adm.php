@@ -287,7 +287,8 @@
                         <th>Sala</th>
                         <th>Data</th> 
                         <th>Horário</th>      
-                        <th>Status</th>                                        
+                        <th>Status</th>
+                        <th>Ingr. Vendidos</th>                                        
                         <th>Edit.</th>
                         <th>Del.</th>
                     </tr>
@@ -324,7 +325,8 @@
                         <td><?php echo ($objSessao['horarioInicio'])?>
                         <span> | </span>
                         <?php echo ($objSessao['horarioFim'])?>
-                        </td>  
+                        </td>
+                        <td><?php echo($objSessao['status']) ?></td>
                         <td><?php echo ($objSessao['ingressosVendidos'])?></td>                                    
                         <td><button  type="button" class="btnEditar" id="btnEditarSessao"
                         data-toggle="modal" data-target="#modal-editar-sessao"
