@@ -8,6 +8,7 @@
     require_once 'model/filme.php';
     $objSessaoFilme = new Filme();
     require_once 'model/preco.php';
+    $objIngresso = new Preco();
     $objSessaoIngresso = new Preco();
     require_once 'model/sala.php';
     $objSessaoSala = new Sala();
@@ -110,11 +111,13 @@
                         <td>
                         <?php 
                             $id = $objSessao['id_ingresso'];
-                            $sqlIngresso = "SELECT valor FROM ingresso WHERE id = $id";
-                            $stmtIngresso = $objSessaoIngresso->runQuery($sqlIngresso);
+                            $sqlIngresso = "SELECT valor, meia FROM ingresso WHERE id = $id";
+                            $stmtIngresso = $objIngresso->runQuery($sqlIngresso);
                             $stmtIngresso->execute();
-                            $resultado = $stmtIngresso->fetch(PDO::FETCH_ASSOC);
-                            echo ("R$ ".$resultado['valor']);
+                            while($objIngresso = $stmtIngresso->fetch(PDO::FETCH_ASSOC)){
+                            //$resultado = $stmtIngresso->fetch(PDO::FETCH_ASSOC);
+                            echo ("R$ ".$objIngresso['valor']." / R$ ".$objIngresso['meia']);
+                            }
                         ?>
                         </td>
                         <td>
