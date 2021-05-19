@@ -135,6 +135,7 @@
             <img onclick="fechar('#modal-vender')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
             <h3>Vender Ingresso</h3>
             <form action="control/ctr-funcionario.php" method="POST"><!--Adicionado pra enviar os dados de login pra fazer a conexão-->
+                <input type="hidden" name="cadastrarVenda">
                 <div class="compra-left">
                     <div class="compra-input">
                         <label for="filme">Filme</label>
@@ -154,7 +155,7 @@
 
                     <div class="compra-input">
                         <label for="funcionario">Funcionario</label>
-                        <input type="text" id="recipient-funcionario" readonly>
+                        <input type="text" id="recipient-funcionario" name="funcionario" readonly>
                     </div>
 
                     <div class="compra-input">
@@ -182,7 +183,7 @@
 
                     <div class="compra-input">
                         <label for="cliente">CPF <span>Cliente</span></label>
-                        <input type="text">
+                        <input type="text" name="cpfCliente">
                     </div>
                 </div>
             </form>
