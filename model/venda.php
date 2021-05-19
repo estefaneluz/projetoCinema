@@ -28,14 +28,34 @@
                 $stmt->bindParam(":qtdIngressoInt",$qtdIngressoInt);
                 $stmt->bindParam(":qtdIngressoMeia",$qtdIngressoMeia);                
                 $stmt->execute();
+                /*muda status da sessao na hora da compra
+                if($stmt->rowCount()>0){
+                    $this->mudarStatus($sessao);
+                    return $stmt;
+                }*/
                 return $stmt;
             }catch(PDOException $e){
                 echo("Error: ".$e->getMessage());
             }finally{
                 $this->conn = null;
             }
-        }
 
+
+            
+        }/* função mudar Status da sessão
+        public function mudarStatus($sessao){
+            try{
+                $sqlStatus = "UPDATE sessao SET status ='Vendido' WHERE id =:id";
+                $stmt= $this->conn->prepare($sqlStatus);
+                $stmt->bindParam(":id",$sessao);
+                $stmt->execute();
+                return $stmt;
+            }catch(PDOException $e){
+                echo("Error: ".$e->getMessage());
+            }finally{
+                $this->conn=null;
+            }
+        }*/
         // public function editarSessao($filme,$sala, $data, $horario, $id){
         //     try{
         //         $sql = "UPDATE sessao
