@@ -36,34 +36,33 @@
                 $this->conn = null;
             }
         }
+        /*EDITAR FILME*/
         public function editarFilme($nome,$genero,$classIndicativa,$duracao,$estreia,$ultimoDia,$id){
             try{
-                $sql = "UPDATE filme
-                SET 
+                $sqlEditarFilme= "UPDATE filme
+                SET
                     nome = :nome,
                     genero = :genero,
                     classIndicativa = :classIndicativa,
                     duracao = :duracao,
                     estreia = :estreia,
-                    ultimoDia = :ultimoDia                  
-                    
+                    ultimoDia = :ultimoDia
                     WHERE id = :id";
-                    $stmt = $this->conn->prepare($sql);
-                    $stmt-> bindParam(":nome",$nome);
-                    $stmt-> bindParam(":genero",$genero);
-                    $stmt-> bindParam(":classIndicativa",$classIndicativa);
-                    $stmt-> bindParam(":duracao",$duracao);
-                    $stmt-> bindParam(":estreia",$estreia);
-                    $stmt-> bindParam(":ultimoDia",$ultimoDia);                   
-                    $stmt-> bindParam(":id",$id);
+                    $stmt = $this->conn->prepare($sqlEditarFilme);
+                    $stmt->bindParam(":nome",$nome);
+                    $stmt->bindParam(":genero",$genero);
+                    $stmt->bindParam(":classIndicativa",$classIndicativa);
+                    $stmt->bindParam(":duracao",$duracao);
+                    $stmt->bindParam(":estreia",$estreia);
+                    $stmt->bindParam(":ultimoDia",$ultimoDia);
+                    $stmt->bindParam(":id",$id);
                     $stmt->execute();
-             
                     return $stmt;
-         }catch(PDOException $e){
-             echo ("Error: ".$e->getMessage());
-         }finally{
-             $this->conn = null;
-         } 
+            }catch(PDOException $e){
+                    echo("Error: ".$e->getMessage());
+            }finally{
+                $this->conn=null;
+            }
         }
         /*DELETAR FILME*/
         public function deletarFilme($idFilme){
