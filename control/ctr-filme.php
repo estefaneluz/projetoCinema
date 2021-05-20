@@ -4,7 +4,7 @@
     
     /*CADASTRAR FILME*/
 
-    if(isset($_POST['cadastrarFilme'])){//seta
+    if(isset($_POST['cadastrarFilme'])){
         $nome = $_POST['nome'];
         $genero = $_POST ['genero'];
         $classIndicativa = $_POST['classIndicativa'];

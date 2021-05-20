@@ -270,21 +270,3 @@ margin-right: 5vw;
   font-size: 14px;
   text-align: center;
 }
-.inputPesquisar{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.pesquisar-sessao{
-  border: 2px solid #e1e1e1;;
-  box-shadow: inset 0px 2px 3px rgba(23, 22, 37, 0.42);
-  width: 40vw;
-  max-width: 60vw; 
-  height: 40px;  
-  border-radius: 4px;
-  background: #242732;
-  font-weight: bold;
-  font-family: Nunito, Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  
-}
