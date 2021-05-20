@@ -63,7 +63,10 @@
             <div class="header-gerenciar">
                 <h2>Realizar Venda</h2>
                 <button onclick="action('#')" type="button" class="btnAdicionar" style="width: 150px;">Gerenciar</button>
-        </div>
+             </div>
+            <div class="inputPesquisar">
+            <input type="text"  class="pesquisar-sessao" id="pesquisarSessao" placeholder="Pesquisar...">
+            </div>
         <table class="tabela">
             <thead>
                 <tr>
@@ -75,7 +78,7 @@
                     <th>Vender</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tabelaSessao">
             <?php
                 $sql = "SELECT * FROM sessao";
                 $stmt = $objSessao->runQuery($sql);
@@ -178,6 +181,16 @@
                     ?>
             </tbody>  
         </table>
+        <script>
+            $(document).ready(function(){//leitura do doc 
+            $("#pesquisarSessao").on("keyup", function() {//lê a tabela pelo id do myinput, quando para de digitar "keyup" pega o valor e começa a funlção,
+                var value = $(this).val().toLowerCase();//atribui o valor pegado e coloca em value
+                $("#tabelaSessao tr").filter(function() {//função para filtrar pelas linhas da tabela
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)//toggle - ao valor pegado vai transformar em minusculo e pegar o valor pelo indexOf e pesquisa pela linah da tabela
+                });
+            });
+            });
+    </script> 
     </main>
 
         <!-- MODAL VENDER/COMPRAR -->
