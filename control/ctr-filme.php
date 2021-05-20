@@ -17,14 +17,14 @@
     }
     /*EDITAR FILMES*/
     if(isset($_POST['editarFilme'])){
-        $idFilme = $_POST['editarFilme'];
+        $id = $_POST['editarFilme'];
         $nome = $_POST['nome'];
         $genero= $_POST['genero'];
         $classIndicativa =$_POST['classIndicativa'];
         $duracao = $_POST['duracao'];
         $estreia=$_POST['estreia'];
         $ultimoDia = $_POST['ultimoDia'];
-        if($objFilme->editarFilme($nome,$genero,$classIndicativa,$duracao,$estreia,$ultimoDia,$idFilme)){
+        if($objFilme->editarFilme($nome,$genero,$classIndicativa,$duracao,$estreia,$ultimoDia,$id)){
             $objFilme->redirect('../acesso-adm.php#cadastro-filmes');
         }
     }

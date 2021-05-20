@@ -39,7 +39,7 @@
         /*EDITAR FILME*/
         public function editarFilme($nome,$genero,$classIndicativa,$duracao,$estreia,$ultimoDia,$id){
             try{
-                $sqlEditarFilme= "UPDATE filme
+                $sql= "UPDATE filme
                 SET
                     nome = :nome,
                     genero = :genero,
@@ -48,7 +48,7 @@
                     estreia = :estreia,
                     ultimoDia = :ultimoDia
                     WHERE id = :id";
-                    $stmt = $this->conn->prepare($sqlEditarFilme);
+                    $stmt = $this->conn->prepare($sql);
                     $stmt->bindParam(":nome",$nome);
                     $stmt->bindParam(":genero",$genero);
                     $stmt->bindParam(":classIndicativa",$classIndicativa);

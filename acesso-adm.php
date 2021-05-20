@@ -175,11 +175,11 @@
                             <select id="classIndicativa" name="classIndicativa" required>
                                     <option value=""></option>
                                     <option value="Livre">Livre</option>
-                                    <option value="10">10 anos</option>
-                                    <option value="12">12 anos</option>
-                                    <option value="14">14 anos</option>
-                                    <option value="16">16 anos</option>
-                                    <option value="18">18 anos</option>
+                                    <option value="+10 anos">10 anos</option>
+                                    <option value="+12 anos">12 anos</option>
+                                    <option value="+14 anos">14 anos</option>
+                                    <option value="+16 anos">16 anos</option>
+                                    <option value="+18 anos">18 anos</option>
                             </select><br>
                         </div>
                         <div>
@@ -238,11 +238,11 @@
                      <select name="classIndicativa" id="recipient-classIndicativa">
                         <option value=""></option>
                         <option value="Livre">Livre</option>
-                        <option value="10">10 anos</option>
-                        <option value="12">12 anos</option>
-                        <option value="14">14 anos</option>
-                        <option value="16">16 anos</option>
-                        <option value="18">18 anos</option>
+                        <option value="+10 anos">10 anos</option>
+                        <option value="+12 anos">12 anos</option>
+                        <option value="+14 anos">14 anos</option>
+                        <option value="+16 anos">16 anos</option>
+                        <option value="+18 anos">18 anos</option>
                      </select><br>
                 </div>
                 <div>
