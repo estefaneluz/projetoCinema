@@ -239,7 +239,7 @@
                             echo ($objVenda['qtdIngrInt']+$objVenda['qtdIngrMeia']);
                         ?>
                         </td> 
-                        <td><?php echo ($objVenda['valorTotal'])?></td>                        
+                        <td><?php echo ("R$ ".$objVenda['valorTotal'])?></td>                        
                     </tr>                    
                     <?php   
                     }
@@ -254,8 +254,8 @@
         <div class="modal-container">
             <img onclick="fechar('#modal-vender')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
             <h3>Vender Ingresso</h3>
-            <form action="control/ctr-venda.php" method="POST"><!--Adicionado pra enviar os dados de login pra fazer a conexão-->
-                <input type="hidden" name="id-sessao" id="recipient-sessao">
+            <form action="./control/ctr-venda.php" method="POST"><!--Adicionado pra enviar os dados de login pra fazer a conexão-->
+                <input type="hidden" name="idSessao" id="recipient-sessao">
                 <div class="compra-left">
                     <div class="compra-input">
                         <label for="filme">Filme</label>
@@ -293,11 +293,11 @@
                     <div class="compra-qtd">
                         <div class="compra-input">
                             <label for="qtdInteiro">Qtd. ingr. <span>(Inteiro)</span></label>
-                            <input type="number" name="qtdInteiro" >
+                            <input type="number" name="qtdInteiro" min="0">
                         </div>
                         <div class="compra-input">
                             <label for="qtdMeia">Qtd. ingr. <br><span>(Meia)</span></label>
-                            <input type="number" name="qtdMeia">
+                            <input type="number" name="qtdMeia" min="0">
                         </div>
                     </div>
 
@@ -313,7 +313,7 @@
 
             </form>
             <div class="forget-enviar"><!--Criada pra alinhar os elementos abaixo-->
-                <button class="enviar" type="submit" value="Enviar"><a href="./sessao.html">Próximo</a></button>
+                <button class="enviar" type="submit" value="Enviar">Próximo</button>
             </div>
         </div>
     </div>
@@ -377,8 +377,14 @@
             var hrFim = button.data('hr-fim').split(":");
             hrFim = hrFim[0]+":"+hrFim[1];
             var d = new Date();
-            dataHora = (d.toLocaleString()); 
-
+            var data = d.toLocaleDateString().split("/");
+            data = data[2]+"/"+data[1]+"/"+data[0];
+            var hora = d.toLocaleTimeString();
+            var dataHora = data+" "+hora;
+            // var data = dataHora[0].split("/");
+            // var hora = dataHora[1];
+            // dataHora = (data[2]+"-"+data[1]+"-"+data[0]+" "+hora);
+            // var dataHora = "2021-05-20 19:00:00"; 
 
             var modal = $(this)
             modal.find('#recipient-sessao').val(recipientIdSessao);

@@ -16,17 +16,27 @@
             return $stmt; 
         }  
 
-        public function cadastrarVenda($cliente, $funcionario, $sessao, $data, $qtdIngressoInt, $qtdIngressoMeia){
+        public function cadastrarVenda($cliente, $funcionario, $sessao, $data, $qtdIngrInt, $qtdIngrMeia){
             try{
-                $sql= "INSERT INTO venda(id_cliente, id_funcionario, id_sessao, data, qtdIngressoInt, qtdIngressoMeia)
-                VALUES (:id_cliente, :id_funcionario, :id_sessao, :data, :qtdIngressoInt, :qtdIngressoMeia)";
+                $sql= "INSERT INTO venda(id_cliente, id_func, id_sessao, data, qtdIngrInt, qtdIngrMeia, valorTotal)
+                VALUES (:id_cliente, :id_func, :id_sessao, :data, :qtdIngrInt, :qtdIngrMeia, :valorTotal)";
+
+                $sqlCliente = "SELECT id FROM cliente WHERE cpf = $cliente";
+                $obj = new Venda();
+                $stmtCliente = $obj->runQuery($sqlCliente);
+                $stmtCliente->execute();
+                $cliente = $stmtCliente->fetch(PDO::FETCH_ASSOC);
+                $valorTotal = 100;
+
                 $stmt=$this->conn->prepare($sql);
                 $stmt->bindParam(":id_cliente",$cliente);
-                $stmt->bindParam(":id_funcionario",$funcionario);   
+                $stmt->bindParam(":id_func",$funcionario);   
                 $stmt->bindParam(":id_sessao",$sessao);                             
                 $stmt->bindParam(":data",$data);
-                $stmt->bindParam(":qtdIngressoInt",$qtdIngressoInt);
-                $stmt->bindParam(":qtdIngressoMeia",$qtdIngressoMeia);                
+                $stmt->bindParam(":qtdIngrInt",$qtdIngrInt);
+                $stmt->bindParam(":qtdIngrMeia",$qtdIngrMeia); 
+                $stmt->bindParam(":valorTotal",$valorTotal);                
+               
                 $stmt->execute();
                 /*muda status da sessao na hora da compra
                 if($stmt->rowCount()>0){
@@ -40,8 +50,6 @@
                 $this->conn = null;
             }
 
-
-            
         }/* função mudar Status da sessão
         public function mudarStatus($sessao){
             try{
