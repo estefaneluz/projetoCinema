@@ -58,14 +58,14 @@
         </nav>
     </header>
 
-    <main class="sessao-container">
-            <div class="header-gerenciar">
-                <h2>Realizar Venda</h2>
-                <button onclick="action('#')" type="button" class="btnAdicionar" style="width: 150px;">Gerenciar</button>
-             </div>
-            <div class="inputPesquisar">
+    <main class="sessao-container" id="realizar-vendas">
+        <div class="header-gerenciar">
+            <h2>Realizar Venda</h2>
+            <button onclick="sumirContainer()" type="button" class="btnAdicionar" style="width: 150px;">Relatório</button>
+        </div>
+        <div class="inputPesquisar">
             <input type="text"  class="pesquisar-sessao" id="pesquisarSessao" placeholder="Pesquisar...">
-            </div>
+        </div>
         <table class="tabela">
             <thead>
                 <tr>
@@ -181,17 +181,27 @@
                     ?>
             </tbody>  
         </table>
-        <script>
-            $(document).ready(function(){//leitura do doc 
-            $("#pesquisarSessao").on("keyup", function() {//lê a tabela pelo id do myinput, quando para de digitar "keyup" pega o valor e começa a funlção,
-                var value = $(this).val().toLowerCase();//atribui o valor pegado e coloca em value
-                $("#tabelaSessao tr").filter(function() {//função para filtrar pelas linhas da tabela
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)//toggle - ao valor pegado vai transformar em minusculo e pegar o valor pelo indexOf e pesquisa pela linah da tabela
-                });
-            });
-            });
-    </script> 
     </main>
+
+    <section id="relatorio-vendas" class="sessao-container">
+        <div class="header-gerenciar">
+            <h2>Vendas Realizadas</h2>
+            <button onclick="sumirContainer()" type="button" class="btnAdicionar" style="width: 150px;">Vender</button>
+        </div>
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th>Data / Hora</th>
+                    <th>Funcionário</th>
+                    <th>Cliente</th> 
+                    <th>Filme</th>                       
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaRelatorio">
+            </tbody>
+        </table>
+    </section>
 
         <!-- MODAL VENDER/COMPRAR -->
 
@@ -295,6 +305,18 @@
     <!--Linkando com arquivo JS-->
     <script src="./js/script.js"></script>
     <script src="./js/hover.js"></script>
+    <script src="./js/vender.js"></script>
+
+    <script>
+            $(document).ready(function(){//leitura do doc 
+            $("#pesquisarSessao").on("keyup", function() {//lê a tabela pelo id do myinput, quando para de digitar "keyup" pega o valor e começa a funlção,
+                var value = $(this).val().toLowerCase();//atribui o valor pegado e coloca em value
+                $("#tabelaSessao tr").filter(function() {//função para filtrar pelas linhas da tabela
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)//toggle - ao valor pegado vai transformar em minusculo e pegar o valor pelo indexOf e pesquisa pela linah da tabela
+                });
+            });
+            });
+    </script> 
 
     <script>
         $("#modal-vender").on('show.bs.modal', function(event){

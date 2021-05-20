@@ -16,11 +16,15 @@
     font-family: Nunito, Arial, Helvetica, sans-serif;
     font-size: 16px;
     color: white;
-  }
+}
 
 .pesquisar-sessao::placeholder{
     color: white;
     font-size: 14px;
+}
+
+#relatorio-vendas{
+    display: none;
 }
 
 /* PÁGINA SESSÕES - ESCOLHA DE ASSENTOS */
