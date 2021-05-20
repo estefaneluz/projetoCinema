@@ -12,6 +12,7 @@
     require_once 'model/sala.php';
     $objSessaoSala = new Sala();
     require_once 'model/funcionario.php';
+    require_once 'model/cliente.php';
     $objFunc = new Funcionario();
 ?>
 
@@ -194,11 +195,55 @@
                     <th>Data / Hora</th>
                     <th>Funcionário</th>
                     <th>Cliente</th> 
-                    <th>Filme</th>                       
+                    <th>Qtd. Ingressos</th>                       
                     <th>Total</th>
                 </tr>
             </thead>
             <tbody id="tabelaRelatorio">
+            <?php
+                $sql = "SELECT * FROM venda";
+                $stmt = $objVenda->runQuery($sql);
+                $stmt->execute();
+                while($objVenda = $stmt->fetch(PDO::FETCH_ASSOC)){
+                ?>       
+                <tr>
+                    <td>
+                        <?php
+                            echo ($objVenda['data']);
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                            $id = $objVenda['id_func'];
+                            $sqlFuncionario = "SELECT nome FROM funcionario WHERE id = $id";
+                            $objFuncionario = new Funcionario();
+                            $stmtFuncionario = $objFuncionario->runQuery($sqlFuncionario);
+                            $stmtFuncionario->execute();
+                            $resultado = $stmtFuncionario->fetch(PDO::FETCH_ASSOC);
+                            echo ($resultado['nome']);
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                            $id = $objVenda['id_cliente'];
+                            $sqlCliente = "SELECT nome FROM cliente WHERE id = $id";
+                            $objCliente = new Cliente();
+                            $stmtCliente = $objCliente->runQuery($sqlCliente);
+                            $stmtCliente->execute();
+                            $resultado = $stmtCliente->fetch(PDO::FETCH_ASSOC);
+                            echo ($resultado['nome']);
+                        ?>
+                    </td>
+                        <td>
+                        <?php 
+                            echo ($objVenda['qtdIngrInt']+$objVenda['qtdIngrMeia']);
+                        ?>
+                        </td> 
+                        <td><?php echo ($objVenda['valorTotal'])?></td>                        
+                    </tr>                    
+                    <?php   
+                    }
+                    ?>
             </tbody>
         </table>
     </section>
