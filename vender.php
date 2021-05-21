@@ -312,12 +312,13 @@
                         <label for="cliente">Data atual</span></label>
                         <input type="text" name="dataAtual" id="dataAtual" onlyread>
                     </div>
+                    <div class="forget-enviar"><br>
+                    <button class="enviar" type="submit" value="Enviar">Próximo</button>
+                    </div>
                 </div>
 
             </form>
-            <div class="forget-enviar"><!--Criada pra alinhar os elementos abaixo-->
-                <button class="enviar" type="submit" value="Enviar">Próximo</button>
-            </div>
+
         </div>
     </div>
 

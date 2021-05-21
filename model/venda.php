@@ -16,20 +16,35 @@
             return $stmt; 
         }  
 
-        public function cadastrarVenda($cliente, $funcionario, $sessao, $data, $qtdIngrInt, $qtdIngrMeia){
+        public function cadastrarVenda($cliente, $sessao, $data, $qtdIngrInt, $qtdIngrMeia){
             try{
-                $sql= "INSERT INTO venda(id_cliente, id_func, id_sessao, data, qtdIngrInt, qtdIngrMeia, valorTotal)
-                VALUES (:id_cliente, :id_func, :id_sessao, :data, :qtdIngrInt, :qtdIngrMeia, :valorTotal)";
+                $sql= 'INSERT INTO venda(id_cliente, id_func, id_sessao, data, qtdIngrInt, qtdIngrMeia, valorTotal)
+                VALUES (:id_cliente, :id_func, :id_sessao, :data, :qtdIngrInt, :qtdIngrMeia, :valorTotal)';
 
+                //pegando o id do cliente
                 $sqlCliente = "SELECT id FROM cliente WHERE cpf = $cliente";
                 $obj = new Venda();
                 $stmtCliente = $obj->runQuery($sqlCliente);
                 $stmtCliente->execute();
                 $cliente = $stmtCliente->fetch(PDO::FETCH_ASSOC);
-                $valorTotal = 100;
 
+                //pegando o preço para calcular o total 
+                $sqlPreco = "SELECT id_ingresso FROM sessao WHERE id = $sessao";
+                $stmtPreco = $obj->runQuery($sqlPreco);
+                $stmtPreco->execute();
+                $preco = $stmtPreco->fetch(PDO::FETCH_ASSOC);
+                $preco = $preco['id_ingresso'];
+                
+                //calculando total
+                $sqlValor = "SELECT valor, meia FROM ingresso WHERE id = $preco";
+                $stmtValor = $obj->runQuery($sqlValor);
+                $stmtValor->execute();
+                $valor = $stmtValor->fetch(PDO::FETCH_ASSOC);
+                $valorTotal = ($valor['valor']*$qtdIngrInt)+($valor['meia']*$qtdIngrMeia);
+
+                $funcionario = $_SESSION['idFuncionario']; 
                 $stmt=$this->conn->prepare($sql);
-                $stmt->bindParam(":id_cliente",$cliente);
+                $stmt->bindParam(":id_cliente",$cliente['id']);
                 $stmt->bindParam(":id_func",$funcionario);   
                 $stmt->bindParam(":id_sessao",$sessao);                             
                 $stmt->bindParam(":data",$data);
