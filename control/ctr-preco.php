@@ -6,9 +6,8 @@
      if(isset($_POST['cadastrarPrecos'])){//seta
         $nome = $_POST['nomePreco'];
         $valor = $_POST['valor'];
-        $meia = $_POST['meia'];
 
-        if($objPreco->cadastrarPreco($nome,$valor, $meia)){
+        if($objPreco->cadastrarPreco($nome,$valor)){
             $objPreco->redirect('../acesso-adm.php#container-precos');
         }
     }
@@ -17,8 +16,7 @@
         $id =$_POST['editarPreco'];
         $nome = $_POST['nome'];
         $valor = $_POST['valor'];
-        $meia = $_POST['meia'];
-        if ($objPreco->editarPreco($nome,$valor,$meia, $id)){
+        if ($objPreco->editarPreco($nome,$valor, $id)){
             $objPreco->redirect('../acesso-adm.php#container-precos');
         }
     }

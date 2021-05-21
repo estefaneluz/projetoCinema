@@ -15,8 +15,9 @@
             return $stmt; 
         }
 
-        public function cadastrarPreco($nome,$valor, $meia){
+        public function cadastrarPreco($nome, $valor){
             try{
+                $meia = $valor/2;
                 $sql= "INSERT INTO ingresso (nome, valor, meia)
                 VALUES (:nome, :valor, :meia)";
                 $stmt=$this->conn->prepare($sql);
@@ -33,8 +34,9 @@
             }
         }
 
-        public function editarPreco($nome,$valor, $meia, $id){
+        public function editarPreco($nome, $valor, $id){
             try{
+                $meia = $valor/2;
                 $sql = "UPDATE ingresso
                 SET 
                     nome = :nome,

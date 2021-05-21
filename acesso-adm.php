@@ -554,8 +554,8 @@
                         <tr>
                             <td><?php echo($objPreco['id'])?></td>
                             <td><?php echo($objPreco['nome'])?></td>
-                            <td><?php echo($objPreco['valor'])?></td>
-                            <td><?php echo($objPreco['meia'])?></td>
+                            <td><?php echo("R$ ".$objPreco['valor'])?></td>
+                            <td><?php echo("R$ ".$objPreco['meia'])?></td>
                             <td><button type="button" class="btnEditar"
                                     data-toggle="modal" data-target="#modal-editar-precos"
                                     data-id="<?php echo($objPreco['id'])?>"
@@ -610,10 +610,6 @@
                                 <label for="valor">Valor Inteiro</label><br>
                                 <input type="text"  name="valor" id="recipient-valor"><br>
                             </div>
-                            <div>
-                                <label for="valor">Valor Meia</label><br>
-                                <input type="text"  name="meia" id="recipient-meia"><br>
-                            </div>
                             <button type="submit" class="enviar">Enviar</button>          
                     </form>
             </div>           
@@ -621,7 +617,7 @@
 
             <!-- MODAL CADASTRAR PRECOS -->
             <div class="modal" id="modal-precos">
-            <div class="modal-container">
+            <div class="modal-container" style="height: 320px">
                 <img onclick="fechar('#modal-precos')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
                 <h4>Cadastrar Preços<h4><br>
                 <form action="control/ctr-preco.php#container-precos" method="POST">
@@ -634,10 +630,6 @@
                             <label for="valor">Valor Inteiro</label><br>
                             <input type="text" placeholder="R$" id="valor" class="form-funcionario" name="valor" required><br>
                         </div>
-                        <div>
-                            <label for="meia">Valor Meia</label><br>
-                            <input type="text" placeholder="R$" id="meia" class="form-funcionario" name="meia" required><br>
-                        </div><br>
                         <button type="submit" class="enviar">Enviar</button>          
                 </form>
            </div>
@@ -1033,13 +1025,11 @@
             var recipientIdPrecos = buttonPrecos.data('id');
             var recipientNomePrecos = buttonPrecos.data('nome');
             var recipientValor = buttonPrecos.data('valor');
-            var recipientMeia = buttonPrecos.data('meia');
             
             var modal = $(this)
             modal.find('#recipient-idPreco ').val(recipientIdPrecos);
             modal.find('#recipient-nome-preco').val(recipientNomePrecos);
             modal.find('#recipient-valor').val(recipientValor);
-            modal.find('#recipient-meia').val(recipientMeia);
 
         })
     </script>
