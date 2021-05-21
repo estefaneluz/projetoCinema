@@ -307,7 +307,7 @@
                     </div>
                     <div class="compra-input">
                         <label for="cliente">Data atual</span></label>
-                        <input type="text" name="dataAtual" id="dataAtual">
+                        <input type="text" name="dataAtual" id="dataAtual" onlyread>
                     </div>
                 </div>
 
@@ -378,7 +378,7 @@
             hrFim = hrFim[0]+":"+hrFim[1];
             var d = new Date();
             var data = d.toLocaleDateString().split("/");
-            data = data[2]+"/"+data[1]+"/"+data[0];
+            data = data[2]+"-"+data[1]+"-"+data[0];
             var hora = d.toLocaleTimeString();
             var dataHora = data+" "+hora;
             // var data = dataHora[0].split("/");
