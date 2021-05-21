@@ -130,6 +130,7 @@
                         <td><?php echo ($objFilme['classIndicativa'])?></td>                                      
                         <td><button type="button" class="btnEditar"
                             data-toggle="modal" data-target="#modal-editar-filme" 
+                            data-id="<?php echo ($objFilme['id'])?>"
                             data-nome="<?php echo($objFilme['nome'])?>"
                             data-genero="<?php echo($objFilme['genero'])?>"
                             data-class-indicativa="<?php echo($objFilme['classIndicativa'])?>"
@@ -1152,10 +1153,10 @@
             var recipientidFilme= buttonEditarFilme.data('id');
             var recipientNomeFilme= buttonEditarFilme.data('nome');
             var recipientGeneroFilme= buttonEditarFilme.data('genero');
-            var recipientClassIndicativaFilme= buttonEditarFilme.data('classIndicativa');
+            var recipientClassIndicativaFilme= buttonEditarFilme.data('class-indicativa');
             var recipientDuracaoFilme= buttonEditarFilme.data('duracao');
             var recipientEstreiaFilme= buttonEditarFilme.data('estreia');
-            var recipientUltimoDiaFilme= buttonEditarFilme.data('ultimoDia');
+            var recipientUltimoDiaFilme= buttonEditarFilme.data('ultimo-dia');
 
             var modalEditarFilme= $(this)
 
