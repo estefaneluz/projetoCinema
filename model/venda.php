@@ -19,18 +19,17 @@
         public function cadastrarVenda($cliente, $sessao, $data, $qtdIngrInt, $qtdIngrMeia){
             try{
                 $qtdAssentos = $this->getQtdAssentos($sessao);
-                $ingressosVendidos = $this->getIngressosVendidos($sessao);
-                $ingressosVendidos+= ($qtdIngrInt + $qtdIngrMeia);
-                
-                if($ingressosVendidos<=$qtdAssentos){
-                    if($ingressosVendidos)
+                $ingrVendidos = $this->getIngrVendidos($sessao);
+                $ingrVendidos+= ($qtdIngrInt + $qtdIngrMeia);
+
+                if($ingrVendidos<=$qtdAssentos){
+                    $cliente = $this->getNomeCliente($cliente);
+                    $valorTotal = $this->calcularTotal($sessao, $qtdIngrInt, $qtdIngrMeia);
+                    $funcionario = $_SESSION['idFuncionario']; 
+
                     $sql= 'INSERT INTO venda(id_cliente, id_func, id_sessao, data, qtdIngrInt, qtdIngrMeia, valorTotal)
                     VALUES (:id_cliente, :id_func, :id_sessao, :data, :qtdIngrInt, :qtdIngrMeia, :valorTotal)';
                     
-                    $cliente = $this->getNomeCliente($cliente);
-                    $valorTotal = $this->calcularTotal($sessao, $qtdIngrInt, $qtdIngrMeia);
-
-                    $funcionario = $_SESSION['idFuncionario']; 
                     $stmt=$this->conn->prepare($sql);
                     $stmt->bindParam(":id_cliente",$cliente);
                     $stmt->bindParam(":id_func",$funcionario);   
@@ -40,11 +39,14 @@
                     $stmt->bindParam(":qtdIngrMeia",$qtdIngrMeia); 
                     $stmt->bindParam(":valorTotal",$valorTotal);                
                     $stmt->execute();
-                    /*muda status da sessao na hora da compra
-                    if($stmt->rowCount()>0){
+
+                    $this->updateIngrVendidos($sessao, $ingrVendidos);
+
+                    //muda status da sessao 
+                    if($ingrVendidos==$qtdAssentos){
                         $this->mudarStatus($sessao);
                         return $stmt;
-                    }*/
+                    }
                     return $stmt;
                 }
             }catch(PDOException $e){
@@ -85,13 +87,13 @@
             return $qtdAssentos;
         }
 
-        public function getIngressosVendidos($sessao){
+        public function getIngrVendidos($sessao){
             $sql = "SELECT ingressosVendidos FROM sessao WHERE id = $sessao";
             $stmt = $this->runQuery($sql);
             $stmt->execute();
-            $ingressosVendidos = $stmt->fetch(PDO::FETCH_ASSOC);
-            $ingressosVendidos = $ingressosVendidos['ingressosVendidos'];
-            return $ingressosVendidos;
+            $ingrVendidos = $stmt->fetch(PDO::FETCH_ASSOC);
+            $ingrVendidos = $ingrVendidos['ingressosVendidos'];
+            return $ingrVendidos;
         }
 
         function getNomeCliente($cpf){
@@ -101,11 +103,25 @@
             $cliente = $stmtCliente->fetch(PDO::FETCH_ASSOC);
             return $cliente['id'];
         }
+
+        public function updateIngrVendidos($sessao, $ingrVendidos){
+            try{
+                $sql = "UPDATE sessao SET ingressosVendidos=$ingrVendidos WHERE id =:id";
+                $stmt= $this->conn->prepare($sql);
+                $stmt->bindParam(":id",$sessao);
+                $stmt->execute();
+                return $stmt;
+            }catch(PDOException $e){
+                echo("Error: ".$e->getMessage());
+            }finally{
+                $this->conn=null;
+            }
+        }
         
         // função mudar Status da sessão
         public function mudarStatus($sessao){
             try{
-                $sqlStatus = "UPDATE sessao SET status ='ENCERRADA' WHERE id =:id";
+                $sqlStatus = "UPDATE sessao SET status ='ENCERRADA' WHERE id = $sessao";
                 $stmt= $this->conn->prepare($sqlStatus);
                 $stmt->bindParam(":id",$sessao);
                 $stmt->execute();

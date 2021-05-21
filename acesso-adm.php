@@ -326,7 +326,7 @@
                         <span> | </span>
                         <?php echo ($objSessao['horarioFim'])?>
                         </td>
-                        <td><?php echo($objSessao['status']) ?></td>                                  
+                        <td><?php echo($objSessao['status']) ?></td>                             
                         <td><button  type="button" class="btnEditar" id="btnEditarSessao"
                         data-toggle="modal" data-target="#modal-editar-sessao"
                         data-id="<?php print $objSessao['id']?>"
