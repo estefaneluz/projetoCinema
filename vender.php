@@ -64,8 +64,8 @@
             <h2>Realizar Venda</h2>
             <button onclick="sumirContainer()" type="button" class="btnAdicionar" style="width: 150px;">Relatório</button>
         </div>
-        <div class="inputPesquisar">
-            <input type="text"  class="pesquisar-sessao" id="pesquisarSessao" placeholder="Pesquisar...">
+        <div class="pesquisar">
+            <input type="text"  class="inputPesquisar" id="pesquisarSessao" placeholder="Pesquisar...">
         </div>
         <table class="tabela">
             <thead>
@@ -188,6 +188,9 @@
         <div class="header-gerenciar">
             <h2>Vendas Realizadas</h2>
             <button onclick="sumirContainer()" type="button" class="btnAdicionar" style="width: 150px;">Vender</button>
+        </div>
+        <div class="pesquisar">
+            <input type="text"  class="inputPesquisar" id="pesquisarVenda" placeholder="Pesquisar...">
         </div>
         <table class="tabela">
             <thead>
@@ -362,7 +365,16 @@
             });
             });
     </script> 
-
+    <script>
+            $(document).ready(function(){
+            $("#pesquisarVenda").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#tabelaRelatorio tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+            });
+    </script>  
     <script>
         $("#modal-vender").on('show.bs.modal', function(event){
             var button = $(event.relatedTarget);
