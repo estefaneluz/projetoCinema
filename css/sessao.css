@@ -1,12 +1,12 @@
 /* PÁGINA DE VENDAS */
 
-.inputPesquisar{
+.pesquisar{
     display: flex;
     align-items: center;
     justify-content: center;
 }
   
-.pesquisar-sessao{
+.inputPesquisar{
     border: 1px solid #14161d;;
     box-shadow: inset 0px 2px 3px rgba(23, 22, 37, 0.42);
     width: 100%;
@@ -18,7 +18,7 @@
     color: white;
 }
 
-.pesquisar-sessao::placeholder{
+.inputPesquisar::placeholder{
     color: white;
     font-size: 14px;
 }
