@@ -274,7 +274,7 @@
                     </div>
 
                     <div class="compra-input">
-                        <label for="funcionario">Funcionario</label>
+                        <label for="funcionario">Funcionário</label>
                         <input type="text" id="nome-funcionario" name="funcionario" readonly>
                     </div>
 
