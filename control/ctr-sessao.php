@@ -8,7 +8,6 @@
         $ingresso = $_POST['ingresso'];
         $data = $_POST['data'];        
         $horarioInicio = $_POST['horarioInicio'];
-        $horarioFim = $_POST['horarioInicio'];
 
         if($objSessao->cadastrarSessao($filme, $sala, $ingresso, $data, $horarioInicio)){
             $objSessao->redirect('../acesso-adm.php');
