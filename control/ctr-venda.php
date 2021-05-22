@@ -2,15 +2,16 @@
     require_once '../model/venda.php';
     $objVenda = new Venda();
     
-    if(isset($_POST['idSessao'])){
-        $cliente = $_POST['cpfCliente']; 
-        $sessao = $_POST['idSessao']; 
-        $data = $_POST['dataAtual'];        
-        $qtdInt = $_POST['qtdInteiro']; 
-        $qtdMeia = $_POST['qtdMeia']; 
+    if(isset($_GET['idSessao'])){
+        $cliente = $_GET['cpfCliente']; 
+        $sessao = $_GET['idSessao']; 
+        $data = $_GET['dataAtual'];        
+        $qtdInt = $_GET['qtdInteiro']; 
+        $qtdMeia = $_GET['qtdMeia']; 
 
         if($objVenda->cadastrarVenda($cliente, $sessao, $data, $qtdInt, $qtdMeia)){
-            $objVenda->redirect('../sessao.html');
+            $nomeCliente = $objVenda->getIdCliente($cliente);
+            $objVenda->redirect("../sessao.php?sessao=$sessao&qtdInt=$qtdInt&qtdMeia=$qtdMeia&cliente=$nomeCliente");
         } else {
             $objVenda->redirect('../vender.php');
         }

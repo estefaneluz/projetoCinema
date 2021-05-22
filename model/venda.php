@@ -23,7 +23,7 @@
                 $ingrVendidos+= $qtdIngrInt + $qtdIngrMeia;
 
                 if($ingrVendidos<=$qtdAssentos){
-                    $cliente = $this->getNomeCliente($cliente);
+                    $cliente = $this->getIdCliente($cliente);
                     $valorTotal = $this->calcularTotal($sessao, $qtdIngrInt, $qtdIngrMeia);
                     $funcionario = $_SESSION['idFuncionario']; 
                     $id_sessao = $sessao;
@@ -92,9 +92,10 @@
             return $ingrVendidos;
         }
 
-        function getNomeCliente($cpf){
+        function getIdCliente($cpf){
             $sqlCliente = "SELECT id FROM cliente WHERE cpf = $cpf";
-            $stmtCliente = $this->runQuery($sqlCliente);
+            $obj = new Venda();
+            $stmtCliente = $obj->runQuery($sqlCliente);
             $stmtCliente->execute();
             $cliente = $stmtCliente->fetch(PDO::FETCH_ASSOC);
             return $cliente['id'];

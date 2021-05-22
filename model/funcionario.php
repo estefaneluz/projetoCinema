@@ -73,7 +73,6 @@
                 $stmt-> bindParam(":senha",$senha);
                 $stmt-> bindParam(":id",$id);
                 $stmt->execute();
-                
                 return $stmt;
             }catch(PDOException $e){
                 echo ("Error: ".$e->getMessage());

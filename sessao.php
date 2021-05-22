@@ -1,3 +1,9 @@
+<?php
+    require './model/conexao.php';
+    if(isset($_SESSION['idFuncionario']) && !empty($_SESSION['idFuncionario'])):
+        require_once 'model/sessao.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -35,14 +41,78 @@
     </header>
 
     <main class="sessao-container">
-            <p>Filme: <span id="filme">Black Widow</span></p>
+            <p>Filme: 
+                <span id="filme"><?php
+                $id = $_GET['sessao'];
+                $sqlId = "SELECT id_filme FROM sessao WHERE id = $id";
+                $obj = new Sessao();
+                $stmtId = $obj->runQuery($sqlId);
+                $stmtId->execute();
+                $id = $stmtId->fetch(PDO::FETCH_ASSOC); 
+                $id = $id['id_filme'];
+
+                $sqlFilme = "SELECT nome FROM filme WHERE id = $id";
+                $stmtFilme = $obj->runQuery($sqlFilme);
+                $stmtFilme->execute();
+                $resultado = $stmtFilme->fetch(PDO::FETCH_ASSOC); 
+                echo ($resultado['nome']);
+                ?></span>
+            </p>
             <div class="sessao-info">
-                <p>Qtd. Ingressos <span class="mini">(Inteiro)</span>: <span id="qtdInteiro">000</span></p>
-                <p>Qtd. Ingressos <span class="mini">(Meia)</span>: <span id="qtdMeia">000</span></p>
-                <p>Data: <span id="data">11/04/2021</span></p>
-                <p>Horário: <span id="horario">21:00</span></p>
-                <p>Sala: <span id="sala">A</span> </p>
-                <p>Total: R$ <span id="total">100</span> </p>
+                <p>Qtd. Ingressos <span class="mini">(Inteiro)</span>: 
+                <span id="qtdInteiro"><?php
+                    echo($_GET['qtdInt']);
+                ?></span></p>
+                <p>Qtd. Ingressos <span class="mini">(Meia)</span>: <span id="qtdMeia"><?php
+                    echo($_GET['qtdMeia']);
+                ?></span></p>
+                <p>Data: 
+                    <span id="data"><?php
+                    $id = $_GET['sessao'];
+                    $sql = "SELECT data FROM sessao WHERE id = $id";
+                    $obj = new Sessao();
+                    $stmt = $obj->runQuery($sql);
+                    $stmt->execute();
+                    $resultado = $stmt->fetch(PDO::FETCH_ASSOC); 
+                    echo date('d/m/Y', strtotime($resultado['data']));
+                    ?></span>
+                </p>
+                <p>Horário: <span id="horario"><?php
+                    $id = $_GET['sessao'];
+                    $sql = "SELECT horarioInicio FROM sessao WHERE id = $id";
+                    $obj = new Sessao();
+                    $stmt = $obj->runQuery($sql);
+                    $stmt->execute();
+                    $resultado = $stmt->fetch(PDO::FETCH_ASSOC); 
+                    echo date('H:i', strtotime($resultado['horarioInicio']));
+                ?></span>
+                </p>
+                <p>Sala: <span id="sala"><?php
+                $id = $_GET['sessao'];
+                $sql = "SELECT id_sala FROM sessao WHERE id = $id";
+                $obj = new Sessao();
+                $stmt = $obj->runQuery($sql);
+                $stmt->execute();
+                $id = $stmt->fetch(PDO::FETCH_ASSOC); 
+                $id = $id['id_sala'];
+
+                $sqlSala = "SELECT nome FROM sala WHERE id = $id";
+                $stmtSala = $obj->runQuery($sqlSala);
+                $stmtSala->execute();
+                $resultado = $stmtSala->fetch(PDO::FETCH_ASSOC); 
+                echo ($resultado['nome']);
+                ?>
+                </span> </p>
+                <p>Total: R$ <span id="total"><?php
+                    $id = $_GET['cliente'];
+                    $sessao = $_GET['sessao'];
+                    $sqlTotal = "SELECT valorTotal FROM venda WHERE id_cliente = $id AND id_sessao = $sessao";
+                    $obj = new Sessao();
+                    $stmtTotal = $obj->runQuery($sqlTotal);
+                    $stmtTotal->execute();
+                    $valorTotal = $stmtTotal->fetch(PDO::FETCH_ASSOC); 
+                    echo ($valorTotal['valorTotal']);
+                ?></span></p>
             </div>
 
             <div class="section-controle">
@@ -60,7 +130,9 @@
                 <div class="section-confirmar">
                     <div id="assentos-selecionados">
                         <p>Qtd. de Assentos <br> Selecionados:</p>
-                        <div>2/3</div>
+                        <div>2/<?php
+                            echo($_GET['qtdInt']+$_GET['qtdMeia']);
+                        ?></div>
                     </div>
     
                     <button class="btn-amarelo">Confirmar</button>
@@ -105,3 +177,7 @@
 </body>
 
 </html>
+
+<?php
+    else: header("Location: ../projetoCinema/index.html"); endif;
+?>
