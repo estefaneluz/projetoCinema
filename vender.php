@@ -80,7 +80,7 @@
             </thead>
             <tbody id="tabelaSessao">
             <?php
-                $sql = "SELECT * FROM sessao";
+                $sql = "SELECT * FROM sessao WHERE status = 'LIVRE'";
                 $stmt = $objSessao->runQuery($sql);
                 $stmt->execute();
                 while($objSessao = $stmt->fetch(PDO::FETCH_ASSOC)){

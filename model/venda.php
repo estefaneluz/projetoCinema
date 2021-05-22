@@ -20,13 +20,13 @@
             try{
                 $qtdAssentos = $this->getQtdAssentos($sessao);
                 $ingrVendidos = $this->getIngrVendidos($sessao);
-                $ingrVendidos+= ($qtdIngrInt + $qtdIngrMeia);
+                $ingrVendidos+= $qtdIngrInt + $qtdIngrMeia;
 
                 if($ingrVendidos<=$qtdAssentos){
                     $cliente = $this->getNomeCliente($cliente);
                     $valorTotal = $this->calcularTotal($sessao, $qtdIngrInt, $qtdIngrMeia);
                     $funcionario = $_SESSION['idFuncionario']; 
-
+                    $id_sessao = $sessao;
                     $sql= 'INSERT INTO venda(id_cliente, id_func, id_sessao, data, qtdIngrInt, qtdIngrMeia, valorTotal)
                     VALUES (:id_cliente, :id_func, :id_sessao, :data, :qtdIngrInt, :qtdIngrMeia, :valorTotal)';
                     
@@ -40,13 +40,9 @@
                     $stmt->bindParam(":valorTotal",$valorTotal);                
                     $stmt->execute();
 
-                    $this->updateIngrVendidos($sessao, $ingrVendidos);
-
-                    //muda status da sessao 
-                    // if($ingrVendidos==$qtdAssentos){
-                    //     $this->mudarStatus($sessao);
-                    //     return $stmt;
-                    // }
+                    if($ingrVendidos==$qtdAssentos){$this->mudarStatus($sessao);}
+                    $this->updateIngrVendidos($id_sessao, $ingrVendidos);
+                    
                     return $stmt;
                 }
             }catch(PDOException $e){
@@ -107,7 +103,8 @@
         public function updateIngrVendidos($sessao, $ingrVendidos){
             try{
                 $sql = "UPDATE sessao SET ingressosVendidos=$ingrVendidos WHERE id =:id";
-                $stmt= $this->conn->prepare($sql);
+                $obj = new Venda();
+                $stmt= $obj->conn->prepare($sql);
                 $stmt->bindParam(":id",$sessao);
                 $stmt->execute();
                 return $stmt;
@@ -123,7 +120,6 @@
             try{
                 $sqlStatus = "UPDATE sessao SET status ='ENCERRADA' WHERE id = $sessao";
                 $stmt= $this->conn->prepare($sqlStatus);
-                // $stmt->bindParam(":id",$sessao);
                 $stmt->execute();
                 return $stmt;
             }catch(PDOException $e){
