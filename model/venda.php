@@ -43,10 +43,10 @@
                     $this->updateIngrVendidos($sessao, $ingrVendidos);
 
                     //muda status da sessao 
-                    if($ingrVendidos==$qtdAssentos){
-                        $this->mudarStatus($sessao);
-                        return $stmt;
-                    }
+                    // if($ingrVendidos==$qtdAssentos){
+                    //     $this->mudarStatus($sessao);
+                    //     return $stmt;
+                    // }
                     return $stmt;
                 }
             }catch(PDOException $e){
@@ -123,7 +123,7 @@
             try{
                 $sqlStatus = "UPDATE sessao SET status ='ENCERRADA' WHERE id = $sessao";
                 $stmt= $this->conn->prepare($sqlStatus);
-                $stmt->bindParam(":id",$sessao);
+                // $stmt->bindParam(":id",$sessao);
                 $stmt->execute();
                 return $stmt;
             }catch(PDOException $e){

@@ -11,6 +11,8 @@
 
         if($objVenda->cadastrarVenda($cliente, $sessao, $data, $qtdInt, $qtdMeia)){
             $objVenda->redirect('../sessao.html');
+        } else {
+            $objVenda->redirect('../vender.php');
         }
     }
 
