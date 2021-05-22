@@ -106,7 +106,27 @@
     width: 80px;
 }
 
+.sala-cinema{
+    display: flex;
+    flex-direction: column;
+}
+
 .tela {
-    width: 800px;
-    align-self: flex-end;
+    width: 100%;
+    align-self: center;
+}
+
+/* ASSENTOS */
+
+.assentos {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 40px 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.assentos li img {
+    width: 43px;
+    height: 43px;
 }

@@ -94,9 +94,9 @@
                 $stmt = $obj->runQuery($sql);
                 $stmt->execute();
                 $id = $stmt->fetch(PDO::FETCH_ASSOC); 
-                $id = $id['id_sala'];
+                $idSala = $id['id_sala'];
 
-                $sqlSala = "SELECT nome FROM sala WHERE id = $id";
+                $sqlSala = "SELECT nome FROM sala WHERE id = $idSala";
                 $stmtSala = $obj->runQuery($sqlSala);
                 $stmtSala->execute();
                 $resultado = $stmtSala->fetch(PDO::FETCH_ASSOC); 
@@ -123,7 +123,23 @@
                     <button class="btn-vermelho">Cancelar</button>
                 </div>
     
-                <div>
+                <div class="sala-cinema">
+                    <ul class="assentos"><?php 
+                        $sql = "SELECT qtdAssentos FROM sala WHERE id = $idSala";
+                        $obj = new Sessao();
+                        $stmt = $obj->runQuery($sql);
+                        $stmt->execute();
+                        $qtd = $stmt->fetch(PDO::FETCH_ASSOC); 
+                        $qtd = $qtd['qtdAssentos'];
+                        $qtd;
+                        for($i = 1;$i<=$qtd;$i++){?>
+                            <li>
+                                <img src="./img/couch.svg" alt="icone dos assentos">
+                            </li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
                     <div class="tela">Tela do Cinema</div>
                 </div>
     

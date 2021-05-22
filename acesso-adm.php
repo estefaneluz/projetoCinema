@@ -646,7 +646,7 @@
                 </div>
                 <div>
                     <label for="qtdAssentos">Qtd. de Assentos</label><br>
-                    <input type="number" id="qtdAssentos" class="form-filmes" name="qtdAssentos"><br>
+                    <input type="number" id="qtdAssentos" class="form-filmes" name="qtdAssentos" min='75';  max='100'><br>
                 </div>
                 <button type="submit" class="btnAdicionar" >Adicionar</button>
             </form>
@@ -711,7 +711,7 @@
                         
                         <div>
                             <label for="txtQtdAssentos">Quantidade de Assentos</label><br>
-                            <input type="number"  class="form-salas" name="txtQtdAssentos" id="recipient-qtdAssentos"><br>
+                            <input type="number" min='75';  max='100' class="form-salas" name="txtQtdAssentos" id="recipient-qtdAssentos"><br>
                         </div>
                         <button type="submit" class="enviar">Enviar</button>          
                 </form>
