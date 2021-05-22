@@ -15,25 +15,4 @@
             $objVenda->redirect('../vender.php');
         }
     }
-
-    // if(isset($_POST['editarSessao'])){
-    //     $id = $_POST['editarSessao'];
-    //     $filme = $_POST['filme'];
-    //     $sala = $_POST['sala'];
-    //     $data = $_POST['data'];        
-    //     $horario = $_POST['horario'];
-    //     if($objSessao->editarSessao($filme,$sala, $data, $horario, $id)){
-    //         $objSessao->redirect('../acesso-adm.php');
-    //     }
-    // }
-
-
-    // if(isset($_POST['deletarSessao'])){
-    //     $idSessao = $_POST['deletarSessao'];
-    //     if($objSessao->deletarSessao($idSessao)){
-    //         $objSessao->redirect('../acesso-adm.php');
-    //     }
-    // }
-    
-
 ?>

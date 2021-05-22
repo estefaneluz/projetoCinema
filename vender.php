@@ -173,7 +173,13 @@
                         ?>"
                         data-hr-inicio="<?php echo($objSessao['horarioInicio']);?>"
                         data-hr-fim="<?php echo($objSessao['horarioFim']);?>"
-                        >
+                        data-assentos="<?php
+                            $obj = new Venda();
+                            $qtdAssentos = $obj->getQtdAssentos($objSessao['id']);
+                            $ingrVendidos = $obj->getIngrVendidos($objSessao['id']);
+                            $assentosDisponiveis = $qtdAssentos - $ingrVendidos;
+                            echo ($assentosDisponiveis); 
+                        ?>">
                         Vender</button>
                         </td> 
                     </tr>                    
@@ -385,6 +391,8 @@
             var recipientValor = button.data('valor');
             var recipientMeia = button.data('meia');
             var recipientSala = button.data('sala');
+            var recipientAssentos = button.data('assentos');
+
             var hrInicio = button.data('hr-inicio').split(":");
             hrInicio = hrInicio[0]+":"+hrInicio[1];
             var hrFim = button.data('hr-fim').split(":");
@@ -394,10 +402,6 @@
             data = data[2]+"-"+data[1]+"-"+data[0];
             var hora = d.toLocaleTimeString();
             var dataHora = data+" "+hora;
-            // var data = dataHora[0].split("/");
-            // var hora = dataHora[1];
-            // dataHora = (data[2]+"-"+data[1]+"-"+data[0]+" "+hora);
-            // var dataHora = "2021-05-20 19:00:00"; 
 
             var modal = $(this)
             modal.find('#recipient-sessao').val(recipientIdSessao);
@@ -409,7 +413,7 @@
                 recipientSala+" das "
                 +hrInicio+" às "+hrFim);
             modal.find('#dataAtual').val(dataHora);
-
+            modal.find('#assentos').val(recipientAssentos);
 
         })
     </script>
