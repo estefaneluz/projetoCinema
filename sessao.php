@@ -103,7 +103,9 @@
                 <p>Total: R$ <span id="total"><?php
                     $id = $_GET['cliente'];
                     $sessao = $_GET['sessao'];
-                    $sqlTotal = "SELECT valorTotal FROM venda WHERE id_cliente = $id AND id_sessao = $sessao ORDER BY id DESC LIMIT 1";
+                    $qtdInt = $_GET['qtdInt'];
+                    $qtdMeia = $_GET['qtdMeia'];
+                    $sqlTotal = "SELECT valorTotal FROM venda WHERE id_cliente = $id AND id_sessao = $sessao AND qtdIngrInt = $qtdInt AND qtdIngrMeia = $qtdMeia ORDER BY id DESC LIMIT 1";
                     $obj = new Sessao();
                     $stmtTotal = $obj->runQuery($sqlTotal);
                     $stmtTotal->execute();
