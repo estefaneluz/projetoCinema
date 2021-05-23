@@ -10,8 +10,24 @@
         $qtdMeia = $_GET['qtdMeia']; 
 
         if($objVenda->cadastrarVenda($cliente, $sessao, $data, $qtdInt, $qtdMeia)){
-            $nomeCliente = $objVenda->getIdCliente($cliente);
-            $objVenda->redirect("../sessao.php?sessao=$sessao&qtdInt=$qtdInt&qtdMeia=$qtdMeia&cliente=$nomeCliente");
+            $idCliente = $objVenda->getIdCliente($cliente);
+            $objVenda->redirect("../sessao.php?sessao=$sessao&qtdInt=$qtdInt&qtdMeia=$qtdMeia&cliente=$idCliente");
+        } else {
+            $objVenda->redirect('../vender.php');
+        }
+    }
+
+    if(isset($_GET['idVenda'])){
+        $id = $_GET['idVenda'];
+        $sessao = $_GET['idSessao'];
+        $qtdInt = $_GET['qtdInteiro'];
+        $qtdMeia = $_GET['qtdMeia'];
+        $data = $_GET['dataAtual'];   
+        $cliente = $_GET['cliente']; 
+        
+        if($objVenda->editarVenda($sessao, $qtdInt, $qtdMeia, $data, $id)){
+            $idCliente = $objVenda->getIdCliente($cliente);
+            $objVenda->redirect("../sessao.php?sessao=$sessao&qtdInt=$qtdInt&qtdMeia=$qtdMeia&cliente=$idCliente");
         } else {
             $objVenda->redirect('../vender.php');
         }

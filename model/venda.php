@@ -53,6 +53,47 @@
 
         }
 
+        public function editarVenda($sessao, $qtdInt, $qtdMeia, $data, $id){
+            try{
+                
+                $funcionario = $_SESSION['idFuncionario']; 
+                $valorTotal = $this->calcularTotal($sessao, $qtdInt, $qtdMeia);
+                $qtdAssentos = $this->getQtdAssentos($sessao);
+                $ingrVendidos = $this->getIngrVendidos($sessao);
+                $ingrAntigos = $this->getQtdIngressos($id);
+                $ingrVendidos -= $ingrAntigos; 
+                $ingrVendidos += $qtdInt + $qtdMeia;
+                
+                if($ingrVendidos<=$qtdAssentos){
+                $sql = "UPDATE venda
+                SET 
+                    qtdIngrInt = :qtdIngrInt,
+                    qtdIngrMeia = :qtdIngrMeia,
+                    data = :data,
+                    valorTotal = :valorTotal,
+                    id_func = :id_func
+                    WHERE id = :id";
+                    $stmt = $this->conn->prepare($sql);
+                    $stmt-> bindParam(":qtdIngrInt",$qtdInt);
+                    $stmt-> bindParam(":qtdIngrMeia",$qtdMeia);
+                    $stmt-> bindParam(":data",$data);
+                    $stmt-> bindParam(":id_func",$funcionario);
+                    $stmt-> bindParam(":valorTotal",$valorTotal);
+                    $stmt-> bindParam(":id",$id);
+                    $stmt->execute();
+
+                    if($ingrVendidos==$qtdAssentos){$this->mudarStatus($sessao);}
+                    $this->updateIngrVendidos($sessao, $ingrVendidos);
+             
+                    return $stmt;
+                }
+         }catch(PDOException $e){
+             echo ("Error: ".$e->getMessage());
+         }finally{
+             $this->conn = null;
+         } 
+        }
+
         public function calcularTotal($sessao, $qtdIngrInt, $qtdIngrMeia){
             $sqlPreco = "SELECT id_ingresso FROM sessao WHERE id = $sessao";
             $stmtPreco = $this->runQuery($sqlPreco);
@@ -90,6 +131,14 @@
             $ingrVendidos = $stmt->fetch(PDO::FETCH_ASSOC);
             $ingrVendidos = $ingrVendidos['ingressosVendidos'];
             return $ingrVendidos;
+        }
+
+        public function getQtdIngressos($venda){
+            $sql = "SELECT qtdIngrInt, qtdIngrMeia FROM venda WHERE id = $venda";
+            $stmt = $this->runQuery($sql);
+            $stmt->execute();
+            $qtdIngr = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $qtdIngr['qtdIngrInt']+$qtdIngr['qtdIngrMeia'];
         }
 
         function getIdCliente($cpf){

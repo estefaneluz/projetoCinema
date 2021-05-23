@@ -366,7 +366,7 @@
         <div class="modal-container">
             <img onclick="fechar('#modal-vender')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
             <h3>Vender Ingresso</h3>
-            <form action="./control/ctr-venda.php" method="POST">
+            <form action="./control/ctr-venda.php" method="GET">
                 <input type="hidden" name="idSessao" id="recipient-sessao">
                 <div class="compra-left">
                     <div class="compra-input">
@@ -484,7 +484,7 @@
 
                     <div class="compra-input">
                         <label for="cliente">Nome <span>Cliente</span></label>
-                        <input type="text" id="editar-cliente" readonly>
+                        <input type="text" id="editar-cliente" name="cliente" readonly>
                     </div>
                     <div class="compra-input">
                         <label for="cliente">Data atual</span></label>
