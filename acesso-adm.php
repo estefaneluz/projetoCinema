@@ -90,7 +90,7 @@
                     <li><a href="#container-sessoes">Sessões</a></li>
                     <li><a href="#container-precos">Preços</a></li>
                     <li><a href="#cadastro-salas">Salas</a></li>
-                    <li><a href="#container-funcionarios">Funcionários</li>
+                    <li><a href="#container-funcionarios">Funcionarios</li>
                     <li><a href="#container-clientes">Clientes</a></li>
                     <!-- <li><a href="#cadastro-filmes">Vendas</a></li> -->
                 </ul>
