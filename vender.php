@@ -256,6 +256,7 @@
                         data-target="#modal-editar"
                         data-venda="<?php print $objVenda['id']?>"
                         data-sessao="<?php print $objVenda['id_sessao']?>"
+                        data-id-cliente="<?php print $objVenda['id_cliente'];?>"
                         data-qtd-int="<?php print $objVenda['qtdIngrInt']?>"
                         data-qtd-meia="<?php print $objVenda['qtdIngrMeia']?>"
                         data-filme="<?php
@@ -437,6 +438,8 @@
             <form action="./control/ctr-venda.php" method="GET">
                 <input type="hidden" name="idVenda" id="editar-venda">
                 <input type="hidden" name="idSessao" id="editar-sessao">
+                <input type="hidden" name="idCliente" id="id-cliente">
+
                 <div class="compra-left">
                     <div class="compra-input">
                         <label for="filme">Filme</label>
@@ -605,6 +608,8 @@
             var recipientAssentos= button.data('assentos');
             var recipientQtdInt= button.data('qtd-int');
             var recipientQtdMeia= button.data('qtd-meia');
+            var recipientIdCliente= button.data('id-cliente');
+
 
             var d = new Date();
             var data = d.toLocaleDateString().split("/");
@@ -626,6 +631,8 @@
             modal.find("#editar-qtd-int").val(recipientQtdInt);
             modal.find("#editar-qtd-meia").val(recipientQtdMeia);
             modal.find("#editar-data").val(dataHora);
+            modal.find("#id-cliente").val(recipientIdCliente);
+
 
         })
     </script>
