@@ -206,6 +206,7 @@
                     <th>Cliente</th> 
                     <th>Qtd. Ingressos</th>                       
                     <th>Total</th>
+                    <th>Editar</th>
                 </tr>
             </thead>
             <tbody id="tabelaRelatorio">
@@ -215,7 +216,7 @@
                 $stmt->execute();
                 while($objVenda = $stmt->fetch(PDO::FETCH_ASSOC)){
                 ?>       
-                <tr>
+                    <tr>
                     <td>
                         <?php
                             echo ($objVenda['data']);
@@ -243,16 +244,118 @@
                             echo ($resultado['nome']);
                         ?>
                     </td>
-                        <td>
+                    <td>
                         <?php 
                             echo ($objVenda['qtdIngrInt']+$objVenda['qtdIngrMeia']);
                         ?>
-                        </td> 
-                        <td><?php echo ("R$ ".$objVenda['valorTotal'])?></td>                        
+                    </td> 
+                    <td><?php echo ("R$ ".$objVenda['valorTotal'])?></td>                        
+                    <td>
+                        <button type="button" class="btnEditar"
+                        data-toggle="modal"
+                        data-target="#modal-editar"
+                        data-venda="<?php print $objVenda['id']?>"
+                        data-sessao="<?php print $objVenda['id_sessao']?>"
+                        data-qtd-int="<?php print $objVenda['qtdIngrInt']?>"
+                        data-qtd-meia="<?php print $objVenda['qtdIngrMeia']?>"
+                        data-filme="<?php
+                            $id = $objVenda['id_sessao'];
+                            $sqlFilme = "SELECT id_filme FROM sessao WHERE id = $id";
+                            $obj = new Sessao();
+                            $stmtFilme = $obj->runQuery($sqlFilme);
+                            $stmtFilme->execute();
+                            $resultado = $stmtFilme->fetch(PDO::FETCH_ASSOC);
+
+                            $id = $resultado['id_filme']; 
+                            $sqlFilme = "SELECT nome FROM filme WHERE id = $id";
+                            $obj = new Sessao();
+                            $stmtFilme = $obj->runQuery($sqlFilme);
+                            $stmtFilme->execute();
+                            $resultado = $stmtFilme->fetch(PDO::FETCH_ASSOC);
+                            echo ($resultado['nome']);
+                        ?>"
+                        data-valor-int="<?php
+                            $id = $objVenda['id_sessao'];
+                            $sqlPreco = "SELECT id_ingresso FROM sessao WHERE id = $id";
+                            $obj = new Sessao();
+                            $stmtPreco = $obj->runQuery($sqlPreco);
+                            $stmtPreco->execute();
+                            $resultado = $stmtPreco->fetch(PDO::FETCH_ASSOC);
+
+                            $id = $resultado['id_ingresso']; 
+                            $sqlPreco = "SELECT valor, meia FROM ingresso WHERE id = $id";
+                            $obj = new Sessao();
+                            $stmtPreco = $obj->runQuery($sqlPreco);
+                            $stmtPreco->execute();
+                            $resultado = $stmtPreco->fetch(PDO::FETCH_ASSOC);
+                            echo ("R$ ".$resultado['valor']);
+                        ?>"
+                        data-valor-meia="<?php
+                            echo ("R$ ".$resultado['meia']);
+                        ?>"
+                        data-sala="<?php
+                            $sqlSala= "SELECT id_sala FROM sessao WHERE id = $id";
+                            $obj = new Sessao();
+                            $stmtSala= $obj->runQuery($sqlSala);
+                            $stmtSala->execute();
+                            $resultado = $stmtSala->fetch(PDO::FETCH_ASSOC);
+
+                            $id = $resultado['id_sala'];
+                            $sqlSala= "SELECT nome, qtdAssentos FROM sala WHERE id = $id";
+                            $obj = new Sessao();
+                            $stmtSala= $obj->runQuery($sqlSala);
+                            $stmtSala->execute();
+                            $resultado = $stmtSala->fetch(PDO::FETCH_ASSOC);
+
+                            echo ($resultado['nome']);
+                        ?>"
+                        data-assentos="<?php
+                            $qtdAssentos = $resultado['qtdAssentos'];
+                            $id = $objVenda['id_sessao'];
+                            $sqlSala= "SELECT ingressosVendidos FROM sessao WHERE id = $id";
+                            $obj = new Sessao();
+                            $stmtSala= $obj->runQuery($sqlSala);
+                            $stmtSala->execute();
+                            $resultado = $stmtSala->fetch(PDO::FETCH_ASSOC);
+                            echo($qtdAssentos-$resultado['ingressosVendidos']);
+                        ?>"
+                        data-hr-inicio="<?php
+                            $id = $objVenda['id_sessao'];
+                            $sqlHr = "SELECT horarioInicio, horarioFim FROM sessao WHERE id = $id";
+                            $obj = new Sessao();
+                            $stmtHr = $obj->runQuery($sqlHr);
+                            $stmtHr->execute();
+                            $resultado = $stmtHr->fetch(PDO::FETCH_ASSOC);
+                            echo date('H:i', strtotime($resultado['horarioInicio']));
+                        ?>"
+                        data-hr-fim="<?php
+                            echo date('H:i', strtotime($resultado['horarioFim']));
+                        ?>"
+                        data-funcionario="<?php
+                            $id = $objVenda['id_func'];
+                            $sqlNome = "SELECT nome FROM funcionario WHERE id = $id";
+                            $obj = new Sessao();
+                            $stmtNome = $obj->runQuery($sqlNome);
+                            $stmtNome->execute();
+                            $resultado = $stmtNome->fetch(PDO::FETCH_ASSOC);
+                            echo($resultado['nome']);
+                        ?>"
+                        data-cliente="<?php
+                            $id = $objVenda['id_cliente'];
+                            $sqlCliente = "SELECT nome FROM cliente WHERE id = $id";
+                            $obj = new Sessao();
+                            $stmtCliente = $obj->runQuery($sqlCliente);
+                            $stmtCliente->execute();
+                            $resultado = $stmtCliente->fetch(PDO::FETCH_ASSOC);
+                            echo($resultado['nome']);
+                        ?>"
+                        >
+                        Editar</button>
+                    </td> 
                     </tr>                    
-                    <?php   
-                    }
-                    ?>
+                <?php   
+                }
+                ?>
             </tbody>
         </table>
     </section>
@@ -263,7 +366,7 @@
         <div class="modal-container">
             <img onclick="fechar('#modal-vender')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
             <h3>Vender Ingresso</h3>
-            <form action="./control/ctr-venda.php" method="GET"><!--Adicionado pra enviar os dados de login pra fazer a conexão-->
+            <form action="./control/ctr-venda.php" method="POST">
                 <input type="hidden" name="idSessao" id="recipient-sessao">
                 <div class="compra-left">
                     <div class="compra-input">
@@ -316,17 +419,84 @@
                     </div>
                     <div class="compra-input">
                         <label for="cliente">Data atual</span></label>
-                        <input type="text" name="dataAtual" id="dataAtual" onlyread>
+                        <input type="text" name="dataAtual" id="dataAtual" readonly>
                     </div>
                     <div class="forget-enviar"><br>
                     <button class="enviar" type="submit" value="Enviar">Próximo</button>
                     </div>
                 </div>
-
             </form>
-
         </div>
-    </div>
+        </div>
+
+        <!-- Modal editar -->
+        <div class="modal" id="modal-editar">
+        <div class="modal-container">
+            <img onclick="fechar('#modal-editar')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
+            <h3>Editar Ingresso</h3>
+            <form action="./control/ctr-venda.php" method="GET">
+                <input type="hidden" name="idVenda" id="editar-venda">
+                <input type="hidden" name="idSessao" id="editar-sessao">
+                <div class="compra-left">
+                    <div class="compra-input">
+                        <label for="filme">Filme</label>
+                        <input type="text" name="filme" id="editar-filme" readonly>
+                    </div>
+
+                    <div class="compra-valor">
+                        <div class="compra-input">
+                            <label for="valorInteiro">Valor <br><span>(Inteiro)</span></label>
+                            <input type="text" name="valorInteiro" id="editar-valor-int" readonly>
+                        </div>
+                        <div class="compra-input">
+                            <label for="valorMeia">Valor <br><span>(Meia)</span></label>
+                            <input type="text" name="valorMeia" id="editar-valor-meia" readonly>
+                        </div>
+                    </div>
+
+                    <div class="compra-input">
+                        <label for="funcionario">Funcionário</label>
+                        <input type="text" id="editar-funcionario" name="funcionario" readonly>
+                    </div>
+
+                    <div class="compra-input">
+                        <label for="qtdInteiro">Assentos <br> Disponíveis</label>
+                        <input type="number" name="qtdAssentos" id="editar-assentos" readonly>
+                    </div>
+                </div>
+
+                <div class="compra-right">
+                    <div class="compra-input">
+                        <label for="filme">Sala e Horário</label>
+                        <input type="text" name="sessao" id="editar-sala-hr" readonly>
+                    </div>
+
+                    <div class="compra-qtd">
+                        <div class="compra-input">
+                            <label for="qtdInteiro">Qtd. ingr. <span>(Inteiro)</span></label>
+                            <input type="number" name="qtdInteiro" min="0" id="editar-qtd-int">
+                        </div>
+                        <div class="compra-input">
+                            <label for="qtdMeia">Qtd. ingr. <br><span>(Meia)</span></label>
+                            <input type="number" name="qtdMeia" min="0" id="editar-qtd-meia">
+                        </div>
+                    </div>
+
+                    <div class="compra-input">
+                        <label for="cliente">Nome <span>Cliente</span></label>
+                        <input type="text" id="editar-cliente" readonly>
+                    </div>
+                    <div class="compra-input">
+                        <label for="cliente">Data atual</span></label>
+                        <input type="text" name="dataAtual" id="editar-data" readonly>
+                    </div>
+                    <div class="forget-enviar"><br>
+                        <button class="enviar" type="submit" value="Enviar">Confirmar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        </div>
 
     <footer id="contato">
         <div class="contatos-container">
@@ -397,6 +567,7 @@
             hrInicio = hrInicio[0]+":"+hrInicio[1];
             var hrFim = button.data('hr-fim').split(":");
             hrFim = hrFim[0]+":"+hrFim[1];
+
             var d = new Date();
             var data = d.toLocaleDateString().split("/");
             data = data[2]+"-"+data[1]+"-"+data[0];
@@ -414,6 +585,47 @@
                 +hrInicio+" às "+hrFim);
             modal.find('#dataAtual').val(dataHora);
             modal.find('#assentos').val(recipientAssentos);
+
+        })
+    </script>
+    <script>
+        $("#modal-editar").on('show.bs.modal', function(event){
+            var button = $(event.relatedTarget);
+            var recipientSessao= button.data('sessao');
+            var recipientVenda= button.data('venda');
+            var recipientFilme= button.data('filme');
+            var recipientInt= button.data('valor-int');
+            var recipientMeia= button.data('valor-meia');
+            var sala= button.data('sala');
+            var hrInicio= button.data('hr-inicio');
+            var hrFim= button.data('hr-fim');
+            var salaHora = sala+" das "+hrInicio+" às "+hrFim;
+            var recipientFuncionario= button.data('funcionario');
+            var recipientCliente= button.data('cliente');
+            var recipientAssentos= button.data('assentos');
+            var recipientQtdInt= button.data('qtd-int');
+            var recipientQtdMeia= button.data('qtd-meia');
+
+            var d = new Date();
+            var data = d.toLocaleDateString().split("/");
+            data = data[2]+"-"+data[1]+"-"+data[0];
+            var hora = d.toLocaleTimeString();
+            var dataHora = data+" "+hora;
+
+            var modal= $(this);
+
+            modal.find("#editar-sessao").val(recipientSessao);
+            modal.find("#editar-venda").val(recipientVenda);
+            modal.find("#editar-filme").val(recipientFilme);
+            modal.find("#editar-valor-int").val(recipientInt);
+            modal.find("#editar-valor-meia").val(recipientMeia);
+            modal.find("#editar-sala-hr").val(salaHora);
+            modal.find("#editar-funcionario").val(recipientFuncionario);
+            modal.find("#editar-cliente").val(recipientCliente);
+            modal.find("#editar-assentos").val(recipientAssentos);
+            modal.find("#editar-qtd-int").val(recipientQtdInt);
+            modal.find("#editar-qtd-meia").val(recipientQtdMeia);
+            modal.find("#editar-data").val(dataHora);
 
         })
     </script>

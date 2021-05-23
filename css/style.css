@@ -397,24 +397,24 @@ h2::after {
   cursor: pointer;
 }
 
-#modal-vender {
+#modal-vender, #modal-editar {
   transform: translate(-50%, 17%);
 }
 
-#modal-vender .modal-container {
+#modal-vender .modal-container, #modal-editar .modal-container {
   border-radius: 5px;
   width: 607px;
   height: 500px;
   padding: 15px 20px 10px 40px;
 }
 
-#modal-vender .modal-container form {
+#modal-vender .modal-container form, #modal-editar .modal-container form {
   display: flex;
   flex-direction: row;
   column-gap: 40px;
 }
 
-#modal-vender h3 {
+#modal-vender h3, #modal-editar h3 {
   width: auto;
   margin: 0 20px 20px 0;
 }
@@ -453,7 +453,7 @@ h2::after {
   display: flex;
 }
 
-#modal-vender button {
+#modal-vender button, #modal-editar button {
   border-radius: 5px;
   position: relative;
   top: -10px;
@@ -462,7 +462,7 @@ h2::after {
   align-self: flex-end;
 }
 
-#modal-vender button a {
+#modal-vender button a, #modal-editar button a {
   color: #e1e1e1;
 }
 
