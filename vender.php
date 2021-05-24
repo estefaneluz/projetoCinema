@@ -61,8 +61,8 @@
                         $stmtFunc->execute();
                         $resultado = $stmtFunc->fetch(PDO::FETCH_ASSOC);
                         echo ($resultado['nome']); ?></p></li>
-                <li> <a href="./control/ctr-logout.php">Logout</a> </li>
-                <li><a href="acesso-adm.php"><img  id="engrenagem-acesso-adm" onmouseover="passaCursor();" onmouseout="retiraCursor();" src="./img/engrenagem.svg" alt="Acesso administrativo"></a></li>
+                <li > <a href="./control/ctr-logout.php">Logout</a> </li>
+                <li ><a href="acesso-adm.php"><img  id="engrenagem-acesso-adm" onmouseover="passaCursor();" onmouseout="retiraCursor();" src="./img/engrenagem.svg" alt="Acesso administrativo"></a></li>
             </ul>
         </nav>
     </header>
@@ -227,7 +227,7 @@
                     <tr>
                     <td>
                         <?php
-                            echo date('d/m/Y H:i:s',strtotime($objVenda['data']));
+                            echo date('d/m/Y H:i',strtotime($objVenda['data']));
                         ?>
                     </td>
                     <td>

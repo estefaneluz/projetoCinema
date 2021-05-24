@@ -1,5 +1,7 @@
 <?php
-    require './model/conexao.php';
+    require './model/conexao.php';    
+    require_once './model/funcionario.php';
+    $objFunc = new Funcionario();
     if(isset($_SESSION['idFuncionario']) && !empty($_SESSION['idFuncionario'])):
         require_once 'model/sessao.php';
 ?>
@@ -31,6 +33,13 @@
         <nav class="menu">
             <button onclick="openMenu()" data-menu="button" aria-expanded="false" aria-controls="menu">Menu</button>
             <ul data-menu="list" id="menu">
+            <li><p>Olá, <?php  
+                        $id = $_SESSION['idFuncionario'];
+                        $sqlFunc = "SELECT nome FROM funcionario WHERE id = $id";
+                        $stmtFunc = $objFunc->runQuery($sqlFunc);
+                        $stmtFunc->execute();
+                        $resultado = $stmtFunc->fetch(PDO::FETCH_ASSOC);
+                        echo ($resultado['nome']); ?></p></li>
                 <li class="btn"> Logout </li>
                 <li ><a href="acesso-adm.php"><img  id="engrenagem-acesso-adm" onmouseover="passaCursor();" onmouseout="retiraCursor();" src="./img/engrenagem.svg" alt="Acesso administrativo"></a></li>
             </ul>
