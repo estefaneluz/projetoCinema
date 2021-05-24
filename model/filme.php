@@ -78,7 +78,10 @@
                 $this->conn=null;
             }
         }
-
+        public function converterData($data){
+            $dataConvertida= date('d/m/Y',strtotime($data));
+            return $dataConvertida;
+        }
         public function redirect($url){
             header("Location: $url"); //header redireciona os links da pagina
         }

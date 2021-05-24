@@ -22,6 +22,7 @@
 
 <?php
     require_once 'model/filme.php';
+    $objData = new Filme();
     $objFilme = new Filme();
     $objSessaoFilme = new Filme();
     $objSessaoEditarFilme = new Filme();
@@ -73,7 +74,15 @@
         </a>
         <nav class="menu">
             <button onclick="openMenu()" data-menu="button" aria-expanded="false" aria-controls="menu">Menu</button>
-            <ul data-menu="list" id="menu">   
+            <ul data-menu="list" id="menu">
+                <li><p>Olá, <?php  
+                        $id = $_SESSION['idFuncionario'];
+                        $sqlFunc = "SELECT nome FROM funcionario WHERE id = $id";
+                        $objFunc= new Funcionario();
+                        $stmtFunc = $objFunc->runQuery($sqlFunc);
+                        $stmtFunc->execute();
+                        $resultado = $stmtFunc->fetch(PDO::FETCH_ASSOC);
+                        echo ($resultado['nome']); ?></p></li>   
                 <li><a href="./vender.php">Vender</a> </li>           
                 <li><a href="./control/ctr-logout.php">Logout</a> </li>
                 <li><a href="acesso-adm.php"><img  id="engrenagem-acesso-adm" onmouseover="passaCursor();" onmouseout="retiraCursor();" src="./img/engrenagem.svg" alt="Acesso administrativo"></a></li>
@@ -86,11 +95,11 @@
             <nav>
                 <h3>Gerenciar</h3>
                 <ul>
-                    <li><a href="#cadastro-filmes">filmes</a></li>
+                    <li><a href="#cadastro-filmes">Filmes</a></li>
                     <li><a href="#container-sessoes">Sessões</a></li>
                     <li><a href="#container-precos">Preços</a></li>
                     <li><a href="#cadastro-salas">Salas</a></li>
-                    <li><a href="#container-funcionarios">Funcionarios</li>
+                    <li><a href="#container-funcionarios">Funcionários</li>
                     <li><a href="#container-clientes">Clientes</a></li>
                     <!-- <li><a href="#cadastro-filmes">Vendas</a></li> -->
                 </ul>
@@ -125,8 +134,8 @@
                      ?>       
                     <tr>
                         <td><?php echo ($objFilme['nome'])?></td>
-                        <td><?php echo ($objFilme['estreia'])?></td> 
-                        <td><?php echo ($objFilme['ultimoDia'])?></td>                        
+                        <td><?php echo $objData->converterData($objFilme['estreia'])?></td> 
+                        <td><?php echo $objData->converterData($objFilme['ultimoDia'])?></td>                        
                         <td><?php echo ($objFilme['classIndicativa'])?></td>                                      
                         <td><button type="button" class="btnEditar"
                             data-toggle="modal" data-target="#modal-editar-filme" 
@@ -321,10 +330,10 @@
                             echo ($resultado['nome']);
                         ?>
                         </td> 
-                        <td><?php echo ($objSessao['data'])?></td>                        
-                        <td><?php echo ($objSessao['horarioInicio'])?>
+                        <td><?php echo $objData->converterData ($objSessao['data'])?></td>                        
+                        <td><?php echo date('H:i', strtotime( $objSessao['horarioInicio']))?>
                         <span> | </span>
-                        <?php echo ($objSessao['horarioFim'])?>
+                        <?php echo date('H:i', strtotime($objSessao['horarioFim']))?>
                         </td>
                         <td><?php echo($objSessao['status']) ?></td>                             
                         <td><button  type="button" class="btnEditar" id="btnEditarSessao"

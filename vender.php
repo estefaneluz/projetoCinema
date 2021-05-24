@@ -7,6 +7,7 @@
     $objSessao = new Sessao();
     require_once 'model/filme.php';
     $objSessaoFilme = new Filme();
+    $objData = new Filme();
     require_once 'model/preco.php';
     $objSessaoIngresso = new Preco();
     require_once 'model/sala.php';
@@ -53,8 +54,15 @@
         <nav class="menu">
             <button onclick="openMenu()" data-menu="button" aria-expanded="false" aria-controls="menu">Menu</button>
             <ul data-menu="list" id="menu">
-                <li class="btn"> <a href="./control/ctr-logout.php">Logout</a> </li>
-                <li ><a href="acesso-adm.php"><img  id="engrenagem-acesso-adm" onmouseover="passaCursor();" onmouseout="retiraCursor();" src="./img/engrenagem.svg" alt="Acesso administrativo"></a></li>
+                <li><p>Olá, <?php  
+                        $id = $_SESSION['idFuncionario'];
+                        $sqlFunc = "SELECT nome FROM funcionario WHERE id = $id";
+                        $stmtFunc = $objFunc->runQuery($sqlFunc);
+                        $stmtFunc->execute();
+                        $resultado = $stmtFunc->fetch(PDO::FETCH_ASSOC);
+                        echo ($resultado['nome']); ?></p></li>
+                <li> <a href="./control/ctr-logout.php">Logout</a> </li>
+                <li><a href="acesso-adm.php"><img  id="engrenagem-acesso-adm" onmouseover="passaCursor();" onmouseout="retiraCursor();" src="./img/engrenagem.svg" alt="Acesso administrativo"></a></li>
             </ul>
         </nav>
     </header>
@@ -106,10 +114,10 @@
                             echo ($resultado['nome']);
                         ?>
                         </td> 
-                        <td><?php echo ($objSessao['data'])?></td>                        
-                        <td><?php echo ($objSessao['horarioInicio'])?>
+                        <td><?php echo $objData->converterData($objSessao['data'])?></td>                        
+                        <td><?php echo date('H:i', strtotime($objSessao['horarioInicio']))?>
                         <span> | </span>
-                        <?php echo ($objSessao['horarioFim'])?>
+                        <?php echo date('H:i', strtotime($objSessao['horarioFim']))?>
                         </td>  
                         <td>
                         <?php 
@@ -219,7 +227,7 @@
                     <tr>
                     <td>
                         <?php
-                            echo ($objVenda['data']);
+                            echo date('d/m/Y H:i:s',strtotime($objVenda['data']));
                         ?>
                     </td>
                     <td>

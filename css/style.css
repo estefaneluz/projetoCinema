@@ -60,7 +60,7 @@ header {
   margin-top: 5px;
 }
 
-.menu ul li a,
+.menu ul li a, .menu ul li p,
 header .btn {
   margin-left: 25px;
   color: #e1e1e1;
