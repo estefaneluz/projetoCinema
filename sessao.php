@@ -31,7 +31,7 @@
         <nav class="menu">
             <button onclick="openMenu()" data-menu="button" aria-expanded="false" aria-controls="menu">Menu</button>
             <ul data-menu="list" id="menu">
-                <li class="btn"> Logout </li>
+                <li><a href="./control/ctr-logout.php">Logout</a></li>
                 <li ><a href="acesso-adm.php"><img  id="engrenagem-acesso-adm" onmouseover="passaCursor();" onmouseout="retiraCursor();" src="./img/engrenagem.svg" alt="Acesso administrativo"></a></li>
             </ul>
         </nav>
