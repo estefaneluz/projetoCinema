@@ -14,6 +14,6 @@
 #### 🚩 Incrementações futuras
 
 - [x] Modal com compra de ingresso
-- [ ] Página para escolha dos assentos
-- [ ] Página para gerenciamento administrativo - em construção
-- [ ] Responsividade - em 33% do site
+- [x] Página para escolha dos assentos
+- [x] Página para gerenciamento administrativo 
+- [x] Gerar arquivo PDF ingresso
