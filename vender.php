@@ -47,7 +47,7 @@
 
 <body>
     <header>
-        <a href="index.html" class="logo">
+        <a href="index.php" class="logo">
             <img src="img/logo.svg" alt="Logo do CineM@ail">
             <h1 alt="CineMail">CineM@il</h1>
         </a>
@@ -61,8 +61,8 @@
                         $stmtFunc->execute();
                         $resultado = $stmtFunc->fetch(PDO::FETCH_ASSOC);
                         echo ($resultado['nome']); ?></p></li>
-                <li> <a href="./control/ctr-logout.php">Logout</a> </li>
-                <li><a href="acesso-adm.php"><img  id="engrenagem-acesso-adm" onmouseover="passaCursor();" onmouseout="retiraCursor();" src="./img/engrenagem.svg" alt="Acesso administrativo"></a></li>
+                <li > <a href="./control/ctr-logout.php">Logout</a> </li>
+                <li ><a href="acesso-adm.php"><img  id="engrenagem-acesso-adm" onmouseover="passaCursor();" onmouseout="retiraCursor();" src="./img/engrenagem.svg" alt="Acesso administrativo"></a></li>
             </ul>
         </nav>
     </header>
@@ -649,5 +649,5 @@
 </html>
 
 <?php
-    else: header("Location: ../projetoCinema/index.html"); endif;
+    else: header("Location: ../projetoCinema/index.php"); endif;
 ?>

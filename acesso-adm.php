@@ -68,7 +68,7 @@
 
 <body>
     <header>
-        <a href="index.html" class="logo">
+        <a href="index.php" class="logo">
             <img src="img/logo.svg" alt="Logo do CineM@ail">
             <h1 alt="CineMail">CineM@il</h1>
         </a>
@@ -1186,5 +1186,5 @@
 </html>
 
 <?php
-    else: header("Location: ../projetoCinema/index.html"); endif;
+    else: header("Location: ../projetoCinema/index.php"); endif;
 ?>

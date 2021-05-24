@@ -1,3 +1,7 @@
+<?php
+    require './model/conexao.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -30,7 +34,14 @@
             <ul data-menu="list" id="menu">
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#contato">Contato</a></li>
-                <li onclick="action('#modal-login')" class="btn"> Login </li>
+                <?php
+                if(isset($_SESSION['idFuncionario']) && !empty($_SESSION['idFuncionario'])):
+                ?> 
+                    <li><a href="./control/ctr-logout.php">Logout</a></li>
+                <?php
+                else: ?> 
+                    <li onclick="action('#modal-login')" class="btn">Login</li>
+                <?php endif;?>
                 <li ><a href="acesso-adm.php"><img  id="engrenagem-acesso-adm" onmouseover="passaCursor();" onmouseout="retiraCursor();" src="./img/engrenagem.svg" alt="Acesso administrativo"></a></li>
             </ul>
         </nav>
