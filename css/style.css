@@ -60,7 +60,7 @@ header {
   margin-top: 5px;
 }
 
-.menu ul li a,
+.menu ul li a, .menu ul li p,
 header .btn {
   margin-left: 25px;
   color: #e1e1e1;
@@ -183,7 +183,11 @@ header .btn:hover {
   color: #d83b40;
   font-weight: bold;
 }
-
+.forget-enviar{ /*Criada para alinhar o "esqueci a senha "e o botão "enviar", pois ao criar o forms dentro
+   do index.html ficaram desalinhados*/
+  display:flex;
+  flex-direction: column;
+}
 .enviar {
   text-transform: uppercase;
   border-radius: 0;
@@ -210,7 +214,7 @@ header .btn:hover {
   justify-content: center;
 }
 
-input {
+input, select {
   border-style: none;
   box-shadow: inset 0px 2px 3px rgba(23, 22, 37, 0.42);
   width: 45vw;
@@ -367,25 +371,99 @@ h2::after {
   font-weight: normal;
 }
 
-/*CONFIRA FILMES*/
-.confira-filmes {
+/*COMPRAR FILMES*/
+.comprar-filmes {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.confira-filmes p {
+.comprar-filmes p {
   padding-bottom: 14px;
   font-size: 0.9em;
 }
 
-.confira-filmes a {
+.btn-vermelho {
+  all:unset;
   border: 3px solid #ee1d1d;
   text-decoration: none;
   color: #ee1d1d;
   font-size: 1.2em;
   padding: 4px 38px;
   text-transform: uppercase;
+}
+
+.btn-vermelho:hover {
+  cursor: pointer;
+}
+
+#modal-vender, #modal-editar {
+  transform: translate(-50%, 17%);
+}
+
+#modal-vender .modal-container, #modal-editar .modal-container {
+  border-radius: 5px;
+  width: 607px;
+  height: 500px;
+  padding: 15px 20px 10px 40px;
+}
+
+#modal-vender .modal-container form, #modal-editar .modal-container form {
+  display: flex;
+  flex-direction: row;
+  column-gap: 40px;
+}
+
+#modal-vender h3, #modal-editar h3 {
+  width: auto;
+  margin: 0 20px 20px 0;
+}
+
+.compra-left, .compra-right {
+  width: 50%;
+}
+
+.compra-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.compra-input input {
+  width: 80%;
+}
+
+
+.compra-input select, .compra-right input {
+  width: 90%;
+}
+
+#assentos {
+  width: 40%;
+} 
+
+.compra-input select, .compra-input input {
+  margin-bottom: 20px;
+}
+
+.compra-input span {
+  font-size: 9px;
+}
+
+.compra-valor, .compra-qtd {
+  display: flex;
+}
+
+#modal-vender button, #modal-editar button {
+  border-radius: 5px;
+  position: relative;
+  top: -10px;
+  background-color:#d83b40;
+  margin: 0 30px;
+  align-self: flex-end;
+}
+
+#modal-vender button a, #modal-editar button a {
+  color: #e1e1e1;
 }
 
 /* SOBRE */

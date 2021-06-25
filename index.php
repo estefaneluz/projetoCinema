@@ -1,3 +1,7 @@
+<?php
+    require './model/conexao.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -21,7 +25,7 @@
 
 <body>
     <header>
-        <a href="index.html" class="logo">
+        <a href="index.php" class="logo">
             <img src="img/logo.svg" alt="Logo do CineM@ail">
             <h1 alt="CineMail">CineM@il</h1>
         </a>
@@ -30,37 +34,48 @@
             <ul data-menu="list" id="menu">
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#contato">Contato</a></li>
-                <li onclick="action()" class="btn"> Login </li>
-                <li><a href="not-found.html"><img src="./img/engrenagem.svg" alt="icone-login"></a></li>
+                <?php
+                if(isset($_SESSION['idFuncionario']) && !empty($_SESSION['idFuncionario'])):
+                ?> 
+                    <li><a href="./control/ctr-logout.php">Logout</a></li>
+                <?php
+                else: ?> 
+                    <li onclick="action('#modal-login')" class="btn">Login</li>
+                <?php endif;?>
+                <li ><a href="acesso-adm.php"><img  id="engrenagem-acesso-adm" onmouseover="passaCursor();" onmouseout="retiraCursor();" src="./img/engrenagem.svg" alt="Acesso administrativo"></a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="modal">
+    <div class="modal" id="modal-login">
         <img id="modal-bg" src="./img/img-login/imagem-login.png" alt="Imagem de um cinema vazio">
         <div class="modal-container">
-            <img onclick="fechar()" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
+            <img onclick="fechar('#modal-login')" class="fechar" src="./img/fechar.svg" alt="Icone para fechar o poup-up.">
             <h3>Conecte-se com a sua conta</h3>
-            <div class="input-container">
-                <img src="./img/img-login/login-icone.svg" alt="Icone-Login">
-                <div class="input">
-                    <label>Email</label>
-                    <input type="email" id="email" required>
+            <form action="control/ctr-funcionario.php" method="POST"><!--Adicionado pra enviar os dados de login pra fazer a conexão-->
+                <div class="input-container">
+                    <img src="./img/img-login/login-icone.svg" alt="Icone-Login">
+                    <div class="input">
+                        <label>Email</label>
+                        <input type="text" id="email" name="email" required>
+                    </div>
                 </div>
-            </div>
 
-            <div class="input-container">
-                <img src="./img/img-login/senha-icone.svg" alt="Icone-Login">
-                <div class="input">
-                    <label>Senha</label>
-                    <input type="password" id="password" required>
+                <div class="input-container">
+                    <img src="./img/img-login/senha-icone.svg" alt="Icone-Login">
+                    <div class="input">
+                        <label>Senha</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
                 </div>
-            </div>
-            <a href="not-found.html" id="forget">Esqueci a senha</a>
-            <button class="enviar" type="submit" value="Enviar">Enviar</button>
-
+                <div class="forget-enviar"><!--Criada pra alinhar os elementos abaixo-->
+                    <a href="not-found.html" id="forget">Esqueci a senha</a>
+                    <button class="enviar" type="submit" value="Enviar">Enviar</button>
+                </div>
+            </form>
         </div>
     </div>
+
 
     <div id="blur">
         <div class="busca-filmes">
@@ -214,9 +229,12 @@
                     </div>
                 </div>
             </div>
-            <div class="confira-filmes">
-                <p>Confira todos os filmes</p>
-                <a href="not-found.html">Filmes</a>
+            <div class="comprar-filmes">
+                <p>Compre o seu ingresso!</p>
+                <a href="./vender.php">
+                    <button class="btn-vermelho">Comprar</button>
+                </a>
+                
             </div>
         </section>
 
@@ -235,13 +253,12 @@
 
         </section>
 
-
         <footer id="contato">
             <div class="contatos-container">
                 <div class='redes-sociais'>
                     <h2>Redes Sociais</h2>
                     <ul>
-                        <li>
+                        <li> <!--id="facebook" onmouseover="passaCursor();" onmouseout="retiraCursor();"-->
                             <a href="facebook.com" target="_blank"><img src="./img/redes-sociais/facebook.svg" alt="Facebook CineMail"></a>
                         </li>
                         <li>
@@ -270,6 +287,7 @@
     <script src="./js/owl/jquery.min.js"></script>
     <script src="./js/owl/owl.carousel.min.js"></script>
     <script src="./js/owl/setup.js"></script>
+    <script src="./js/hover.js"></script>
 </body>
 
 </html>

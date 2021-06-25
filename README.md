@@ -13,8 +13,7 @@
 
 #### 🚩 Incrementações futuras
 
-- [ ] Modal com compra de ingresso
-- [ ] Página para escolha dos assentos
-- [ ] Página para gerenciamento administrativo
-- [ ] Página com todos os filmes
-- [x] Responsividade 
+- [x] Modal com compra de ingresso
+- [x] Página para escolha dos assentos
+- [x] Página para gerenciamento administrativo 
+- [x] Gerar arquivo PDF ingresso

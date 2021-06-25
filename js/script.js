@@ -1,12 +1,13 @@
-function action() {
-  const modal = document.querySelector('.modal');
+function action(id) {
+  
+  const modal = document.querySelector(id);
   modal.style.display = 'flex';
   const blur = document.getElementById('blur');
   blur.classList.toggle('active');
 }
 
-function fechar() {
-  const modal = document.querySelector('.modal');
+function fechar(id) {
+  const modal = document.querySelector(id);
   modal.style.display = 'none';
   const blur = document.getElementById('blur');
   blur.classList.remove('active');
