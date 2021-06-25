@@ -1,6 +1,6 @@
 # CineM@il 🎞️
 
-> Projeto em desenvolvimento para a disciplina Programação Web 2021.1 do curso Técnico em Desenvolvimento de Sistemas
+> Projeto desenvolvido para a disciplina Programação Web 2021.1 do curso Técnico em Desenvolvimento de Sistemas
 
 > Site para venda de ingressos de filmes
 
@@ -9,9 +9,10 @@
 - Estéfane Côrtes
 - Isael Sobral
 
-#### 🚩 Incrementações futuras
+#### Tecnologias: 
 
-- [x] Modal com compra de ingresso
-- [x] Página para escolha dos assentos
-- [x] Página para gerenciamento administrativo 
-- [x] Gerar arquivo PDF ingresso
+- HTML
+- CSS
+- PHP 
+- MySql
+- JQuery 
